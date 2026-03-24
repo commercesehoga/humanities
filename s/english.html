@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy - English Core &amp; CUET Prep</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-surface-variant": "#41493e",
+                "outline": "#717a6d",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "on-secondary-fixed-variant": "#344d31",
+                "on-primary-container": "#86d881",
+                "on-background": "#191d17",
+                "outline-variant": "#c0c9bb",
+                "on-tertiary-fixed-variant": "#7a2949",
+                "secondary-fixed-dim": "#b1cfaa",
+                "on-primary-fixed-variant": "#005312",
+                "primary-container": "#065f18",
+                "on-secondary-fixed": "#082009",
+                "surface-container-low": "#f2f5ec",
+                "on-secondary-container": "#4f694b",
+                "primary-fixed-dim": "#88d982",
+                "secondary-container": "#cae8c2",
+                "background": "#f7fbf1",
+                "surface-dim": "#d8dbd2",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "primary": "#00450d",
+                "on-surface": "#191d17",
+                "tertiary": "#6b1d3d",
+                "surface-container-high": "#e6e9e0",
+                "surface": "#f7fbf1",
+                "surface-container": "#ecefe6",
+                "primary-fixed": "#a3f69c",
+                "tertiary-fixed": "#ffd9e2",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#ffb1c8",
+                "secondary": "#4b6547",
+                "tertiary-container": "#883454",
+                "surface-variant": "#e0e4db",
+                "on-primary-fixed": "#002204",
+                "inverse-surface": "#2d322c",
+                "surface-bright": "#f7fbf1",
+                "on-error-container": "#93000a",
+                "surface-container-highest": "#e0e4db",
+                "inverse-primary": "#88d982",
+                "on-tertiary-fixed": "#3e001d",
+                "inverse-on-surface": "#eff2e9",
+                "surface-tint": "#1b6d24",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#ffaec6",
+                "secondary-fixed": "#cdebc5"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7fbf1]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="flex justify-between items-center px-8 h-16 max-w-full">
+<div class="text-2xl font-extrabold text-[#00450d] tracking-tighter">Thunderstudy</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-manrope font-bold text-lg tracking-tight text-[#43483f] hover:text-[#065f18] transition-colors duration-200" href="#">Class 12th</a>
+<a class="font-manrope font-bold text-lg tracking-tight text-[#00450d] border-b-2 border-[#00450d] pb-1" href="#">CUET Prep</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-highest px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-outline text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-label" placeholder="Search topics..." type="text"/>
+</div>
+<button class="p-2 text-[#43483f] hover:text-[#065f18]"><span class="material-symbols-outlined">notifications</span></button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Student Profile" data-alt="Student profile avatar looking forward with a friendly expression in a brightly lit academic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSgWiZ1IJiHPWWj1--q6mFYUB0nXQQFf3YRzfiCFXvsAqfqDRmwMdTIAosa4zgLmSWJktQmQjJDfGJ7nGzYj1FJ1hEsAF_dhpLbbQ8plyo3Nz59EC86at7TVuAoZsrekLj84ei6zEVkmNeFaA-oNxaAImri3qraKiF0k_hDU24iJSbeCvN8dFz5lDjhsqLdy7SFrAHTJ8vO7QV9e7YZiEdIB_8yi8ucml2UPPAv_p2n157sGm5dXkx6wtybLBwtvogQYzEMXRr_bVD"/>
+</div>
+</div>
+</div>
+<div class="bg-[#ecefe6] h-[1px] w-full"></div>
+</nav>
+<!-- SideNavBar Implementation -->
+<aside class="hidden lg:flex flex-col h-screen w-72 fixed left-0 top-0 pt-20 bg-[#ecefe6] border-r border-[#c0c9bb]/20 overflow-y-auto">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<p class="font-headline font-bold text-primary leading-none">English Core</p>
+<p class="text-[10px] text-outline uppercase tracking-widest mt-1">Session 2024-25</p>
+</div>
+</div>
+</div>
+<nav class="space-y-1 px-2 flex-grow">
+<a class="flex items-center gap-3 text-[#00450d] font-bold border-l-4 border-[#00450d] pl-4 py-3 bg-surface-container-highest/50 rounded-r-xl" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-manrope text-sm">Literature</span>
+</a>
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-3 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-manrope text-sm">Reading</span>
+</a>
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-3 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-manrope text-sm">Writing</span>
+</a>
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-3 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">spellcheck</span>
+<span class="font-manrope text-sm">Vocabulary</span>
+</a>
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-3 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-manrope text-sm">Mock Tests</span>
+</a>
+</nav>
+<div class="p-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-headline font-bold text-sm shadow-md hover:opacity-90 active:scale-[0.98] transition-all">
+                Start Daily Quiz
+            </button>
+</div>
+<div class="mt-auto border-t border-outline-variant/30 p-4 space-y-1">
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-2 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="font-manrope text-xs">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-[#43483f] pl-5 py-2 hover:bg-[#e0e4db] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span class="font-manrope text-xs">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-24 pb-12 px-6 md:px-12 max-w-7xl">
+<!-- Hero Header -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-tertiary font-headline font-bold text-sm uppercase tracking-widest mb-2 block">The Scholastic Atelier</span>
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface tracking-tight">English Mastery</h1>
+<p class="text-on-surface-variant mt-4 max-w-2xl text-lg leading-relaxed">Prepare for Class 12 Boards and CUET with curated literature notes, writing strategies, and comprehensive reading comprehension tools.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-6 py-4 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-4 border-primary border-t-outline-variant/30 flex items-center justify-center">
+<span class="text-xs font-bold text-primary">68%</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-semibold uppercase">Overall Progress</p>
+<p class="font-headline font-bold text-on-surface">Syllabus Mastery</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Literature Section - Large Bento Card -->
+<section class="md:col-span-2 bg-surface-container-low rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary-container/10 rounded-bl-full -mr-8 -mt-8"></div>
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">library_books</span>
+<h2 class="text-2xl font-headline font-bold text-on-surface">Literature Hub</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-5 bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<h3 class="font-headline font-bold text-primary mb-1">Flamingo</h3>
+<p class="text-xs text-on-surface-variant mb-4">8 Prose, 6 Poetry Chapters</p>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>The Last Lesson</span>
+<span class="text-primary">Completed</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full">
+<div class="bg-primary w-full h-1 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-tertiary/20">
+<h3 class="font-headline font-bold text-tertiary mb-1">Vistas</h3>
+<p class="text-xs text-on-surface-variant mb-4">6 Supplementary Readings</p>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>The Third Level</span>
+<span class="text-outline">In Progress</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full">
+<div class="bg-tertiary w-1/3 h-1 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<p class="text-sm text-on-surface-variant italic">"A room without books is like a body without a soul."</p>
+<button class="flex items-center gap-2 text-primary font-bold text-sm hover:translate-x-1 transition-transform">
+                        Explore Chapter Notes <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Vocabulary Booster - Tall Bento Card -->
+<section class="md:col-span-1 lg:row-span-2 bg-primary rounded-3xl p-8 text-on-primary flex flex-col">
+<div class="mb-8">
+<span class="bg-on-primary/20 text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">CUET Prep</span>
+<h2 class="text-3xl font-headline font-extrabold mt-4">Vocabulary Booster</h2>
+<p class="text-on-primary/70 mt-2 text-sm leading-relaxed">High-frequency words, idioms, and phrases curated for competitive edge.</p>
+</div>
+<div class="space-y-4 flex-grow">
+<div class="p-4 bg-on-primary/10 rounded-2xl border border-on-primary/20">
+<p class="text-xs text-on-primary/60 uppercase tracking-tighter">Word of the Day</p>
+<p class="text-xl font-headline font-bold mt-1">Evanescent</p>
+<p class="text-sm mt-1 opacity-90 italic">Soon passing out of sight, memory, or existence.</p>
+</div>
+<div class="space-y-3 mt-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary/40">check_circle</span>
+<span class="text-sm">Synonyms &amp; Antonyms</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary/40">check_circle</span>
+<span class="text-sm">One-word Substitutions</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary/40">check_circle</span>
+<span class="text-sm">Idiomatic Expressions</span>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<img alt="Literary Style" class="w-full h-32 object-cover rounded-2xl mb-4 grayscale" data-alt="High-contrast black and white close-up of typewriter keys and ink-stained fingers suggesting literary creation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN3gIbNPGpDNInoLt7eUa-mjQ3gvfJ5vpLX3BCGU-oJgQ4klKuyZ1ZF3IippS0NOmgzLXfOQpDIfNAKPFatg1NJASr7EHbEppwJx0sAeqMOaR6M_ohiSt_MZaULaE72eHFPwcm-uAklLhKlSw7R3mkNouTqJYxUJyFy2ITimtXLHDo6BF8zM8FTW9c5VCnkVywHZMyJqs90eltSeTlOPlkmoSXFgxmKzxAJKE18PjUvjaEkSrFQBW3kqe3kG1JYLIjUiwy2ZqU-U4R"/>
+<button class="w-full py-3 bg-surface-container-lowest text-primary rounded-xl font-headline font-bold text-sm active:scale-95 transition-all">
+                        Daily Word Deck
+                    </button>
+</div>
+</section>
+<!-- Reading Comprehension Hub -->
+<section class="md:col-span-2 lg:col-span-1 bg-surface-container-highest rounded-3xl p-6 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-surface-container-lowest rounded-2xl flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface">Reading Hub</h2>
+<p class="text-on-surface-variant text-sm mt-2 mb-6">Master the art of scanning and skimming for MCQs.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest/50 rounded-xl">
+<span class="text-xs font-semibold">Factual Passages</span>
+<span class="text-[10px] bg-primary-container/20 text-primary px-2 py-0.5 rounded">12 Practice</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest/50 rounded-xl">
+<span class="text-xs font-semibold">Literary Passages</span>
+<span class="text-[10px] bg-tertiary-container/20 text-tertiary px-2 py-0.5 rounded">8 Practice</span>
+</div>
+</div>
+</div>
+<button class="mt-6 text-primary font-bold text-xs flex items-center gap-2 hover:gap-3 transition-all">
+                    Start Timer <span class="material-symbols-outlined text-sm">timer</span>
+</button>
+</section>
+<!-- Writing Skills Section -->
+<section class="md:col-span-1 lg:col-span-2 bg-surface-container rounded-3xl p-8 border-l-8 border-primary-container">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface">Writing Arsenal</h2>
+<p class="text-sm text-on-surface-variant mt-1">Formats, Samples &amp; Marked Answers</p>
+</div>
+<span class="material-symbols-outlined text-primary-container text-4xl">edit_square</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-xl group hover:bg-surface-container-lowest transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-sm text-primary">campaign</span>
+</div>
+<h4 class="font-bold text-sm">Notices</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">5 Solved Samples</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl group hover:bg-surface-container-lowest transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-sm text-primary">mail</span>
+</div>
+<h4 class="font-bold text-sm">Formal Letters</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">Editor &amp; Job Apps</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl group hover:bg-surface-container-lowest transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-sm text-primary">newspaper</span>
+</div>
+<h4 class="font-bold text-sm">Reports</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">Event Coverage</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl group hover:bg-surface-container-lowest transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-sm text-primary">border_color</span>
+</div>
+<h4 class="font-bold text-sm">Article Writing</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">Opinion &amp; Analysis</p>
+</div>
+</div>
+</section>
+<!-- Practice Ecosystem - Asymmetric Layout -->
+<section class="md:col-span-2 lg:col-span-4 mt-8">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-3xl font-headline font-extrabold text-on-surface">Practice Ecosystem</h2>
+<div class="h-[2px] flex-grow bg-outline-variant/20"></div>
+</div>
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- MCQ Bank -->
+<div class="flex-1 bg-surface-container-low rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10">
+<div class="flex-grow">
+<div class="flex items-center gap-2 text-tertiary mb-4">
+<span class="material-symbols-outlined">radio_button_checked</span>
+<span class="text-xs font-bold uppercase tracking-widest">CUET Style</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">MCQ Question Bank</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">2000+ Topic-wise questions with instant explanations and performance tracking for every session.</p>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform">
+                                Launch Practice
+                            </button>
+</div>
+<div class="w-full md:w-48 aspect-square rounded-2xl bg-surface-container-highest overflow-hidden">
+<img alt="MCQ visualization" class="w-full h-full object-cover" data-alt="Abstract colorful geometric shapes representing data points and quiz progress in a minimalist artistic style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUrsgtE47XqIXybV9KXSjbQ1mv6KKKBHyPWswlc-Fqd3Jkai81Q6aDanhfM2JMSygz4jN7VDsfnF2B3uIDD7XP9Y-X7tw5vfxIgTQDJsB5UrvY3t2dQ0knOEd2YcX1jQ3U6OXiIPxvxW3-LbcTMne2jNh3dVr5GJkX-oUqFro_B7tP2Cjhb1XmX1Y2onYw8xVaH_ery_51-A3U1cR_G7sK4QJoud8_RdH06bFsrHXWGVIYvm1m9khmjdG5GQFmf13p6gQHOqZRzAcK"/>
+</div>
+</div>
+<!-- Short Answer Bank -->
+<div class="w-full lg:w-96 bg-surface-container-highest rounded-3xl p-8 border border-outline-variant/10">
+<h3 class="text-xl font-headline font-bold mb-6">Subjective Bank</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="shrink-0 w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary border border-outline-variant/20 font-bold text-xs italic">Q1</div>
+<div>
+<p class="text-xs font-bold text-on-surface leading-tight">Theme analysis of 'The Rattrap'?</p>
+<p class="text-[10px] text-on-surface-variant mt-1">2 Marks • Solved</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-70">
+<div class="shrink-0 w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary border border-outline-variant/20 font-bold text-xs italic">Q2</div>
+<div>
+<p class="text-xs font-bold text-on-surface leading-tight">Character sketch of M. Hamel?</p>
+<p class="text-[10px] text-on-surface-variant mt-1">5 Marks • Practice</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-50">
+<div class="shrink-0 w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary border border-outline-variant/20 font-bold text-xs italic">Q3</div>
+<div>
+<p class="text-xs font-bold text-on-surface leading-tight">Irony in 'The Tiger King'?</p>
+<p class="text-[10px] text-on-surface-variant mt-1">4 Marks • Practice</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-3 border-2 border-primary/20 text-primary rounded-xl font-headline font-bold text-xs hover:bg-primary/5 transition-colors">
+                            View All Questions
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest/80 backdrop-blur-md z-50 flex justify-around items-center h-16 border-t border-outline-variant/10">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] mt-1">Subjects</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="text-[10px] mt-1">Mock</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual -->
+<div class="fixed bottom-24 right-8 lg:bottom-12 lg:right-12 z-40">
+<button class="group flex items-center gap-3 px-6 py-4 bg-primary-container text-on-primary rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-headline font-bold text-sm">Quick Test</span>
+</button>
+</div>
+</body></html>
