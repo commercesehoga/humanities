@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>History Study Materials | Thunderstudy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f7fbf1",
+              "surface-container-low": "#f2f5ec",
+              "tertiary-container": "#883454",
+              "on-surface-variant": "#41493e",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e6e9e0",
+              "primary": "#00450d",
+              "on-primary-container": "#86d881",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#e0e4db",
+              "on-error": "#ffffff",
+              "primary-container": "#065f18",
+              "on-surface": "#191d17",
+              "on-secondary-container": "#4f694b",
+              "surface-variant": "#e0e4db",
+              "on-primary-fixed-variant": "#005312",
+              "secondary-fixed-dim": "#b1cfaa",
+              "on-tertiary-fixed": "#3e001d",
+              "on-primary-fixed": "#002204",
+              "surface-container": "#ecefe6",
+              "on-primary": "#ffffff",
+              "secondary-container": "#cae8c2",
+              "outline-variant": "#c0c9bb",
+              "surface-tint": "#1b6d24",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#ffaec6",
+              "tertiary-fixed": "#ffd9e2",
+              "outline": "#717a6d",
+              "on-secondary-fixed-variant": "#344d31",
+              "primary-fixed-dim": "#88d982",
+              "inverse-surface": "#2d322c",
+              "on-secondary-fixed": "#082009",
+              "primary-fixed": "#a3f69c",
+              "surface-dim": "#d8dbd2",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#eff2e9",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#88d982",
+              "secondary": "#4b6547",
+              "secondary-fixed": "#cdebc5",
+              "tertiary": "#6b1d3d",
+              "surface-bright": "#f7fbf1",
+              "on-background": "#191d17",
+              "surface": "#f7fbf1",
+              "tertiary-fixed-dim": "#ffb1c8",
+              "on-tertiary-fixed-variant": "#7a2949"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.historical-grain {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBHT4FgZX0_iqJRp3-8kiT_l4dCjBjYXBP7ISFfhxda7iTEOoLK-Tg6o9U-59PD1Q6BrF4e4JiyeElACVlYF0vsWRnvDKvdjC2mucSreDbs37OPs9GEMJ2f8tL3EsEmZxF8xy9KirUxzonBshJMx66U3-QkMhRN4tZf_Fn4fYqTNwNkD__z5JyOLKPQBDXieJ_3qBn8N2A-aIwqAN4V_RFRZbpwqfeFYJrtr6jzRrYNrFbewRn5HZEKi8xZRhdwpmte0h0YV0K7zZ__);
+    mix-blend-mode: multiply
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container">
+<!-- TopNavBar Execution -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7fbf1]/80 dark:bg-[#191d17]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)] no-border transition-colors duration-300">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-[#00450d] dark:text-[#ecefe6] tracking-tighter font-['Manrope']">Thunderstudy</div>
+<div class="hidden md:flex items-center space-x-8 font-['Manrope'] font-semibold tracking-tight">
+<a class="text-[#191d17]/60 dark:text-[#ecefe6]/60 hover:text-[#065f18] transition-all" href="#">Curriculum</a>
+<a class="text-[#00450d] dark:text-[#ecefe6] border-b-2 border-[#00450d] dark:border-[#ecefe6] pb-1" href="#">Resources</a>
+<a class="text-[#191d17]/60 dark:text-[#ecefe6]/60 hover:text-[#065f18] transition-all" href="#">Analytics</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-[#00450d] hover:bg-surface-container rounded-full transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#00450d] hover:bg-surface-container rounded-full transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden ml-2">
+<img alt="Student Profile" data-alt="close-up portrait of a young student wearing glasses in a sunlit university library library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF7Uo5bbypLnBAMEyLYWeEKuhTl0SFfTXrsV_AEP1jlBJD5rJIZN9OV9T8oRZG60nMCwnvTqUQzdlqMxoWQBzuZ6zYHYCCbBAX_zwUdw81bGSeVEt86DKHwHNyLyjBLoOMhvgA0QJHmHV5BoUUkZywbPtvCKEPQ9g8RTFCr83m56ANWut9gvYxMMrj7CSl-a1xB8nfnaxyGBi6hZlJvh961wK74Dp3HnNen-H42Y82ZN1hmRiiZpZZmWvTyQWu3GjBDyicHPjMiCtE"/>
+</div>
+</div>
+</div>
+</nav>
+<div class="flex pt-16 max-w-[1600px] mx-auto min-h-screen">
+<!-- SideNavBar Execution -->
+<aside class="hidden md:flex flex-col py-6 space-y-4 h-screen w-64 bg-[#ecefe6] dark:bg-[#191d17] border-r-0 fixed left-0 top-16 z-40">
+<div class="px-6 mb-6">
+<div class="flex items-center space-x-3 mb-1">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Grade 12 History</h3>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant/70 font-semibold">CUET Preparation Mode</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 px-6 py-3 border-l-4 border-[#00450d] text-[#00450d] font-bold bg-[#e0e4db] dark:bg-[#232a20] transition-transform duration-200 tap-highlight-none" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Inter'] text-sm font-medium">Notes</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-[#191d17]/70 dark:text-[#ecefe6]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Sample Papers</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-[#191d17]/70 dark:text-[#ecefe6]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>PYQs</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-[#191d17]/70 dark:text-[#ecefe6]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span>Practice Bank</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-[#191d17]/70 dark:text-[#ecefe6]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span>Map Master</span>
+</a>
+</nav>
+<div class="px-4 mt-auto mb-20">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-sm shadow-sm active:scale-[0.98] transition-all">
+                    Start Mock Test
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 p-8 bg-background">
+<!-- Header Section -->
+<header class="mb-12">
+<nav class="mb-4">
+<ol class="flex space-x-2 text-xs font-medium text-on-surface-variant/60 uppercase tracking-widest">
+<li>Humanities Tier I</li>
+<li><span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span></li>
+<li>Class XII</li>
+<li><span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span></li>
+<li class="text-primary-container font-bold">CBSE &amp; CUET</li>
+</ol>
+</nav>
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
+<div>
+<h1 class="text-6xl font-headline font-extrabold text-primary tracking-tighter mb-2">History</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">Tracing the evolution of civilizations from Harappa to the modern era with comprehensive resources for board and entrance exams.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-2xl flex items-center space-x-6 min-w-[280px]">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-outline-variant/20" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="176" stroke-dashoffset="38" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-bold text-primary">78%</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1">Syllabus Mastery</p>
+<p class="text-xs text-on-surface-variant leading-tight">14 of 18 chapters completed</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Core Materials Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- Chapter-wise Notes -->
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-1">Chapter-wise Notes</h2>
+<p class="text-sm text-on-surface-variant">Detailed thematic analysis for in-depth understanding.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-4xl opacity-20 group-hover:opacity-100 transition-opacity" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-surface-container-highest p-5 rounded-2xl hover:scale-[1.02] transition-transform">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="temple_hindu">temple_hindu</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Ancient India</h3>
+<p class="text-xs text-on-surface-variant">6 Modules • 12 Maps</p>
+</div>
+<div class="bg-surface-container-highest p-5 rounded-2xl hover:scale-[1.02] transition-transform">
+<div class="w-10 h-10 rounded-lg bg-primary-container/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="fort">fort</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Medieval India</h3>
+<p class="text-xs text-on-surface-variant">5 Modules • 8 Maps</p>
+</div>
+<div class="bg-surface-container-highest p-5 rounded-2xl hover:scale-[1.02] transition-transform">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance">account_balance</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Modern Era</h3>
+<p class="text-xs text-on-surface-variant">7 Modules • 15 Maps</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sample Papers -->
+<div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 historical-grain"></div>
+<div class="relative z-10">
+<div class="inline-block px-3 py-1 bg-on-primary/20 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">Latest Update</div>
+<h2 class="text-3xl font-headline font-bold mb-4">2024-25 Batch Sample Papers</h2>
+<p class="text-on-primary/70 text-sm mb-8">Full syllabus mocks based on the latest NTA and CBSE marking schemes.</p>
+</div>
+<button class="relative z-10 w-full py-4 bg-on-primary text-primary rounded-xl font-bold flex items-center justify-center space-x-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span>Download PDF</span>
+</button>
+</div>
+<!-- PYQs -->
+<div class="md:col-span-4 bg-tertiary-container/5 p-8 rounded-3xl border border-tertiary-container/10">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="trending_up">trending_up</span>
+<h2 class="text-xl font-headline font-bold text-tertiary">PYQ Analysis</h2>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">10-year trend analysis showing high-frequency themes from Indus Valley to the Partition.</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-xs font-semibold">
+<span>Nationalist Movement</span>
+<div class="w-32 h-1.5 bg-outline-variant/20 rounded-full">
+<div class="h-full w-[85%] bg-tertiary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs font-semibold">
+<span>Bhakti-Sufi Tradition</span>
+<div class="w-32 h-1.5 bg-outline-variant/20 rounded-full">
+<div class="h-full w-[60%] bg-tertiary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Practice Ecosystem -->
+<div class="md:col-span-8 bg-surface-container p-8 rounded-3xl">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl font-headline font-bold text-on-surface">Practice Ecosystem</h2>
+<button class="text-sm font-bold text-primary flex items-center space-x-1">
+<span>View All</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="flex flex-col space-y-3">
+<span class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</span>
+<h3 class="font-bold text-on-surface">Target MCQs</h3>
+<p class="text-xs text-on-surface-variant">Focus on CUET Section II pattern with negative marking simulation.</p>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</span>
+<h3 class="font-bold text-on-surface">Short Answers</h3>
+<p class="text-xs text-on-surface-variant">Master the 3-mark questions with standard 60-80 word limits.</p>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+</span>
+<h3 class="font-bold text-on-surface">Case-Based</h3>
+<p class="text-xs text-on-surface-variant">Analyze passage extracts from NCERT 'Themes in Indian History'.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Archive & Map Mastery -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+<!-- Visual Archive -->
+<div class="bg-surface-container-highest rounded-3xl overflow-hidden p-8 flex flex-col">
+<div class="mb-8">
+<div class="flex items-center space-x-2 text-tertiary mb-2">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Primary Source Analysis</span>
+</div>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface leading-tight">The Visual Archive</h2>
+</div>
+<div class="grid grid-cols-2 gap-4 flex-1">
+<div class="relative group rounded-2xl overflow-hidden aspect-square">
+<img alt="Historical Coin" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="extreme close-up of a weather-worn ancient silver coin with Sanskrit inscriptions on a dark velvet surface with dramatic cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDluNKcJ9ee09mcaV02DRdixe_G3u-eU8tMR0mToKW7UF-EazM8WmpATi3-3hRewSmnu3XnGxZ6OcfJA_yanIJklz9MZ5UuxtX_eiTp72-oTZRcc1LRqAfdadUV--BndAvpr54iOUbWwsJAA9ZnuVQrEZnGUqtrSQCHY4eLoBIXhxNo68HZWssW63gbIS-0BVZUXAQih4g3yFAivvBhOlTceulf6mVWCssIYy0V_zXurcqjzoy4UhiQLaGpva4-YxsVa8PX3xfnqmOx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent flex items-end p-4">
+<p class="text-white text-xs font-medium">Kushana Era Currency</p>
+</div>
+</div>
+<div class="relative group rounded-2xl overflow-hidden aspect-square">
+<img alt="Ancient Manuscript" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="top-down view of an open ancient yellowed parchment manuscript with calligraphy and gold leaf illustrations in a dimly lit archive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhLoGu7j9aioHrEn8Gc_Ws9UoGWeawz3exF5INSmpNu4V1vU_J86C9vn3hG6Ut_V4TTJMLn65_60VLi-4n_EL_XKperRXbthQESadcOVL6Eh5PsEKuYfUmenr9uaB9hUJQ4Xfjaj4WNl57naZYSqfTVXQCPBLaS6i-kf5gcV5BKtbfQRgkhsJF6cXM22woAP8GKgYGb9wLQMdBSdMhMAmBoMbOaRHK0qrCCq2Ba_CMc9EXXwzCc9I63BiCSEmKvQQQhPG-J6RhlWxo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent flex items-end p-4">
+<p class="text-white text-xs font-medium">Bhakti Script Extracts</p>
+</div>
+</div>
+</div>
+<button class="mt-6 py-4 border-2 border-outline-variant/30 rounded-xl text-primary font-bold hover:bg-white transition-colors">Launch Gallery</button>
+</div>
+<!-- Map Mastery -->
+<div class="bg-primary-container text-on-primary rounded-3xl overflow-hidden relative">
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="p-8 relative z-10 flex flex-col h-full">
+<div class="mb-6">
+<div class="flex items-center space-x-2 text-on-primary-container mb-2">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Historical Cartography</span>
+</div>
+<h2 class="text-3xl font-headline font-extrabold leading-tight">Map Mastery</h2>
+</div>
+<div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 flex-1 mb-6 border border-white/10">
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden mb-6 relative">
+<img alt="Historical Map" class="w-full h-full object-cover opacity-80" data-alt="antique sepia-toned paper map of the Indian subcontinent with decorative compass rose and nautical illustrations in an elegant vintage style" data-location="India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVDFMXUBHUOF-1RXDwNGB1EJV89bzGUJsD2e6DbSSvQqlDip5cj7EmI9ttRPTeXFXaiuHZvQYcg646KXNwAhsbZEtwd0VvUc6gjYMtHDNRYI8XgpHEIPD7hu_gvCma9Pd9fWGBu4dPJ47OBa7gywidIts5vfvLWdc2kTaVWpx9YWfQ4F-_1gJYQpMhT9PUTKPk-0LJ8mgxn2Kc1N3EeFOrm_pRp6zH4RAAklbnumDgZwPpUHeSlr-bjvDAMbi_KNwC_zvVLlvMgej5"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="w-4 h-4 bg-primary rounded-full animate-ping"></span>
+<span class="absolute w-3 h-3 bg-primary rounded-full border-2 border-white"></span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold">Harappa</span>
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold">Lothal</span>
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold">Magadha</span>
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold">Panipat</span>
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold">Dandi</span>
+</div>
+</div>
+<button class="w-full py-4 bg-on-primary text-primary-container rounded-xl font-bold active:scale-95 transition-all">Start Map Quiz</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full bg-white border-t border-outline-variant/10 z-50 flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center space-y-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="text-[10px] font-bold">Study</span>
+</a>
+<a class="flex flex-col items-center space-y-1 text-on-surface-variant/60" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-medium">Maps</span>
+</a>
+<a class="flex flex-col items-center space-y-1 text-on-surface-variant/60" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-[10px] font-medium">PYQs</span>
+</a>
+<a class="flex flex-col items-center space-y-1 text-on-surface-variant/60" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-medium">Account</span>
+</a>
+</nav>
+</body></html>
