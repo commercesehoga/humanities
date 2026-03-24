@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sample Papers | Thunderstudy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#1b6d24",
+              "surface-container-high": "#e6e9e0",
+              "on-tertiary-fixed": "#3e001d",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "tertiary": "#6b1d3d",
+              "on-secondary-container": "#4f694b",
+              "tertiary-fixed": "#ffd9e2",
+              "surface-container": "#ecefe6",
+              "surface-bright": "#f7fbf1",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2d322c",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#eff2e9",
+              "background": "#f7fbf1",
+              "primary-container": "#065f18",
+              "on-tertiary-container": "#ffaec6",
+              "on-surface-variant": "#41493e",
+              "secondary": "#4b6547",
+              "secondary-fixed-dim": "#b1cfaa",
+              "secondary-fixed": "#cdebc5",
+              "on-primary-fixed-variant": "#005312",
+              "on-primary-fixed": "#002204",
+              "surface-dim": "#d8dbd2",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e4db",
+              "on-secondary-fixed-variant": "#344d31",
+              "on-tertiary": "#ffffff",
+              "surface": "#f7fbf1",
+              "primary-fixed-dim": "#88d982",
+              "outline-variant": "#c0c9bb",
+              "surface-container-low": "#f2f5ec",
+              "tertiary-fixed-dim": "#ffb1c8",
+              "on-secondary-fixed": "#082009",
+              "on-error-container": "#93000a",
+              "outline": "#717a6d",
+              "inverse-primary": "#88d982",
+              "surface-variant": "#e0e4db",
+              "on-background": "#191d17",
+              "primary": "#00450d",
+              "on-tertiary-fixed-variant": "#7a2949",
+              "tertiary-container": "#883454",
+              "on-surface": "#191d17",
+              "primary-fixed": "#a3f69c",
+              "secondary-container": "#cae8c2",
+              "on-primary-container": "#86d881"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f7fbf1;
+        color: #191d17;
+      }
+      .glass-nav {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-background min-h-screen">
+<!-- Side Navigation Bar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 space-y-4 bg-emerald-50 dark:bg-emerald-950 h-screen w-64 border-r-0 z-40">
+<div class="px-2 py-4">
+<h1 class="font-manrope font-bold text-xl text-emerald-900 dark:text-emerald-100">The Atelier</h1>
+<p class="text-xs text-emerald-800/70 font-medium">Academic Excellence</p>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-emerald-900 dark:border-emerald-50 font-bold text-emerald-900 dark:text-emerald-50 bg-emerald-100/50 dark:bg-emerald-900/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-inter font-medium text-sm">Sample Papers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-emerald-800/70 dark:text-emerald-200/70 hover:translate-x-1 hover:bg-emerald-100/40 dark:hover:bg-emerald-800/40 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-inter font-medium text-sm">Question Bank</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-emerald-800/70 dark:text-emerald-200/70 hover:translate-x-1 hover:bg-emerald-100/40 dark:hover:bg-emerald-800/40 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-inter font-medium text-sm">Syllabus</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-emerald-800/70 dark:text-emerald-200/70 hover:translate-x-1 hover:bg-emerald-100/40 dark:hover:bg-emerald-800/40 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="font-inter font-medium text-sm">Flashcards</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-emerald-800/70 dark:text-emerald-200/70 hover:translate-x-1 hover:bg-emerald-100/40 dark:hover:bg-emerald-800/40 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter font-medium text-sm">Archive</span>
+</a>
+</div>
+<div class="pt-4 border-t border-emerald-100/30">
+<button class="w-full bg-emerald-900 text-white py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity active:scale-95 mb-6">
+        Upload Paper
+      </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-emerald-800/70 hover:bg-emerald-100/40 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter font-medium text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-emerald-800/70 hover:bg-emerald-100/40 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-inter font-medium text-sm">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen relative">
+<!-- Top Bar Navigation -->
+<nav class="fixed top-0 right-0 left-0 md:left-64 z-50 bg-emerald-50/80 backdrop-blur-md flex justify-between items-center px-6 py-3 shadow-sm shadow-emerald-900/5 transition-all">
+<div class="flex items-center gap-8">
+<span class="font-manrope font-extrabold text-emerald-900 tracking-tight text-lg">Thunderstudy</span>
+<div class="hidden lg:flex items-center gap-6">
+<a class="font-manrope font-bold text-sm text-emerald-800/60 hover:text-emerald-900" href="#">Library</a>
+<a class="font-manrope font-bold text-sm text-emerald-800/60 hover:text-emerald-900" href="#">Resources</a>
+<a class="font-manrope font-bold text-sm text-emerald-800/60 hover:text-emerald-900" href="#">Drafts</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-emerald-800/40 text-lg" data-icon="search">search</span>
+<input class="bg-emerald-100/30 border-none rounded-full pl-10 pr-4 py-1.5 text-sm focus:ring-2 focus:ring-emerald-900/20 w-64" placeholder="Search resources..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-emerald-100/50 text-emerald-900 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-1 rounded-full border-2 border-emerald-900/10">
+<span class="material-symbols-outlined text-3xl text-emerald-900" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Content Canvas -->
+<div class="pt-24 pb-16 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">Premium Access</span>
+</div>
+<h2 class="font-headline font-extrabold text-4xl md:text-5xl text-on-surface tracking-tight mb-4">Sample Papers</h2>
+<p class="font-body text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+          Official practice papers for 2024-25 board exams and CUET preparation. Master your curriculum with archival precision.
+        </p>
+</header>
+<!-- Category Filter Tabs -->
+<div class="flex gap-4 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+<button class="whitespace-nowrap px-6 py-2 bg-primary text-on-primary rounded-full font-bold text-sm shadow-lg shadow-primary/10 transition-transform active:scale-95">All Subjects</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-semibold text-sm transition-colors">Humanities</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-semibold text-sm transition-colors">Languages</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded-full font-semibold text-sm transition-colors">Commerce</button>
+</div>
+<!-- Bento Grid Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Political Science -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Parliament building architecture" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern architectural view of a government building with grand columns and soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyowdgZS_9hLZy_4qMETu21D6jj2q9nSuVbyF9u3aP07FUnlrFwCMItlqHK9H8KryxQer0Er9Px7OoSxVhwsKxtG2m1ft5nSptOPSEvEIKhngCDa5ezRLzpDrsM7QPXmBnOqCG0pK-U5mj08AF1C3y92DCdbTINTF1hXLQLIZrQ0ZLaZm9so3dobY-ahI0OsIaLmSIQkfewG4lSGTJb8K3Xi5mFE-b1egLrvzAH-SIynqNRuhwaR5DC_JNP2W9djpTF8G59pdEJcEj"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">Political Science</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Political Science</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Comprehensive mock set covering International Relations and Contemporary World Politics with detailed answer keys.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+<!-- History -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Ancient stone sculpture close up" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up of an ancient weathered stone sculpture with intricate carvings under warm museum lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_bdlIWDm2PDJa_POq5qnHSCpriaDLSlb4YwUjvuU_EhxfccQcTOwqM8SU2cUZwZbyXOfAtaC4I9WkFCRy5rD9SQoGckV4liKNSfRkELaEZD7Q3Wj3aHx7SnV-zcAp56OT5pT9UfjAskpfvt58pZZFEN3ZFK0XJLfcXyQ4-0ebJ2FsaiXwjBBUjb91F3kIhBBi711Inh7TqfPovb4hxI7_UyKdqAag3Xf8AIsdmVn9GTADwcJZWsxqfhIkhnNsrG-DNN43H0seryqw"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">History</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">History</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Expertly curated source-based questions and map work covering Ancient, Medieval, and Modern Indian history.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+<!-- Economics -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Financial charts on screen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A blurry background of financial data charts with soft green and blue glowing light on a dark monitor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA14PDpG9IqLA8RXC2WkQvxdc14hYoW_qdHw8PWl419CnyAc5m1Viza13mBjgy8nFHejHwKb_4q8NcIWD6l1DbOWKFx_UJh9LyFJmt8r2Z66xnrLvfEFiXiNZyhEy0SjhmDKpizZGMbpyz9DqXT5oho-h-eK3G-eh_ZWkyZg8Q8rpEqf5EZhRiHSD1YHsELW2_52WrOr5zOb6n0IS6ykwCIJ3WR7Nhp1G49PzruX43D260RaXdDaHiqYtC-aqQ9R45TOyTIVL-g6_62"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">Economics</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Economics</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Advanced numerical problems on Macroeconomics and Indian Economic Development modeled on recent exam trends.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+<!-- Geography -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Satellite view of earth" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Dramatic satellite view of Earth at night showing glowing city lights and atmospheric haze" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg1dmxtCvbVAWAX5FHv7AY18dTTeJFqJyoIwHN1rAzJFFydxNAe6ZCUOD3xP_I6S0AsjGBoOzHqjuSWsaqSe3qdpuOGzuGy65UvYDlRb0mIxOjMb_nWVwtEyz1DQbCni7ZeNJnASx2dM-GlervEFI_P7S6nd0tibi9kxV3BVpLUQVgTlBkmXvyQBqv01A6UxKKJxW8lHzRfR9XQMHaOh_ldkmKJAITXoHO_uVddQRS5sGREovVKz9mP9JuCxb3EYfQ_0-pf8uPVSud"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">Geography</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Geography</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Focus on human geography, spatial data, and complex map interpretation exercises for top-tier results.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+<!-- Psychology -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Brain illustration or silhouette" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant minimalist silhouette of a human profile with neural connections illustrated in soft glowing green lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Z5NGREXH4ty22iqmD5FTfPKix_N4Qc9Q5uvHoy7SWk-2O5w_Q01Rz4CJH0apfApXCDLJKlbIX4MEdeWiTaU83ZOI2BIhLNY8cAGwlt_rV4GYAZyV2u5fCmJjEYHVP9vs39_-uK1VO74fb0YqPAy5ytVXnoGXVIhigD6XccepQMacEJgMwetv5QlJun3TXGp43ot3VHz1dv-cCu-nMV7uFy97EmwVM6YhyKJxw7qT4LaUT7qKALqBsbasPj1seZrDn7bjYFspXu3j"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">Psychology</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Psychology</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Extensive case-study based questions covering Human Strengths, Psychological Disorders, and Social Influence.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+<!-- English -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img alt="Old typewriter and paper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Vintage typewriter with a sheet of paper on a rustic wooden table with soft focus ink jars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBofBKtqsw5x049qANaOxH5lYlljaKC79TbBUhOz_PFucXA9S5S3lQAlvieDvZJYeQg9vZPi0Vh-muwH6D5Hhwj8mwgT3FIqsaAJtb6u-mDPEy8adcFQzotZbF02IfZyaHPt2DLthSIibm1Psvx3rYMY6_6vA4bReywISxOJsPI_lp-VlLnC1MANTiiOhNV3YhTdXrGdd8wWC08G5Z1pvYpC_RTbv-aXVLGTElqRoXYyeVYTnk_rKUxnOss_x1UJRzzCNzAqWyxxP"/>
+<div class="absolute top-4 right-4 bg-tertiary-container/40 backdrop-blur-sm text-white px-3 py-1 rounded-md text-xs font-bold">English</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-2xl text-on-surface tracking-tight">English</h3>
+<span class="font-label text-xs font-bold text-primary px-2 py-1 bg-primary-container/10 rounded">2024-25</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">
+                    Focus on advanced reading comprehension, creative writing prompts, and detailed literature analysis mock tests.
+                </p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                    Download Paper
+                </button>
+</div>
+</div>
+</div>
+<!-- Call to Action Footer -->
+<section class="mt-20 p-10 bg-surface-container-highest rounded-full text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<h4 class="font-headline font-bold text-2xl mb-2 text-on-surface">Can't find a specific paper?</h4>
+<p class="font-body text-on-surface-variant mb-8 max-w-lg mx-auto">Our archive is growing daily. If you need a previous year's paper not listed here, let our curators know.</p>
+<button class="px-8 py-3 bg-white border border-outline-variant text-primary font-bold rounded-xl hover:bg-surface-container-low transition-colors shadow-sm inline-flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                Request Sample Paper
+            </button>
+</div>
+</section>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-emerald-100/10 flex justify-around items-center px-4 py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-emerald-900" href="#">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-[10px] font-bold">Papers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-emerald-800/60" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="text-[10px] font-medium">Bank</span>
+</a>
+<div class="bg-primary p-3 rounded-full -mt-8 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white" data-icon="add">add</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-emerald-800/60" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="text-[10px] font-medium">Flash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-emerald-800/60" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</main>
+</body></html>
