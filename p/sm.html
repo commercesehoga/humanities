@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy | Scholastic Atelier Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#191d17",
+              "background": "#f7fbf1",
+              "secondary-container": "#cae8c2",
+              "on-primary-fixed-variant": "#005312",
+              "inverse-on-surface": "#eff2e9",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#a3f69c",
+              "on-tertiary-fixed-variant": "#7a2949",
+              "on-tertiary-container": "#ffaec6",
+              "on-tertiary-fixed": "#3e001d",
+              "on-secondary-fixed-variant": "#344d31",
+              "surface-tint": "#1b6d24",
+              "surface-container-low": "#f2f5ec",
+              "surface-container-highest": "#e0e4db",
+              "on-error-container": "#93000a",
+              "surface-container": "#ecefe6",
+              "inverse-surface": "#2d322c",
+              "surface-bright": "#f7fbf1",
+              "on-secondary-fixed": "#082009",
+              "surface-container-high": "#e6e9e0",
+              "error-container": "#ffdad6",
+              "primary": "#00450d",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#e0e4db",
+              "on-surface-variant": "#41493e",
+              "on-primary-container": "#86d881",
+              "secondary": "#4b6547",
+              "on-primary": "#ffffff",
+              "tertiary-container": "#883454",
+              "tertiary": "#6b1d3d",
+              "inverse-primary": "#88d982",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#4f694b",
+              "on-error": "#ffffff",
+              "surface": "#f7fbf1",
+              "primary-fixed-dim": "#88d982",
+              "surface-dim": "#d8dbd2",
+              "primary-container": "#065f18",
+              "tertiary-fixed": "#ffd9e2",
+              "secondary-fixed-dim": "#b1cfaa",
+              "tertiary-fixed-dim": "#ffb1c8",
+              "outline": "#717a6d",
+              "secondary-fixed": "#cdebc5",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#002204",
+              "on-background": "#191d17",
+              "outline-variant": "#c0c9bb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scholar-gradient {
+            background: linear-gradient(135deg, #00450d 0%, #065f18 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 bg-[#f7fbf1] dark:bg-[#191d17] h-screen w-64 border-r-0 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-2xl font-bold text-[#00450d] dark:text-[#ecefe6] tracking-tighter font-headline">Thunderstudy</h1>
+<p class="text-xs font-medium text-on-surface-variant tracking-wide opacity-70">Scholastic Atelier</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 gap-3 border-l-4 border-[#00450d] dark:border-[#a0d08a] text-[#00450d] dark:text-[#ecefe6] font-bold bg-[#ecefe6] dark:bg-[#22261f] transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-manrope text-sm tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] dark:hover:text-[#ecefe6] hover:bg-[#e0e4db] dark:hover:bg-[#2a2f27] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">local_library</span>
+<span class="font-manrope text-sm tracking-tight">My Library</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] dark:hover:text-[#ecefe6] hover:bg-[#e0e4db] dark:hover:bg-[#2a2f27] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-manrope text-sm tracking-tight">Performance</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] dark:hover:text-[#ecefe6] hover:bg-[#e0e4db] dark:hover:bg-[#2a2f27] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-manrope text-sm tracking-tight">Study Groups</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] dark:hover:text-[#ecefe6] hover:bg-[#e0e4db] dark:hover:bg-[#2a2f27] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-manrope text-sm tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-6">
+<div class="bg-primary-container rounded-xl p-4 mb-6">
+<p class="text-on-primary text-xs font-bold mb-2">Upgrade to Pro</p>
+<p class="text-on-primary-container text-[10px] leading-relaxed mb-3">Get unlimited access to PYQs and Mock Tests.</p>
+<button class="w-full py-2 bg-surface text-primary font-bold text-xs rounded-lg hover:bg-surface-bright transition-all">Unlock Now</button>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-2 py-2 text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-[#f7fbf1]/80 dark:bg-[#191d17]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="flex justify-between items-center h-16 px-12">
+<div class="flex items-center gap-8">
+<div class="hidden lg:flex gap-6">
+<a class="text-[#00450d] dark:text-[#a0d08a] border-b-2 border-[#00450d] font-manrope text-sm font-semibold pb-1" href="#">Curriculum</a>
+<a class="text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] font-manrope text-sm font-semibold pb-1" href="#">Resources</a>
+<a class="text-[#43493e] dark:text-[#c0c9bb] hover:text-[#00450d] font-manrope text-sm font-semibold pb-1" href="#">Tutors</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="bg-surface-container-highest border-none rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search subjects..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">history_edu</button>
+</div>
+<button class="scholar-gradient text-white px-5 py-2 rounded-lg text-sm font-bold shadow-lg shadow-primary/10 active:scale-95 transition-all">Start Session</button>
+<img alt="Student Profile Picture" class="w-10 h-10 rounded-full border-2 border-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl5lOeE0Kp1RYL8e9ikOzdWTQIYoe0imvobgvOpux5BfV04MiOhQcWBsYxSdOrGjpOEqP1xBCRjtuIcjPN4-XLdDhGiWw_mYbD7CSBaraJtVWPRlS2U_e_fcpwnObTODlpZP75-qydDWfpr_hHCa1r5LyJxvaTiXEZt2Cp8Icn7OOVo677hW0MTDzdU7S4Yy5YPTFWfqTvAQw0VEz1wpYxe9poL3ZBqghPDDkJlhU0-DPVsDeNS97DxiXlra7nDfJOiE7KSKl6L5Ns"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="pt-28 pb-16 px-12 max-w-7xl mx-auto">
+<!-- Study Hub / Recommended Section -->
+<section class="mb-16">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-2 block">Curation for Excellence</span>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Study Hub</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- High Priority Card 1 -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 flex gap-8 items-center cursor-pointer hover:shadow-2xl transition-all duration-500">
+<div class="relative z-10 flex-1">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 inline-block">Trending</span>
+<h3 class="text-2xl font-bold font-headline mb-2 leading-tight">CUET 2024-25 Full Mock Test</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Experience the full exam environment with time-tracked sections and instant analytics.</p>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-4 transition-all">
+                                Take Test <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="w-40 h-40 bg-tertiary-container rounded-2xl rotate-12 group-hover:rotate-6 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-white/50" style="font-variation-settings: 'FILL' 1;">quiz</span>
+</div>
+</div>
+<!-- High Priority Card 2 -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 flex gap-8 items-center cursor-pointer hover:shadow-2xl transition-all duration-500">
+<div class="relative z-10 flex-1">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 inline-block">Essential</span>
+<h3 class="text-2xl font-bold font-headline mb-2 leading-tight">Humanities Revision Guide</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Consolidated mind maps and key terminology for quick end-of-week reviews.</p>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-4 transition-all">
+                                Download PDF <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<div class="w-40 h-40 bg-secondary-container rounded-2xl -rotate-6 group-hover:rotate-0 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-secondary-container/50" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+</div>
+</div>
+</section>
+<!-- All Subjects Grid -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl font-black font-headline tracking-tighter text-on-surface">Humanities Atelier</h2>
+<div class="flex bg-surface-container rounded-full p-1">
+<button class="px-4 py-1.5 rounded-full bg-white shadow-sm text-xs font-bold text-primary">All Subjects</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium text-on-surface-variant hover:text-on-surface">In Progress</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium text-on-surface-variant hover:text-on-surface">Completed</button>
+</div>
+</div>
+<div class="space-y-6">
+<!-- Subject Row: Political Science -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col lg:flex-row items-start lg:items-center gap-8 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-5 lg:w-1/4">
+<div class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<div>
+<h4 class="text-lg font-bold font-headline">Political Science</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+<span class="text-[10px] font-bold text-primary">80%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Notes</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-xl">file_present</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Sample Papers</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-xl">history</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PYQs</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-xl">account_tree</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Practice Bank</span>
+</button>
+</div>
+<div class="lg:w-1/6 flex justify-end w-full">
+<button class="text-primary font-bold text-xs px-4 py-2 bg-primary/5 rounded-full hover:bg-primary hover:text-white transition-all">Resume Learning</button>
+</div>
+</div>
+<!-- Subject Row: History -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col lg:flex-row items-start lg:items-center gap-8 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-5 lg:w-1/4">
+<div class="w-14 h-14 rounded-xl bg-tertiary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">castle</span>
+</div>
+<div>
+<h4 class="text-lg font-bold font-headline">History</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[45%]"></div>
+</div>
+<span class="text-[10px] font-bold text-tertiary">45%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-xl">description</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Notes</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-xl">file_present</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Sample Papers</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-xl">history</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PYQs</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all border border-transparent hover:border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-xl">account_tree</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Practice Bank</span>
+</button>
+</div>
+<div class="lg:w-1/6 flex justify-end w-full">
+<button class="text-tertiary font-bold text-xs px-4 py-2 bg-tertiary/5 rounded-full hover:bg-tertiary hover:text-white transition-all">Continue Units</button>
+</div>
+</div>
+<!-- Subject Row: Geography -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col lg:flex-row items-start lg:items-center gap-8 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-5 lg:w-1/4">
+<div class="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<div>
+<h4 class="text-lg font-bold font-headline">Geography</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[62%]"></div>
+</div>
+<span class="text-[10px] font-bold text-secondary">62%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-secondary text-xl">description</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Notes</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-secondary text-xl">file_present</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Sample Papers</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-secondary text-xl">history</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PYQs</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-secondary text-xl">account_tree</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Practice Bank</span>
+</button>
+</div>
+<div class="lg:w-1/6 flex justify-end w-full">
+<button class="text-secondary font-bold text-xs px-4 py-2 bg-secondary/5 rounded-full hover:bg-secondary hover:text-white transition-all">Explore Maps</button>
+</div>
+</div>
+<!-- Subject Row: Sociology -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col lg:flex-row items-start lg:items-center gap-8 group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-5 lg:w-1/4">
+<div class="w-14 h-14 rounded-xl bg-on-secondary-fixed-variant flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">groups_3</span>
+</div>
+<div>
+<h4 class="text-lg font-bold font-headline">Sociology</h4>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-on-secondary-fixed-variant w-[20%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-secondary-fixed-variant">20%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-xl">description</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Notes</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-xl">file_present</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Sample Papers</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-xl">history</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PYQs</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/50 transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-xl">account_tree</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Practice Bank</span>
+</button>
+</div>
+<div class="lg:w-1/6 flex justify-end w-full">
+<button class="text-on-secondary-fixed-variant font-bold text-xs px-4 py-2 bg-on-secondary-fixed-variant/5 rounded-full hover:bg-on-secondary-fixed-variant hover:text-white transition-all">Start Unit</button>
+</div>
+</div>
+<!-- Subject Grid Item for Psychology & Economics & English (Smaller Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Psychology -->
+<div class="bg-surface-container-low rounded-xl p-6 group hover:shadow-xl transition-all border border-transparent hover:border-outline-variant/30">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-lg bg-surface-tint flex items-center justify-center text-white">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Psychology</h4>
+<p class="text-[10px] text-primary font-bold">95% Mastery</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-primary hover:text-white transition-all">Notes</button>
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-primary hover:text-white transition-all">PYQs</button>
+</div>
+</div>
+<!-- Economics -->
+<div class="bg-surface-container-low rounded-xl p-6 group hover:shadow-xl transition-all border border-transparent hover:border-outline-variant/30">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-lg bg-[#4f694b] flex items-center justify-center text-white">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">Economics</h4>
+<p class="text-[10px] text-secondary font-bold">12% Mastery</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-secondary hover:text-white transition-all">Notes</button>
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-secondary hover:text-white transition-all">Bank</button>
+</div>
+</div>
+<!-- English -->
+<div class="bg-surface-container-low rounded-xl p-6 group hover:shadow-xl transition-all border border-transparent hover:border-outline-variant/30">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-lg bg-tertiary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold font-headline">English</h4>
+<p class="text-[10px] text-tertiary font-bold">58% Mastery</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-tertiary hover:text-white transition-all">Notes</button>
+<button class="py-2 bg-white text-[10px] font-bold rounded-md hover:bg-tertiary hover:text-white transition-all">Papers</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB - Dashboard Focus -->
+<button class="fixed bottom-8 right-8 w-14 h-14 scholar-gradient text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>
