@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy | Economics: Micro &amp; Macro Fundamentals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "background": "#f7fbf1",
+                "surface-container-highest": "#e0e4db",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#b1cfaa",
+                "secondary-container": "#cae8c2",
+                "error-container": "#ffdad6",
+                "tertiary": "#6b1d3d",
+                "on-secondary-container": "#4f694b",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#082009",
+                "inverse-surface": "#2d322c",
+                "inverse-primary": "#88d982",
+                "tertiary-fixed-dim": "#ffb1c8",
+                "on-tertiary-fixed-variant": "#7a2949",
+                "on-secondary-fixed-variant": "#344d31",
+                "surface-container-high": "#e6e9e0",
+                "on-primary-container": "#86d881",
+                "surface-dim": "#d8dbd2",
+                "on-error": "#ffffff",
+                "surface-variant": "#e0e4db",
+                "primary-fixed-dim": "#88d982",
+                "on-surface": "#191d17",
+                "on-primary-fixed": "#002204",
+                "primary-fixed": "#a3f69c",
+                "secondary-fixed": "#cdebc5",
+                "surface-tint": "#1b6d24",
+                "outline": "#717a6d",
+                "on-primary-fixed-variant": "#005312",
+                "surface-container": "#ecefe6",
+                "outline-variant": "#c0c9bb",
+                "on-background": "#191d17",
+                "on-tertiary-container": "#ffaec6",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#ffd9e2",
+                "surface-container-low": "#f2f5ec",
+                "on-error-container": "#93000a",
+                "inverse-on-surface": "#eff2e9",
+                "primary-container": "#065f18",
+                "surface": "#f7fbf1",
+                "on-secondary": "#ffffff",
+                "primary": "#00450d",
+                "on-tertiary-fixed": "#3e001d",
+                "on-tertiary": "#ffffff",
+                "surface-bright": "#f7fbf1",
+                "secondary": "#4b6547",
+                "tertiary-container": "#883454",
+                "on-surface-variant": "#41493e"
+              },
+              fontFamily: {
+                "headline": ["Manrope", "sans-serif"],
+                "body": ["Inter", "sans-serif"],
+                "label": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background-color: rgba(247, 251, 241, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-extrabold text-primary tracking-tighter font-headline">Thunderstudy</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-headline font-bold text-sm tracking-tight text-on-surface border-b-2 border-primary pb-1 hover:text-primary-container transition-colors duration-200" href="#">Curriculum</a>
+<a class="font-headline font-bold text-sm tracking-tight text-on-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Resources</a>
+<a class="font-headline font-bold text-sm tracking-tight text-on-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 rounded-lg bg-surface-container-highest border-none focus:ring-2 focus:ring-primary/30 w-64 text-sm font-body" placeholder="Search syllabus topics..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-high h-[1px] w-full opacity-20"></div>
+</nav>
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-screen w-72 left-0 top-0 fixed bg-surface-container pt-24 pb-8 z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-primary leading-tight">Economics</h2>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Academic Pulse</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-3 border-l-4 border-primary text-primary font-bold bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-headline text-base">Notes</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant opacity-80 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="font-headline text-base">Sample Papers</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant opacity-80 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-headline text-base">PYQs</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant opacity-80 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-headline text-base">Practice Bank</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant opacity-80 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-headline text-base">Case Studies</span>
+</a>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold font-headline shadow-lg shadow-primary/10 active:scale-95 transition-transform">
+                Study Plan
+            </button>
+<div class="pt-4 space-y-1">
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-28 pb-12 px-8 max-w-7xl mx-auto min-h-screen">
+<!-- Breadcrumbs & Title -->
+<header class="mb-10">
+<nav class="flex items-center gap-2 text-sm text-on-surface-variant mb-4 font-medium">
+<span>Humanities Tier I</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span>Class XII</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-bold">CBSE &amp; CUET</span>
+</nav>
+<h1 class="text-4xl lg:text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-4">Economics: Micro &amp; Macro Fundamentals</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">Comprehensive study suite designed for mastery of economic theory and quantitative analysis for Class 12 Boards and CUET preparation.</p>
+</header>
+<!-- Mastery Tracker & High-Level Metrics -->
+<section class="mb-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Progress Card -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="54.6" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-black font-headline">85%</span>
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-tighter">Syllabus</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-xl font-bold font-headline mb-2">Mastery Progress</h3>
+<p class="text-sm text-on-surface-variant mb-4">You're ahead of 92% of students in your tier. Complete "National Income" to reach 90% mastery.</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full">34 Topics Mastered</span>
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-bold rounded-full">6 Pending</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12"></div>
+</div>
+<!-- Quick Link/Active Task -->
+<div class="bg-tertiary-container p-8 rounded-xl text-on-tertiary flex flex-col justify-between">
+<div>
+<span class="text-[10px] uppercase tracking-widest font-black opacity-80">Next Recommended</span>
+<h4 class="text-lg font-bold font-headline mt-1">Government Budget: Calculations</h4>
+</div>
+<button class="mt-6 flex items-center justify-between w-full text-sm font-bold bg-white/10 hover:bg-white/20 py-2 px-4 rounded-lg transition-all">
+                        Resume Study
+                        <span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Chapter-wise Notes (Asymmetric Layout) -->
+<section class="mb-16">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-2xl font-black font-headline text-on-surface">Curriculum Repository</h2>
+<div class="h-1 w-12 bg-primary mt-2"></div>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                    View Complete Index <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Microeconomics Column -->
+<div class="md:col-span-5 space-y-6">
+<div class="bg-surface-container-high p-6 rounded-xl">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl">Introductory Microeconomics</h3>
+</div>
+<ul class="space-y-3">
+<li class="p-4 bg-surface-container-lowest rounded-lg group cursor-pointer hover:shadow-md transition-all">
+<div class="flex justify-between items-center">
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">Theory of Consumer Behavior</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">download</span>
+</div>
+</li>
+<li class="p-4 bg-surface-container-lowest rounded-lg group cursor-pointer hover:shadow-md transition-all">
+<div class="flex justify-between items-center">
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">Production and Costs</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">download</span>
+</div>
+</li>
+<li class="p-4 bg-surface-container-lowest rounded-lg group cursor-pointer hover:shadow-md transition-all">
+<div class="flex justify-between items-center">
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors">Market Equilibrium</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">download</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Macroeconomics Column -->
+<div class="md:col-span-7 space-y-6">
+<div class="bg-surface-container-low p-6 rounded-xl border-l-8 border-primary">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-on-primary shadow-lg">
+<span class="material-symbols-outlined">language</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl text-primary">Introductory Macroeconomics</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-5 bg-white rounded-lg shadow-sm border border-outline-variant/10">
+<h4 class="font-bold text-on-surface mb-1">National Income Accounting</h4>
+<p class="text-xs text-on-surface-variant mb-3">Methods: Value Added, Income, Expenditure</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-error-container text-on-error-container rounded">CRITICAL</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">12 VIDEOS</span>
+</div>
+</div>
+<div class="p-5 bg-white rounded-lg shadow-sm border border-outline-variant/10">
+<h4 class="font-bold text-on-surface mb-1">Money and Banking</h4>
+<p class="text-xs text-on-surface-variant mb-3">RBI Monetary Policy, SLR, CRR Functions</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">REVISED</span>
+</div>
+</div>
+<div class="p-5 bg-white rounded-lg shadow-sm border border-outline-variant/10">
+<h4 class="font-bold text-on-surface mb-1">Government Budget</h4>
+<p class="text-xs text-on-surface-variant mb-3">Revenue vs Capital, Deficit Metrics</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">CALCULATOR</span>
+</div>
+</div>
+<div class="p-5 bg-white rounded-lg shadow-sm border border-outline-variant/10">
+<h4 class="font-bold text-on-surface mb-1">Balance of Payments</h4>
+<p class="text-xs text-on-surface-variant mb-3">Current/Capital Account, Forex</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">MAPS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Statistical Tools & Data Visualization (Bento Grid) -->
+<section class="mb-16">
+<h2 class="text-2xl font-black font-headline text-on-surface mb-8">Statistical Tools &amp; Economic Indicators</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[400px]">
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-highest p-8 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">GDP Growth Visualizer</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Interactive time-series analysis of India's sectoral contributions to GVA from 2015-2024.</p>
+</div>
+<div class="flex items-end gap-2 h-32">
+<div class="w-full bg-primary h-12 rounded-t-sm opacity-40"></div>
+<div class="w-full bg-primary h-20 rounded-t-sm opacity-60"></div>
+<div class="w-full bg-primary h-16 rounded-t-sm opacity-50"></div>
+<div class="w-full bg-primary h-28 rounded-t-sm opacity-80"></div>
+<div class="w-full bg-primary h-24 rounded-t-sm opacity-70"></div>
+<div class="w-full bg-primary h-32 rounded-t-sm opacity-100"></div>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container-low p-6 rounded-xl flex items-center justify-between">
+<div>
+<h4 class="font-headline font-bold text-lg">CPI Inflation Index</h4>
+<p class="text-xs text-on-surface-variant mt-1">Real-time mapping of basket weights.</p>
+</div>
+<div class="w-16 h-16 rounded-full border-4 border-tertiary-container flex items-center justify-center">
+<span class="text-tertiary font-black text-xs">6.4%</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-white p-6 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col justify-center text-center">
+<span class="text-3xl font-black text-primary mb-1">2.4x</span>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Multiplier Effect</p>
+</div>
+<div class="md:col-span-1 bg-surface-container p-6 rounded-xl flex flex-col justify-center text-center group cursor-pointer hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-3xl mb-1">calculate</span>
+<p class="text-xs font-bold">Formula Bank</p>
+</div>
+</div>
+</section>
+<!-- PYQ Analysis & Practice Ecosystem -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+<!-- PYQ High-Priority -->
+<div class="lg:col-span-2">
+<h3 class="text-xl font-black font-headline mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    PYQ High-Priority Matrix
+                </h3>
+<div class="space-y-4">
+<div class="bg-white p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.02)] border-l-4 border-error flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-error font-black text-2xl">01</div>
+<div>
+<h5 class="font-bold text-on-surface">National Income (Numerical)</h5>
+<p class="text-xs text-on-surface-variant">Appeared in 9/10 last board exams</p>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.02)] border-l-4 border-primary flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary font-black text-2xl">02</div>
+<div>
+<h5 class="font-bold text-on-surface">Money and Banking Functions</h5>
+<p class="text-xs text-on-surface-variant">Central Bank vs Commercial Bank controls</p>
+</div>
+</div>
+<div class="text-xs font-bold text-primary px-3 py-1 bg-primary/5 rounded">FREQUENT</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.02)] border-l-4 border-primary flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary font-black text-2xl">03</div>
+<div>
+<h5 class="font-bold text-on-surface">Government Budget &amp; Economy</h5>
+<p class="text-xs text-on-surface-variant">Deficit types and implications</p>
+</div>
+</div>
+<div class="text-xs font-bold text-primary px-3 py-1 bg-primary/5 rounded">MODERATE</div>
+</div>
+</div>
+</div>
+<!-- Practice Ecosystem -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col h-full">
+<h3 class="text-xl font-black font-headline mb-6">Practice Ecosystem</h3>
+<div class="space-y-6 flex-1">
+<div class="group cursor-pointer">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h4 class="font-bold text-sm">Assertion-Reasoning</h4>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-2/3 h-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">12/18 Mock Tests Attempted</p>
+</div>
+<div class="group cursor-pointer">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">fact_check</span>
+<h4 class="font-bold text-sm">Case-Based Questions</h4>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-1/3 h-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">4/12 Mock Tests Attempted</p>
+</div>
+</div>
+<button class="w-full py-4 mt-8 bg-on-surface text-white rounded-xl font-bold hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                    Start CUET Mock Marathon
+                    <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</div>
+<!-- Budget Master Tool (Interactive/Featured Section) -->
+<section class="bg-gradient-to-r from-primary to-primary-container text-on-primary p-1 rounded-2xl">
+<div class="bg-white dark:bg-on-background rounded-2xl p-8 lg:p-12 overflow-hidden relative">
+<div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+<div class="lg:w-1/2">
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-black tracking-widest uppercase rounded mb-4 inline-block">Interactive Tool</span>
+<h2 class="text-4xl font-black font-headline text-on-surface mb-6 leading-tight">Budget Master: Fiscal Simulation</h2>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Master the complex calculations of Revenue Deficit, Fiscal Deficit, and Primary Deficit using our sandbox environment. Input real variables and see immediate economic impacts.</p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-3 bg-primary text-on-primary font-bold rounded-xl active:scale-95 transition-transform">Launch Sandbox</button>
+<button class="px-8 py-3 bg-surface-container-highest text-on-surface font-bold rounded-xl hover:bg-surface-container transition-colors">Video Guide</button>
+</div>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 shadow-inner">
+<div class="space-y-4">
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">Total Receipts</span>
+<span class="font-bold text-primary">₹ 45,000 Cr</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">Total Expenditure</span>
+<span class="font-bold text-error">₹ 52,000 Cr</span>
+</div>
+<div class="pt-2">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-black text-on-surface">FISCAL DEFICIT</span>
+<span class="text-sm font-black text-on-surface">₹ 7,000 Cr</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative background elements -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -left-10 -top-10 w-40 h-40 bg-secondary-container/20 rounded-full blur-2xl"></div>
+</div>
+</section>
+</main>
+<!-- Footer Space -->
+<footer class="lg:ml-72 bg-surface-container-low py-12 px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<span class="font-headline font-extrabold text-xl text-primary opacity-50">Thunderstudy</span>
+<span class="text-xs text-on-surface-variant">© 2024 Scholastic Atelier</span>
+</div>
+<div class="flex gap-8 text-xs font-bold text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Syllabus Updates</a>
+<a class="hover:text-primary transition-colors" href="#">CBSE Notifications</a>
+<a class="hover:text-primary transition-colors" href="#">CUET Portal</a>
+</div>
+</div>
+</footer>
+</body></html>
