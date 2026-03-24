@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sociology Study Materials | Thunderstudy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-container": "#cae8c2",
+                        "on-background": "#191d17",
+                        "primary-container": "#065f18",
+                        "surface-container": "#ecefe6",
+                        "on-error": "#ffffff",
+                        "tertiary": "#6b1d3d",
+                        "on-secondary-container": "#4f694b",
+                        "on-primary-container": "#86d881",
+                        "error": "#ba1a1a",
+                        "primary": "#00450d",
+                        "primary-fixed": "#a3f69c",
+                        "on-surface-variant": "#41493e",
+                        "surface-container-high": "#e6e9e0",
+                        "surface-bright": "#f7fbf1",
+                        "inverse-primary": "#88d982",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#1b6d24",
+                        "secondary-fixed": "#cdebc5",
+                        "on-tertiary-fixed": "#3e001d",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e0e4db",
+                        "background": "#f7fbf1",
+                        "secondary-fixed-dim": "#b1cfaa",
+                        "primary-fixed-dim": "#88d982",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dbd2",
+                        "outline": "#717a6d",
+                        "on-tertiary-fixed-variant": "#7a2949",
+                        "on-secondary-fixed-variant": "#344d31",
+                        "on-secondary-fixed": "#082009",
+                        "tertiary-fixed": "#ffd9e2",
+                        "tertiary-container": "#883454",
+                        "surface": "#f7fbf1",
+                        "on-tertiary-container": "#ffaec6",
+                        "surface-container-highest": "#e0e4db",
+                        "tertiary-fixed-dim": "#ffb1c8",
+                        "inverse-on-surface": "#eff2e9",
+                        "inverse-surface": "#2d322c",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#002204",
+                        "surface-container-low": "#f2f5ec",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c0c9bb",
+                        "on-surface": "#191d17",
+                        "secondary": "#4b6547"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7fbf1]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="flex justify-between items-center h-16 px-8 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-[#00450d] tracking-tighter">Thunderstudy</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#191d17]/60 font-medium hover:text-[#00450d] transition-colors duration-200" href="#">Notes</a>
+<a class="text-[#191d17]/60 font-medium hover:text-[#00450d] transition-colors duration-200" href="#">PYQs</a>
+<a class="text-[#191d17]/60 font-medium hover:text-[#00450d] transition-colors duration-200" href="#">Sample Papers</a>
+<a class="text-[#191d17]/60 font-medium hover:text-[#00450d] transition-colors duration-200" href="#">Practice</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#00450d] cursor-pointer p-2 rounded-full hover:bg-surface-container transition-colors">notifications</span>
+<span class="material-symbols-outlined text-[#00450d] cursor-pointer p-2 rounded-full hover:bg-surface-container transition-colors">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen py-8 gap-4 w-64 fixed left-0 top-0 z-40 bg-[#ecefe6] shadow-none">
+<div class="px-6 mb-8 mt-12">
+<h2 class="text-xl font-bold text-[#00450d]">Thunderstudy</h2>
+<p class="text-xs font-medium text-[#191d17]/50 uppercase tracking-widest mt-1">The Scholastic Atelier</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 py-3 px-6 text-[#191d17]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-[#00450d] border-l-4 border-[#00450d] font-bold bg-[#e0e4db]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-bold">Sociology</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-[#191d17]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-semibold">History</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-[#191d17]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">policy</span>
+<span class="font-semibold">Pol Science</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-[#191d17]/70 hover:bg-[#e0e4db]/50 hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-semibold">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6">
+<div class="bg-primary p-4 rounded-xl text-white shadow-lg shadow-primary/10">
+<p class="text-xs opacity-80 mb-2">Unlock all modules</p>
+<button class="w-full py-2 bg-gradient-to-br from-primary to-primary-container text-sm font-bold rounded-lg active:scale-95 transition-transform">Upgrade to Premium</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:pl-64 pt-24 pb-24 px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<span class="text-xs font-bold text-tertiary uppercase tracking-[0.2em] mb-3 block">Course: Social Sciences</span>
+<h1 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight max-w-3xl">
+                Sociology: <span class="text-primary italic">Understanding Indian Society &amp; Change</span>
+</h1>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Syllabus Mastery Tracker -->
+<section class="md:col-span-12 lg:col-span-4 bg-surface-container-low p-8 rounded-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)] flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Syllabus Mastery Tracker
+                    </h3>
+<p class="text-sm text-on-surface-variant mb-8">You're ahead of 85% of your peers. Keep pushing toward total mastery.</p>
+</div>
+<div class="relative w-48 h-48 mx-auto mb-6">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="553" stroke-dashoffset="110" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black text-primary">80%</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase">Completed</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-xs font-bold">
+<span>Modules Completed</span>
+<span class="text-primary">8/10</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[80%] rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Core Study Modules -->
+<section class="md:col-span-12 lg:col-span-8 space-y-8">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-2xl font-bold tracking-tight">Core Study Modules</h3>
+<button class="text-sm font-bold text-primary flex items-center gap-1 hover:underline">
+                        View Curriculum <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Module 1 -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Indian Society</h4>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Structure &amp; Stratification</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Demographic Profile of India</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Social Institutions: Continuity</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-surface-container-highest text-primary font-bold rounded-lg group-hover:bg-primary group-hover:text-white transition-colors duration-300">Start Module</button>
+</div>
+<!-- Module 2 -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/10 -mr-12 -mt-12 rounded-full blur-2xl"></div>
+<div class="w-12 h-12 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Social Change &amp; Dev</h4>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Process of Structural Change</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Globalisation and Social Change</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">circle</span>
+<span>Media and Social Change</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-surface-container-highest text-primary font-bold rounded-lg group-hover:bg-primary group-hover:text-white transition-colors duration-300">Resume Module</button>
+</div>
+</div>
+</section>
+<!-- Resource Hub: PYQ Matrix & Answer Bank -->
+<section class="md:col-span-12 bg-surface-container p-8 rounded-xl">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary bg-white p-2 rounded-lg">inventory_2</span>
+<h3 class="text-2xl font-bold">Resource Hub</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- PYQ Frequency Matrix -->
+<div class="bg-surface-container-lowest p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">grid_view</span>
+                                PYQ Frequency Matrix
+                            </h4>
+<span class="text-[10px] font-bold text-on-surface-variant bg-surface-container px-2 py-1 rounded">Last 5 Years</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-semibold">Caste System</span>
+<span class="text-[10px] font-bold text-error">Very High</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full">
+<div class="h-full w-[95%] bg-error rounded-full"></div>
+</div>
+</div>
+<span class="text-xs font-black">12 Qs</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-semibold">Rural Society</span>
+<span class="text-[10px] font-bold text-primary">High</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full">
+<div class="h-full w-[70%] bg-primary rounded-full"></div>
+</div>
+</div>
+<span class="text-xs font-black">8 Qs</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-semibold">Tribal Identity</span>
+<span class="text-[10px] font-bold text-secondary">Medium</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full">
+<div class="h-full w-[45%] bg-secondary rounded-full"></div>
+</div>
+</div>
+<span class="text-xs font-black">4 Qs</span>
+</div>
+</div>
+</div>
+<!-- Model Answer Bank -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-gradient-to-br from-primary to-primary-container p-6 rounded-xl text-white flex flex-col justify-between cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl mb-4">edit_note</span>
+<div>
+<h5 class="font-bold leading-tight mb-1">Long-form Answer Bank</h5>
+<p class="text-[10px] opacity-80">150+ Solved Premium Answers</p>
+</div>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-xl border border-outline-variant/20 flex flex-col justify-between cursor-pointer hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">menu_book</span>
+<div>
+<h5 class="font-bold text-on-surface leading-tight mb-1">Methodology Guide</h5>
+<p class="text-[10px] text-on-surface-variant">Writing like a Sociologist</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Practice Ecosystem -->
+<section class="md:col-span-12">
+<div class="bg-surface-container-highest rounded-2xl overflow-hidden shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-5">
+<div class="lg:col-span-2 p-10 bg-[#1c1f18] text-white flex flex-col justify-center">
+<h3 class="text-3xl font-bold mb-4">Practice Ecosystem</h3>
+<p class="text-on-secondary-container leading-relaxed mb-8">Sharpen your analytical skills with our proprietary question frameworks designed for deep conceptual retention.</p>
+<div class="flex items-center gap-4">
+<div class="bg-primary p-3 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div>
+<p class="text-sm font-bold">2,400+ Questions</p>
+<p class="text-xs opacity-60">Verified by academic leads</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-3 p-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 hover:translate-y-[-4px] transition-transform">
+<span class="text-[10px] font-bold text-tertiary mb-2 block tracking-widest uppercase">Logical reasoning</span>
+<h4 class="text-lg font-bold mb-3 leading-snug">Assertion-Reasoning MCQ Modules</h4>
+<p class="text-xs text-on-surface-variant mb-6">Test your ability to connect sociological cause and effect.</p>
+<button class="text-primary font-bold text-sm flex items-center gap-2 group">
+                                    Start Practice
+                                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 hover:translate-y-[-4px] transition-transform">
+<span class="text-[10px] font-bold text-primary mb-2 block tracking-widest uppercase">Applied sociology</span>
+<h4 class="text-lg font-bold mb-3 leading-snug">Case-Based Question Bank</h4>
+<p class="text-xs text-on-surface-variant mb-6">Real-world scenarios evaluating your social application.</p>
+<button class="text-primary font-bold text-sm flex items-center gap-2 group">
+                                    Start Analysis
+                                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Editorial Quote for Branding -->
+<div class="mt-20 border-t border-outline-variant/20 pt-12 text-center max-w-2xl mx-auto">
+<span class="material-symbols-outlined text-primary-container/20 text-5xl mb-4">format_quote</span>
+<blockquote class="text-xl italic font-medium text-on-surface-variant mb-4">
+                "Sociology is the study of how people act in groups and how those groups influence their lives."
+            </blockquote>
+<cite class="text-sm font-bold text-on-surface not-italic">— Academic Board of Scholars</cite>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-3xl z-50 bg-[#f7fbf1]/80 backdrop-blur-md border-t border-[#c0c9bb]/20 shadow-[0_-4px_24px_rgba(25,29,23,0.04)]">
+<div class="flex justify-around items-center px-4 pb-6 pt-2 w-full">
+<a class="flex flex-col items-center gap-1 text-[#191d17]/50 px-6 py-2" href="#">
+<span class="material-symbols-outlined">local_library</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Library</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#191d17]/50 px-6 py-2" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Practice</span>
+</a>
+<a class="flex flex-col items-center gap-1 bg-gradient-to-br from-[#00450d] to-[#065f18] text-white rounded-xl px-6 py-2 scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Notes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#191d17]/50 px-6 py-2" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</a>
+</div>
+</nav>
+<!-- FAB (Suppressed on Details/Subject Screens as per mandate) -->
+</body></html>
