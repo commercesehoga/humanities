@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy | Mock Test Center</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e0e4db",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#eff2e9",
+              "primary-fixed": "#a3f69c",
+              "on-surface": "#191d17",
+              "surface-container-low": "#f2f5ec",
+              "on-tertiary-fixed-variant": "#7a2949",
+              "surface": "#f7fbf1",
+              "on-error": "#ffffff",
+              "outline": "#717a6d",
+              "tertiary-fixed-dim": "#ffb1c8",
+              "inverse-surface": "#2d322c",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#41493e",
+              "surface-container-high": "#e6e9e0",
+              "on-primary-fixed": "#002204",
+              "inverse-primary": "#88d982",
+              "on-primary": "#ffffff",
+              "surface-tint": "#1b6d24",
+              "primary-container": "#065f18",
+              "outline-variant": "#c0c9bb",
+              "on-primary-fixed-variant": "#005312",
+              "on-primary-container": "#86d881",
+              "on-background": "#191d17",
+              "primary": "#00450d",
+              "background": "#f7fbf1",
+              "on-secondary-container": "#4f694b",
+              "tertiary-fixed": "#ffd9e2",
+              "tertiary": "#6b1d3d",
+              "on-tertiary-container": "#ffaec6",
+              "surface-variant": "#e0e4db",
+              "surface-bright": "#f7fbf1",
+              "secondary-fixed-dim": "#b1cfaa",
+              "on-tertiary-fixed": "#3e001d",
+              "secondary-fixed": "#cdebc5",
+              "tertiary-container": "#883454",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#ecefe6",
+              "error": "#ba1a1a",
+              "secondary": "#4b6547",
+              "surface-dim": "#d8dbd2",
+              "on-secondary-fixed-variant": "#344d31",
+              "secondary-container": "#cae8c2",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed": "#082009",
+              "error-container": "#ffdad6",
+              "primary-fixed-dim": "#88d982"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .chapter-hover-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .group:hover .chapter-hover-list {
+            max-height: 300px;
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #00450d 0%, #065f18 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 max-w-full mx-auto bg-[#f7fbf1]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(25,29,23,0.04)] font-['Manrope'] font-semibold tracking-tight">
+<div class="text-2xl font-bold tracking-tighter text-[#00450d]">Thunderstudy</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#191d17]/60 hover:text-[#00450d] transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-[#00450d] border-b-2 border-[#00450d] pb-1" href="#">Practice</a>
+<a class="text-[#191d17]/60 hover:text-[#00450d] transition-colors duration-200" href="#">Library</a>
+<a class="text-[#191d17]/60 hover:text-[#00450d] transition-colors duration-200" href="#">Performance</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#00450d] active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#00450d] active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLMXblRpvcxRxyHq7uywcq6vbGwuli1bW1B_fgo9I-EaaAJ_jVOiwqiodSOEaQRpusqGRU_MoOwSHAekx2HQJLdZuh0vxHVXfVBymVqhFTgqI0mfEhlt2UImnmqrWspyTX1EYVdcdE00L5AylVOt6Ap8xdP4_2hP6215RBS_s8XvNsR9jHLXFpXja6beLK-zb2dTbEix8AdOBNfIVY7bObrLwW7TO1d5wiLO1nLyREjOFylvdEPdnHEsLln8vW-sNFzR7uJa6uGaNW"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Header Area -->
+<header class="mb-12 max-w-6xl">
+<div class="flex flex-col gap-2">
+<span class="text-label font-bold tracking-widest text-primary uppercase text-xs">Scholastic Atelier</span>
+<h1 class="text-5xl font-extrabold font-headline tracking-tighter text-on-surface">Mock Test Center</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed mt-4">
+                    Refine your academic prowess through our simulated Computer Based Tests (CBT). Choose a comprehensive syllabus evaluation or focus on specific chapter mastery.
+                </p>
+</div>
+</header>
+<!-- Subjects Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 max-w-[1400px]">
+<!-- Subject Card: Political Science -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)] transition-all hover:shadow-[0_12px_32px_rgba(25,29,23,0.08)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">gavel</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Political Science</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">The End of Bipolarity</li>
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Contemporary Centres of Power</li>
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Contemporary South Asia</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: History -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/20 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">history_edu</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">History</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Bricks, Beads and Bones</li>
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Kings, Farmers and Towns</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: Geography -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/30 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">public</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Geography</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Human Geography Nature</li>
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">The World Population</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: Economics -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">trending_up</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Economics</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">National Income</li>
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Money and Banking</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: Psychology -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">psychology</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Psychology</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Variations in Psychological Attributes</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: Sociology -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-on-secondary-container/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">groups</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Sociology</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Introducing Indian Society</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: English -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-outline/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">translate</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">English</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Reading Comprehension</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Subject Card: Physical Education -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_24px_rgba(25,29,23,0.04)]">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-bl-[100px] -z-0"></div>
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">sports_kabaddi</span>
+<h3 class="text-2xl font-bold font-headline text-on-surface">Physical Ed.</h3>
+</div>
+<div class="flex flex-col gap-3 z-10">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Full Syllabus Mock</span>
+<span class="material-symbols-outlined text-primary group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="chapter-trigger">
+<button class="w-full flex justify-between items-center p-4 bg-surface-container-highest rounded-lg hover:bg-surface-container-high transition-colors text-left group/btn">
+<span class="font-semibold">Chapter-wise Practice</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<ul class="chapter-hover-list flex flex-col gap-2 pt-2 px-2">
+<li class="p-2 hover:bg-surface-container text-sm rounded cursor-pointer border-l-2 border-transparent hover:border-primary transition-all">Management of Sporting Events</li>
+</ul>
+</div>
+</div>
+<button class="mt-auto premium-gradient text-on-primary py-4 rounded-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    Start Test <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Secondary Section: Performance Analytics Teaser -->
+<section class="mt-20 max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2 bg-surface-container rounded-3xl p-10 flex flex-col gap-6">
+<h2 class="text-3xl font-headline font-bold text-on-surface">Your Academic Pulse</h2>
+<p class="text-on-surface-variant">Review your historical mock test performance. Our AI identifies gap areas in your humanities preparation.</p>
+<div class="flex gap-4 mt-4">
+<div class="flex flex-col">
+<span class="text-4xl font-extrabold text-primary tracking-tighter">84%</span>
+<span class="text-xs uppercase font-bold tracking-widest opacity-60">Avg. Score</span>
+</div>
+<div class="w-px h-12 bg-outline-variant/30 self-center"></div>
+<div class="flex flex-col">
+<span class="text-4xl font-extrabold text-primary tracking-tighter">12</span>
+<span class="text-xs uppercase font-bold tracking-widest opacity-60">Tests Done</span>
+</div>
+<div class="w-px h-12 bg-outline-variant/30 self-center"></div>
+<div class="flex flex-col">
+<span class="text-4xl font-extrabold text-tertiary tracking-tighter">Top 5%</span>
+<span class="text-xs uppercase font-bold tracking-widest opacity-60">Rank</span>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10" data-alt="close up of a high quality vintage fountain pen resting on cream textured paper in a bright library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwpTgfzQ5Rx_wxeaMum4ISxpQu4iDPxpQSQoO2VbNcr2FD7dr8z0ImkYVKN4XIef6n1M1MeQd5_HdEJiUqr6Zq3q1ibWfYE84Fwl-ji2ZTBGr27OxLa84np6QjC53wln6aXScA6pPtyD5sh-4u__N-6U4cfYUNRR8GPUytkZRxJOKtzPnv7wGwJhyRsKXjDrEVCy135Etv4tEZX7l1uXpkVB-prXs9zFODeTz6JQaX2haHbjEUolWWTcw4cXRngDQ1MxGWS5uoDGXi"/>
+<div class="relative z-10">
+<h3 class="text-xl font-bold mb-2">Need a Break?</h3>
+<p class="text-sm opacity-80 leading-relaxed">Try our daily lightning quiz to keep your reflexes sharp without the full test commitment.</p>
+</div>
+<button class="relative z-10 w-full py-3 bg-surface text-primary font-bold rounded-xl hover:bg-surface-container-lowest transition-colors">
+                    Daily Lightning Quiz
+                </button>
+</div>
+</section>
+</main>
+<!-- Floating Action for Quick Assistance -->
+<button class="fixed bottom-8 right-8 w-14 h-14 premium-gradient text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help</span>
+</button>
+</body></html>
