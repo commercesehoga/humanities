@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy CBT — Political Science</title>
+
+<script>
+const SUBJECT_ID  = "polsci";
+const CHAPTER_ID  = "pol2";
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary-color: #2d8a4e;
+    --primary-light: #4caf6f;
+    --primary-dark: #1a5c34;
+    --secondary-color: #7ec8a4;
+    --accent: #a8e6bf;
+    --correct-color: #2d8a4e;
+    --incorrect-color: #e05252;
+    --neutral-color: #607d8b;
+    --light-bg: #f0f7f2;
+    --white: #ffffff;
+    --dark-text: #1a2e1f;
+    --light-text: #2d4a36;
+    --card-bg: #ffffff;
+
+    --dark-bg: #0d1f14;
+    --dark-card: #152419;
+    --dark-primary: #4caf6f;
+    --dark-secondary: #7ec8a4;
+    --dark-text-color: #d4edd9;
+    --dark-border: #2a4a34;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+}
+
+/* ── DARK MODE ── */
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+body.dark-mode p, body.dark-mode span:not(.icon),
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,
+body.dark-mode h4,body.dark-mode h5,body.dark-mode h6,
+body.dark-mode label, body.dark-mode li { color: var(--dark-text-color) !important; }
+body.dark-mode a:not(.fancy-btn):not(.footer-btn):not(.button2):not(.join-btn) {
+    color: var(--dark-primary) !important; text-decoration: underline;
+}
+body.dark-mode .fancy-btn,body.dark-mode .footer-btn,body.dark-mode .join-btn,
+body.dark-mode .submit-fancy-btn,body.dark-mode .more-btn,body.dark-mode .back-btn,body.dark-mode .report-btn { color: white !important; }
+body.dark-mode #prev-btn { color: var(--dark-primary) !important; border-color: var(--dark-primary) !important; }
+body.dark-mode #next-btn { color: #000 !important; background-color: var(--dark-primary) !important; }
+body.dark-mode #mark-btn { color: var(--dark-secondary) !important; border-color: var(--dark-secondary) !important; }
+body.dark-mode #mark-btn.marked { background-color: var(--dark-secondary) !important; color: #000 !important; }
+body.dark-mode #start-test-btn { color: white !important; }
+body.dark-mode .close-btn { color: var(--dark-text-color) !important; }
+body.dark-mode .stat-card h3 { color: var(--dark-text-color) !important; }
+body.dark-mode .question-number { color: var(--dark-primary) !important; }
+body.dark-mode .question-text { color: var(--dark-text-color) !important; }
+body.dark-mode .progress-text span { color: #8ab49a !important; }
+body.dark-mode .palette-title span { color: var(--dark-text-color) !important; }
+body.dark-mode .test-info strong { color: #fff !important; }
+body.dark-mode .test-info span { color: #aaccb4 !important; }
+body.dark-mode .sidebar {
+    background-color: var(--dark-card);
+    box-shadow: 2px 0 8px rgba(0,200,80,0.08);
+}
+body.dark-mode .sidebar-header h2,
+body.dark-mode .test-header h2,
+body.dark-mode .modal-header h2 { color: var(--dark-primary); }
+body.dark-mode .timer { background-color: #7a1e1e; color: #fff; }
+body.dark-mode .question-container {
+    background-color: var(--dark-card);
+    box-shadow: 0 2px 8px rgba(0,200,80,0.08);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .modal-content { background-color: var(--dark-card); color: var(--dark-text-color); }
+body.dark-mode .stat-card { background-color: #0d1f14; border: 1px solid var(--dark-border); }
+body.dark-mode #test-screen { background: var(--dark-bg) !important; }
+body.dark-mode .mobile-top-bar { background: var(--dark-card) !important; border-color: var(--dark-border) !important; }
+body.dark-mode .mobile-timer-clone { background-color: #7a1e1e !important; }
+body.dark-mode #start-screen { background-color: #0d1f14 !important; }
+body.dark-mode #start-screen h1 { color: var(--dark-primary) !important; }
+body.dark-mode #start-screen > p { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen li { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen strong { color: #fff !important; }
+body.dark-mode #start-screen input[type="text"] {
+    background: #1a3224 !important; color: #fff !important; border-color: var(--dark-border) !important;
+}
+body.dark-mode #instruction-screen { background: #0d1f14 !important; }
+body.dark-mode #instruction-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-box { background: linear-gradient(135deg, #152a1e, #1a2e20) !important; }
+body.dark-mode .instruction-title { color: var(--dark-primary) !important; border-left-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-list li { background: #1a2e1f !important; color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-list li:hover { background: #1e3828 !important; }
+body.dark-mode .custom-check { border-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox input:checked + .custom-check::after { color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox { color: var(--dark-text-color) !important; }
+
+/* ── OPTIONS ── */
+.option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border: 1.5px solid #c8e6d4;
+    border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+    background: #fff; transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+}
+.option:hover { border-color: #2d8a4e; background: #edf7f1; }
+.option.selected { border-color: #1a5c34; background: #c8e6d4; }
+.option.correct { border-color: #2d8a4e !important; background: rgba(45,138,78,0.15) !important; }
+.option.incorrect { border-color: #e53935 !important; background: rgba(229,57,53,0.1) !important; }
+.opt-letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid #b2dcc2; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; background: #edf7f1; color: #2d8a4e;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.option.selected .opt-letter { background: #1a5c34; border-color: #1a5c34; color: #fff; }
+.option.correct .opt-letter { background: #2d8a4e; border-color: #2d8a4e; color: #fff; }
+.option.incorrect .opt-letter { background: #e53935; border-color: #e53935; color: #fff; }
+.opt-text { font-size: 15px; color: #1a2e1f; flex: 1; line-height: 1.5; }
+.option.selected .opt-text { color: #1a5c34; font-weight: 600; }
+.option.correct .opt-text { color: #1a5c34; font-weight: 600; }
+.option.incorrect .opt-text { color: #b71c1c; font-weight: 600; }
+.option input[type="radio"] { display: none; }
+body.dark-mode .option { background: #1a2e1f !important; border-color: #2a4a34 !important; }
+body.dark-mode .option:hover { border-color: #4caf6f !important; background: #1e3828 !important; }
+body.dark-mode .option.selected { border-color: #7ec8a4 !important; background: #173024 !important; }
+body.dark-mode .opt-letter { background: #1e3828 !important; border-color: #2a4a34 !important; color: #7ec8a4 !important; }
+body.dark-mode .option.selected .opt-letter { background: #2d8a4e !important; border-color: #2d8a4e !important; color: #fff !important; }
+body.dark-mode .opt-text { color: var(--dark-text-color) !important; }
+body.dark-mode .option.selected .opt-text { color: #a8e6bf !important; }
+body.dark-mode .option.correct { border-color: #4caf6f !important; background: rgba(45,138,78,0.2) !important; }
+body.dark-mode .option.incorrect { border-color: #ef9a9a !important; background: rgba(229,57,53,0.15) !important; }
+
+.correct-indicator { margin-left: 8px; font-weight: bold; color: #2d8a4e; font-size: 13px; }
+.incorrect-indicator { margin-left: 8px; font-weight: bold; color: #e53935; font-size: 13px; }
+
+/* ── INSTRUCTION BOX ── */
+.instruction-box {
+    max-width: 900px; margin: auto;
+    background: linear-gradient(135deg, #e8f5ec, #d4eddb);
+    padding: 30px; border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(45,138,78,0.15);
+    line-height: 1.8;
+}
+.instruction-title {
+    font-size: 24px; font-weight: 800; color: #1a5c34;
+    margin-bottom: 15px; border-left: 5px solid #2d8a4e; padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+.instruction-list { padding-left: 20px; }
+.instruction-list li {
+    margin-bottom: 10px; font-size: 16px; background: white;
+    padding: 10px 12px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(45,138,78,0.1); transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.instruction-list li:hover { transform: translateX(5px); background: #edf7f1; border-left-color: #2d8a4e; }
+.instruction-checkbox { display: flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 16px; font-weight: 600; }
+.instruction-checkbox input { display: none; }
+.custom-check {
+    width: 20px; height: 20px; border: 2px solid #2d8a4e;
+    border-radius: 4px; display: inline-block; position: relative; cursor: pointer;
+}
+.instruction-checkbox input:checked + .custom-check::after {
+    content: "\2714"; position: absolute; top: -2px; left: 3px; font-size: 16px; color: #2d8a4e;
+}
+
+#start-test-btn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    box-shadow: 0 6px 15px rgba(45,138,78,0.4); transition: 0.3s; border-radius: 8px;
+}
+#start-test-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,138,78,0.6); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 300px; background-color: var(--white); height: 100vh;
+    padding: 20px; box-shadow: 2px 0 8px rgba(45,138,78,0.12);
+    position: fixed; overflow-y: auto; right: 0; left: auto;
+    border-left: 1px solid #d4eddb;
+}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.sidebar-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.test-info { margin-bottom: 20px; }
+.test-info p { margin: 5px 0; color: var(--light-text); display: flex !important; gap: 6px; font-size: 16px !important; }
+.test-info strong { font-weight: 700 !important; color: #000 !important; }
+.question-palette { margin-bottom: 20px; }
+.palette-title { font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; overflow-x: hidden; }
+.palette-btn {
+    width: 100%; max-width: 40px; aspect-ratio: 1/1; border-radius: 50%;
+    border: 1px solid #ddd; background-color: #FF474D;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; margin: auto; font-size: 12px; font-weight: 700;
+}
+.palette-btn:hover { background-color: #f59e0b; transform: scale(1.1); }
+.palette-btn.answered { background-color: #4caf6f; color: #fff; border-color: #2d8a4e; }
+.palette-btn.marked { background-color: #90D5FF; color: #000; border-color: #0077cc; }
+.palette-btn.current { background-color: #fff; border: 2.5px solid var(--primary-color); color: var(--primary-color); }
+.palette-btn.review-correct { background-color: #22c55e !important; color: #fff !important; border-color: #16a34a !important; }
+.palette-btn.review-wrong { background-color: #ef4444 !important; color: #fff !important; border-color: #dc2626 !important; }
+.palette-btn.review-unanswered { background-color: #3b82f6 !important; color: #fff !important; border-color: #2563eb !important; }
+.palette-btn.review-correct.current,
+.palette-btn.review-wrong.current,
+.palette-btn.review-unanswered.current { outline: 3px solid var(--primary-color); outline-offset: 1px; }
+body.dark-mode .palette-btn { background-color: #FF474D !important; color: var(--dark-primary); border: 2px solid var(--dark-primary); }
+body.dark-mode .palette-btn.answered { background-color: #2d8a4e !important; color: white !important; border-color: #2d8a4e !important; }
+body.dark-mode .palette-btn.marked { background-color: #0077cc !important; color: white !important; border-color: #0077cc !important; }
+body.dark-mode .palette-btn.current { background-color: white !important; border: 2.5px solid var(--dark-primary) !important; color: var(--dark-primary) !important; }
+body.dark-mode .palette-btn.review-correct { background-color: #16a34a !important; border-color: #15803d !important; }
+body.dark-mode .palette-btn.review-wrong { background-color: #dc2626 !important; border-color: #b91c1c !important; }
+body.dark-mode .palette-btn.review-unanswered { background-color: #2563eb !important; border-color: #1d4ed8 !important; }
+
+/* ── BUTTONS ── */
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: #edf7f1; }
+.mark-btn {
+    margin-left: 10px; background-color: transparent;
+    border: 1.5px solid #2d8a4e; color: #2d8a4e;
+    padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+.mark-btn.marked { background-color: #2d8a4e; color: white; }
+body.dark-mode .btn-primary { background-color: var(--dark-primary); color: #000; }
+body.dark-mode .btn-outline { border-color: var(--dark-primary); color: var(--dark-primary); }
+body.dark-mode .mark-btn { border-color: var(--dark-secondary); color: var(--dark-secondary); }
+body.dark-mode .mark-btn.marked { background-color: var(--dark-secondary); color: #000; }
+
+/* ── FANCY BUTTONS ── */
+.fancy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 16px; font-weight: 700; border-radius: 50px;
+    border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.4px;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+.fancy-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; border-radius: inherit; }
+.fancy-btn:hover::after { background: rgba(255,255,255,0.12); }
+.fancy-btn:active { transform: scale(0.96) !important; }
+.fancy-btn:hover { transform: translateY(-3px) scale(1.03); }
+.join-btn { background: linear-gradient(135deg, #0088cc, #006699); color: white; box-shadow: 0 5px 18px rgba(0,136,204,0.45); }
+.join-btn:hover { box-shadow: 0 8px 24px rgba(0,136,204,0.65); color: white; }
+.submit-fancy-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); color: white; box-shadow: 0 5px 18px rgba(45,138,78,0.45); flex: 1; max-width: 280px; }
+.submit-fancy-btn:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.65); }
+.pdf-download-btn {
+    background: linear-gradient(135deg, #f97316, #ea580c); color: white !important;
+    font-weight: 700; border-radius: 30px; transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4); padding: 13px 28px; font-size: 16px;
+    flex: 1; max-width: 280px; display: inline-flex; align-items: center; justify-content: center;
+}
+.pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(249,115,22,0.6); color: white !important; }
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
+    text-decoration: none; color: white; letter-spacing: 0.3px;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease, filter 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.footer-btn:hover { transform: translateY(-3px) scale(1.06); filter: brightness(1.1); color: white; }
+.footer-btn:active { transform: scale(0.95); }
+.more-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); box-shadow: 0 4px 14px rgba(45,138,78,0.4); }
+.more-btn:hover { box-shadow: 0 7px 20px rgba(45,138,78,0.65); }
+.back-btn { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
+.back-btn:hover { box-shadow: 0 7px 20px rgba(34,197,94,0.65); }
+.report-btn { background: linear-gradient(135deg, #f97316, #dc2626); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+.report-btn:hover { box-shadow: 0 7px 20px rgba(239,68,68,0.65); }
+
+/* ── LAYOUT ── */
+.main-content { flex: 1; margin-left: 0; margin-right: 300px; padding: 20px; }
+.test-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb;
+}
+.test-header h2 { font-family: 'Playfair Display', serif; color: var(--primary-dark); font-size: 20px; }
+body.dark-mode .test-header h2 { color: var(--dark-primary) !important; }
+.timer {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white; padding: 10px 20px; border-radius: 40px;
+    font-weight: 800; font-size: 18px; min-width: 140px; text-align: center;
+    font-family: 'DM Sans', monospace; letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+.progress-container { margin-bottom: 20px; }
+.progress-bar { height: 10px; background-color: #d4eddb; border-radius: 5px; overflow: hidden; }
+.progress { height: 100%; background: linear-gradient(90deg, #2d8a4e, #7ec8a4); width: 0%; transition: width 0.3s; border-radius: 5px; }
+.progress-text { display: flex; justify-content: space-between; margin-top: 5px; font-size: 14px; color: var(--light-text); }
+.question-container {
+    background-color: var(--white); border-radius: 12px; padding: 24px;
+    margin-bottom: 20px; box-shadow: 0 4px 16px rgba(45,138,78,0.1);
+    border: 1px solid #d4eddb;
+}
+.question-number { color: var(--primary-color); font-weight: 800; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.question-text { margin-bottom: 20px; font-size: 17px; line-height: 1.6; color: var(--dark-text); }
+.options { margin-left: 0; }
+.navigation-btns { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+.submit-section {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 620px; margin: 24px auto; gap: 14px; flex-wrap: wrap;
+}
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,30,10,0.6); z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: white; border-radius: 14px; width: 80%; max-width: 600px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.modal-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--light-text); }
+.result-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card { background-color: var(--light-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #d4eddb; }
+.stat-card h3 { color: #000; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { font-size: 28px; font-weight: 800; }
+.correct-stat { color: var(--correct-color); }
+.incorrect-stat { color: var(--incorrect-color); }
+.score-stat { color: var(--primary-color); }
+.review-btn { margin-top: 20px; width: 100%; }
+.button2 {
+    background-color: #2d8a4e; color: white; border: none;
+    padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 30px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(45,138,78,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.button2:hover { background-color: #1a5c34; box-shadow: 0 6px 12px rgba(45,138,78,0.5); color: #fff; }
+
+/* ── DARK MODE TOGGLE ── */
+#dark-mode-toggle-bottom {
+    position: absolute; top: 18px; right: 18px; font-size: 22px; padding: 8px 18px;
+    border-radius: 40px; border: none; cursor: pointer;
+    background: linear-gradient(45deg, #1a5c34, #2d8a4e); color: white;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 15px rgba(45,138,78,0.5);
+    transition: background 0.4s, box-shadow 0.4s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+}
+#dark-mode-toggle-bottom:hover { box-shadow: 0 6px 20px rgba(45,138,78,0.8); }
+body.dark-mode #dark-mode-toggle-bottom {
+    background: linear-gradient(45deg, #f7971e, #ffd200) !important;
+    box-shadow: 0 4px 15px rgba(255,210,0,0.6) !important;
+}
+body.dark-mode #dark-mode-toggle-bottom .icon { color: #333 !important; }
+body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important; }
+
+#test-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-bg); z-index: 9998; display: none; overflow: auto; }
+#user-name-display {
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 14px;
+}
+.mobile-top-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #d4eddb;
+        margin-bottom: 8px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-timer-clone {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white; padding: 6px 14px; border-radius: 30px;
+        font-weight: 800; font-size: 15px; min-width: 100px; text-align: center;
+    }
+    #mobile-name-display {
+        background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+        color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;
+    }
+    #user-name-display { display: none !important; }
+    .sidebar .timer { display: none !important; }
+    .sidebar .sidebar-header { display: none !important; }
+    body { display: flex; flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; right: 0; left: 0; box-shadow: none; margin-bottom: 10px; }
+    .question-palette { max-height: 200px; overflow-y: auto; }
+    .main-content { margin: 0 !important; width: 100%; padding: 10px; }
+    .navigation-btns { flex-direction: row !important; gap: 8px; align-items: center; }
+    #prev-btn { padding: 8px 14px !important; font-size: 13px !important; border-radius: 6px !important; flex-shrink: 0; }
+    #next-btn { padding: 14px 28px !important; font-size: 17px !important; border-radius: 8px !important; flex: 1; }
+    .navigation-btns > div { display: flex; flex: 1; gap: 8px; align-items: center; }
+    #mark-btn { font-size: 11px !important; padding: 6px 8px !important; flex-shrink: 0; }
+}
+@media (max-width: 576px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } .result-stats { grid-template-columns: 1fr; } }
+#pdf-print-area { display: none; }
+@media print {
+    body > * { display: none !important; }
+    #pdf-print-area { display: block !important; font-family: Arial, sans-serif; color: #111; padding: 20px; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:white;z-index:9999;display:flex;
+    flex-direction:column;justify-content:flex-start;align-items:center;
+    text-align:center;padding:40px 20px 40px;overflow-y:auto;
+    font-family:'DM Sans',sans-serif;">
+
+<button id="dark-mode-toggle-bottom" aria-label="Toggle dark mode">
+  <span class="icon" style="display:inline-block;transition:transform 0.6s ease;">🌙</span>
+  <span style="font-size:13px;font-weight:700;letter-spacing:0.5px;">Dark</span>
+</button>
+
+<!-- Logo / Brand -->
+<div style="margin-bottom:6px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a5c34,#4caf6f);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+    box-shadow:0 8px 24px rgba(45,138,78,0.35);font-size:34px;">🗳️</div>
+</div>
+
+<h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
+  Political Science
+</h1>
+  <p style="font-size:16px;margin:6px 0;">Chapter <strong style="color:#1a5c34;">2</strong></p>
+<p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
+
+<a href="https://t.me/thunderstudy_official" target="_blank"
+  style="display:inline-flex;align-items:center;gap:8px;margin:8px 0 14px;
+  background:linear-gradient(135deg,#0088cc,#006699);color:white;text-decoration:none;
+  padding:10px 24px;border-radius:30px;font-size:15px;font-weight:700;
+  box-shadow:0 5px 16px rgba(0,136,204,0.45);
+  transition:transform 0.18s,box-shadow 0.18s;"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 22px rgba(0,136,204,0.65)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 5px 16px rgba(0,136,204,0.45)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.04 9.607c-.148.666-.543.828-1.098.516l-3.04-2.24-1.467 1.413c-.162.162-.298.298-.611.298l.217-3.083 5.613-5.067c.244-.217-.054-.337-.378-.12L7.08 14.807 4.09 13.89c-.657-.205-.67-.657.137-.973l10.88-4.196c.548-.198 1.027.133.855.973z"/>
+  </svg>
+  @thunderstudy_official
+</a>
+
+<div style="max-width:560px;text-align:left;margin:10px auto 18px;
+  background:linear-gradient(135deg,#edf7f1,#d4eddb);
+  border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
+  <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
+  <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
+    <li><strong>50 Questions</strong></li>
+    <li><strong>60 Minutes</strong> total time</li>
+    <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
+    <li>No penalty for <strong>unanswered</strong> questions</li>
+    <li>Test <strong>auto-submits</strong> when time ends</li>
+    <li>Do <strong>not switch tabs</strong> or exit fullscreen during test</li>
+  </ul>
+</div>
+
+<div style="margin:10px 0;">
+  <input type="text" id="username-input" placeholder="Enter your name"
+    style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
+    font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
+</div>
+
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
+
+  <button onclick="startMock()" style="
+      width:260px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(45,138,78,0.45);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 28px rgba(45,138,78,0.65)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(45,138,78,0.45)'"
+    onmousedown="this.style.transform='scale(0.97)'"
+    onmouseup="this.style.transform='translateY(-3px) scale(1.04)'">
+    🚀 Start Mock
+  </button>
+
+  <button onclick="window.location.href='https://commercesehoga.github.io/commerce/bst/result.html'" style="
+      width:260px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(34,197,94,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📊 Previous Result
+  </button>
+
+  <button onclick="window.open('https://commercesehoga.blogspot.com/','_blank')" style="
+      width:260px;background:linear-gradient(135deg,#2d8a4e,#7ec8a4);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(126,200,164,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📚 More Mock Tests
+  </button>
+
+</div>
+</div>
+
+<!-- INSTRUCTION SCREEN -->
+<div id="instruction-screen" style="
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:white;z-index:9999;display:none;overflow:auto;padding:30px;">
+<h2 style="text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;color:#1a5c34;">Please read the instructions carefully</h2>
+<div class="instruction-box">
+<h3 class="instruction-title">General Instructions</h3>
+<ol class="instruction-list">
+<li>Total duration of test is <strong>60 minutes</strong>. Timer shown in sidebar.</li>
+<li>Test <strong>auto-submits</strong> when the timer reaches zero.</li>
+<li>The test runs in <strong>fullscreen mode</strong>. Exiting fullscreen starts a <strong>5-second countdown</strong> to auto-submit.</li>
+<li><strong>Do not switch tabs</strong>. Switching tabs starts a <strong>2-second countdown</strong> to auto-submit.</li>
+<li>Return to fullscreen or the tab before the countdown ends to continue safely.</li>
+<li>Question palette on the right shows answered, marked, and current status.</li>
+<li>Each correct answer: <strong>+5 marks</strong>. Each wrong answer: <strong>−1 mark</strong>. Unanswered: <strong>0 marks</strong>.</li>
+</ol>
+<div style="margin-top:20px;">
+  <strong>Question Status Legend:</strong>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;border:2px solid #2d8a4e;background:white;"></div><span>Current</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#FF474D;border:1px solid #ddd;"></div><span>Unanswered</span></div>
+  </div>
+</div>
+<label class="instruction-checkbox">
+    <input type="checkbox" id="agree-checkbox">
+    <span class="custom-check"></span>
+    I have read and understood all instructions
+</label>
+<br><br>
+<button id="start-test-btn" disabled style="
+background:#2d8a4e;color:white;padding:12px 24px;border:none;
+border-radius:8px;font-size:18px;cursor:not-allowed;opacity:0.6;
+font-family:'DM Sans',sans-serif;font-weight:700;">
+Start Test
+</button>
+</div>
+</div>
+
+<!-- TEST SCREEN -->
+<div id="test-screen">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>🗳️ Pol Sci</h2>
+        <div class="timer">01:00:00</div>
+    </div>
+    <div class="test-info">
+        <p><strong>Subject:</strong> <span id="subject-label">Political Science</span></p>
+        <p><strong>Questions:</strong> 50</p>
+        <p><strong>Duration:</strong> 60 min</p>
+        <p><strong>Marking:</strong> +5 / -1</p>
+        <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
+    </div>
+    <div class="question-palette">
+        <div class="palette-title">
+            <span>Questions</span>
+            <span id="answered-count">0/50</span>
+        </div>
+        <div class="palette-grid" id="question-palette-grid"></div>
+        <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
+    </div>
+</div>
+
+<div class="main-content">
+<div class="mobile-top-bar">
+    <div class="mobile-timer-clone">01:00:00</div>
+    <div id="mobile-name-display">👤 Thunder</div>
+</div>
+
+<div class="test-header">
+  <div id="user-name-display">👤 Thunder</div>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
+    <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
+  </div>
+</div>
+
+<div class="question-container">
+<div class="question-number">Question <span id="q-number">1</span></div>
+<div class="question-text" id="question-text"></div>
+<div class="options" id="options-container"></div>
+<div class="navigation-btns">
+<button class="btn btn-outline" id="prev-btn">&#8592; Previous</button>
+<div>
+<button class="mark-btn" id="mark-btn">Mark for Review</button>
+<button class="btn btn-primary" id="next-btn">Next &#8594;</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+    <a href="https://t.me/thunderstudy_official" target="_blank" class="fancy-btn join-btn">⚡ Join Thunder</a>
+    <button class="fancy-btn submit-fancy-btn" id="submit-test-btn">✅ Submit Test</button>
+</div>
+
+<footer style="background:linear-gradient(135deg,#0a1f0e,#152419);color:#d4edd9;text-align:center;padding:22px 16px;margin-top:10px;border-top:2px solid #2d8a4e;">
+   <p style="font-size:13px;color:#7ec8a4;margin-bottom:14px;">© 2025 Thunder. All Rights Reserved.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn more-btn">📚 More Mock</a>
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn back-btn">🌐 Back To Website</a>
+    <a href="https://t.me/mindmaster_robot" target="_blank" class="footer-btn report-btn">🚨 Report Error</a>
+</div>
+</footer>
+
+<!-- Results Modal -->
+<div class="modal" id="results-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🗳️ Test Results</h2>
+<button class="close-btn" id="close-modal">×</button>
+</div>
+<div class="result-stats">
+<div class="stat-card"><h3>Correct</h3><p class="correct-stat" id="correct-answers">0</p></div>
+<div class="stat-card"><h3>Incorrect</h3><p class="incorrect-stat" id="incorrect-answers">0</p></div>
+<div class="stat-card"><h3>Unanswered</h3><p style="color:#6b7280;" id="unanswered">50</p></div>
+<div class="stat-card"><h3>Total Score</h3><p class="score-stat" id="total-score">0</p></div>
+</div>
+<div style="margin-top:8px;padding:12px;background:#edf7f1;border-radius:8px;border:1px solid #d4eddb;">
+<p style="margin:3px 0;">Percentage: <strong><span id="percentage">0</span>%</strong></p>
+<p style="margin:3px 0;">Accuracy: <strong><span id="accuracy">0</span>%</strong></p>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+<button class="btn btn-primary review-btn" id="review-btn" style="flex:1;margin-top:0;border-radius:8px;">Review Answers</button>
+<button class="btn pdf-download-btn" id="download-pdf-btn" style="flex:1;">📄 Download PDF</button>
+</div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /test-screen -->
+
+<script>
+/* ============================================================
+   POLITICAL SCIENCE MOCK TEST DATA
+   ============================================================ */
+const mockTest = {
+    title: "Political Science Mock",
+    questions: [
+{id:1,section:"Nation-Building and Its Problems",text:"Which of the following best describes Nehru's approach to nation-building?",options:{a:"Religious and traditional",b:"Democratic, secular and scientific",c:"Military and authoritarian",d:"Federal and decentralised only"},correctAnswer:"b",explanation:"Nehru's approach to nation-building was based on democracy, secularism, scientific temper and planned development.",marked:false,userAnswer:""},
+{id:2,section:"Nation-Building and Its Problems",text:"India was partitioned into how many countries in 1947?",options:{a:"Three",b:"Four",c:"Two",d:"Five"},correctAnswer:"c",explanation:"India was partitioned into two countries — India and Pakistan — in August 1947.",marked:false,userAnswer:""},
+{id:3,section:"Nation-Building and Its Problems",text:"The partition of India was based primarily on which principle?",options:{a:"Linguistic division",b:"Geographic division",c:"Religious division",d:"Economic division"},correctAnswer:"c",explanation:"The partition of India was primarily based on the two-nation theory — religious division between Hindus and Muslims.",marked:false,userAnswer:""},
+{id:4,section:"Nation-Building and Its Problems",text:"Approximately how many people were displaced during the partition of India?",options:{a:"1 million",b:"5 million",c:"1 crore",d:"Around 1.5 crore (15 million)"},correctAnswer:"d",explanation:"The partition caused one of the largest mass migrations in history — approximately 1.5 crore (15 million) people were displaced.",marked:false,userAnswer:""},
+{id:5,section:"Nation-Building and Its Problems",text:"The challenge of 'refugee resettlement' after partition was most acute in which states?",options:{a:"Maharashtra and Gujarat",b:"Punjab and West Bengal",c:"Uttar Pradesh and Bihar",d:"Rajasthan and Madhya Pradesh"},correctAnswer:"b",explanation:"Punjab (receiving refugees from West Pakistan) and West Bengal (receiving refugees from East Pakistan) bore the greatest burden.",marked:false,userAnswer:""},
+{id:6,section:"Nation-Building and Its Problems",text:"The Kashmir problem originated because the ruler of Kashmir at the time of partition was:",options:{a:"A Muslim ruler with a Hindu majority population",b:"A Hindu ruler (Hari Singh) with a Muslim majority population",c:"A British Governor",d:"An elected leader who chose to join Pakistan"},correctAnswer:"b",explanation:"Maharaja Hari Singh was a Hindu ruler of a Muslim-majority state who initially wanted independence.",marked:false,userAnswer:""},
+{id:7,section:"Nation-Building and Its Problems",text:"Kashmir's accession to India was signed by Maharaja Hari Singh in which year?",options:{a:"1946",b:"1947",c:"1948",d:"1949"},correctAnswer:"b",explanation:"Maharaja Hari Singh signed the Instrument of Accession to India in October 1947, following Pakistani tribal invasion.",marked:false,userAnswer:""},
+{id:8,section:"Nation-Building and Its Problems",text:"India took the Kashmir issue to which international body?",options:{a:"World Bank",b:"International Court of Justice",c:"United Nations Security Council",d:"Commonwealth of Nations"},correctAnswer:"c",explanation:"India took the Kashmir dispute to the United Nations Security Council in January 1948.",marked:false,userAnswer:""},
+{id:9,section:"Nation-Building and Its Problems",text:"Which article of the Indian Constitution gave special status to Jammu and Kashmir?",options:{a:"Article 356",b:"Article 370",c:"Article 371",d:"Article 35A"},correctAnswer:"b",explanation:"Article 370 of the Indian Constitution gave special autonomous status to Jammu and Kashmir.",marked:false,userAnswer:""},
+{id:10,section:"Nation-Building and Its Problems",text:"The States Reorganisation Commission was set up in which year?",options:{a:"1950",b:"1953",c:"1956",d:"1960"},correctAnswer:"b",explanation:"The States Reorganisation Commission (SRC) was established in 1953 under Fazl Ali to recommend reorganisation of states.",marked:false,userAnswer:""},
+{id:11,section:"Nation-Building and Its Problems",text:"The States Reorganisation Act was passed in which year?",options:{a:"1953",b:"1954",c:"1956",d:"1958"},correctAnswer:"c",explanation:"The States Reorganisation Act was passed in 1956, reorganising states primarily on linguistic lines.",marked:false,userAnswer:""},
+{id:12,section:"Nation-Building and Its Problems",text:"The first state to be created on a linguistic basis in independent India was:",options:{a:"Gujarat",b:"Maharashtra",c:"Andhra Pradesh",d:"Karnataka"},correctAnswer:"c",explanation:"Andhra Pradesh was the first state created on linguistic basis in 1953 for Telugu-speaking people, carved out of Madras.",marked:false,userAnswer:""},
+{id:13,section:"Nation-Building and Its Problems",text:"Who led the agitation for a separate Andhra state and died during a fast-unto-death?",options:{a:"T. Prakasam",b:"Potti Sriramulu",c:"N.G. Ranga",d:"S. Nijalingappa"},correctAnswer:"b",explanation:"Potti Sriramulu died after a 56-day fast-unto-death in 1952, demanding a separate Telugu state.",marked:false,userAnswer:""},
+{id:14,section:"Nation-Building and Its Problems",text:"On what basis were states primarily reorganised under the 1956 Act?",options:{a:"Religious",b:"Geographic",c:"Linguistic",d:"Economic"},correctAnswer:"c",explanation:"The 1956 States Reorganisation Act reorganised Indian states primarily on the basis of language.",marked:false,userAnswer:""},
+{id:15,section:"Nation-Building and Its Problems",text:"The demand for a separate Maharashtra and Gujarat led to which movement?",options:{a:"Samyukta Maharashtra and Maha Gujarat Movement",b:"Vidarbha Movement",c:"Telangana Movement",d:"Gorkhaland Movement"},correctAnswer:"a",explanation:"The Samyukta Maharashtra Movement demanded a Marathi-speaking Maharashtra and Maha Gujarat Movement demanded Gujarat.",marked:false,userAnswer:""},
+{id:16,section:"Nation-Building and Its Problems",text:"Maharashtra and Gujarat were created as separate states in which year?",options:{a:"1956",b:"1958",c:"1960",d:"1962"},correctAnswer:"c",explanation:"Maharashtra and Gujarat were carved out of the former Bombay State and created as separate states in 1960.",marked:false,userAnswer:""},
+{id:17,section:"Nation-Building and Its Problems",text:"The controversy over which city delayed the creation of Maharashtra and Gujarat?",options:{a:"Nagpur",b:"Pune",c:"Bombay (Mumbai)",d:"Aurangabad"},correctAnswer:"c",explanation:"Bombay (now Mumbai) was claimed by both Maharashtra and Gujarat, delaying the division of Bombay State.",marked:false,userAnswer:""},
+{id:18,section:"Nation-Building and Its Problems",text:"Nehru initially opposed the reorganisation of states on linguistic basis because:",options:{a:"He wanted to keep colonial boundaries intact",b:"He feared it would lead to regionalism and weaken national unity",c:"He preferred religious basis for reorganisation",d:"He believed the Constitution did not allow it"},correctAnswer:"b",explanation:"Nehru feared linguistic reorganisation would encourage regionalism, communalism and threaten national unity.",marked:false,userAnswer:""},
+{id:19,section:"Nation-Building and Its Problems",text:"Which report had recommended linguistic reorganisation of states before independence?",options:{a:"Nehru Report",b:"Dar Commission Report",c:"Linguistic Provinces Commission (JVP Report)",d:"Simon Commission Report"},correctAnswer:"c",explanation:"The JVP Committee (Jawaharlal Nehru, Vallabhbhai Patel, Pattabhi Sitaramayya) had examined the issue before the SRC.",marked:false,userAnswer:""},
+{id:20,section:"Nation-Building and Its Problems",text:"The Official Languages Act of 1963 declared which language as the official language of India?",options:{a:"Sanskrit",b:"Hindi",c:"English",d:"Both Hindi and English"},correctAnswer:"d",explanation:"The Official Languages Act 1963 provided that English would continue alongside Hindi for official purposes.",marked:false,userAnswer:""},
+{id:21,section:"Nation-Building and Its Problems",text:"The anti-Hindi agitation of 1965 was most intense in which state?",options:{a:"West Bengal",b:"Kerala",c:"Tamil Nadu (then Madras)",d:"Karnataka"},correctAnswer:"c",explanation:"The 1965 anti-Hindi agitation was most intense in Tamil Nadu (then Madras State), where people protested against Hindi imposition.",marked:false,userAnswer:""},
+{id:22,section:"Nation-Building and Its Problems",text:"What was the main demand of the 1965 anti-Hindi agitation?",options:{a:"Recognition of Tamil as a classical language",b:"Continuation of English alongside Hindi for official purposes",c:"Creation of a separate Tamil nation",d:"Teaching of Sanskrit in schools"},correctAnswer:"b",explanation:"The agitation demanded that English continue as an official language and opposed making Hindi the sole official language.",marked:false,userAnswer:""},
+{id:23,section:"Nation-Building and Its Problems",text:"Nehru's vision of India was best described as:",options:{a:"A Hindu Rashtra",b:"A theocratic state",c:"A secular democratic republic",d:"A federal confederacy"},correctAnswer:"c",explanation:"Nehru envisioned India as a secular democratic republic where religion would be separate from state affairs.",marked:false,userAnswer:""},
+{id:24,section:"Nation-Building and Its Problems",text:"The integration of princely states was mainly accomplished by which leader?",options:{a:"Jawaharlal Nehru",b:"Sardar Vallabhbhai Patel",c:"Maulana Abul Kalam Azad",d:"Rajendra Prasad"},correctAnswer:"b",explanation:"Sardar Vallabhbhai Patel, as Deputy PM and Home Minister, was the architect of integrating princely states into India.",marked:false,userAnswer:""},
+{id:25,section:"Nation-Building and Its Problems",text:"Hyderabad's accession to India was achieved through which method?",options:{a:"Negotiation and agreement",b:"Plebiscite",c:"Police Action (Operation Polo)",d:"UN mediation"},correctAnswer:"c",explanation:"Hyderabad was integrated through 'Operation Polo' — a police action in September 1948 — as the Nizam refused to accede.",marked:false,userAnswer:""},
+{id:26,section:"Nation-Building and Its Problems",text:"Junagadh, a princely state, was integrated into India despite its ruler's wish to join Pakistan because:",options:{a:"UN ordered it",b:"Its Hindu-majority population desired to join India",c:"Pakistan rejected Junagadh",d:"Britain intervened"},correctAnswer:"b",explanation:"Despite the Muslim ruler's decision to join Pakistan, Junagadh's Hindu-majority population and geographic location led to its integration with India.",marked:false,userAnswer:""},
+{id:27,section:"Nation-Building and Its Problems",text:"The Nehru-Liaquat Pact of 1950 dealt with:",options:{a:"Kashmir conflict resolution",b:"Protection of minorities in India and Pakistan",c:"Trade between India and Pakistan",d:"Military cooperation"},correctAnswer:"b",explanation:"The Nehru-Liaquat Pact (1950) was a bilateral agreement for protecting the rights of minorities in both countries.",marked:false,userAnswer:""},
+{id:28,section:"Nation-Building and Its Problems",text:"Which of the following was a major challenge in refugee rehabilitation after partition?",options:{a:"Lack of refugees willing to settle",b:"Providing housing, employment and economic rehabilitation to millions",c:"Refugees refusing Indian citizenship",d:"Religious conflicts among refugees"},correctAnswer:"b",explanation:"The major challenge was providing housing, economic rehabilitation and employment to millions of displaced people.",marked:false,userAnswer:""},
+{id:29,section:"Nation-Building and Its Problems",text:"The partition violence resulted in the death of approximately how many people?",options:{a:"10,000",b:"50,000",c:"2 lakh",d:"5–10 lakh (500,000–1,000,000)"},correctAnswer:"d",explanation:"The partition violence resulted in the deaths of an estimated 5 to 10 lakh (500,000 to 1,000,000) people.",marked:false,userAnswer:""},
+{id:30,section:"Nation-Building and Its Problems",text:"Nehru's concept of 'scientific temper' aimed at:",options:{a:"Making India a nuclear power",b:"Promoting rational thinking and modern outlook over superstition",c:"Industrialising agriculture",d:"Building scientific laboratories"},correctAnswer:"b",explanation:"Nehru's 'scientific temper' aimed at promoting rational, scientific thinking and a modern outlook over superstition and blind faith.",marked:false,userAnswer:""},
+{id:31,section:"Nation-Building and Its Problems",text:"Which institution did Nehru establish to plan India's development?",options:{a:"Reserve Bank of India",b:"Planning Commission",c:"Finance Commission",d:"National Development Council"},correctAnswer:"b",explanation:"Nehru established the Planning Commission in 1950 to plan India's economic development through Five Year Plans.",marked:false,userAnswer:""},
+{id:32,section:"Nation-Building and Its Problems",text:"The linguistic conflict in India was essentially a conflict over:",options:{a:"Which language to use at home",b:"Official language, employment and political power",c:"Religious texts and traditions",d:"Medium of instruction only"},correctAnswer:"b",explanation:"Linguistic conflicts were about official status, employment opportunities in government, and political power distribution.",marked:false,userAnswer:""},
+{id:33,section:"Nation-Building and Its Problems",text:"Which commission was chaired by Justice Fazl Ali for state reorganisation?",options:{a:"Sarkaria Commission",b:"States Reorganisation Commission",c:"Linguistic Provinces Commission",d:"Dar Commission"},correctAnswer:"b",explanation:"The States Reorganisation Commission (1953) was chaired by Justice Fazl Ali with H.N. Kunzru and K.M. Panikkar as members.",marked:false,userAnswer:""},
+{id:34,section:"Nation-Building and Its Problems",text:"Goa was liberated from Portuguese rule in which year?",options:{a:"1947",b:"1952",c:"1961",d:"1956"},correctAnswer:"c",explanation:"Goa was liberated from 450 years of Portuguese colonial rule in December 1961 through Operation Vijay.",marked:false,userAnswer:""},
+{id:35,section:"Nation-Building and Its Problems",text:"The demand for Khalistan (a separate Sikh homeland) emerged as a major crisis in which decade?",options:{a:"1950s",b:"1960s",c:"1970s–1980s",d:"1990s"},correctAnswer:"c",explanation:"The demand for Khalistan emerged as a major political and security crisis in the late 1970s and 1980s.",marked:false,userAnswer:""},
+{id:36,section:"Nation-Building and Its Problems",text:"Which of the following was NOT a challenge in nation-building immediately after independence?",options:{a:"Integration of princely states",b:"Refugee resettlement",c:"Nuclear weapons development",d:"Reorganisation of states"},correctAnswer:"c",explanation:"Nuclear weapons development was not an immediate post-independence nation-building challenge — the others were.",marked:false,userAnswer:""},
+{id:37,section:"Nation-Building and Its Problems",text:"Nehru described India's dams and industrial plants as:",options:{a:"Burdens on the economy",b:"Temples of modern India",c:"Colonial legacies",d:"Symbols of western imperialism"},correctAnswer:"b",explanation:"Nehru famously described modern dams, factories and scientific institutions as 'temples of modern India'.",marked:false,userAnswer:""},
+{id:38,section:"Nation-Building and Its Problems",text:"The partition of Bengal in 1947 resulted in East Bengal becoming part of:",options:{a:"India",b:"Pakistan",c:"Bangladesh",d:"Myanmar"},correctAnswer:"b",explanation:"East Bengal became part of Pakistan in 1947 (later becoming Bangladesh in 1971).",marked:false,userAnswer:""},
+{id:39,section:"Nation-Building and Its Problems",text:"Which agreement between Nehru and Liaquat Ali Khan was related to minority rights?",options:{a:"Simla Agreement",b:"Tashkent Agreement",c:"Delhi Pact (Nehru-Liaquat Pact)",d:"Lahore Declaration"},correctAnswer:"c",explanation:"The Delhi Pact (Nehru-Liaquat Pact) of April 1950 guaranteed minority rights in both India and Pakistan.",marked:false,userAnswer:""},
+{id:40,section:"Nation-Building and Its Problems",text:"Nehru's approach to the Kashmir problem included:",options:{a:"Military annexation without any conditions",b:"Promising a plebiscite and taking the issue to the UN",c:"Handing it over to Pakistan",d:"Declaring it a union territory immediately"},correctAnswer:"b",explanation:"Nehru promised a plebiscite to determine Kashmir's future and took the matter to the UN Security Council.",marked:false,userAnswer:""},
+{id:41,section:"Nation-Building and Its Problems",text:"The Sikh community's demand for a Punjabi Suba (Punjabi-speaking state) was fulfilled in which year?",options:{a:"1956",b:"1960",c:"1966",d:"1970"},correctAnswer:"c",explanation:"Punjab was divided in 1966 creating Punjab (Punjabi-speaking), Haryana (Hindi-speaking) and Himachal Pradesh.",marked:false,userAnswer:""},
+{id:42,section:"Nation-Building and Its Problems",text:"Which of the following best captures the 'legacy of partition' as a nation-building challenge?",options:{a:"Economic collapse",b:"Mass displacement, communal violence and trauma",c:"Military weakness",d:"Loss of territory"},correctAnswer:"b",explanation:"The partition legacy included mass displacement of millions, horrific communal violence and deep psychological trauma.",marked:false,userAnswer:""},
+{id:43,section:"Nation-Building and Its Problems",text:"The process of integrating about 565 princely states into India is called:",options:{a:"Partition",b:"Merger",c:"Accession and Integration",d:"Annexation"},correctAnswer:"c",explanation:"The process is called accession and integration — princely states signed instruments of accession to join India.",marked:false,userAnswer:""},
+{id:44,section:"Nation-Building and Its Problems",text:"Which of the following states was created AFTER the 1956 States Reorganisation Act?",options:{a:"Andhra Pradesh",b:"Kerala",c:"Nagaland",d:"Maharashtra"},correctAnswer:"d",explanation:"Maharashtra was created in 1960, after the 1956 SRC, when Bombay State was bifurcated into Maharashtra and Gujarat.",marked:false,userAnswer:""},
+{id:45,section:"Nation-Building and Its Problems",text:"Nehru's idea of secularism meant:",options:{a:"Banning all religions",b:"Promoting Hinduism as the majority religion",c:"Equal respect for all religions and separation of religion from state",d:"Adopting Christianity as the national religion"},correctAnswer:"c",explanation:"Nehru's secularism meant equal respect for all religions and keeping religion separate from state affairs.",marked:false,userAnswer:""},
+{id:46,section:"Nation-Building and Its Problems",text:"The Naga movement demanding a separate Nagaland was led by:",options:{a:"Pu Laldenga",b:"Angami Zapu Phizo",c:"Bimala Prasad Chaliha",d:"G.G. Swell"},correctAnswer:"b",explanation:"Angami Zapu Phizo led the Naga movement demanding independence for Nagaland from India.",marked:false,userAnswer:""},
+{id:47,section:"Nation-Building and Its Problems",text:"Nagaland was created as a separate state in which year?",options:{a:"1956",b:"1960",c:"1963",d:"1966"},correctAnswer:"c",explanation:"Nagaland was created as a separate state on 1 December 1963 to address the demands of the Naga people.",marked:false,userAnswer:""},
+{id:48,section:"Nation-Building and Its Problems",text:"Which of the following was Nehru's most important contribution to nation-building?",options:{a:"Building the largest army in Asia",b:"Establishing democratic institutions and a secular framework",c:"Developing nuclear weapons",d:"Creating a Hindu welfare state"},correctAnswer:"b",explanation:"Nehru's most important contribution was establishing strong democratic institutions and a secular constitutional framework.",marked:false,userAnswer:""},
+{id:49,section:"Nation-Building and Its Problems",text:"The three main challenges of nation-building in India were:",options:{a:"Military, economic and social",b:"Partition legacy, integration of states and democratic governance",c:"Language, religion and caste",d:"Poverty, illiteracy and disease"},correctAnswer:"b",explanation:"The three main challenges were dealing with partition's legacy, integrating princely states, and building democratic governance.",marked:false,userAnswer:""},
+{id:50,section:"Nation-Building and Its Problems",text:"India's approach to nation-building was unique because it:",options:{a:"Used authoritarian methods like China",b:"Chose democracy and preserved diversity while building unity",c:"Followed the Soviet model exclusively",d:"Relied on military force for integration"},correctAnswer:"b",explanation:"India uniquely chose democratic means, preserved its enormous diversity and built national unity without authoritarianism.",marked:false,userAnswer:""},
+  ],
+    duration: 60 * 60,
+    markingScheme: { correct: 5, incorrect: -1 }
+};
+
+/* ============================================================
+   CORE TEST ENGINE
+   ============================================================ */
+const timerElement = document.querySelector('.timer');
+const questionTextElement = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const questionNumberElement = document.getElementById('q-number');
+const currentQNumberElement = document.getElementById('current-q-number');
+const progressBar = document.getElementById('test-progress');
+const progressPercent = document.getElementById('progress-percent');
+const questionPaletteGrid = document.getElementById('question-palette-grid');
+const answeredCountElement = document.getElementById('answered-count');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markBtn = document.getElementById('mark-btn');
+const submitTestBtn = document.getElementById('submit-test-btn');
+const resultsModal = document.getElementById('results-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const correctAnswersElement = document.getElementById('correct-answers');
+const incorrectAnswersElement = document.getElementById('incorrect-answers');
+const unansweredElement = document.getElementById('unanswered');
+const totalScoreElement = document.getElementById('total-score');
+const percentageElement = document.getElementById('percentage');
+const accuracyElement = document.getElementById('accuracy');
+const reviewBtn = document.getElementById('review-btn');
+
+let currentQuestionIndex = 0;
+let timeLeft = mockTest.duration;
+let timer;
+let testSubmitted = false;
+let testStarted = false;
+
+function initTest() {
+    renderQuestionPalette(); renderQuestion(); startTimer(); updateProgress(); renderLegend(false);
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    markBtn.addEventListener('click', toggleMarkForReview);
+    submitTestBtn.addEventListener('click', confirmSubmit);
+    closeModalBtn.addEventListener('click', closeResultsModal);
+    reviewBtn.addEventListener('click', reviewAnswers);
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
+}
+
+function renderLegend(reviewMode) {
+    const leg = document.getElementById('palette-legend');
+    if (!leg) return;
+    if (reviewMode) {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#22c55e;"></div><span>Correct</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#ef4444;"></div><span>Wrong</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;"></div><span>Not Answered</span></div></div>`;
+    } else {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#FF474D;"></div><span>Unanswered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #2d8a4e;"></div><span>Current</span></div></div>`;
+    }
+}
+
+function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) { clearInterval(timer); submitTest(); }
+        if (timeLeft === 300) { alert('Only 5 minutes remaining!'); }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    const str = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timerElement.textContent = str;
+    const mt = document.querySelector('.mobile-timer-clone');
+    if (mt) mt.textContent = str;
+}
+
+function renderQuestion() {
+    const q = mockTest.questions[currentQuestionIndex];
+    document.getElementById('current-section').textContent = q.section;
+    questionTextElement.innerHTML = `
+        <div style="display:inline-block;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px;">
+            🗳️ ${q.section || "General"}
+        </div>
+        ${q.image ? `<div style="margin:10px 0;"><img src="${q.image}" style="max-width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>` : ""}
+        <div style="margin-top:8px;font-size:17px;line-height:1.6;">${q.text}</div>`;
+    questionNumberElement.textContent = q.id;
+    currentQNumberElement.textContent = q.id;
+    optionsContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(q.options)) {
+        const od = document.createElement('div');
+        od.className = 'option';
+        if (testSubmitted) {
+            if (key === q.correctAnswer) od.classList.add('correct');
+            else if (key === q.userAnswer && key !== q.correctAnswer) od.classList.add('incorrect');
+        } else {
+            if (key === q.userAnswer) od.classList.add('selected');
+        }
+        if (!testSubmitted) {
+            od.addEventListener('click', () => {
+                optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                od.classList.add('selected');
+                selectAnswer(key);
+            });
+        }
+        const inp = document.createElement('input');
+        inp.type='radio'; inp.name='question-option'; inp.value=key;
+        inp.checked = q.userAnswer === key; inp.disabled = testSubmitted;
+        const ld = document.createElement('div');
+        ld.className='opt-letter'; ld.textContent=key.toUpperCase();
+        const ts = document.createElement('span');
+        ts.className='opt-text'; ts.textContent=value;
+        if (testSubmitted) {
+            if (key === q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='correct-indicator'; ind.textContent=' ✓ Correct Answer'; ts.appendChild(ind);
+            } else if (key === q.userAnswer && key !== q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='incorrect-indicator'; ind.textContent=' ✗ Your Answer'; ts.appendChild(ind);
+            }
+        }
+        od.appendChild(inp); od.appendChild(ld); od.appendChild(ts);
+        optionsContainer.appendChild(od);
+    }
+    if (testSubmitted) {
+        const ed = document.createElement('div');
+        ed.style.cssText = "margin-top:15px;padding:12px;border-radius:8px;background:linear-gradient(135deg,#edf7f1,#d4eddb);border-left:4px solid #2d8a4e;font-size:15px;";
+        ed.innerHTML = `<strong>💡 Explanation:</strong><br>${q.explanation || "No explanation available."}`;
+        optionsContainer.appendChild(ed);
+    }
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = currentQuestionIndex === mockTest.questions.length - 1 ? 'hidden' : 'visible';
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.disabled = currentQuestionIndex === mockTest.questions.length - 1;
+    updateQuestionPalette();
+}
+
+function selectAnswer(answer) {
+    mockTest.questions[currentQuestionIndex].userAnswer = answer;
+    updateQuestionPalette(); updateProgress();
+}
+
+function toggleMarkForReview() {
+    const q = mockTest.questions[currentQuestionIndex];
+    q.marked = !q.marked;
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    updateQuestionPalette();
+}
+
+function goToPreviousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+function goToNextQuestion() { if (currentQuestionIndex < mockTest.questions.length - 1) { currentQuestionIndex++; renderQuestion(); } }
+
+function renderQuestionPalette() {
+    questionPaletteGrid.innerHTML = '';
+    mockTest.questions.forEach((q, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'palette-btn'; btn.textContent = q.id;
+        btn.addEventListener('click', () => navigateToQuestion(i));
+        questionPaletteGrid.appendChild(btn);
+    });
+    updateQuestionPalette();
+}
+
+function updateQuestionPalette() {
+    const btns = questionPaletteGrid.querySelectorAll('.palette-btn');
+    btns.forEach(b => { b.className = 'palette-btn'; });
+    mockTest.questions.forEach((q, i) => {
+        const btn = btns[i];
+        if (testSubmitted) {
+            if (!q.userAnswer) btn.classList.add('review-unanswered');
+            else if (q.userAnswer === q.correctAnswer) btn.classList.add('review-correct');
+            else btn.classList.add('review-wrong');
+        } else {
+            if (q.userAnswer) btn.classList.add('answered');
+            if (q.marked) btn.classList.add('marked');
+        }
+        if (i === currentQuestionIndex) btn.classList.add('current');
+    });
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    answeredCountElement.textContent = `${ac}/${mockTest.questions.length}`;
+}
+
+function navigateToQuestion(index) { currentQuestionIndex = index; renderQuestion(); }
+
+function updateProgress() {
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    const p = (ac / mockTest.questions.length) * 100;
+    progressBar.style.width = `${p}%`;
+    progressPercent.textContent = `${Math.round(p)}%`;
+}
+
+function confirmSubmit() { if (confirm('Are you sure you want to submit the test?')) { submitTest(); } }
+
+function submitTest() {
+    if (testSubmitted) return;
+    testSubmitted = true; clearInterval(timer);
+    let correct = 0, incorrect = 0, unanswered = 0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++;
+        else if (q.userAnswer === q.correctAnswer) correct++;
+        else incorrect++;
+    });
+    const totalQ = mockTest.questions.length;
+    const maxScore = totalQ * mockTest.markingScheme.correct;
+    const totalScore = (correct * mockTest.markingScheme.correct) + (incorrect * mockTest.markingScheme.incorrect);
+    const percentage = ((totalScore / maxScore) * 100).toFixed(2);
+    const accuracy = correct + incorrect > 0 ? (correct / (correct + incorrect) * 100).toFixed(2) : '0';
+
+    const questionResults = mockTest.questions.map(q => ({
+        id: q.id, correct: q.userAnswer === q.correctAnswer,
+        answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
+    }));
+    const resultData = {
+        chapterId: CHAPTER_ID, subjectId: SUBJECT_ID,
+        userName: localStorage.getItem('cbtUserName') || 'Unknown',
+        date: new Date().toISOString(), score: totalScore, maxScore,
+        correct, incorrect, unanswered, totalQ,
+        percentage: parseFloat(percentage), accuracy: parseFloat(accuracy),
+        timeTaken: mockTest.duration - timeLeft, questions: questionResults
+    };
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
+    let index = [];
+    try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
+    if (!index.includes(CHAPTER_ID)) index.push(CHAPTER_ID);
+    localStorage.setItem(indexKey, JSON.stringify(index));
+
+    correctAnswersElement.textContent = correct;
+    incorrectAnswersElement.textContent = incorrect;
+    unansweredElement.textContent = unanswered;
+    totalScoreElement.textContent = totalScore;
+    percentageElement.textContent = percentage;
+    accuracyElement.textContent = accuracy;
+    resultsModal.style.display = 'flex';
+    renderQuestion();
+
+    const sb = document.getElementById('submit-test-btn');
+    sb.textContent = '📄 Download PDF';
+    sb.classList.remove('submit-fancy-btn');
+    sb.classList.add('pdf-download-btn');
+    sb.onclick = generatePDF;
+    renderLegend(true);
+}
+
+function closeResultsModal() { resultsModal.style.display = 'none'; }
+function reviewAnswers() { resultsModal.style.display = 'none'; currentQuestionIndex = 0; renderQuestion(); }
+
+document.addEventListener("visibilitychange", function() {
+    if (!testStarted || testSubmitted) return;
+    if (document.hidden) startCountdown('tab'); else cancelCountdown();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('test-screen').style.display === 'none') return;
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if (currentQuestionIndex < mockTest.questions.length-1) { currentQuestionIndex++; renderQuestion(); } }
+    else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+});
+</script>
+
+<script>
+function startMock() {
+    const input = document.getElementById('username-input').value.trim();
+    if (input === "") { alert("⚠️ Please enter your name to continue!"); document.getElementById('username-input').focus(); return; }
+    localStorage.setItem("cbtUserName", input);
+    enterFullscreen();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('instruction-screen').style.display = 'block';
+}
+
+const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom');
+darkModeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggles.forEach(btn => {
+            const iconSpan = btn.querySelector('.icon');
+            if (iconSpan) iconSpan.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    });
+});
+
+const checkbox = document.getElementById('agree-checkbox');
+const startBtn = document.getElementById('start-test-btn');
+checkbox.addEventListener('change', () => {
+    startBtn.disabled = !checkbox.checked;
+    startBtn.style.opacity = checkbox.checked ? "1" : "0.6";
+    startBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+});
+startBtn.addEventListener('click', () => {
+    if (!checkbox.checked) { alert("Please accept instructions first!"); return; }
+    document.getElementById('instruction-screen').style.display = 'none';
+    document.getElementById('test-screen').style.display = 'block';
+    const name = localStorage.getItem("cbtUserName") || "Thunder";
+    document.getElementById('user-name-display').innerText = "👤 " + name;
+    const mn = document.getElementById('mobile-name-display');
+    if (mn) mn.innerText = "👤 " + name;
+    testStarted = true; enterFullscreen(); initTest();
+});
+
+function enterFullscreen() {
+    const el = document.documentElement;
+    try {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } catch(e) {}
+}
+
+document.addEventListener('fullscreenchange', onFSChange);
+document.addEventListener('webkitfullscreenchange', onFSChange);
+document.addEventListener('mozfullscreenchange', onFSChange);
+document.addEventListener('MSFullscreenChange', onFSChange);
+
+function isInFullscreen() {
+    return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);
+}
+function onFSChange() {
+    if (!testStarted||testSubmitted) return;
+    if (document.getElementById('test-screen').style.display==='none') return;
+    if (!isInFullscreen()) startCountdown('fullscreen'); else cancelCountdown();
+}
+
+let countdownTimer = null, countdownSeconds = 0;
+function startCountdown(reason) {
+    if (!testStarted||testSubmitted) return;
+    if (countdownTimer) return;
+    countdownSeconds = (reason==='tab') ? 2 : 5;
+    const msg = (reason==='tab') ? '⚠️ You switched tabs!' : '⚠️ You exited fullscreen!';
+    const hint = (reason==='tab') ? 'Switch back to this tab to cancel.' : 'Click the button below to return to fullscreen.';
+    showOverlay(msg, hint, countdownSeconds, reason==='fullscreen');
+    countdownTimer = setInterval(() => {
+        countdownSeconds--;
+        updateOverlayCount(countdownSeconds);
+        if (countdownSeconds <= 0) { cancelCountdown(); submitTest(); }
+    }, 1000);
+}
+function cancelCountdown() { if (countdownTimer) { clearInterval(countdownTimer); countdownTimer=null; } hideOverlay(); }
+function showOverlay(msg, hint, secs, showBtn) {
+    let ov = document.getElementById('security-overlay');
+    if (!ov) {
+        ov = document.createElement('div'); ov.id = 'security-overlay';
+        ov.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,5,0.92);z-index:999999;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'DM Sans',sans-serif;color:#fff;text-align:center;padding:24px;`;
+        document.body.appendChild(ov);
+    }
+    ov.innerHTML = `<div style="font-size:60px;margin-bottom:14px;">🚨</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:8px;">${msg}</div>
+        <div style="font-size:15px;color:#7ec8a4;margin-bottom:20px;">${hint}</div>
+        <div style="font-size:16px;color:#d4edd9;margin-bottom:6px;">Auto-submitting in</div>
+        <div id="overlay-count" style="font-size:72px;font-weight:900;color:#f87171;line-height:1;">${secs}</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:4px;">seconds</div>
+        ${showBtn ? `<button onclick="enterFullscreen()" style="margin-top:24px;padding:13px 34px;border-radius:30px;border:none;background:linear-gradient(135deg,#2d8a4e,#1a5c34);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(45,138,78,0.5);">🔲 Return to Fullscreen</button>` : ''}`;
+    ov.style.display = 'flex';
+}
+function updateOverlayCount(n) { const el=document.getElementById('overlay-count'); if(el) el.textContent=n; }
+function hideOverlay() { const ov=document.getElementById('security-overlay'); if(ov) ov.style.display='none'; }
+</script>
+
+<div id="pdf-print-area"></div>
+<script>
+function generatePDF() {
+    const name = localStorage.getItem('cbtUserName') || 'Thunder';
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    let correct=0,incorrect=0,unanswered=0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++; else if (q.userAnswer===q.correctAnswer) correct++; else incorrect++;
+    });
+    const totalScore = (correct*mockTest.markingScheme.correct)+(incorrect*mockTest.markingScheme.incorrect);
+    const maxScore = mockTest.questions.length*mockTest.markingScheme.correct;
+    const pct = ((totalScore/maxScore)*100).toFixed(1);
+    const optionLabel = {a:'A',b:'B',c:'C',d:'D'};
+    let questionsHTML = '';
+    mockTest.questions.forEach((q,i) => {
+        const isCorrect = q.userAnswer===q.correctAnswer;
+        const isWrong = q.userAnswer&&!isCorrect;
+        const isSkipped = !q.userAnswer;
+        const statusColor = isCorrect?'#16a34a':isWrong?'#dc2626':'#9ca3af';
+        const statusLabel = isCorrect?'✓ Correct':isWrong?'✗ Wrong':'— Skipped';
+        const rowBg = isCorrect?'#f0fdf4':isWrong?'#fef2f2':'#fafafa';
+        let optionsHTML = '';
+        for (const [key,val] of Object.entries(q.options)) {
+            const isRight=key===q.correctAnswer, isUser=key===q.userAnswer;
+            let bg='transparent',fw='normal',prefix='';
+            if(isRight){bg='#dcfce7';fw='bold';prefix='✓ ';}
+            if(isUser&&!isRight){bg='#fee2e2';fw='bold';prefix='✗ ';}
+            optionsHTML+=`<div style="display:flex;gap:8px;padding:4px 8px;margin:2px 0;border-radius:4px;background:${bg};font-weight:${fw};font-size:12px;"><span style="min-width:18px;font-weight:700;">${optionLabel[key]}.</span><span>${prefix}${val}</span></div>`;
+        }
+        let yourAnswer = isSkipped
+            ? '<span style="color:#9ca3af;">Not Attempted</span>'
+            : `<span style="color:${isCorrect?'#16a34a':'#dc2626'};font-weight:bold;">${optionLabel[q.userAnswer]}. ${q.options[q.userAnswer]}</span>`;
+        questionsHTML+=`<div style="margin-bottom:18px;padding:14px 16px;border-radius:8px;background:${rowBg};border:1px solid #e5e7eb;page-break-inside:avoid;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div style="font-weight:700;font-size:13px;color:#374151;">Q${i+1}. ${q.text}</div>
+                <div style="font-weight:700;font-size:12px;color:${statusColor};white-space:nowrap;margin-left:12px;">${statusLabel}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:8px;">${optionsHTML}</div>
+            <div style="font-size:12px;border-top:1px solid #e5e7eb;padding-top:6px;margin-top:4px;">
+                <span style="color:#6b7280;">Your answer: </span>${yourAnswer}&nbsp;&nbsp;
+                <span style="color:#6b7280;">Correct: </span><span style="color:#16a34a;font-weight:bold;">${optionLabel[q.correctAnswer]}. ${q.options[q.correctAnswer]}</span>
+            </div></div>`;
+    });
+    const scoreColor = pct>=60?'#16a34a':pct>=35?'#d97706':'#dc2626';
+    const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
+        <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Political Science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
+            </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #d4eddb;border-top:none;padding:16px 24px;border-radius:0 0 10px 10px;margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SCORE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${totalScore}<span style="font-size:14px;color:#6b7280;">/${maxScore}</span></div></div>
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">PERCENTAGE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${pct}%</div></div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#16a34a;">CORRECT</div><div style="font-size:24px;font-weight:800;color:#16a34a;">${correct}</div></div>
+                <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#dc2626;">WRONG</div><div style="font-size:24px;font-weight:800;color:#dc2626;">${incorrect}</div></div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SKIPPED</div><div style="font-size:24px;font-weight:800;color:#6b7280;">${unanswered}</div></div>
+            </div>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #2d8a4e;">📋 Question-wise Answer Key</div>
+        ${questionsHTML}
+        <div style="text-align:center;margin-top:24px;padding:14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#6b7280;">Generated by <b>Thunderstudy CBT</b> | t.me/thunderstudy_official | ${dateStr}</div>
+    </div>`;
+    const printWin = window.open('','_blank','width=950,height=700,scrollbars=yes');
+    if (!printWin) { alert('Popup blocked! Please allow popups and try again.'); return; }
+    printWin.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Thunderstudy_PolSci_${name}_${dateStr.replace(/ /g,'-')}</title>
+    <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#fff;padding:20px;}@media print{body{padding:0;}.no-print{display:none !important;}}.print-btn{display:block;margin:0 auto 20px;padding:12px 36px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;}</style>
+    </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
+    printWin.document.close(); printWin.focus();
+}
+</script>
+
+</body>
+</html>
