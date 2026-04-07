@@ -928,11 +928,16 @@ const resultData = {
     maxScore: maxScore,
     correct: correct,
     wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
     skipped: unanswered,
-    totalQ: mockTest.questions.length,  // ✅ correct
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
     percentage: parseFloat(percentage),
     accuracy: parseFloat(accuracy),
-    timeTaken: mockTest.duration - timeLeft
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
     const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
@@ -942,9 +947,10 @@ fetch(GS_URL, {
     mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(resultData)
-}).then(() => {
-    localStorage.removeItem(storageKey);
-    localStorage.setItem(`synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
 }).catch(err => console.error("Sync failed", err));
     const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
     let index = [];
