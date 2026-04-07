@@ -929,7 +929,7 @@ const resultData = {
     correct: correct,
     wrong: incorrect,
     skipped: unanswered,
-    totalQ: totalQuestions,
+    totalQ: mockTest.questions.length,  // ✅ correct
     percentage: parseFloat(percentage),
     accuracy: parseFloat(accuracy),
     timeTaken: mockTest.duration - timeLeft
