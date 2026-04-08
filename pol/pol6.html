@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 <title>Thunderstudy CBT — Political Science</title>
 
 <script>
-const SUBJECT_ID  = "polsci";
+const SUBJECT_ID  = "pol";
 const CHAPTER_ID  = "pol6";
 </script>
 
@@ -1390,7 +1391,7 @@ const resultData = {
         .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
         .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
-    const storageKey = `thunderstudy_result_${sId}_${cId}`;
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
     const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
 fetch(GS_URL, {
