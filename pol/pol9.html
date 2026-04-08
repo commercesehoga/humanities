@@ -1,0 +1,1274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy CBT — Political Science</title>
+
+<script>
+const SUBJECT_ID  = "polsci";
+const CHAPTER_ID  = "pol9";
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary-color: #2d8a4e;
+    --primary-light: #4caf6f;
+    --primary-dark: #1a5c34;
+    --secondary-color: #7ec8a4;
+    --accent: #a8e6bf;
+    --correct-color: #2d8a4e;
+    --incorrect-color: #e05252;
+    --neutral-color: #607d8b;
+    --light-bg: #f0f7f2;
+    --white: #ffffff;
+    --dark-text: #1a2e1f;
+    --light-text: #2d4a36;
+    --card-bg: #ffffff;
+
+    --dark-bg: #0d1f14;
+    --dark-card: #152419;
+    --dark-primary: #4caf6f;
+    --dark-secondary: #7ec8a4;
+    --dark-text-color: #d4edd9;
+    --dark-border: #2a4a34;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+}
+
+/* ── DARK MODE ── */
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+body.dark-mode p, body.dark-mode span:not(.icon),
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,
+body.dark-mode h4,body.dark-mode h5,body.dark-mode h6,
+body.dark-mode label, body.dark-mode li { color: var(--dark-text-color) !important; }
+body.dark-mode a:not(.fancy-btn):not(.footer-btn):not(.button2):not(.join-btn) {
+    color: var(--dark-primary) !important; text-decoration: underline;
+}
+body.dark-mode .fancy-btn,body.dark-mode .footer-btn,body.dark-mode .join-btn,
+body.dark-mode .submit-fancy-btn,body.dark-mode .more-btn,body.dark-mode .back-btn,body.dark-mode .report-btn { color: white !important; }
+body.dark-mode #prev-btn { color: var(--dark-primary) !important; border-color: var(--dark-primary) !important; }
+body.dark-mode #next-btn { color: #000 !important; background-color: var(--dark-primary) !important; }
+body.dark-mode #mark-btn { color: var(--dark-secondary) !important; border-color: var(--dark-secondary) !important; }
+body.dark-mode #mark-btn.marked { background-color: var(--dark-secondary) !important; color: #000 !important; }
+body.dark-mode #start-test-btn { color: white !important; }
+body.dark-mode .close-btn { color: var(--dark-text-color) !important; }
+body.dark-mode .stat-card h3 { color: var(--dark-text-color) !important; }
+body.dark-mode .question-number { color: var(--dark-primary) !important; }
+body.dark-mode .question-text { color: var(--dark-text-color) !important; }
+body.dark-mode .progress-text span { color: #8ab49a !important; }
+body.dark-mode .palette-title span { color: var(--dark-text-color) !important; }
+body.dark-mode .test-info strong { color: #fff !important; }
+body.dark-mode .test-info span { color: #aaccb4 !important; }
+body.dark-mode .sidebar {
+    background-color: var(--dark-card);
+    box-shadow: 2px 0 8px rgba(0,200,80,0.08);
+}
+body.dark-mode .sidebar-header h2,
+body.dark-mode .test-header h2,
+body.dark-mode .modal-header h2 { color: var(--dark-primary); }
+body.dark-mode .timer { background-color: #7a1e1e; color: #fff; }
+body.dark-mode .question-container {
+    background-color: var(--dark-card);
+    box-shadow: 0 2px 8px rgba(0,200,80,0.08);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .modal-content { background-color: var(--dark-card); color: var(--dark-text-color); }
+body.dark-mode .stat-card { background-color: #0d1f14; border: 1px solid var(--dark-border); }
+body.dark-mode #test-screen { background: var(--dark-bg) !important; }
+body.dark-mode .mobile-top-bar { background: var(--dark-card) !important; border-color: var(--dark-border) !important; }
+body.dark-mode .mobile-timer-clone { background-color: #7a1e1e !important; }
+body.dark-mode #start-screen { background-color: #0d1f14 !important; }
+body.dark-mode #start-screen h1 { color: var(--dark-primary) !important; }
+body.dark-mode #start-screen > p { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen li { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen strong { color: #fff !important; }
+body.dark-mode #start-screen input[type="text"] {
+    background: #1a3224 !important; color: #fff !important; border-color: var(--dark-border) !important;
+}
+body.dark-mode #instruction-screen { background: #0d1f14 !important; }
+body.dark-mode #instruction-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-box { background: linear-gradient(135deg, #152a1e, #1a2e20) !important; }
+body.dark-mode .instruction-title { color: var(--dark-primary) !important; border-left-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-list li { background: #1a2e1f !important; color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-list li:hover { background: #1e3828 !important; }
+body.dark-mode .custom-check { border-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox input:checked + .custom-check::after { color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox { color: var(--dark-text-color) !important; }
+
+/* ── OPTIONS ── */
+.option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border: 1.5px solid #c8e6d4;
+    border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+    background: #fff; transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+}
+.option:hover { border-color: #2d8a4e; background: #edf7f1; }
+.option.selected { border-color: #1a5c34; background: #c8e6d4; }
+.option.correct { border-color: #2d8a4e !important; background: rgba(45,138,78,0.15) !important; }
+.option.incorrect { border-color: #e53935 !important; background: rgba(229,57,53,0.1) !important; }
+.opt-letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid #b2dcc2; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; background: #edf7f1; color: #2d8a4e;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.option.selected .opt-letter { background: #1a5c34; border-color: #1a5c34; color: #fff; }
+.option.correct .opt-letter { background: #2d8a4e; border-color: #2d8a4e; color: #fff; }
+.option.incorrect .opt-letter { background: #e53935; border-color: #e53935; color: #fff; }
+.opt-text { font-size: 15px; color: #1a2e1f; flex: 1; line-height: 1.5; }
+.option.selected .opt-text { color: #1a5c34; font-weight: 600; }
+.option.correct .opt-text { color: #1a5c34; font-weight: 600; }
+.option.incorrect .opt-text { color: #b71c1c; font-weight: 600; }
+.option input[type="radio"] { display: none; }
+body.dark-mode .option { background: #1a2e1f !important; border-color: #2a4a34 !important; }
+body.dark-mode .option:hover { border-color: #4caf6f !important; background: #1e3828 !important; }
+body.dark-mode .option.selected { border-color: #7ec8a4 !important; background: #173024 !important; }
+body.dark-mode .opt-letter { background: #1e3828 !important; border-color: #2a4a34 !important; color: #7ec8a4 !important; }
+body.dark-mode .option.selected .opt-letter { background: #2d8a4e !important; border-color: #2d8a4e !important; color: #fff !important; }
+body.dark-mode .opt-text { color: var(--dark-text-color) !important; }
+body.dark-mode .option.selected .opt-text { color: #a8e6bf !important; }
+body.dark-mode .option.correct { border-color: #4caf6f !important; background: rgba(45,138,78,0.2) !important; }
+body.dark-mode .option.incorrect { border-color: #ef9a9a !important; background: rgba(229,57,53,0.15) !important; }
+
+.correct-indicator { margin-left: 8px; font-weight: bold; color: #2d8a4e; font-size: 13px; }
+.incorrect-indicator { margin-left: 8px; font-weight: bold; color: #e53935; font-size: 13px; }
+
+/* ── INSTRUCTION BOX ── */
+.instruction-box {
+    max-width: 900px; margin: auto;
+    background: linear-gradient(135deg, #e8f5ec, #d4eddb);
+    padding: 30px; border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(45,138,78,0.15);
+    line-height: 1.8;
+}
+.instruction-title {
+    font-size: 24px; font-weight: 800; color: #1a5c34;
+    margin-bottom: 15px; border-left: 5px solid #2d8a4e; padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+.instruction-list { padding-left: 20px; }
+.instruction-list li {
+    margin-bottom: 10px; font-size: 16px; background: white;
+    padding: 10px 12px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(45,138,78,0.1); transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.instruction-list li:hover { transform: translateX(5px); background: #edf7f1; border-left-color: #2d8a4e; }
+.instruction-checkbox { display: flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 16px; font-weight: 600; }
+.instruction-checkbox input { display: none; }
+.custom-check {
+    width: 20px; height: 20px; border: 2px solid #2d8a4e;
+    border-radius: 4px; display: inline-block; position: relative; cursor: pointer;
+}
+.instruction-checkbox input:checked + .custom-check::after {
+    content: "\2714"; position: absolute; top: -2px; left: 3px; font-size: 16px; color: #2d8a4e;
+}
+
+#start-test-btn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    box-shadow: 0 6px 15px rgba(45,138,78,0.4); transition: 0.3s; border-radius: 8px;
+}
+#start-test-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,138,78,0.6); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 300px; background-color: var(--white); height: 100vh;
+    padding: 20px; box-shadow: 2px 0 8px rgba(45,138,78,0.12);
+    position: fixed; overflow-y: auto; right: 0; left: auto;
+    border-left: 1px solid #d4eddb;
+}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.sidebar-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.test-info { margin-bottom: 20px; }
+.test-info p { margin: 5px 0; color: var(--light-text); display: flex !important; gap: 6px; font-size: 16px !important; }
+.test-info strong { font-weight: 700 !important; color: #000 !important; }
+.question-palette { margin-bottom: 20px; }
+.palette-title { font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; overflow-x: hidden; }
+.palette-btn {
+    width: 100%; max-width: 40px; aspect-ratio: 1/1; border-radius: 50%;
+    border: 1px solid #ddd; background-color: #FF474D;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; margin: auto; font-size: 12px; font-weight: 700;
+}
+.palette-btn:hover { background-color: #f59e0b; transform: scale(1.1); }
+.palette-btn.answered { background-color: #4caf6f; color: #fff; border-color: #2d8a4e; }
+.palette-btn.marked { background-color: #90D5FF; color: #000; border-color: #0077cc; }
+.palette-btn.current { background-color: #fff; border: 2.5px solid var(--primary-color); color: var(--primary-color); }
+.palette-btn.review-correct { background-color: #22c55e !important; color: #fff !important; border-color: #16a34a !important; }
+.palette-btn.review-wrong { background-color: #ef4444 !important; color: #fff !important; border-color: #dc2626 !important; }
+.palette-btn.review-unanswered { background-color: #3b82f6 !important; color: #fff !important; border-color: #2563eb !important; }
+.palette-btn.review-correct.current,
+.palette-btn.review-wrong.current,
+.palette-btn.review-unanswered.current { outline: 3px solid var(--primary-color); outline-offset: 1px; }
+body.dark-mode .palette-btn { background-color: #FF474D !important; color: var(--dark-primary); border: 2px solid var(--dark-primary); }
+body.dark-mode .palette-btn.answered { background-color: #2d8a4e !important; color: white !important; border-color: #2d8a4e !important; }
+body.dark-mode .palette-btn.marked { background-color: #0077cc !important; color: white !important; border-color: #0077cc !important; }
+body.dark-mode .palette-btn.current { background-color: white !important; border: 2.5px solid var(--dark-primary) !important; color: var(--dark-primary) !important; }
+body.dark-mode .palette-btn.review-correct { background-color: #16a34a !important; border-color: #15803d !important; }
+body.dark-mode .palette-btn.review-wrong { background-color: #dc2626 !important; border-color: #b91c1c !important; }
+body.dark-mode .palette-btn.review-unanswered { background-color: #2563eb !important; border-color: #1d4ed8 !important; }
+
+/* ── BUTTONS ── */
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: #edf7f1; }
+.mark-btn {
+    margin-left: 10px; background-color: transparent;
+    border: 1.5px solid #2d8a4e; color: #2d8a4e;
+    padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+.mark-btn.marked { background-color: #2d8a4e; color: white; }
+body.dark-mode .btn-primary { background-color: var(--dark-primary); color: #000; }
+body.dark-mode .btn-outline { border-color: var(--dark-primary); color: var(--dark-primary); }
+body.dark-mode .mark-btn { border-color: var(--dark-secondary); color: var(--dark-secondary); }
+body.dark-mode .mark-btn.marked { background-color: var(--dark-secondary); color: #000; }
+
+/* ── FANCY BUTTONS ── */
+.fancy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 16px; font-weight: 700; border-radius: 50px;
+    border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.4px;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+.fancy-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; border-radius: inherit; }
+.fancy-btn:hover::after { background: rgba(255,255,255,0.12); }
+.fancy-btn:active { transform: scale(0.96) !important; }
+.fancy-btn:hover { transform: translateY(-3px) scale(1.03); }
+.join-btn { background: linear-gradient(135deg, #0088cc, #006699); color: white; box-shadow: 0 5px 18px rgba(0,136,204,0.45); }
+.join-btn:hover { box-shadow: 0 8px 24px rgba(0,136,204,0.65); color: white; }
+.submit-fancy-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); color: white; box-shadow: 0 5px 18px rgba(45,138,78,0.45); flex: 1; max-width: 280px; }
+.submit-fancy-btn:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.65); }
+.pdf-download-btn {
+    background: linear-gradient(135deg, #f97316, #ea580c); color: white !important;
+    font-weight: 700; border-radius: 30px; transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4); padding: 13px 28px; font-size: 16px;
+    flex: 1; max-width: 280px; display: inline-flex; align-items: center; justify-content: center;
+}
+.pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(249,115,22,0.6); color: white !important; }
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
+    text-decoration: none; color: white; letter-spacing: 0.3px;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease, filter 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.footer-btn:hover { transform: translateY(-3px) scale(1.06); filter: brightness(1.1); color: white; }
+.footer-btn:active { transform: scale(0.95); }
+.more-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); box-shadow: 0 4px 14px rgba(45,138,78,0.4); }
+.more-btn:hover { box-shadow: 0 7px 20px rgba(45,138,78,0.65); }
+.back-btn { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
+.back-btn:hover { box-shadow: 0 7px 20px rgba(34,197,94,0.65); }
+.report-btn { background: linear-gradient(135deg, #f97316, #dc2626); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+.report-btn:hover { box-shadow: 0 7px 20px rgba(239,68,68,0.65); }
+
+/* ── LAYOUT ── */
+.main-content { flex: 1; margin-left: 0; margin-right: 300px; padding: 20px; }
+.test-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb;
+}
+.test-header h2 { font-family: 'Playfair Display', serif; color: var(--primary-dark); font-size: 20px; }
+body.dark-mode .test-header h2 { color: var(--dark-primary) !important; }
+.timer {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white; padding: 10px 20px; border-radius: 40px;
+    font-weight: 800; font-size: 18px; min-width: 140px; text-align: center;
+    font-family: 'DM Sans', monospace; letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+.progress-container { margin-bottom: 20px; }
+.progress-bar { height: 10px; background-color: #d4eddb; border-radius: 5px; overflow: hidden; }
+.progress { height: 100%; background: linear-gradient(90deg, #2d8a4e, #7ec8a4); width: 0%; transition: width 0.3s; border-radius: 5px; }
+.progress-text { display: flex; justify-content: space-between; margin-top: 5px; font-size: 14px; color: var(--light-text); }
+.question-container {
+    background-color: var(--white); border-radius: 12px; padding: 24px;
+    margin-bottom: 20px; box-shadow: 0 4px 16px rgba(45,138,78,0.1);
+    border: 1px solid #d4eddb;
+}
+.question-number { color: var(--primary-color); font-weight: 800; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.question-text { margin-bottom: 20px; font-size: 17px; line-height: 1.6; color: var(--dark-text); }
+.options { margin-left: 0; }
+.navigation-btns { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+.submit-section {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 620px; margin: 24px auto; gap: 14px; flex-wrap: wrap;
+}
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,30,10,0.6); z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: white; border-radius: 14px; width: 80%; max-width: 600px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.modal-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--light-text); }
+.result-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card { background-color: var(--light-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #d4eddb; }
+.stat-card h3 { color: #000; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { font-size: 28px; font-weight: 800; }
+.correct-stat { color: var(--correct-color); }
+.incorrect-stat { color: var(--incorrect-color); }
+.score-stat { color: var(--primary-color); }
+.review-btn { margin-top: 20px; width: 100%; }
+.button2 {
+    background-color: #2d8a4e; color: white; border: none;
+    padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 30px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(45,138,78,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.button2:hover { background-color: #1a5c34; box-shadow: 0 6px 12px rgba(45,138,78,0.5); color: #fff; }
+
+/* ── DARK MODE TOGGLE ── */
+#dark-mode-toggle-bottom {
+    position: absolute; top: 18px; right: 18px; font-size: 22px; padding: 8px 18px;
+    border-radius: 40px; border: none; cursor: pointer;
+    background: linear-gradient(45deg, #1a5c34, #2d8a4e); color: white;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 15px rgba(45,138,78,0.5);
+    transition: background 0.4s, box-shadow 0.4s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+}
+#dark-mode-toggle-bottom:hover { box-shadow: 0 6px 20px rgba(45,138,78,0.8); }
+body.dark-mode #dark-mode-toggle-bottom {
+    background: linear-gradient(45deg, #f7971e, #ffd200) !important;
+    box-shadow: 0 4px 15px rgba(255,210,0,0.6) !important;
+}
+body.dark-mode #dark-mode-toggle-bottom .icon { color: #333 !important; }
+body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important; }
+
+#test-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-bg); z-index: 9998; display: none; overflow: auto; }
+#user-name-display {
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 14px;
+}
+.mobile-top-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #d4eddb;
+        margin-bottom: 8px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-timer-clone {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white; padding: 6px 14px; border-radius: 30px;
+        font-weight: 800; font-size: 15px; min-width: 100px; text-align: center;
+    }
+    #mobile-name-display {
+        background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+        color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;
+    }
+    #user-name-display { display: none !important; }
+    .sidebar .timer { display: none !important; }
+    .sidebar .sidebar-header { display: none !important; }
+    body { display: flex; flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; right: 0; left: 0; box-shadow: none; margin-bottom: 10px; }
+    .question-palette { max-height: 200px; overflow-y: auto; }
+    .main-content { margin: 0 !important; width: 100%; padding: 10px; }
+    .navigation-btns { flex-direction: row !important; gap: 8px; align-items: center; }
+    #prev-btn { padding: 8px 14px !important; font-size: 13px !important; border-radius: 6px !important; flex-shrink: 0; }
+    #next-btn { padding: 14px 28px !important; font-size: 17px !important; border-radius: 8px !important; flex: 1; }
+    .navigation-btns > div { display: flex; flex: 1; gap: 8px; align-items: center; }
+    #mark-btn { font-size: 11px !important; padding: 6px 8px !important; flex-shrink: 0; }
+}
+@media (max-width: 576px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } .result-stats { grid-template-columns: 1fr; } }
+#pdf-print-area { display: none; }
+@media print {
+    body > * { display: none !important; }
+    #pdf-print-area { display: block !important; font-family: Arial, sans-serif; color: #111; padding: 20px; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:white;z-index:9999;display:flex;
+    flex-direction:column;justify-content:flex-start;align-items:center;
+    text-align:center;padding:40px 20px 40px;overflow-y:auto;
+    font-family:'DM Sans',sans-serif;">
+
+<button id="dark-mode-toggle-bottom" aria-label="Toggle dark mode">
+  <span class="icon" style="display:inline-block;transition:transform 0.6s ease;">🌙</span>
+  <span style="font-size:13px;font-weight:700;letter-spacing:0.5px;">Dark</span>
+</button>
+
+<!-- Logo / Brand -->
+<div style="margin-bottom:6px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a5c34,#4caf6f);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+    box-shadow:0 8px 24px rgba(45,138,78,0.35);font-size:34px;">🗳️</div>
+</div>
+
+<h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
+  political science
+</h1>
+  <p style="font-size:16px;margin:6px 0;">Chapter <strong style="color:#1a5c34;">9</strong></p>
+<p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
+
+<a href="https://t.me/thunderstudy_official" target="_blank"
+  style="display:inline-flex;align-items:center;gap:8px;margin:8px 0 14px;
+  background:linear-gradient(135deg,#0088cc,#006699);color:white;text-decoration:none;
+  padding:10px 24px;border-radius:30px;font-size:15px;font-weight:700;
+  box-shadow:0 5px 16px rgba(0,136,204,0.45);
+  transition:transform 0.18s,box-shadow 0.18s;"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 22px rgba(0,136,204,0.65)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 5px 16px rgba(0,136,204,0.45)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.04 9.607c-.148.666-.543.828-1.098.516l-3.04-2.24-1.467 1.413c-.162.162-.298.298-.611.298l.217-3.083 5.613-5.067c.244-.217-.054-.337-.378-.12L7.08 14.807 4.09 13.89c-.657-.205-.67-.657.137-.973l10.88-4.196c.548-.198 1.027.133.855.973z"/>
+  </svg>
+  @thunderstudy_official
+</a>
+
+<div style="max-width:560px;text-align:left;margin:10px auto 18px;
+  background:linear-gradient(135deg,#edf7f1,#d4eddb);
+  border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
+  <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
+  <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
+    <li><strong>50 Questions</strong></li>
+    <li><strong>60 Minutes</strong> total time</li>
+    <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
+    <li>No penalty for <strong>unanswered</strong> questions</li>
+    <li>Test <strong>auto-submits</strong> when time ends</li>
+    <li>Do <strong>not switch tabs</strong> or exit fullscreen during test</li>
+  </ul>
+</div>
+
+<div style="margin:10px 0;">
+  <input type="text" id="username-input" placeholder="Enter your name"
+    style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
+    font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
+</div>
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
+
+  <button onclick="startMock()" style="
+      width:260px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(45,138,78,0.45);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 28px rgba(45,138,78,0.65)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(45,138,78,0.45)'"
+    onmousedown="this.style.transform='scale(0.97)'"
+    onmouseup="this.style.transform='translateY(-3px) scale(1.04)'">
+    🚀 Start Mock
+  </button>
+
+  <button onclick="window.location.href='https://commercesehoga.github.io/commerce/bst/result.html'" style="
+      width:260px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(34,197,94,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📊 Previous Result
+  </button>
+
+  <button onclick="window.open('https://commercesehoga.blogspot.com/','_blank')" style="
+      width:260px;background:linear-gradient(135deg,#2d8a4e,#7ec8a4);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(126,200,164,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📚 More Mock Tests
+  </button>
+
+</div>
+</div>
+
+<!-- INSTRUCTION SCREEN -->
+<div id="instruction-screen" style="
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:white;z-index:9999;display:none;overflow:auto;padding:30px;">
+<h2 style="text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;color:#1a5c34;">Please read the instructions carefully</h2>
+<div class="instruction-box">
+<h3 class="instruction-title">General Instructions</h3>
+<ol class="instruction-list">
+<li>Total duration of test is <strong>60 minutes</strong>. Timer shown in sidebar.</li>
+<li>Test <strong>auto-submits</strong> when the timer reaches zero.</li>
+<li>The test runs in <strong>fullscreen mode</strong>. Exiting fullscreen starts a <strong>5-second countdown</strong> to auto-submit.</li>
+<li><strong>Do not switch tabs</strong>. Switching tabs starts a <strong>2-second countdown</strong> to auto-submit.</li>
+<li>Return to fullscreen or the tab before the countdown ends to continue safely.</li>
+<li>Question palette on the right shows answered, marked, and current status.</li>
+<li>Each correct answer: <strong>+5 marks</strong>. Each wrong answer: <strong>−1 mark</strong>. Unanswered: <strong>0 marks</strong>.</li>
+</ol>
+<div style="margin-top:20px;">
+  <strong>Question Status Legend:</strong>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;border:2px solid #2d8a4e;background:white;"></div><span>Current</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#FF474D;border:1px solid #ddd;"></div><span>Unanswered</span></div>
+  </div>
+</div>
+<label class="instruction-checkbox">
+    <input type="checkbox" id="agree-checkbox">
+    <span class="custom-check"></span>
+    I have read and understood all instructions
+</label>
+<br><br>
+<button id="start-test-btn" disabled style="
+background:#2d8a4e;color:white;padding:12px 24px;border:none;
+border-radius:8px;font-size:18px;cursor:not-allowed;opacity:0.6;
+font-family:'DM Sans',sans-serif;font-weight:700;">
+Start Test
+</button>
+</div>
+</div>
+
+<!-- TEST SCREEN -->
+<div id="test-screen">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>political science</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
+    </div>
+        <div class="timer">01:00:00</div>
+        
+    <div class="test-info">
+        <p><strong>Subject:</strong> <span id="subject-label">political science</span></p>
+        <p><strong>Questions:</strong> 50</p>
+        <p><strong>Duration:</strong> 60 min</p>
+        <p><strong>Marking:</strong> +5 / -1</p>
+        <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
+    </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
+    <div class="question-palette">
+        <div class="palette-title">
+            <span>Questions</span>
+            <span id="answered-count">0/50</span>
+        </div>
+        <div class="palette-grid" id="question-palette-grid"></div>
+        <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
+    </div>
+</div>
+
+<div class="main-content">
+<div class="mobile-top-bar">
+    <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
+    <div id="mobile-name-display">👤 Thunder</div>
+</div>
+
+<div class="test-header">
+  <div id="user-name-display">👤 Thunder</div>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
+    <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
+  </div>
+</div>
+
+<div class="question-container">
+<div class="question-number">Question <span id="q-number">1</span></div>
+<div class="question-text" id="question-text"></div>
+<div class="options" id="options-container"></div>
+<div class="navigation-btns">
+<button class="btn btn-outline" id="prev-btn">&#8592; Previous</button>
+<div>
+<button class="mark-btn" id="mark-btn">Mark for Review</button>
+<button class="btn btn-primary" id="next-btn">Next &#8594;</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+    <a href="https://t.me/thunderstudy_official" target="_blank" class="fancy-btn join-btn">⚡ Join Thunder</a>
+    <button class="fancy-btn submit-fancy-btn" id="submit-test-btn">✅ Submit Test</button>
+</div>
+
+<footer style="background:linear-gradient(135deg,#0a1f0e,#152419);color:#d4edd9;text-align:center;padding:22px 16px;margin-top:10px;border-top:2px solid #2d8a4e;">
+   <p style="font-size:13px;color:#7ec8a4;margin-bottom:14px;">© 2025 Thunder. All Rights Reserved.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn more-btn">📚 More Mock</a>
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn back-btn">🌐 Back To Website</a>
+    <a href="https://t.me/mindmaster_robot" target="_blank" class="footer-btn report-btn">🚨 Report Error</a>
+</div>
+</footer>
+
+<!-- Results Modal -->
+<div class="modal" id="results-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🗳️ Test Results</h2>
+<button class="close-btn" id="close-modal">×</button>
+</div>
+<div class="result-stats">
+<div class="stat-card"><h3>Correct</h3><p class="correct-stat" id="correct-answers">0</p></div>
+<div class="stat-card"><h3>Incorrect</h3><p class="incorrect-stat" id="incorrect-answers">0</p></div>
+<div class="stat-card"><h3>Unanswered</h3><p style="color:#6b7280;" id="unanswered">50</p></div>
+<div class="stat-card"><h3>Total Score</h3><p class="score-stat" id="total-score">0</p></div>
+</div>
+<div style="margin-top:8px;padding:12px;background:#edf7f1;border-radius:8px;border:1px solid #d4eddb;">
+<p style="margin:3px 0;">Percentage: <strong><span id="percentage">0</span>%</strong></p>
+<p style="margin:3px 0;">Accuracy: <strong><span id="accuracy">0</span>%</strong></p>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+<button class="btn btn-primary review-btn" id="review-btn" style="flex:1;margin-top:0;border-radius:8px;">Review Answers</button>
+<button class="btn pdf-download-btn" id="download-pdf-btn" style="flex:1;">📄 Download PDF</button>
+</div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /test-screen -->
+
+<script>
+/* ============================================================
+   political science MOCK TEST DATA
+   ============================================================ */
+const mockTest = {
+    title: "political science Mock",
+    questions: [
+
+// ─── COMMUNALISM & SECULARISM ──────────────────────────────────────────────
+{id:1,section:"Recent Issues and Challenges",text:"Which of the following best defines 'communalism' as understood in Indian political discourse?",options:{a:"A belief in the superiority of one's own religion over others, leading to political mobilisation along religious lines",b:"A system where all religious communities coexist peacefully",c:"The idea of a secular state with no official religion",d:"The practice of celebrating all religious festivals together"},correctAnswer:"a",explanation:"Communalism refers to the ideology that a religious community has common political, economic, and social interests, often leading to antagonism against other communities and politicisation of religion.",marked:false,userAnswer:null},
+
+{id:2,section:"Recent Issues and Challenges",text:"The 1980s and 1990s saw a sharp rise in communal violence in India. Which of the following is NOT a reason cited by political scientists for this rise?",options:{a:"Politicisation of religious identity by parties like BJP and Congress for electoral gains",b:"Economic liberalisation reducing communal tensions by creating jobs",c:"Demolition of Babri Masjid (1992) and subsequent riots",d:"Rise of militant Sikh separatism and state response (Operation Blue Star, 1984 anti-Sikh riots)"},correctAnswer:"b",explanation:"Economic liberalisation (1991) did not reduce communal tensions; in fact, scholars argue that economic insecurities exacerbated identity politics. The other options are well-documented causes.",marked:false,userAnswer:null},
+
+{id:3,section:"Recent Issues and Challenges",text:"The term 'pseudo-secularism' is used by critics (particularly from the right) to mean:",options:{a:"A truly neutral state that treats all religions equally",b:"The alleged practice of Indian secularism that disproportionately appeases minorities (especially Muslims) while ignoring majority Hindu sentiments",c:"A secularism that gives preference to Hinduism",d:"The absence of any religious freedom"},correctAnswer:"b",explanation:"Critics of Indian secularism, especially from Hindu nationalist quarters, argue that it is 'pseudo-secular' because it grants special concessions to minorities (e.g., personal laws) while not doing the same for Hindus, thereby 'appeasing' minorities.",marked:false,userAnswer:null},
+
+{id:4,section:"Recent Issues and Challenges",text:"The Shah Bano case (1985) raised which fundamental issue regarding Indian secularism?",options:{a:"Whether Muslim personal law can override secular criminal law",b:"The right of a divorced Muslim woman to maintenance under Section 125 CrPC versus Muslim Personal Law",c:"Whether the Supreme Court can interpret the Quran",d:"The validity of triple talaq"},correctAnswer:"b",explanation:"The Supreme Court granted maintenance to Shah Bano under CrPC. The Rajiv Gandhi government passed the Muslim Women (Protection of Rights on Divorce) Act, 1986, nullifying the judgment — raising debates about minority appeasement versus uniform civil code.",marked:false,userAnswer:null},
+
+{id:5,section:"Recent Issues and Challenges",text:"The 2002 Gujarat riots are significant in the study of recent challenges because they:",options:{a:"Were the first communal riots in independent India",b:"Highlighted the alleged complicity of a state government in communal violence and raised questions about the adequacy of the secular constitutional framework",c:"Led to the immediate dismissal of the state government",d:"Resulted in the declaration of President's Rule within a week"},correctAnswer:"b",explanation:"The Godhra train burning and subsequent riots saw allegations that the Narendra Modi-led state government failed to control or even abetted violence. The Supreme Court later appointed an SIT, but the issue remains a flashpoint in debates on secularism.",marked:false,userAnswer:null},
+
+{id:6,section:"Recent Issues and Challenges",text:"The 'Sabarimala judgment' (2018) by the Supreme Court dealt with which conflict between rights and religious practice?",options:{a:"Ban on entry of Muslim women into mosques",b:"Lifting the ban on entry of women of menstruating age (10–50 years) into the Sabarimala Ayyappa temple",c:"Right of Dalits to enter temples",d:"Use of loudspeakers for azaan"},correctAnswer:"b",explanation:"The Supreme Court held that the practice of excluding women aged 10–50 violated their fundamental rights to equality and freedom of religion, sparking a debate on the limits of religious custom versus constitutional morality.",marked:false,userAnswer:null},
+
+{id:7,section:"Recent Issues and Challenges",text:"The Uniform Civil Code (UCC) debate in India revolves around:",options:{a:"Having one criminal code for all citizens",b:"Replacing all personal laws (Hindu, Muslim, Christian, etc.) with a common set of civil laws governing marriage, divorce, inheritance, adoption for all citizens regardless of religion",c:"Creating a common dress code for government employees",d:"Standardising civil service examination patterns across states"},correctAnswer:"b",explanation:"Article 44 of the Directive Principles mentions a Uniform Civil Code. Proponents argue it promotes national integration and gender justice; opponents say it violates minority rights and cultural diversity.",marked:false,userAnswer:null},
+
+// ─── ECONOMIC REFORMS (1991) & ITS CHALLENGES ──────────────────────────────
+{id:8,section:"Recent Issues and Challenges",text:"The immediate trigger for India's New Economic Policy (NEP) of 1991 was:",options:{a:"The collapse of the Soviet Union",b:"A severe balance of payments crisis, foreign exchange reserves barely sufficient for two weeks of imports",c:"Pressure from the World Bank to democratise",d:"The Gulf War that increased oil prices"},correctAnswer:"b",explanation:"India faced a critical BOP crisis in 1991, with reserves at $1.2 billion (2 weeks' imports). The government pledged 67 tonnes of gold to the Bank of England to secure a loan, triggering reforms under PM Narasimha Rao and FM Manmohan Singh.",marked:false,userAnswer:null},
+
+{id:9,section:"Recent Issues and Challenges",text:"Which of the following is NOT a component of the 1991 economic reforms?",options:{a:"Liberalisation — reducing industrial licensing and import restrictions",b:"Privatisation — disinvestment of public sector undertakings",c:"Nationalisation of private banks",d:"Globalisation — opening economy to foreign direct investment and trade"},correctAnswer:"c",explanation:"Nationalisation of banks occurred in 1969 and 1980. The 1991 reforms moved away from nationalisation toward privatisation and liberalisation, not toward further nationalisation.",marked:false,userAnswer:null},
+
+{id:10,section:"Recent Issues and Challenges",text:"Critics of economic liberalisation from a political science perspective argue that it has:",options:{a:"Completely eliminated poverty in India",b:"Increased regional, class, and caste inequalities, reduced state capacity for welfare, and led to agrarian distress and farmer suicides",c:"Strengthened the public sector and reduced corporate power",d:"Led to the collapse of all political parties"},correctAnswer:"b",explanation:"Critics (e.g., P. Sainath, Jean Drèze) argue that liberalisation reduced public investment in health, education, agriculture; increased informalisation of labour; and exacerbated inequalities, as seen in rising farmer suicides and Naxalite insurgencies.",marked:false,userAnswer:null},
+
+{id:11,section:"Recent Issues and Challenges",text:"The term 'disinvestment' in the Indian context refers to:",options:{a:"Investment in new public sector units",b:"Sale of government equity in public sector undertakings to private entities or the public, reducing state ownership",c:"Nationalisation of private companies",d:"Investment in foreign markets by Indian companies"},correctAnswer:"b",explanation:"Disinvestment is a key component of privatisation. The government has sold stakes in PSUs like Hindustan Zinc, Maruti, BPCL, etc., to raise revenue and reduce fiscal burden, but critics argue it sells profitable assets.",marked:false,userAnswer:null},
+
+{id:12,section:"Recent Issues and Challenges",text:"The 'right to food' campaign in India emerged as a response to:",options:{a:"Excess food grain production leading to wastage",b:"Widespread hunger and malnutrition despite buffer stocks and the failure of the Public Distribution System (PDS) to reach the poor",c:"Demand for export of food grains",d:"Introduction of GM crops"},correctAnswer:"b",explanation:"The Right to Food campaign, led by organisations like PUCL, used litigation (People's Union for Civil Liberties vs Union of India) to argue that the right to life includes the right to food, leading to Supreme Court orders for food schemes like mid-day meals.",marked:false,userAnswer:null},
+
+{id:13,section:"Recent Issues and Challenges",text:"The Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA), 2005, is significant because it:",options:{a:"Provides 100 days of guaranteed wage employment per rural household, creating a legal right to work",b:"Is a purely voluntary scheme with no legal guarantee",c:"Applies only to urban areas",d:"Provides unemployment dole without work"},correctAnswer:"a",explanation:"MGNREGA is a landmark rights-based law that guarantees 100 days of employment. It empowers rural poor, creates assets, and has been a political response to agrarian distress and liberalisation-induced job losses.",marked:false,userAnswer:null},
+
+// ─── CRIMINALISATION OF POLITICS & CORRUPTION ──────────────────────────────
+{id:14,section:"Recent Issues and Challenges",text:"The term 'criminalisation of politics' refers to:",options:{a:"Political parties advocating violence as a legitimate means",b:"The increasing entry of candidates with criminal backgrounds into legislatures, often aided by political parties, and the nexus between crime and politics",c:"The use of police forces for election duty",d:"The banning of political parties by the government"},correctAnswer:"b",explanation:"Criminalisation means persons facing serious criminal charges (murder, kidnapping, extortion) contest elections and become MPs/MLAs, often with party support. The Supreme Court has tried to curb this through judgments on disclosure and disqualification.",marked:false,userAnswer:null},
+
+{id:15,section:"Recent Issues and Challenges",text:"The Supreme Court's judgment in Lily Thomas vs Union of India (2013) ruled that:",options:{a:"All politicians with pending cases must resign",b:"Any sitting MP or MLA convicted of a crime with a sentence of 2 years or more will be immediately disqualified, without a three-month appeal period as previously allowed",c:"Criminal cases against politicians cannot be investigated",d:"Political parties are immune from anti-defection law"},correctAnswer:"b",explanation:"The judgment struck down Section 8(4) of the Representation of the People Act, which allowed convicted lawmakers to continue if they appealed within three months. Now, conviction leads to immediate disqualification.",marked:false,userAnswer:null},
+
+{id:16,section:"Recent Issues and Challenges",text:"The 2G spectrum scam (2010) involved allegations of:",options:{a:"Overpricing of coal blocks to private companies",b:"Undervaluation and arbitrary allocation of 2G telecom licenses at 2001 prices (not auctioned), causing massive revenue loss to the exchequer",c:"Fake encounters by police",d:"Illegal mining in Karnataka"},correctAnswer:"b",explanation:"The Comptroller and Auditor General (CAG) estimated a presumptive loss of ₹1.76 lakh crore. The scam led to the arrest of a minister (A. Raja) and corporate figures, and sparked debates on discretionary powers of ministers.",marked:false,userAnswer:null},
+
+{id:17,section:"Recent Issues and Challenges",text:"The Anna Hazare-led anti-corruption movement (2011) demanded the passage of which bill?",options:{a:"Right to Information Act",b:"Lokpal Bill — creation of an independent ombudsman with power to investigate and prosecute politicians and bureaucrats",c:"Whistleblowers Protection Act",d:"Prevention of Corruption Act amendment"},correctAnswer:"b",explanation:"Anna Hazare's fast-unto-death at Jantar Mantar, Delhi, galvanised middle-class support for a strong Lokpal. The government eventually passed the Lokpal and Lokayuktas Act, 2013, though activists criticised it as weak.",marked:false,userAnswer:null},
+
+{id:18,section:"Recent Issues and Challenges",text:"The Right to Information (RTI) Act, 2005, is considered a landmark in governance because it:",options:{a:"Allows citizens to access information from public authorities, promoting transparency and accountability",b:"Gives the government unlimited power to withhold information",c:"Only applies to the Prime Minister's Office",d:"Was repealed in 2010"},correctAnswer:"a",explanation:"RTI empowers citizens to request information from public bodies, with limited exemptions (defence, security). It has been used to expose corruption (e.g., Adarsh scam, CWG scam) and is called a 'sunshine law'.",marked:false,userAnswer:null},
+
+{id:19,section:"Recent Issues and Challenges",text:"The 'coalition of the corrupt' is a phrase sometimes used to criticise:",options:{a:"The ideological purity of coalition partners",b:"The phenomenon where corruption scandals affect multiple coalition partners, yet they continue to support each other to remain in power",c:"The absence of any corruption in coalition governments",d:"The high efficiency of coalition governance"},correctAnswer:"b",explanation:"During the UPA-II (2009–14), multiple scandals (2G, Commonwealth Games, coal allocation) involved Congress and its allies. Critics argued that coalition partners protected each other to keep the government alive, leading to the phrase.",marked:false,userAnswer:null},
+
+// ─── CASTE POLITICS & RESERVATION DEBATES ──────────────────────────────────
+{id:20,section:"Recent Issues and Challenges",text:"The 2006 anti-reservation protests by medical students against OBC reservation in central educational institutions (AIIMS, IITs) raised which key argument?",options:{a:"Reservation should be based on economic criteria, not caste",b:"Reservation should be extended to all upper castes",c:"Reservation should be abolished entirely",d:"Reservation should only be for SC/STs, not OBCs"},correctAnswer:"a",explanation:"Protesters argued that the 'creamy layer' among OBCs should be excluded, and that poverty should be the basis, not caste. This led to the introduction of the 93rd Constitutional Amendment and the OBC quota in central institutions, later upheld by the Supreme Court.",marked:false,userAnswer:null},
+
+{id:21,section:"Recent Issues and Challenges",text:"The concept of 'dominant caste', coined by sociologist M.N. Srinivas, helps explain:",options:{a:"Why only Brahmins dominate politics",b:"How intermediate castes (e.g., Yadavs, Reddys, Jats, Marathas) have used numerical strength, land ownership, and political mobilisation to become powerful in post-independence India",c:"The decline of all caste identities",d:"The emergence of class as the only political identity"},correctAnswer:"b",explanation:"Dominant castes are not necessarily the highest in ritual hierarchy but wield economic and political power. Their rise in the democratic upsurge explains many state-level political dynamics (e.g., Yadavs in UP/Bihar, Marathas in Maharashtra).",marked:false,userAnswer:null},
+
+{id:22,section:"Recent Issues and Challenges",text:"The Jat reservation agitation (2016) in Haryana and the Maratha reservation agitation (2016-2018) in Maharashtra illustrate:",options:{a:"The complete success of existing reservation policies",b:"Demands for reservation by dominant OBC or general category castes who face economic distress but are not listed as backward, leading to political tensions and violence",c:"The end of caste-based reservation",d:"Reservation for upper castes is no longer needed"},correctAnswer:"b",explanation:"Jats (not OBC in Haryana) and Marathas (general category) demanded reservation under OBC or separate quota, citing agrarian distress. These agitations show that reservation demands have expanded beyond traditional SC/ST/OBC categories to include economically struggling dominant castes.",marked:false,userAnswer:null},
+
+{id:23,section:"Recent Issues and Challenges",text:"The Supreme Court's 2018 judgment striking down the Maratha reservation law (which exceeded 50% cap) reaffirmed which constitutional principle?",options:{a:"Reservation cannot exceed 50% of total seats unless in exceptional circumstances (Indira Sawhney case)",b:"States have unlimited power to provide reservation",c:"Reservation can be 100% for any community",d:"Economic criteria cannot be used for reservation"},correctAnswer:"a",explanation:"The Court held that the Maratha quota (16%) exceeded the 50% ceiling without exceptional circumstances (e.g., remote areas, SC/STs). It also noted that the Maratha community was not 'backward' as a whole.",marked:false,userAnswer:null},
+
+// ─── TERRORISM, NAXALISM & INTERNAL SECURITY ──────────────────────────────
+{id:24,section:"Recent Issues and Challenges",text:"The Kargil War (1999) was significant because it:",options:{a:"Was the first war between India and Pakistan after the 1971 war",b:"Exposed intelligence failures and led to reforms in defence procurement and intelligence coordination",c:"Resulted in Pakistan capturing Indian territory",d:"Was resolved without any Indian casualties"},correctAnswer:"b",explanation:"Pakistani infiltrators occupied Kargil heights. India's military response (Operation Vijay) dislodged them. The war led to the Kargil Review Committee, which recommended intelligence reforms and a National Security Advisor post.",marked:false,userAnswer:null},
+
+{id:25,section:"Recent Issues and Challenges",text:"The 26/11 Mumbai attacks (2008) are considered a watershed in India's counter-terrorism strategy because they:",options:{a:"Were the first terrorist attack in India",b:"Revealed gaps in coastal security, intelligence sharing, and urban counter-terror response, leading to the creation of NSG hubs and coastal police reforms",c:"Led to India's immediate military retaliation against Pakistan",d:"Resulted in the complete elimination of terrorism from India"},correctAnswer:"b",explanation:"The ten Lashkar-e-Taiba terrorists attacked multiple sites. The prolonged siege highlighted coordination failures. Post-26/11, India strengthened multi-agency centres, coastal security, and anti-terror laws.",marked:false,userAnswer:null},
+
+{id:26,section:"Recent Issues and Challenges",text:"Naxalism (Left Wing Extremism) is classified as the 'biggest internal security threat' by the government primarily because:",options:{a:"It affects only one small district",b:"It affects a large 'Red Corridor' across central and eastern India (over 100 districts), challenging state presence and development",c:"It has no ideological basis",d:"It is supported by Pakistan"},correctAnswer:"b",explanation:"Naxalite insurgency, inspired by Maoist ideology, operates in states like Chhattisgarh, Jharkhand, Odisha, Bihar. It exploits tribal land alienation, underdevelopment, and police brutality, posing a sustained challenge to internal security and governance.",marked:false,userAnswer:null},
+
+{id:27,section:"Recent Issues and Challenges",text:"The Salwa Judum movement (2005) in Chhattisgarh was controversial because:",options:{a:"It was a government-sponsored peace negotiation",b:"It involved state-supported civilian militias against Naxalites, but was criticised for human rights violations and forced displacement of tribals",c:"It successfully ended Naxalism",d:"It was a tribal uprising against Naxalites that the Supreme Court praised"},correctAnswer:"b",explanation:"Salwa Judum (meaning 'purification hunt') was a state-backed militia of local youth to fight Naxalites. The Supreme Court later criticised it for extra-legal methods and human rights abuses, leading to its disbandment in 2011.",marked:false,userAnswer:null},
+
+// ─── ENVIRONMENT & DEVELOPMENT CONFLICTS ───────────────────────────────────
+{id:28,section:"Recent Issues and Challenges",text:"The Narmada Bachao Andolan (NBA) led by Medha Patkar is a classic example of:",options:{a:"A movement for faster dam construction",b:"An environmental and displacement movement opposing large dams on the Narmada River, raising issues of rehabilitation, environmental impact, and rights of affected tribals",c:"A pro-industrialisation campaign",d:"A movement for nuclear energy"},correctAnswer:"b",explanation:"NBA challenged the Sardar Sarovar Dam project, focusing on inadequate rehabilitation, submergence of forests, and violation of displaced people's rights. It led to Supreme Court interventions and improved rehabilitation policies.",marked:false,userAnswer:null},
+
+{id:29,section:"Recent Issues and Challenges",text:"The principle of 'Forest Rights Act (FRA), 2006' is to:",options:{a:"Evict all tribals from forests",b:"Recognise and vest forest rights (including individual and community rights) to Scheduled Tribes and other traditional forest dwellers who have been residing in forests for generations",c:"Privatise forest lands",d:"Ban all collection of minor forest produce"},correctAnswer:"b",explanation:"FRA was enacted to correct historical injustices caused by colonial and post-independence forest laws that displaced tribals. It recognises rights to land, minor forest produce, and community forest resource management.",marked:false,userAnswer:null},
+
+{id:30,section:"Recent Issues and Challenges",text:"The Chipko movement (1970s) and the Appiko movement (1980s) are examples of:",options:{a:"Urban environmental movements",b:"Forest conservation movements where villagers (especially women) hugged trees to prevent commercial logging, highlighting ecological and livelihood concerns",c:"Movements for building more roads",d:"Movements against wildlife sanctuaries"},correctAnswer:"b",explanation:"Chipko (Uttarakhand) and Appiko (Karnataka) used non-violent resistance to stop deforestation. They influenced India's forest policy, leading to the Forest Conservation Act, 1980, and inspired global environmentalism.",marked:false,userAnswer:null},
+
+// ─── GENDER & WOMEN'S ISSUES ───────────────────────────────────────────────
+{id:31,section:"Recent Issues and Challenges",text:"The 2012 Delhi gang rape (Nirbhaya case) led to:",options:{a:"No legal changes",b:"The Criminal Law (Amendment) Act, 2013 (Justice Verma Committee recommendations), expanding definitions of rape, stricter punishments, and fast-track courts",c:"Reduction of punishment for rape",d:"Decriminalisation of marital rape"},correctAnswer:"b",explanation:"Massive protests forced the government to set up the Justice Verma Committee, whose recommendations led to the 2013 Act introducing new offences (acid attack, stalking, voyeurism) and death penalty for repeat offenders.",marked:false,userAnswer:null},
+
+{id:32,section:"Recent Issues and Challenges",text:"The Women's Reservation Bill (108th Constitutional Amendment) seeks to:",options:{a:"Reserve 33% of seats in Lok Sabha and state legislative assemblies for women",b:"Reserve 50% seats in Panchayats only",c:"Provide free education to women",d:"Ban dowry"},correctAnswer:"a",explanation:"The Bill, pending for decades, would reserve one-third of all seats in the Lok Sabha and state assemblies for women. It has faced opposition from some leaders who demand quota within quota for OBC women.",marked:false,userAnswer:null},
+
+{id:33,section:"Recent Issues and Challenges",text:"The Supreme Court's judgment in Navtej Singh Johar vs Union of India (2018) decriminalised:",options:{a:"Triple talaq",b:"Adultery",c:"Homosexuality by striking down Section 377 of IPC (which criminalised consensual same-sex relations)",d:"Polygamy"},correctAnswer:"c",explanation:"The Court held that Section 377 violated the right to privacy, dignity, and equality, decriminalising consensual homosexual acts between adults. This was a landmark for LGBTQ+ rights in India.",marked:false,userAnswer:null},
+
+// ─── JUDICIAL ACTIVISM & GOVERNANCE ────────────────────────────────────────
+{id:34,section:"Recent Issues and Challenges",text:"'Judicial activism' in India refers to:",options:{a:"Judges deciding cases without hearing arguments",b:"The judiciary expanding its role into executive and legislative domains through Public Interest Litigation (PIL), issuing directives on policy matters (e.g., pollution, police reforms)",c:"Judges acting as prosecutors",d:"The judiciary refusing to hear any public interest cases"},correctAnswer:"b",explanation:"Through PIL, the Supreme Court and High Courts have intervened in areas like environment (closure of polluting industries), governance (CBI oversight), and rights (food, shelter), often criticised as overreach.",marked:false,userAnswer:null},
+
+{id:35,section:"Recent Issues and Challenges",text:"The National Judicial Appointments Commission (NJAC) Act, 2014, was struck down by the Supreme Court as unconstitutional because:",options:{a:"It gave politicians too much power in judge appointments",b:"It violated the basic structure doctrine (independence of judiciary) by replacing the collegium system with a body that included the Law Minister and two eminent persons",c:"It did not include any judges",d:"It was never passed by Parliament"},correctAnswer:"b",explanation:"The Supreme Court held that the NJAC (which gave political and civil society representatives a role) undermined judicial independence, restoring the collegium system of judges appointing judges.",marked:false,userAnswer:null},
+
+{id:36,section:"Recent Issues and Challenges",text:"The 'basic structure doctrine' propounded in Kesavananda Bharati case (1973) holds that:",options:{a:"Parliament can amend any part of the Constitution without limits",b:"Parliament cannot alter the 'basic features' of the Constitution (democracy, secularism, federalism, judicial review) even through a constitutional amendment",c:"The Constitution has no basic features",d:"Only the President can amend the Constitution"},correctAnswer:"b",explanation:"The doctrine is a key limitation on parliamentary sovereignty. It has been used to strike down amendments like the 39th (placing election disputes beyond court review) and 42nd (curtailing fundamental rights).",marked:false,userAnswer:null},
+
+// ─── GLOBALISATION & CULTURAL CHALLENGES ───────────────────────────────────
+{id:37,section:"Recent Issues and Challenges",text:"Globalisation has been critiqued in India for leading to 'McDonaldisation' or 'cultural homogenisation', which means:",options:{a:"Increase in agricultural exports",b:"Erosion of local cultures, languages, and traditions due to the spread of Western consumerism and multinational brands",c:"Adoption of American political system",d:"Complete rejection of Indian culture"},correctAnswer:"b",explanation:"Critics argue that globalisation promotes a uniform consumer culture (fast food, English, global fashion) that threatens India's cultural diversity. However, others note hybridisation (e.g., Indianised pizzas, fusion music).",marked:false,userAnswer:null},
+
+{id:38,section:"Recent Issues and Challenges",text:"The term 'brain drain' in the Indian context refers to:",options:{a:"Migration of unskilled labourers to Gulf countries",b:"Emigration of highly skilled professionals (doctors, engineers, scientists) to developed countries for better opportunities, causing loss of talent for India",c:"Inflow of foreign scientists to India",d:"Government policy to send students abroad"},correctAnswer:"b",explanation:"India has experienced significant brain drain, especially to the US, UK, and Canada. While remittances and diaspora networks benefit India, critics note the loss of investment in higher education.",marked:false,userAnswer:null},
+
+{id:39,section:"Recent Issues and Challenges",text:"The rise of 'cyber politics' and social media in India has created new challenges, including:",options:{a:"Complete elimination of fake news",b:"Spread of misinformation, hate speech, foreign interference, and surveillance concerns, while also enabling political mobilisation",c:"Reduction in voter turnout",d:"Ban on all online political campaigns"},correctAnswer:"b",explanation:"Social media platforms (WhatsApp, Facebook, Twitter) are double-edged: they democratise speech but also amplify rumours (e.g., lynchings), foreign disinformation, and algorithmic bias. Regulation remains a key challenge.",marked:false,userAnswer:null},
+
+// ─── HIGHER-ORDER SYNTHESIS / ASSERTION-REASON ─────────────────────────────
+{id:40,section:"Recent Issues and Challenges",text:"Assertion (A): The 1991 economic reforms weakened the Congress party's traditional vote bank among the poor and workers.\nReason (R): Liberalisation reduced public sector employment, removed subsidies, and shifted state priorities away from welfare toward market-friendly policies, alienating Congress's core constituency.\nChoose the correct option:",options:{a:"Both A and R are true and R correctly explains A",b:"Both A and R are true but R does not explain A",c:"A is true but R is false",d:"A is false but R is true"},correctAnswer:"a",explanation:"A and R are both correct. Reforms led to job losses, reduced welfare spending, and created space for regional and left parties to mobilise the poor, contributing to Congress's decline in the 1990s.",marked:false,userAnswer:null},
+
+{id:41,section:"Recent Issues and Challenges",text:"Assertion (A): The increasing number of pending criminal cases against MPs/MLAs is a challenge to Indian democracy.\nReason (R): The Representation of the People Act does not disqualify candidates merely for being charged with a crime; only conviction leads to disqualification, and trials are slow.\nChoose the correct option:",options:{a:"Both A and R are true and R correctly explains A",b:"Both A and R are true but R does not explain A",c:"A is true but R is false",d:"A is false but R is true"},correctAnswer:"a",explanation:"A is true (criminalisation is a problem). R explains why: the law allows charged (not convicted) persons to contest, and judicial delays mean many convicted lawmakers remain in office for years before appeal is exhausted.",marked:false,userAnswer:null},
+
+{id:42,section:"Recent Issues and Challenges",text:"Assertion (A): The implementation of the Forest Rights Act, 2006, remains weak and contested.\nReason (R): Bureaucratic resistance, mining and industrial lobbies, and lack of political will have prevented full recognition of tribal rights over forests.\nChoose the correct option:",options:{a:"Both A and R are true and R correctly explains A",b:"Both A and R are true but R does not explain A",c:"A is true but R is false",d:"A is false but R is true"},correctAnswer:"a",explanation:"Reports show that millions of claims under FRA remain pending or rejected. R provides the causal factors — conflicting interests (industry vs. tribals) and administrative apathy hinder implementation.",marked:false,userAnswer:null},
+
+{id:43,section:"Recent Issues and Challenges",text:"Assertion (A): The anti-defection law (10th Schedule) has reduced the frequency of floor-crossing but has not eliminated horse-trading.\nReason (R): Political parties continue to engineer mass defections by merging with another party or by getting the Speaker to disqualify defectors in a partisan manner.\nChoose the correct option:",options:{a:"Both A and R are true and R correctly explains A",b:"Both A and R are true but R does not explain A",c:"A is true but R is false",d:"A is false but R is true"},correctAnswer:"a",explanation:"A is correct (less individual defections). R explains how parties circumvent the law (merger exception allows defection if 2/3 of members merge; Speakers often delay decisions). The law remains imperfect.",marked:false,userAnswer:null},
+
+// ─── MATCHING / MULTI-PART CORRECT ─────────────────────────────────────────
+{id:44,section:"Recent Issues and Challenges",text:"Match the following movements with their primary issue:\n1. Narmada Bachao Andolan  A. Anti-corruption\n2. Chipko Movement          B. Anti-displacement & environment\n3. Anna Hazare Movement     C. Forest conservation\n4. Right to Food Campaign   D. Hunger & PDS\nChoose the correct code:",options:{a:"1-A, 2-B, 3-C, 4-D",b:"1-B, 2-C, 3-A, 4-D",c:"1-C, 2-D, 3-A, 4-B",d:"1-D, 2-A, 3-B, 4-C"},correctAnswer:"b",explanation:"Narmada Bachao (B) — displacement & environment; Chipko (C) — forest conservation; Anna Hazare (A) — anti-corruption (Lokpal); Right to Food (D) — hunger and PDS.",marked:false,userAnswer:null},
+
+{id:45,section:"Recent Issues and Challenges",text:"Which of the following pairs is correctly matched?",options:{a:"Kargil War (1999) — Operation Vijay",b:"26/11 Mumbai Attacks — Operation Black Tornado",c:"Pokhran-II (1998) — Operation Shakti",d:"All of the above"},correctAnswer:"d",explanation:"All are correct: Kargil was Operation Vijay; Mumbai NSG operation was Black Tornado; 1998 nuclear tests were Operation Shakti. (Note: Some may confuse Operation Vijay with 1961 Goa liberation, but 1999 Kargil is also called Operation Vijay.)",marked:false,userAnswer:null},
+
+{id:46,section:"Recent Issues and Challenges",text:"Consider the following statements about the 73rd Constitutional Amendment:\n1. It mandated reservation for SC/STs in Panchayats.\n2. It reserved 33% of seats for women.\n3. It created a three-tier Panchayati Raj system.\n4. It applied only to urban local bodies.\nWhich statements are correct?",options:{a:"1, 2 and 3 only",b:"1 and 4 only",c:"2, 3 and 4 only",d:"1, 2, 3 and 4"},correctAnswer:"a",explanation:"Statement 4 is false — 73rd Amendment applies to rural Panchayats; 74th Amendment deals with urban local bodies (municipalities). The other three are correct.",marked:false,userAnswer:null},
+
+{id:47,section:"Recent Issues and Challenges",text:"Which of the following are considered 'recent challenges' to Indian secularism?\n1. Rise of majoritarian politics and communal polarisation in elections.\n2. Demands for a Uniform Civil Code.\n3. Judicial activism in religious matters (e.g., Sabarimala, entry of women).\n4. Complete absence of religious violence.\nSelect the correct answer:",options:{a:"1, 2 and 3 only",b:"1 and 4 only",c:"2 and 3 only",d:"1, 2, 3 and 4"},correctAnswer:"a",explanation:"Statement 4 is false — religious violence persists (e.g., riots, hate crimes). The first three are genuine challenges: majoritarian politics, UCC debates, and judicial intervention in religious practices.",marked:false,userAnswer:null},
+
+{id:48,section:"Recent Issues and Challenges",text:"Which of the following commissions/committees are correctly associated with their recommendations?\n1. Justice Verma Committee — Criminal law amendments on sexual assault.\n2. Kargil Review Committee — Intelligence and national security reforms.\n3. Mandal Commission — Reservation for OBCs.\n4. Sarkaria Commission — Centre-state relations.\nSelect the correct code:",options:{a:"1, 2 and 3 only",b:"1, 2, 3 and 4",c:"2 and 4 only",d:"1, 3 and 4 only"},correctAnswer:"b",explanation:"All four are correctly matched. Verma (2013) → anti-rape laws; Kargil Review (2000) → national security reforms; Mandal (1980) → OBC reservation; Sarkaria (1988) → centre-state relations.",marked:false,userAnswer:null},
+
+// ─── DIFFICULT ANALYTICAL QUESTIONS ───────────────────────────────────────
+{id:49,section:"Recent Issues and Challenges",text:"From a political economy perspective, the 'resource curse' in India is best exemplified by:",options:{a:"Kerala's high human development despite low per capita income",b:"The Naxal-affected mineral-rich states (Chhattisgarh, Jharkhand, Odisha) where mining revenues accrue to the state and corporations while local tribals remain poor and displaced, fuelling insurgency",c:"Gujarat's rapid industrial growth",d:"Punjab's agricultural prosperity"},correctAnswer:"b",explanation:"Resource curse means countries/states rich in natural resources (minerals, oil) often have poorer development outcomes due to corruption, conflict, and neglect of local populations. India's 'Red Corridor' over mineral belts is a classic example.",marked:false,userAnswer:null},
+
+{id:50,section:"Recent Issues and Challenges",text:"The 'politics of recognition' versus 'politics of redistribution' debate in India's recent challenges is best illustrated by:",options:{a:"Debate between economic liberalisation (redistribution) and reservation policies (recognition of caste identities)",b:"Debate between Hindi and English as official languages",c:"Debate between nuclear energy and solar energy",d:"Debate between presidential and parliamentary systems"},correctAnswer:"a",explanation:"The Nancy Fraser framework: redistribution addresses economic inequality (class); recognition addresses cultural/status inequality (caste, gender, religion). In India, the tension between economic reforms (market-led growth) and caste-based reservations (recognition) captures this debate.",marked:false,userAnswer:null},
+
+];
+    duration: 60 * 60,
+    markingScheme: { correct: 5, incorrect: -1 }
+};
+
+/* ============================================================
+   CORE TEST ENGINE
+   ============================================================ */
+const timerElement = document.querySelector('.timer');
+const questionTextElement = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const questionNumberElement = document.getElementById('q-number');
+const currentQNumberElement = document.getElementById('current-q-number');
+const progressBar = document.getElementById('test-progress');
+const progressPercent = document.getElementById('progress-percent');
+const questionPaletteGrid = document.getElementById('question-palette-grid');
+const answeredCountElement = document.getElementById('answered-count');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markBtn = document.getElementById('mark-btn');
+const submitTestBtn = document.getElementById('submit-test-btn');
+const resultsModal = document.getElementById('results-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const correctAnswersElement = document.getElementById('correct-answers');
+const incorrectAnswersElement = document.getElementById('incorrect-answers');
+const unansweredElement = document.getElementById('unanswered');
+const totalScoreElement = document.getElementById('total-score');
+const percentageElement = document.getElementById('percentage');
+const accuracyElement = document.getElementById('accuracy');
+const reviewBtn = document.getElementById('review-btn');
+
+let currentQuestionIndex = 0;
+let timeLeft = mockTest.duration;
+let timer;
+let testSubmitted = false;
+let testStarted = false;
+
+function initTest() {
+    renderQuestionPalette(); renderQuestion(); startTimer(); updateProgress(); renderLegend(false);
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    markBtn.addEventListener('click', toggleMarkForReview);
+    submitTestBtn.addEventListener('click', confirmSubmit);
+    closeModalBtn.addEventListener('click', closeResultsModal);
+    reviewBtn.addEventListener('click', reviewAnswers);
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
+}
+
+function renderLegend(reviewMode) {
+    const leg = document.getElementById('palette-legend');
+    if (!leg) return;
+    if (reviewMode) {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#22c55e;"></div><span>Correct</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#ef4444;"></div><span>Wrong</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;"></div><span>Not Answered</span></div></div>`;
+    } else {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#FF474D;"></div><span>Unanswered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #2d8a4e;"></div><span>Current</span></div></div>`;
+    }
+}
+
+function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) { clearInterval(timer); submitTest(); }
+        if (timeLeft === 300) { alert('Only 5 minutes remaining!'); }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    const str = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timerElement.textContent = str;
+    const mt = document.querySelector('.mobile-timer-clone');
+    if (mt) mt.textContent = str;
+}
+
+function renderQuestion() {
+    const q = mockTest.questions[currentQuestionIndex];
+    document.getElementById('current-section').textContent = q.section;
+    questionTextElement.innerHTML = `
+        <div style="display:inline-block;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px;">
+            🗳️ ${q.section || "General"}
+        </div>
+        ${q.image ? `<div style="margin:10px 0;"><img src="${q.image}" style="max-width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>` : ""}
+        <div style="margin-top:8px;font-size:17px;line-height:1.6;">${q.text}</div>`;
+    questionNumberElement.textContent = q.id;
+    currentQNumberElement.textContent = q.id;
+    optionsContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(q.options)) {
+        const od = document.createElement('div');
+        od.className = 'option';
+        if (testSubmitted) {
+            if (key === q.correctAnswer) od.classList.add('correct');
+            else if (key === q.userAnswer && key !== q.correctAnswer) od.classList.add('incorrect');
+        } else {
+            if (key === q.userAnswer) od.classList.add('selected');
+        }
+        if (!testSubmitted) {
+            od.addEventListener('click', () => {
+                optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                od.classList.add('selected');
+                selectAnswer(key);
+            });
+        }
+        const inp = document.createElement('input');
+        inp.type='radio'; inp.name='question-option'; inp.value=key;
+        inp.checked = q.userAnswer === key; inp.disabled = testSubmitted;
+        const ld = document.createElement('div');
+        ld.className='opt-letter'; ld.textContent=key.toUpperCase();
+        const ts = document.createElement('span');
+        ts.className='opt-text'; ts.textContent=value;
+        if (testSubmitted) {
+            if (key === q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='correct-indicator'; ind.textContent=' ✓ Correct Answer'; ts.appendChild(ind);
+            } else if (key === q.userAnswer && key !== q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='incorrect-indicator'; ind.textContent=' ✗ Your Answer'; ts.appendChild(ind);
+            }
+        }
+        od.appendChild(inp); od.appendChild(ld); od.appendChild(ts);
+        optionsContainer.appendChild(od);
+    }
+    if (testSubmitted) {
+        const ed = document.createElement('div');
+        ed.style.cssText = "margin-top:15px;padding:12px;border-radius:8px;background:linear-gradient(135deg,#edf7f1,#d4eddb);border-left:4px solid #2d8a4e;font-size:15px;";
+        ed.innerHTML = `<strong>💡 Explanation:</strong><br>${q.explanation || "No explanation available."}`;
+        optionsContainer.appendChild(ed);
+    }
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = currentQuestionIndex === mockTest.questions.length - 1 ? 'hidden' : 'visible';
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.disabled = currentQuestionIndex === mockTest.questions.length - 1;
+    updateQuestionPalette();
+}
+
+function selectAnswer(answer) {
+    mockTest.questions[currentQuestionIndex].userAnswer = answer;
+    updateQuestionPalette(); updateProgress();
+}
+
+function toggleMarkForReview() {
+    const q = mockTest.questions[currentQuestionIndex];
+    q.marked = !q.marked;
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    updateQuestionPalette();
+}
+
+function goToPreviousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+function goToNextQuestion() { if (currentQuestionIndex < mockTest.questions.length - 1) { currentQuestionIndex++; renderQuestion(); } }
+
+function renderQuestionPalette() {
+    questionPaletteGrid.innerHTML = '';
+    mockTest.questions.forEach((q, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'palette-btn'; btn.textContent = q.id;
+        btn.addEventListener('click', () => navigateToQuestion(i));
+        questionPaletteGrid.appendChild(btn);
+    });
+    updateQuestionPalette();
+}
+
+function updateQuestionPalette() {
+    const btns = questionPaletteGrid.querySelectorAll('.palette-btn');
+    btns.forEach(b => { b.className = 'palette-btn'; });
+    mockTest.questions.forEach((q, i) => {
+        const btn = btns[i];
+        if (testSubmitted) {
+            if (!q.userAnswer) btn.classList.add('review-unanswered');
+            else if (q.userAnswer === q.correctAnswer) btn.classList.add('review-correct');
+            else btn.classList.add('review-wrong');
+        } else {
+            if (q.userAnswer) btn.classList.add('answered');
+            if (q.marked) btn.classList.add('marked');
+        }
+        if (i === currentQuestionIndex) btn.classList.add('current');
+    });
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    answeredCountElement.textContent = `${ac}/${mockTest.questions.length}`;
+}
+
+function navigateToQuestion(index) { currentQuestionIndex = index; renderQuestion(); }
+
+function updateProgress() {
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    const p = (ac / mockTest.questions.length) * 100;
+    progressBar.style.width = `${p}%`;
+    progressPercent.textContent = `${Math.round(p)}%`;
+}
+
+function confirmSubmit() { if (confirm('Are you sure you want to submit the test?')) { submitTest(); } }
+
+function submitTest() {
+    if (testSubmitted) return;
+    testSubmitted = true; clearInterval(timer);
+    let correct = 0, incorrect = 0, unanswered = 0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++;
+        else if (q.userAnswer === q.correctAnswer) correct++;
+        else incorrect++;
+    });
+    const totalQ = mockTest.questions.length;
+    const maxScore = totalQ * mockTest.markingScheme.correct;
+    const totalScore = (correct * mockTest.markingScheme.correct) + (incorrect * mockTest.markingScheme.incorrect);
+    const percentage = ((totalScore / maxScore) * 100).toFixed(2);
+    const accuracy = correct + incorrect > 0 ? (correct / (correct + incorrect) * 100).toFixed(2) : '0';
+
+    const questionResults = mockTest.questions.map(q => ({
+        id: q.id, correct: q.userAnswer === q.correctAnswer,
+        answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
+    }));
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
+    const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
+    let index = [];
+    try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
+    if (!index.includes(CHAPTER_ID)) index.push(CHAPTER_ID);
+    localStorage.setItem(indexKey, JSON.stringify(index));
+
+    correctAnswersElement.textContent = correct;
+    incorrectAnswersElement.textContent = incorrect;
+    unansweredElement.textContent = unanswered;
+    totalScoreElement.textContent = totalScore;
+    percentageElement.textContent = percentage;
+    accuracyElement.textContent = accuracy;
+    resultsModal.style.display = 'flex';
+    renderQuestion();
+
+    const sb = document.getElementById('submit-test-btn');
+    sb.textContent = '📄 Download PDF';
+    sb.classList.remove('submit-fancy-btn');
+    sb.classList.add('pdf-download-btn');
+    sb.onclick = generatePDF;
+    renderLegend(true);
+}
+
+function closeResultsModal() { resultsModal.style.display = 'none'; }
+function reviewAnswers() { resultsModal.style.display = 'none'; currentQuestionIndex = 0; renderQuestion(); }
+
+document.addEventListener("visibilitychange", function() {
+    if (!testStarted || testSubmitted) return;
+    if (document.hidden) startCountdown('tab'); else cancelCountdown();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('test-screen').style.display === 'none') return;
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if (currentQuestionIndex < mockTest.questions.length-1) { currentQuestionIndex++; renderQuestion(); } }
+    else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+});
+</script>
+
+<script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
+function startMock() {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
+    enterFullscreen();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('instruction-screen').style.display = 'block';
+}
+
+const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom');
+darkModeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggles.forEach(btn => {
+            const iconSpan = btn.querySelector('.icon');
+            if (iconSpan) iconSpan.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    });
+});
+
+const checkbox = document.getElementById('agree-checkbox');
+const startBtn = document.getElementById('start-test-btn');
+checkbox.addEventListener('change', () => {
+    startBtn.disabled = !checkbox.checked;
+    startBtn.style.opacity = checkbox.checked ? "1" : "0.6";
+    startBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+});
+startBtn.addEventListener('click', () => {
+    if (!checkbox.checked) { alert("Please accept instructions first!"); return; }
+    document.getElementById('instruction-screen').style.display = 'none';
+    document.getElementById('test-screen').style.display = 'block';
+    const name = localStorage.getItem("cbtUserName") || "Thunder";
+    document.getElementById('user-name-display').innerText = "👤 " + name;
+    const mn = document.getElementById('mobile-name-display');
+    if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
+    testStarted = true; enterFullscreen(); initTest();
+});
+
+function enterFullscreen() {
+    const el = document.documentElement;
+    try {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } catch(e) {}
+}
+
+document.addEventListener('fullscreenchange', onFSChange);
+document.addEventListener('webkitfullscreenchange', onFSChange);
+document.addEventListener('mozfullscreenchange', onFSChange);
+document.addEventListener('MSFullscreenChange', onFSChange);
+
+function isInFullscreen() {
+    return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);
+}
+function onFSChange() {
+    if (!testStarted||testSubmitted) return;
+    if (document.getElementById('test-screen').style.display==='none') return;
+    if (!isInFullscreen()) startCountdown('fullscreen'); else cancelCountdown();
+}
+
+let countdownTimer = null, countdownSeconds = 0;
+function startCountdown(reason) {
+    if (!testStarted||testSubmitted) return;
+    if (countdownTimer) return;
+    countdownSeconds = (reason==='tab') ? 2 : 5;
+    const msg = (reason==='tab') ? '⚠️ You switched tabs!' : '⚠️ You exited fullscreen!';
+    const hint = (reason==='tab') ? 'Switch back to this tab to cancel.' : 'Click the button below to return to fullscreen.';
+    showOverlay(msg, hint, countdownSeconds, reason==='fullscreen');
+    countdownTimer = setInterval(() => {
+        countdownSeconds--;
+        updateOverlayCount(countdownSeconds);
+        if (countdownSeconds <= 0) { cancelCountdown(); submitTest(); }
+    }, 1000);
+}
+function cancelCountdown() { if (countdownTimer) { clearInterval(countdownTimer); countdownTimer=null; } hideOverlay(); }
+function showOverlay(msg, hint, secs, showBtn) {
+    let ov = document.getElementById('security-overlay');
+    if (!ov) {
+        ov = document.createElement('div'); ov.id = 'security-overlay';
+        ov.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,5,0.92);z-index:999999;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'DM Sans',sans-serif;color:#fff;text-align:center;padding:24px;`;
+        document.body.appendChild(ov);
+    }
+    ov.innerHTML = `<div style="font-size:60px;margin-bottom:14px;">🚨</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:8px;">${msg}</div>
+        <div style="font-size:15px;color:#7ec8a4;margin-bottom:20px;">${hint}</div>
+        <div style="font-size:16px;color:#d4edd9;margin-bottom:6px;">Auto-submitting in</div>
+        <div id="overlay-count" style="font-size:72px;font-weight:900;color:#f87171;line-height:1;">${secs}</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:4px;">seconds</div>
+        ${showBtn ? `<button onclick="enterFullscreen()" style="margin-top:24px;padding:13px 34px;border-radius:30px;border:none;background:linear-gradient(135deg,#2d8a4e,#1a5c34);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(45,138,78,0.5);">🔲 Return to Fullscreen</button>` : ''}`;
+    ov.style.display = 'flex';
+}
+function updateOverlayCount(n) { const el=document.getElementById('overlay-count'); if(el) el.textContent=n; }
+function hideOverlay() { const ov=document.getElementById('security-overlay'); if(ov) ov.style.display='none'; }
+</script>
+
+<div id="pdf-print-area"></div>
+<script>
+function generatePDF() {
+    const name = localStorage.getItem('cbtUserName') || 'Thunder';
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    let correct=0,incorrect=0,unanswered=0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++; else if (q.userAnswer===q.correctAnswer) correct++; else incorrect++;
+    });
+    const totalScore = (correct*mockTest.markingScheme.correct)+(incorrect*mockTest.markingScheme.incorrect);
+    const maxScore = mockTest.questions.length*mockTest.markingScheme.correct;
+    const pct = ((totalScore/maxScore)*100).toFixed(1);
+    const optionLabel = {a:'A',b:'B',c:'C',d:'D'};
+    let questionsHTML = '';
+    mockTest.questions.forEach((q,i) => {
+        const isCorrect = q.userAnswer===q.correctAnswer;
+        const isWrong = q.userAnswer&&!isCorrect;
+        const isSkipped = !q.userAnswer;
+        const statusColor = isCorrect?'#16a34a':isWrong?'#dc2626':'#9ca3af';
+        const statusLabel = isCorrect?'✓ Correct':isWrong?'✗ Wrong':'— Skipped';
+        const rowBg = isCorrect?'#f0fdf4':isWrong?'#fef2f2':'#fafafa';
+        let optionsHTML = '';
+        for (const [key,val] of Object.entries(q.options)) {
+            const isRight=key===q.correctAnswer, isUser=key===q.userAnswer;
+            let bg='transparent',fw='normal',prefix='';
+            if(isRight){bg='#dcfce7';fw='bold';prefix='✓ ';}
+            if(isUser&&!isRight){bg='#fee2e2';fw='bold';prefix='✗ ';}
+            optionsHTML+=`<div style="display:flex;gap:8px;padding:4px 8px;margin:2px 0;border-radius:4px;background:${bg};font-weight:${fw};font-size:12px;"><span style="min-width:18px;font-weight:700;">${optionLabel[key]}.</span><span>${prefix}${val}</span></div>`;
+        }
+        let yourAnswer = isSkipped
+            ? '<span style="color:#9ca3af;">Not Attempted</span>'
+            : `<span style="color:${isCorrect?'#16a34a':'#dc2626'};font-weight:bold;">${optionLabel[q.userAnswer]}. ${q.options[q.userAnswer]}</span>`;
+        questionsHTML+=`<div style="margin-bottom:18px;padding:14px 16px;border-radius:8px;background:${rowBg};border:1px solid #e5e7eb;page-break-inside:avoid;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div style="font-weight:700;font-size:13px;color:#374151;">Q${i+1}. ${q.text}</div>
+                <div style="font-weight:700;font-size:12px;color:${statusColor};white-space:nowrap;margin-left:12px;">${statusLabel}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:8px;">${optionsHTML}</div>
+            <div style="font-size:12px;border-top:1px solid #e5e7eb;padding-top:6px;margin-top:4px;">
+                <span style="color:#6b7280;">Your answer: </span>${yourAnswer}&nbsp;&nbsp;
+                <span style="color:#6b7280;">Correct: </span><span style="color:#16a34a;font-weight:bold;">${optionLabel[q.correctAnswer]}. ${q.options[q.correctAnswer]}</span>
+            </div></div>`;
+    });
+    const scoreColor = pct>=60?'#16a34a':pct>=35?'#d97706':'#dc2626';
+    const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
+        <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — political science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
+            </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #d4eddb;border-top:none;padding:16px 24px;border-radius:0 0 10px 10px;margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SCORE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${totalScore}<span style="font-size:14px;color:#6b7280;">/${maxScore}</span></div></div>
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">PERCENTAGE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${pct}%</div></div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#16a34a;">CORRECT</div><div style="font-size:24px;font-weight:800;color:#16a34a;">${correct}</div></div>
+                <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#dc2626;">WRONG</div><div style="font-size:24px;font-weight:800;color:#dc2626;">${incorrect}</div></div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SKIPPED</div><div style="font-size:24px;font-weight:800;color:#6b7280;">${unanswered}</div></div>
+            </div>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #2d8a4e;">📋 Question-wise Answer Key</div>
+        ${questionsHTML}
+        <div style="text-align:center;margin-top:24px;padding:14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#6b7280;">Generated by <b>Thunderstudy CBT</b> | t.me/thunderstudy_official | ${dateStr}</div>
+    </div>`;
+    const printWin = window.open('','_blank','width=950,height=700,scrollbars=yes');
+    if (!printWin) { alert('Popup blocked! Please allow popups and try again.'); return; }
+    printWin.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Thunderstudy_PolSci_${name}_${dateStr.replace(/ /g,'-')}</title>
+    <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#fff;padding:20px;}@media print{body{padding:0;}.no-print{display:none !important;}}.print-btn{display:block;margin:0 auto 20px;padding:12px 36px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;}</style>
+    </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
+    printWin.document.close(); printWin.focus();
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
+</script>
+
+</body>
+</html>
