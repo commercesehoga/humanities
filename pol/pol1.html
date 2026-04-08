@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,7 +427,7 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
 </div>
 
 <h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
-  Political Science
+  political science
 </h1>
   <p style="font-size:16px;margin:6px 0;">Chapter <strong style="color:#1a5c34;">1</strong></p>
 <p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
@@ -548,12 +549,13 @@ Start Test
 <div id="test-screen">
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2>🗳️ Pol Sci</h2>
-        <div class="timer">01:00:00</div>
+        <h2>political science</h2>
         <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
     </div>
+        <div class="timer">01:00:00</div>
+        
     <div class="test-info">
-        <p><strong>Subject:</strong> <span id="subject-label">Political Science</span></p>
+        <p><strong>Subject:</strong> <span id="subject-label">political science</span></p>
         <p><strong>Questions:</strong> 50</p>
         <p><strong>Duration:</strong> 60 min</p>
         <p><strong>Marking:</strong> +5 / -1</p>
@@ -642,10 +644,10 @@ Start Test
 
 <script>
 /* ============================================================
-   POLITICAL SCIENCE MOCK TEST DATA
+   political science MOCK TEST DATA
    ============================================================ */
 const mockTest = {
-    title: "Political Science Mock",
+    title: "political science Mock",
     questions: [
 // ─── CHAPTER 1 ───────────────────────────────
 {id:1,section:"Era of One-Party Dominance",text:"In which year was the first general election of independent India held?",options:{a:"1947",b:"1950",c:"1951-52",d:"1954"},correctAnswer:"c",explanation:"The first general election of independent India was held in 1951-52.",marked:false,userAnswer:""},
@@ -927,11 +929,16 @@ const resultData = {
     maxScore: maxScore,
     correct: correct,
     wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
     skipped: unanswered,
-    totalQ: totalQuestions,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
     percentage: parseFloat(percentage),
     accuracy: parseFloat(accuracy),
-    timeTaken: mockTest.duration - timeLeft
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
     const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
@@ -941,9 +948,10 @@ fetch(GS_URL, {
     mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(resultData)
-}).then(() => {
-    localStorage.removeItem(storageKey);
-    localStorage.setItem(`synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
 }).catch(err => console.error("Sync failed", err));
     const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
     let index = [];
@@ -1151,7 +1159,7 @@ function generatePDF() {
     const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
         <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Political Science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — political science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
                 <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
             </div>
         </div>
