@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 <title>Thunderstudy CBT — Political Science</title>
 
 <script>
-const SUBJECT_ID  = "polsci";
+const SUBJECT_ID  = "pol";
 const CHAPTER_ID  = "pol1";
 </script>
 
@@ -648,7 +649,7 @@ Start Test
    ============================================================ */
 const mockTest = {
     title: "political science Mock",
-    questions: [
+    questions:  [
 // ─── CHAPTER 1 ───────────────────────────────
 {id:1,section:"Era of One-Party Dominance",text:"In which year was the first general election of independent India held?",options:{a:"1947",b:"1950",c:"1951-52",d:"1954"},correctAnswer:"c",explanation:"The first general election of independent India was held in 1951-52.",marked:false,userAnswer:""},
 {id:2,section:"Era of One-Party Dominance",text:"How many general elections did the 'Era of One-Party Dominance' cover?",options:{a:"First two",b:"First three",c:"First four",d:"First five"},correctAnswer:"b",explanation:"The Era of One-Party Dominance covers the first three general elections (1952, 1957, 1962).",marked:false,userAnswer:""},
@@ -940,7 +941,7 @@ const resultData = {
         .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
         .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
-    const storageKey = `thunderstudy_result_${sId}_${cId}`;
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
     const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
 fetch(GS_URL, {
