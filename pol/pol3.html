@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 <title>Thunderstudy CBT — Political Science</title>
 
 <script>
-const SUBJECT_ID  = "polsci";
+const SUBJECT_ID  = "pol";
 const CHAPTER_ID  = "pol3";
 </script>
 
@@ -648,7 +649,7 @@ Start Test
    ============================================================ */
 const mockTest = {
     title: "political science Mock",
-    questions: [
+    questions:  [
 {id:1,section:"Politics of Planned Development",text:"The Planning Commission of India was established in which year?",options:{a:"1947",b:"1948",c:"1950",d:"1952"},correctAnswer:"c",explanation:"The Planning Commission was established on 15 March 1950 by a cabinet resolution.",marked:false,userAnswer:""},
 {id:2,section:"Politics of Planned Development",text:"Who was the first Chairman of the Planning Commission of India?",options:{a:"Sardar Patel",b:"Jawaharlal Nehru",c:"Rajendra Prasad",d:"V.K. Krishna Menon"},correctAnswer:"b",explanation:"Jawaharlal Nehru was the first Chairman of the Planning Commission, which he chaired till his death in 1964.",marked:false,userAnswer:""},
 {id:3,section:"Politics of Planned Development",text:"The First Five Year Plan of India covered which period?",options:{a:"1947–1952",b:"1951–1956",c:"1952–1957",d:"1950–1955"},correctAnswer:"b",explanation:"The First Five Year Plan covered the period 1951–1956 and focused primarily on agriculture.",marked:false,userAnswer:""},
@@ -939,7 +940,7 @@ const resultData = {
         .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
         .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
-    const storageKey = `thunderstudy_result_${sId}_${cId}`;
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
     const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
 fetch(GS_URL, {
