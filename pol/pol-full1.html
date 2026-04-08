@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,8 +427,9 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
 </div>
 
 <h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
-  Political Science
+  political science
 </h1>
+  <p style="font-size:16px;margin:6px 0;">Full Mock <strong style="color:#1a5c34;">1</strong></p>
 <p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
 
 <a href="https://t.me/thunderstudy_official" target="_blank"
@@ -449,7 +451,7 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
   border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
   <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
   <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
-    <li><strong>65 Questions</strong></li>
+    <li><strong>50 Questions</strong></li>
     <li><strong>60 Minutes</strong> total time</li>
     <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
     <li>No penalty for <strong>unanswered</strong> questions</li>
@@ -463,7 +465,9 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
     style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
     font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
 </div>
-
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
 <div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
 
   <button onclick="startMock()" style="
@@ -545,20 +549,23 @@ Start Test
 <div id="test-screen">
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2>🗳️ Pol Sci</h2>
-        <div class="timer">01:00:00</div>
+        <h2>political science</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
     </div>
+        <div class="timer">01:00:00</div>
+        
     <div class="test-info">
-        <p><strong>Subject:</strong> <span id="subject-label">Political Science</span></p>
-        <p><strong>Questions:</strong> 65</p>
+        <p><strong>Subject:</strong> <span id="subject-label">political science</span></p>
+        <p><strong>Questions:</strong> 50</p>
         <p><strong>Duration:</strong> 60 min</p>
         <p><strong>Marking:</strong> +5 / -1</p>
         <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
     </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
     <div class="question-palette">
         <div class="palette-title">
             <span>Questions</span>
-            <span id="answered-count">0/65</span>
+            <span id="answered-count">0/50</span>
         </div>
         <div class="palette-grid" id="question-palette-grid"></div>
         <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
@@ -568,12 +575,13 @@ Start Test
 <div class="main-content">
 <div class="mobile-top-bar">
     <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
     <div id="mobile-name-display">👤 Thunder</div>
 </div>
 
 <div class="test-header">
   <div id="user-name-display">👤 Thunder</div>
-  <h2>Question <span id="current-q-number">1</span>/65</h2>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
   <div class="progress-container">
     <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
     <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
@@ -636,91 +644,130 @@ Start Test
 
 <script>
 /* ============================================================
-   POLITICAL SCIENCE MOCK TEST DATA
+   political science MOCK TEST DATA
    ============================================================ */
-const mockTest = {
-    title: "Political Science Mock",
+const mockTest = title: "Political Science Mock",
     questions: [
-// ─── CHAPTER 1: COLD WAR ERA ───────────────────────────────
-{id:1,section:"Cold War Era",text:"The Cold War was primarily a conflict between:",options:{a:"India and Pakistan",b:"USA and USSR",c:"China and Japan",d:"UK and France"},correctAnswer:"b",explanation:"The Cold War (1947–1991) was an ideological and geopolitical rivalry between the USA (capitalism) and USSR (communism).",marked:false,userAnswer:null},
-{id:2,section:"Cold War Era",text:"The term 'Cold War' was coined by:",options:{a:"Winston Churchill",b:"Franklin Roosevelt",c:"Bernard Baruch",d:"Harry Truman"},correctAnswer:"c",explanation:"The term 'Cold War' was popularised by American financier and presidential adviser Bernard Baruch in 1947.",marked:false,userAnswer:null},
-{id:3,section:"Cold War Era",text:"NATO was formed in:",options:{a:"1945",b:"1947",c:"1949",d:"1955"},correctAnswer:"c",explanation:"NATO (North Atlantic Treaty Organization) was established on 4 April 1949 as a Western military alliance.",marked:false,userAnswer:null},
-{id:4,section:"Cold War Era",text:"The Warsaw Pact was the Soviet Union's response to:",options:{a:"Formation of the UN",b:"NATO",c:"Marshall Plan",d:"Truman Doctrine"},correctAnswer:"b",explanation:"The Warsaw Pact (1955) was formed by the USSR and Eastern bloc countries as a counterweight to NATO.",marked:false,userAnswer:null},
-{id:5,section:"Cold War Era",text:"The Cuban Missile Crisis occurred in:",options:{a:"1960",b:"1961",c:"1962",d:"1965"},correctAnswer:"c",explanation:"The Cuban Missile Crisis of October 1962 was the closest the Cold War came to nuclear conflict.",marked:false,userAnswer:null},
-{id:6,section:"Cold War Era",text:"Which US policy committed to containing the spread of communism?",options:{a:"Marshall Plan",b:"Monroe Doctrine",c:"Truman Doctrine",d:"Roosevelt Corollary"},correctAnswer:"c",explanation:"The Truman Doctrine (1947) pledged US support to nations threatened by communist expansion.",marked:false,userAnswer:null},
-{id:7,section:"Cold War Era",text:"The Marshall Plan provided economic aid to rebuild:",options:{a:"Asia after WWII",b:"Western Europe after WWII",c:"Soviet satellite states",d:"Latin America"},correctAnswer:"b",explanation:"The Marshall Plan (1948) provided over $12 billion in US economic aid to rebuild war-torn Western Europe.",marked:false,userAnswer:null},
-{id:8,section:"Cold War Era",text:"The policy of 'Détente' in the Cold War referred to:",options:{a:"Escalation of arms race",b:"Easing of tensions between superpowers",c:"Nuclear war strategy",d:"Formation of new alliances"},correctAnswer:"b",explanation:"Détente (1960s–70s) was a period of relaxed tensions and improved relations between the US and USSR.",marked:false,userAnswer:null},
-{id:9,section:"Cold War Era",text:"India's foreign policy during the Cold War was based on:",options:{a:"Pro-Soviet alignment",b:"Pro-American alignment",c:"Non-Alignment",d:"Isolationism"},correctAnswer:"c",explanation:"India, under Nehru, championed Non-Alignment — staying out of both superpower blocs.",marked:false,userAnswer:null},
-{id:10,section:"Cold War Era",text:"The Non-Aligned Movement (NAM) was founded at the Belgrade Summit in:",options:{a:"1955",b:"1961",c:"1965",d:"1970"},correctAnswer:"b",explanation:"NAM was formally established at the First Summit in Belgrade, Yugoslavia in September 1961.",marked:false,userAnswer:null},
-{id:11,section:"Cold War Era",text:"Which of the following is NOT a founding leader of NAM?",options:{a:"Jawaharlal Nehru",b:"Josip Broz Tito",c:"Gamal Abdel Nasser",d:"Mao Zedong"},correctAnswer:"d",explanation:"NAM was founded by Nehru (India), Tito (Yugoslavia), Nasser (Egypt), Sukarno (Indonesia) and Nkrumah (Ghana). Mao was not a founder.",marked:false,userAnswer:null},
-{id:12,section:"Cold War Era",text:"The Berlin Wall was built in:",options:{a:"1949",b:"1955",c:"1961",d:"1968"},correctAnswer:"c",explanation:"The Berlin Wall was constructed by East Germany in August 1961 to stop emigration to West Berlin.",marked:false,userAnswer:null},
-{id:13,section:"Cold War Era",text:"SEATO was a military alliance created in:",options:{a:"Europe",b:"South-East Asia",c:"South Asia",d:"Middle East"},correctAnswer:"b",explanation:"SEATO (South-East Asia Treaty Organization, 1954) was a US-led alliance to counter communism in South-East Asia.",marked:false,userAnswer:null},
-{id:14,section:"Cold War Era",text:"The Arms Race during Cold War led to which doctrine of deterrence?",options:{a:"MAD — Mutually Assured Destruction",b:"Preemptive Strike",c:"Détente",d:"Brinkmanship only"},correctAnswer:"a",explanation:"MAD (Mutually Assured Destruction) held that a nuclear attack by either side would result in total annihilation of both, deterring first strikes.",marked:false,userAnswer:null},
-{id:15,section:"Cold War Era",text:"The Cold War formally ended with:",options:{a:"Fall of Berlin Wall in 1989",b:"Dissolution of the Soviet Union in 1991",c:"SALT II Treaty",d:"German Reunification"},correctAnswer:"b",explanation:"The Cold War ended with the formal dissolution of the USSR on 25 December 1991.",marked:false,userAnswer:null},
 
-// ─── CHAPTER 2: US HEGEMONY IN WORLD POLITICS ──────────────
-{id:16,section:"US Hegemony",text:"After the Cold War, the world became:",options:{a:"Bipolar",b:"Multipolar",c:"Unipolar with US dominance",d:"Non-polar"},correctAnswer:"c",explanation:"With the USSR's collapse, the US emerged as the sole superpower, creating a unipolar world order.",marked:false,userAnswer:null},
-{id:17,section:"US Hegemony",text:"Operation Desert Storm (1991) was launched against:",options:{a:"Afghanistan",b:"Iraq",c:"Iran",d:"Libya"},correctAnswer:"b",explanation:"Operation Desert Storm was a US-led coalition military campaign to liberate Kuwait from Iraqi occupation.",marked:false,userAnswer:null},
-{id:18,section:"US Hegemony",text:"The 9/11 attacks occurred on:",options:{a:"11 September 2000",b:"11 September 2001",c:"11 September 2002",d:"11 October 2001"},correctAnswer:"b",explanation:"On 11 September 2001, al-Qaeda terrorists attacked the World Trade Center and Pentagon, killing nearly 3,000 people.",marked:false,userAnswer:null},
-{id:19,section:"US Hegemony",text:"Operation Enduring Freedom was launched against:",options:{a:"Iraq",b:"Iran",c:"Afghanistan",d:"Somalia"},correctAnswer:"c",explanation:"Operation Enduring Freedom (October 2001) targeted Taliban regime and al-Qaeda in Afghanistan after 9/11.",marked:false,userAnswer:null},
-{id:20,section:"US Hegemony",text:"Operation Iraqi Freedom was launched in:",options:{a:"2001",b:"2002",c:"2003",d:"2004"},correctAnswer:"c",explanation:"Operation Iraqi Freedom began in March 2003; the US invaded Iraq claiming it possessed WMDs.",marked:false,userAnswer:null},
-{id:21,section:"US Hegemony",text:"The concept of US hegemony as 'Structural Power' refers to:",options:{a:"Military dominance",b:"Control over global economy, norms, and institutions",c:"Nuclear arsenal",d:"Geographic size"},correctAnswer:"b",explanation:"Structural hegemony means the US shapes the rules, norms, and institutions of the global order — IMF, World Bank, WTO etc.",marked:false,userAnswer:null},
-{id:22,section:"US Hegemony",text:"Which country is the largest contributor to the UN budget?",options:{a:"China",b:"Russia",c:"United States",d:"Japan"},correctAnswer:"c",explanation:"The United States has historically been the largest contributor to the UN regular budget and peacekeeping operations.",marked:false,userAnswer:null},
-{id:23,section:"US Hegemony",text:"The 'Washington Consensus' promoted which economic model globally?",options:{a:"Socialist planning",b:"Mixed economy",c:"Free market liberalisation, privatisation, deregulation",d:"Protectionism"},correctAnswer:"c",explanation:"The Washington Consensus (promoted by IMF, World Bank, US Treasury) advocated free-market capitalism, privatisation, and deregulation.",marked:false,userAnswer:null},
-{id:24,section:"US Hegemony",text:"Which document is considered the foundation of US foreign policy supremacy post-Cold War?",options:{a:"Monroe Doctrine",b:"National Security Strategy 2002 (Bush Doctrine)",c:"SALT II",d:"Helsinki Accords"},correctAnswer:"b",explanation:"The Bush Doctrine (NSS 2002) asserted US right to pre-emptive military action against perceived threats.",marked:false,userAnswer:null},
-{id:25,section:"US Hegemony",text:"Which of these best describes a 'constraint' on US hegemony?",options:{a:"NATO membership",b:"US Congress, civil society, and history of overstretch",c:"Its nuclear arsenal",d:"UN Security Council veto"},correctAnswer:"b",explanation:"US hegemony is constrained internally (Congress, public opinion) and externally (overstretch, rising powers, civil society opposition).",marked:false,userAnswer:null},
+// ─── BOOK 1: INDIAN POLITICS ───────────────────────────────────────────────
 
-// ─── CHAPTER 3: NEW CENTRES OF POWER ──────────────────────
-{id:26,section:"New Centres of Power",text:"The European Union was formally established by the:",options:{a:"Treaty of Rome",b:"Maastricht Treaty",c:"Lisbon Treaty",d:"Amsterdam Treaty"},correctAnswer:"b",explanation:"The Maastricht Treaty (1993) formally established the European Union, building on the earlier European Community.",marked:false,userAnswer:null},
-{id:27,section:"New Centres of Power",text:"The common currency of the European Union is:",options:{a:"Pound",b:"Dollar",c:"Euro",d:"Franc"},correctAnswer:"c",explanation:"The Euro (€) was introduced in 1999 and is the common currency used by 20 EU member states (Eurozone).",marked:false,userAnswer:null},
-{id:28,section:"New Centres of Power",text:"ASEAN was established in:",options:{a:"1955",b:"1961",c:"1967",d:"1975"},correctAnswer:"c",explanation:"ASEAN (Association of Southeast Asian Nations) was founded on 8 August 1967 in Bangkok.",marked:false,userAnswer:null},
-{id:29,section:"New Centres of Power",text:"The 'ASEAN Way' refers to:",options:{a:"Military intervention",b:"Informal consultations, consensus, and non-interference",c:"Economic sanctions",d:"Rapid integration like EU"},correctAnswer:"b",explanation:"The 'ASEAN Way' is a principle of informality, consensus-building, and non-interference in members' internal affairs.",marked:false,userAnswer:null},
-{id:30,section:"New Centres of Power",text:"China's economic rise is often described as:",options:{a:"Socialist stagnation",b:"Peaceful Rise or Peaceful Development",c:"Imperial expansion",d:"Dollar diplomacy"},correctAnswer:"b",explanation:"China officially promoted the concept of 'Peaceful Rise' (later 'Peaceful Development') to reassure the world about its growing power.",marked:false,userAnswer:null},
-{id:31,section:"New Centres of Power",text:"China's 'Open Door Policy' was introduced by:",options:{a:"Mao Zedong",b:"Zhou Enlai",c:"Deng Xiaoping",d:"Jiang Zemin"},correctAnswer:"c",explanation:"Deng Xiaoping introduced the Open Door Policy (1978) that opened China to foreign investment and market reforms.",marked:false,userAnswer:null},
-{id:32,section:"New Centres of Power",text:"The SCO (Shanghai Cooperation Organisation) is primarily a:",options:{a:"Trade bloc",b:"Security and political cooperation organisation",c:"Environmental treaty",d:"Currency union"},correctAnswer:"b",explanation:"SCO (est. 2001) focuses on security cooperation, combating terrorism, and regional stability in Central/South Asia.",marked:false,userAnswer:null},
-{id:33,section:"New Centres of Power",text:"SAARC stands for:",options:{a:"South Asian Association for Regional Cooperation",b:"South Asian Alliance for Regional Cooperation",c:"South Asian Agreement for Regional Commerce",d:"South Asian Authority for Regional Control"},correctAnswer:"a",explanation:"SAARC was established in 1985 to promote peace, stability, and economic cooperation among South Asian nations.",marked:false,userAnswer:null},
-{id:34,section:"New Centres of Power",text:"India and China normalised relations after the 1962 war through the visit of:",options:{a:"Indira Gandhi",b:"Rajiv Gandhi",c:"Atal Bihari Vajpayee",d:"Manmohan Singh"},correctAnswer:"b",explanation:"Rajiv Gandhi's visit to China in 1988 normalised relations and began a sustained process of diplomatic engagement.",marked:false,userAnswer:null},
-{id:35,section:"New Centres of Power",text:"The EU's collective GDP makes it one of the world's:",options:{a:"Smallest economies",b:"Largest single market economies",c:"Fastest shrinking economies",d:"Most indebted blocs"},correctAnswer:"b",explanation:"The EU collectively forms one of the largest single market economies in the world, rivalling the US and China.",marked:false,userAnswer:null},
+// ── Chapter 1: Era of One-Party Dominance ──────────────────────────────────
+{id:1,section:"Era of One-Party Dominance",text:"Which of the following best explains the 'coalitional nature' of the Indian National Congress in the first three general elections?",options:{a:"Congress operated as a monolithic ideological party with strict discipline",b:"Congress accommodated diverse social groups, regional leaders and ideological tendencies under one umbrella",c:"Congress formed formal alliances with socialist and communist parties",d:"Congress relied exclusively on upper-caste Hindu vote banks"},correctAnswer:"b",explanation:"Congress acted as a coalition of diverse interests — zamindars, peasants, business, minorities — within itself, not as a narrow ideological bloc.",marked:false,userAnswer:null},
 
-// ─── CHAPTER 4: INTERNATIONAL ORGANISATIONS ───────────────
-{id:36,section:"International Organisations",text:"The United Nations was established in:",options:{a:"1944",b:"1945",c:"1946",d:"1948"},correctAnswer:"b",explanation:"The UN was officially established on 24 October 1945 after the ratification of the UN Charter.",marked:false,userAnswer:null},
-{id:37,section:"International Organisations",text:"How many permanent members does the UN Security Council have?",options:{a:"3",b:"4",c:"5",d:"7"},correctAnswer:"c",explanation:"The UNSC has 5 permanent members (P5): USA, UK, France, Russia, and China — each holding veto power.",marked:false,userAnswer:null},
-{id:38,section:"International Organisations",text:"India has been seeking a permanent seat on the UN Security Council. This reform is called:",options:{a:"UNSC Expansion",b:"UN Democratisation",c:"UNSC Reform",d:"All of the above"},correctAnswer:"d",explanation:"India's bid for permanent UNSC membership is part of broader UNSC reform discussions, including expansion of permanent seats.",marked:false,userAnswer:null},
-{id:39,section:"International Organisations",text:"The International Monetary Fund (IMF) was created under the:",options:{a:"UN Charter",b:"Bretton Woods system",c:"Washington Consensus",d:"Marshall Plan"},correctAnswer:"b",explanation:"The IMF and World Bank were created at the Bretton Woods Conference (1944) to manage the post-war international monetary system.",marked:false,userAnswer:null},
-{id:40,section:"International Organisations",text:"The WTO replaced which earlier body?",options:{a:"IMF",b:"UNCTAD",c:"GATT",d:"World Bank"},correctAnswer:"c",explanation:"The WTO (World Trade Organization) was established in 1995, replacing the General Agreement on Tariffs and Trade (GATT, 1947).",marked:false,userAnswer:null},
-{id:41,section:"International Organisations",text:"The UN's primary goal as stated in its Charter is:",options:{a:"Promoting capitalism globally",b:"Maintaining international peace and security",c:"Creating a world government",d:"Establishing free trade"},correctAnswer:"b",explanation:"Article 1 of the UN Charter states the primary purpose is to maintain international peace and security.",marked:false,userAnswer:null},
-{id:42,section:"International Organisations",text:"The International Court of Justice (ICJ) is located in:",options:{a:"New York",b:"Geneva",c:"The Hague",d:"Vienna"},correctAnswer:"c",explanation:"The ICJ, the principal judicial organ of the UN, is located in The Hague, Netherlands.",marked:false,userAnswer:null},
-{id:43,section:"International Organisations",text:"Amnesty International is best described as a:",options:{a:"UN agency",b:"Regional trade body",c:"International NGO for human rights",d:"Military alliance"},correctAnswer:"c",explanation:"Amnesty International is a prominent non-governmental organisation (NGO) that campaigns for human rights globally.",marked:false,userAnswer:null},
+{id:2,section:"Era of One-Party Dominance",text:"The first general elections in India were held in:",options:{a:"1947–48",b:"1951–52",c:"1954–55",d:"1956–57"},correctAnswer:"b",explanation:"India's first general elections were held in 1951–52, making them the largest democratic exercise in history at that time.",marked:false,userAnswer:null},
 
-// ─── CHAPTER 5: SECURITY IN CONTEMPORARY WORLD ────────────
-{id:44,section:"Security",text:"Traditional security concerns primarily deal with:",options:{a:"Economic inequality",b:"Military threats from other states",c:"Climate change",d:"Migration"},correctAnswer:"b",explanation:"Traditional security focuses on military threats — war, arms races, territorial aggression — from other nation-states.",marked:false,userAnswer:null},
-{id:45,section:"Security",text:"'Human Security' as a concept focuses on:",options:{a:"Only military defence",b:"Security of the individual from threats like poverty, disease, disasters",c:"State sovereignty only",d:"Nuclear deterrence"},correctAnswer:"b",explanation:"Human Security (UNDP 1994) broadens security to include freedom from want and freedom from fear at the individual level.",marked:false,userAnswer:null},
-{id:46,section:"Security",text:"The Nuclear Non-Proliferation Treaty (NPT) was signed in:",options:{a:"1963",b:"1968",c:"1972",d:"1980"},correctAnswer:"b",explanation:"The NPT was opened for signature in 1968 and entered into force in 1970, aiming to prevent the spread of nuclear weapons.",marked:false,userAnswer:null},
-{id:47,section:"Security",text:"India has NOT signed the NPT primarily because:",options:{a:"India cannot afford nuclear weapons",b:"NPT is discriminatory — it allows P5 to keep weapons while denying others",c:"India has no nuclear programme",d:"UN prohibited India from signing"},correctAnswer:"b",explanation:"India considers the NPT discriminatory as it perpetuates a two-tier system — nuclear haves (P5) and have-nots.",marked:false,userAnswer:null},
-{id:48,section:"Security",text:"The Comprehensive Test Ban Treaty (CTBT) bans:",options:{a:"Only underground nuclear tests",b:"All nuclear weapon test explosions and nuclear explosions",c:"Only atmospheric tests",d:"Ballistic missile tests"},correctAnswer:"b",explanation:"The CTBT (1996) bans all nuclear explosions for both military and civilian purposes, in any environment.",marked:false,userAnswer:null},
+{id:3,section:"Era of One-Party Dominance",text:"Which party emerged as the principal opposition to Congress in the early years but remained ideologically fragmented, illustrating why Congress dominance persisted?",options:{a:"Praja Socialist Party alone",b:"Jana Sangh alone",c:"Communist Party of India alone",d:"All of the above — multiple fragmented opposition parties could not dislodge Congress"},correctAnswer:"d",explanation:"Multiple parties — PSP, CPI, Jana Sangh, Swatantra — opposed Congress but split the opposition vote, leaving Congress dominant at the national level.",marked:false,userAnswer:null},
 
-// ─── CHAPTER 6: ENVIRONMENT AND NATURAL RESOURCES ─────────
-{id:49,section:"Environment",text:"The first major international conference on environment was held in:",options:{a:"Rio de Janeiro, 1992",b:"Stockholm, 1972",c:"Kyoto, 1997",d:"Copenhagen, 2009"},correctAnswer:"b",explanation:"The Stockholm Conference (1972) was the first major UN conference on the environment, leading to the creation of UNEP.",marked:false,userAnswer:null},
-{id:50,section:"Environment",text:"The Kyoto Protocol (1997) required developed countries to:",options:{a:"Increase carbon emissions",b:"Reduce greenhouse gas emissions",c:"Stop nuclear tests",d:"Share renewable technology free of cost"},correctAnswer:"b",explanation:"The Kyoto Protocol committed developed (Annex-I) countries to reduce their greenhouse gas emissions by specific targets.",marked:false,userAnswer:null},
-{id:51,section:"Environment",text:"The Earth Summit of 1992 was held in:",options:{a:"Stockholm",b:"Nairobi",c:"Rio de Janeiro",d:"Geneva"},correctAnswer:"c",explanation:"The Earth Summit (UNCED) was held in Rio de Janeiro, Brazil in June 1992, producing Agenda 21 and other key agreements.",marked:false,userAnswer:null},
-{id:52,section:"Environment",text:"Which country withdrew from the Kyoto Protocol in 2001?",options:{a:"China",b:"India",c:"United States",d:"Russia"},correctAnswer:"c",explanation:"The US under President George W. Bush withdrew from the Kyoto Protocol in 2001, citing harm to the US economy.",marked:false,userAnswer:null},
-{id:53,section:"Environment",text:"The concept of 'Common but Differentiated Responsibilities' (CBDR) means:",options:{a:"All countries have identical obligations",b:"Developed nations bear greater responsibility for historical emissions",c:"Only developing nations must cut emissions",d:"Corporations pay all climate costs"},correctAnswer:"b",explanation:"CBDR recognises that while all states share responsibility for global environment, developed nations bear greater obligations due to historical emissions.",marked:false,userAnswer:null},
-{id:54,section:"Environment",text:"The Paris Agreement (2015) aims to limit global temperature rise to:",options:{a:"3°C above pre-industrial levels",b:"Well below 2°C, pursuing 1.5°C",c:"Exactly 2°C",d:"0.5°C"},correctAnswer:"b",explanation:"The Paris Agreement sets a goal to limit warming to well below 2°C above pre-industrial levels, with efforts to limit it to 1.5°C.",marked:false,userAnswer:null},
-{id:55,section:"Environment",text:"India's stand on environment negotiations is best described as:",options:{a:"Development must not be sacrificed; historical emitters must take lead",b:"India must accept all emission caps immediately",c:"Developing nations should carry equal burden",d:"Environment is more important than development"},correctAnswer:"a",explanation:"India argues for the right to development and insists historically high-emitting developed nations must take primary responsibility.",marked:false,userAnswer:null},
+{id:4,section:"Era of One-Party Dominance",text:"Congress dominance at the national level was described as 'uneven' primarily because:",options:{a:"Congress never won a majority in Parliament",b:"Congress faced defeats in several states while dominating nationally, showing federal complexity",c:"Congress deliberately avoided contesting state elections",d:"India had no state-level governments until 1967"},correctAnswer:"b",explanation:"Congress held large parliamentary majorities but lost power in several states (Kerala 1957, etc.), making its dominance geographically uneven.",marked:false,userAnswer:null},
 
-// ─── CHAPTER 7: GLOBALISATION ─────────────────────────────
-{id:56,section:"Globalisation",text:"Globalisation primarily refers to:",options:{a:"Military alliances across the world",b:"Integration of economies, societies, and cultures across the world",c:"Colonisation of developing countries",d:"Formation of regional blocs only"},correctAnswer:"b",explanation:"Globalisation is the process of increasing interconnectedness of economies, societies, politics, and cultures globally.",marked:false,userAnswer:null},
-{id:57,section:"Globalisation",text:"Which of the following is a key driver of economic globalisation?",options:{a:"Cold War arms race",b:"Growth of multinational corporations (MNCs) and liberalisation of trade",c:"Non-Aligned Movement",d:"Nuclear proliferation"},correctAnswer:"b",explanation:"MNCs, trade liberalisation, foreign direct investment, and technology are key drivers of economic globalisation.",marked:false,userAnswer:null},
-{id:58,section:"Globalisation",text:"The 'anti-globalisation' movement argues that globalisation:",options:{a:"Benefits all nations equally",b:"Widens inequality and harms the poor and environment",c:"Has no political dimensions",d:"Replaced colonialism completely"},correctAnswer:"b",explanation:"Anti-globalisation critics argue it primarily benefits wealthy nations and MNCs, worsening inequality, cultural homogenisation, and environmental damage.",marked:false,userAnswer:null},
-{id:59,section:"Globalisation",text:"Cultural globalisation is criticised for causing:",options:{a:"Diversity of cultures",b:"Cultural homogenisation / Americanisation",c:"Revival of local cultures",d:"Reduced media influence"},correctAnswer:"b",explanation:"Critics argue cultural globalisation spreads Western (especially American) culture, eroding local traditions and identities.",marked:false,userAnswer:null},
-{id:60,section:"Globalisation",text:"India adopted economic liberalisation as part of globalisation in:",options:{a:"1985",b:"1991",c:"1995",d:"2001"},correctAnswer:"b",explanation:"India adopted the LPG (Liberalisation, Privatisation, Globalisation) reforms in 1991 under Finance Minister Manmohan Singh.",marked:false,userAnswer:null},
-{id:61,section:"Globalisation",text:"Which institution is most associated with promoting economic globalisation?",options:{a:"WHO",b:"UNESCO",c:"WTO",d:"UNICEF"},correctAnswer:"c",explanation:"The WTO promotes free trade and reduces trade barriers — it is the central institution for global economic integration.",marked:false,userAnswer:null},
-{id:62,section:"Globalisation",text:"Political globalisation includes:",options:{a:"Only trade treaties",b:"Spread of democracy, human rights norms, and international institutions",c:"Military conquest",d:"Currency unification"},correctAnswer:"b",explanation:"Political globalisation involves the spread of democratic norms, human rights frameworks, and the growing role of international bodies.",marked:false,userAnswer:null},
-{id:63,section:"Globalisation",text:"'McDonaldisation' is an example of which aspect of globalisation?",options:{a:"Economic",b:"Political",c:"Cultural",d:"Environmental"},correctAnswer:"c",explanation:"'McDonaldisation' symbolises cultural globalisation — the worldwide spread of American fast-food and consumer culture.",marked:false,userAnswer:null},
-{id:64,section:"Globalisation",text:"The Zapatista movement in Mexico was a protest against:",options:{a:"Nuclear testing",b:"NAFTA and economic globalisation's impact on indigenous farmers",c:"NATO expansion",d:"US military bases"},correctAnswer:"b",explanation:"The Zapatista uprising (1994) in Chiapas coincided with NAFTA's launch, protesting globalisation's harm to indigenous communities.",marked:false,userAnswer:null},
-{id:65,section:"Globalisation",text:"Which of the following best describes India's attitude toward globalisation?",options:{a:"Complete rejection",b:"Selective and cautious engagement — embracing benefits while resisting harmful aspects",c:"Full unrestricted adoption",d:"Isolation from world markets"},correctAnswer:"b",explanation:"India has engaged selectively with globalisation — liberalising key sectors while protecting agriculture, culture, and strategic industries.",marked:false,userAnswer:null},
- ],
-    duration: 75 * 60,
+// ── Chapter 2: Nation-Building & Its Problems ──────────────────────────────
+{id:5,section:"Nation-Building & Its Problems",text:"The Kashmir problem in 1947 arose primarily because:",options:{a:"The UN directly administered Kashmir from 1947",b:"Pakistan and India agreed to divide Kashmir equally but later disagreed",c:"Maharaja Hari Singh initially chose independence and acceded to India only after Pakistani tribal invasion",d:"Kashmir's Muslim majority automatically made it part of Pakistan under the partition formula"},correctAnswer:"c",explanation:"Maharaja Hari Singh signed the Instrument of Accession to India in October 1947 after Pakistani-backed tribal raiders invaded, triggering the first Kashmir war.",marked:false,userAnswer:null},
+
+{id:6,section:"Nation-Building & Its Problems",text:"The States Reorganisation Commission (1953–56) recommended state boundaries primarily on the basis of:",options:{a:"Economic viability and river basins",b:"Linguistic and cultural lines",c:"Strategic military considerations",d:"Population density alone"},correctAnswer:"b",explanation:"The SRC recommended drawing state boundaries along linguistic lines, leading to the States Reorganisation Act 1956.",marked:false,userAnswer:null},
+
+{id:7,section:"Nation-Building & Its Problems",text:"The 'fast unto death' by Potti Sriramulu in 1952 directly led to the formation of which state?",options:{a:"Tamil Nadu for Tamil speakers",b:"Andhra Pradesh for Telugu speakers",c:"Karnataka for Kannada speakers",d:"Kerala for Malayalam speakers"},correctAnswer:"b",explanation:"Sriramulu's death after a prolonged fast compelled the government to create Andhra Pradesh in 1953, the first linguistic state in India.",marked:false,userAnswer:null},
+
+// ── Chapters 3+4: Planned Development & External Relations (MERGED) ────────
+{id:8,section:"Planned Development & External Relations",text:"India's Five Year Plans were administered by which body established in 1950?",options:{a:"Finance Commission",b:"Planning Commission",c:"National Development Council",d:"Reserve Bank of India"},correctAnswer:"b",explanation:"The Planning Commission was established in 1950 under Nehru to oversee Five Year Plans; it was replaced by NITI Aayog in 2015.",marked:false,userAnswer:null},
+
+{id:9,section:"Planned Development & External Relations",text:"Which of the following CORRECTLY describes Nehru's economic model for India?",options:{a:"Pure socialist economy with state ownership of all property",b:"Laissez-faire capitalism with minimal state role",c:"Mixed economy with public sector in commanding heights and private sector permitted in other areas",d:"Import-led growth financed by foreign borrowing"},correctAnswer:"c",explanation:"Nehru envisioned a 'socialist pattern of society' — a mixed economy where the state controlled key industries (commanding heights) while private sector operated in others.",marked:false,userAnswer:null},
+
+{id:10,section:"Planned Development & External Relations",text:"The Sino-Indian War of 1962 exposed which fundamental flaw in India's defence and foreign policy?",options:{a:"India's military was too large and expensive to maintain",b:"The 'Forward Policy' combined with neglect of military preparedness led to India being outmatched by China",c:"India had over-relied on Soviet military aid that failed to materialise",d:"India's absence of a nuclear deterrent was the decisive factor"},correctAnswer:"b",explanation:"India's 'Forward Policy' of posting troops beyond defensible positions, combined with chronic military underfunding under 'Hindi-Chini bhai-bhai' optimism, led to a humiliating defeat.",marked:false,userAnswer:null},
+
+{id:11,section:"Planned Development & External Relations",text:"The Indo-Pakistan War of 1971 resulted in:",options:{a:"Status quo — no territorial changes and Pakistan intact",b:"Pakistan capturing Bangladesh with Chinese support",c:"Creation of Bangladesh as an independent nation after India's military intervention",d:"A UN-mandated ceasefire reverting to pre-1947 boundaries"},correctAnswer:"c",explanation:"The 1971 war, triggered by Pakistan's Operation Searchlight in East Pakistan, ended with Indian military victory and the creation of Bangladesh.",marked:false,userAnswer:null},
+
+{id:12,section:"Planned Development & External Relations",text:"India's first nuclear test 'Smiling Buddha' was conducted in:",options:{a:"1968",b:"1971",c:"1974",d:"1980"},correctAnswer:"c",explanation:"India conducted its first nuclear test at Pokhran in May 1974, describing it as a 'peaceful nuclear explosion.'",marked:false,userAnswer:null},
+
+{id:13,section:"Planned Development & External Relations",text:"Nehru's foreign policy of Non-Alignment was rooted in which core principle?",options:{a:"Maintaining strict neutrality by refusing to trade with any bloc",b:"Building military alliances with smaller Asian nations",c:"Preserving India's strategic autonomy by staying outside both Cold War blocs while engaging diplomatically with all",d:"Aligning with the Soviet bloc to counter Western colonialism"},correctAnswer:"c",explanation:"Non-Alignment meant India refused to join NATO or Warsaw Pact but engaged diplomatically with both superpowers, preserving freedom of choice.",marked:false,userAnswer:null},
+
+// ── Chapters 5+6: Congress System, Non-Congressism & Emergency (MERGED) ────
+{id:14,section:"Congress System, Non-Congressism & Emergency",text:"The term 'Non-Congressism' was coined by which leader who advocated a united opposition strategy?",options:{a:"Jayaprakash Narayan",b:"Ram Manohar Lohia",c:"Atal Bihari Vajpayee",d:"Charan Singh"},correctAnswer:"b",explanation:"Ram Manohar Lohia coined and advocated 'Non-Congressism' — the idea that all non-Congress parties must unite electorally to break Congress dominance.",marked:false,userAnswer:null},
+
+{id:15,section:"Congress System, Non-Congressism & Emergency",text:"The 1971 general election was won by Indira Gandhi primarily on which slogan?",options:{a:"Jai Jawan Jai Kisan",b:"Garibi Hatao (Remove Poverty)",c:"Sampoorna Kranti",d:"India is Indira, Indira is India"},correctAnswer:"b",explanation:"Indira Gandhi's 'Garibi Hatao' slogan mobilised the poor, minorities and women, delivering a massive parliamentary mandate in 1971.",marked:false,userAnswer:null},
+
+{id:16,section:"Congress System, Non-Congressism & Emergency",text:"The Allahabad High Court's 1975 judgment that unseated Indira Gandhi was related to:",options:{a:"Constitutional amendment violations during the Emergency",b:"Electoral malpractices (use of government machinery) during the 1971 election",c:"Her involvement in proclaiming Emergency",d:"Misuse of intelligence agencies against opposition"},correctAnswer:"b",explanation:"Justice Jagmohan Lal Sinha found Indira Gandhi guilty of using government resources during the 1971 campaign and voided her election.",marked:false,userAnswer:null},
+
+{id:17,section:"Congress System, Non-Congressism & Emergency",text:"Which Constitutional provision was invoked to impose the Emergency in June 1975, and why was it controversial?",options:{a:"Article 356 — it was controversial because President's Rule cannot be indefinite",b:"Article 360 — Financial Emergency had never been used before",c:"Article 352 — it cited 'internal disturbance' (not external aggression or armed rebellion), a much weaker constitutional threshold",d:"Article 368 — using amendment power to suspend rights was unprecedented"},correctAnswer:"c",explanation:"Article 352 was invoked citing 'internal disturbance.' The 44th Amendment (1978) later replaced this with 'armed rebellion' to prevent misuse.",marked:false,userAnswer:null},
+
+{id:18,section:"Congress System, Non-Congressism & Emergency",text:"The Navnirman movement (1974) that preceded the Emergency originated in:",options:{a:"Bihar as a student agitation led by Jayaprakash Narayan",b:"West Bengal against Left Front government",c:"Gujarat as a student agitation against price rise and corruption",d:"Maharashtra demanding linguistic reorganisation"},correctAnswer:"c",explanation:"The Navnirman movement began in Gujarat in 1974 as a student protest against price rise and corruption, leading to dissolution of the state assembly.",marked:false,userAnswer:null},
+
+{id:19,section:"Congress System, Non-Congressism & Emergency",text:"The political succession after Nehru saw which sequence of Prime Ministers?",options:{a:"Indira Gandhi → Lal Bahadur Shastri → Morarji Desai",b:"Lal Bahadur Shastri → Indira Gandhi (after Shastri's death in 1966)",c:"Jagjivan Ram → Lal Bahadur Shastri → Indira Gandhi",d:"Morarji Desai → Lal Bahadur Shastri → Indira Gandhi"},correctAnswer:"b",explanation:"After Nehru's death (1964), Lal Bahadur Shastri became PM and died in Tashkent (1966); Indira Gandhi succeeded him, defeating Morarji Desai in the Congress power struggle.",marked:false,userAnswer:null},
+
+// ── Chapters 7+8: Regional Aspirations & Democratic Upsurge (MERGED) ───────
+{id:20,section:"Regional Aspirations & Democratic Upsurge",text:"Operation Blue Star (June 1984) was launched to flush out militants from:",options:{a:"Lal Qila, Delhi",b:"Hazur Sahib, Nanded",c:"Golden Temple complex, Amritsar",d:"Akal Takht, Anandpur Sahib (separate from Golden Temple)"},correctAnswer:"c",explanation:"Operation Blue Star was the Indian Army's assault on the Golden Temple complex in Amritsar to remove Sikh militants led by Jarnail Singh Bhindranwale.",marked:false,userAnswer:null},
+
+{id:21,section:"Regional Aspirations & Democratic Upsurge",text:"The Anandpur Sahib Resolution (1973) primarily demanded:",options:{a:"An independent sovereign Khalistan nation separate from India",b:"Greater state autonomy — limiting Centre to defence, foreign affairs, communications and currency — plus territorial adjustments",c:"Merger of Punjabi-speaking areas of Pakistan into India",d:"Economic reservations for Sikhs in government employment"},correctAnswer:"b",explanation:"The Anandpur Sahib Resolution demanded maximum autonomy for states and return of Chandigarh to Punjab — it was not initially a secessionist document.",marked:false,userAnswer:null},
+
+{id:22,section:"Regional Aspirations & Democratic Upsurge",text:"The Mandal Commission, whose report was implemented in 1990 by V.P. Singh, recommended:",options:{a:"27% reservation for OBCs in central government jobs and educational institutions",b:"33% reservation for women in Parliament and state legislatures",c:"50% reservation for SCs and STs combined",d:"10% reservation for economically weaker sections of upper castes"},correctAnswer:"a",explanation:"The Mandal Commission (1980) recommended 27% reservation for Other Backward Classes in central government services and public sector undertakings.",marked:false,userAnswer:null},
+
+{id:23,section:"Regional Aspirations & Democratic Upsurge",text:"The term 'Mandal vs Kamandal' in 1990s Indian politics referred to:",options:{a:"A trade dispute between two industrial conglomerates",b:"Competition between OBC reservation politics (Mandal) and Hindutva/Ram Janmabhoomi politics (Kamandal — BJP's Rath Yatra)",c:"Agricultural policy debates between farmers' organisations",d:"Rivalry between Congress and BJP over economic liberalisation"},correctAnswer:"b",explanation:"The Mandal Commission implementation and V.P. Singh's fall coincided with BJP's Rath Yatra and Ram Janmabhoomi movement — the two polarising forces of 1990s Indian politics.",marked:false,userAnswer:null},
+
+{id:24,section:"Regional Aspirations & Democratic Upsurge",text:"The coalition era in Indian politics is said to have begun decisively after which general election?",options:{a:"1984 — Congress landslide",b:"1989 — end of Congress majority rule, V.P. Singh's National Front",c:"1991 — PV Narasimha Rao minority government",d:"1996 — United Front government"},correctAnswer:"b",explanation:"The 1989 elections ended Congress majority rule and ushered in V.P. Singh's National Front coalition, marking the decisive start of coalition politics.",marked:false,userAnswer:null},
+
+// ── Chapter 9: Recent Challenges ──────────────────────────────────────────
+{id:25,section:"Recent Challenges",text:"Which of the following CORRECTLY describes the significance of BSP's rise in Indian politics?",options:{a:"It represented a continuation of upper-caste Congress politics in a new packaging",b:"It channelled Dalit assertion through electoral politics, winning state power in UP and challenging traditional caste hierarchies",c:"It was a regional party limited to Tamil Nadu's Dalit communities",d:"It primarily represented Muslim minorities in Uttar Pradesh"},correctAnswer:"b",explanation:"The BSP under Kanshi Ram and Mayawati mobilised Dalits as a self-conscious political community, winning state power in UP — a major shift in Indian democracy.",marked:false,userAnswer:null},
+
+{id:26,section:"Recent Challenges",text:"New Economic Policy (NEP) of 1991 is criticised from a political science perspective primarily because:",options:{a:"It made India's GDP grow too slowly to reduce poverty",b:"It reduced state capacity and welfare spending, deepening regional and class inequalities while shifting resources to private actors",c:"It gave too much power to the Reserve Bank of India over elected government",d:"It banned foreign direct investment in strategic sectors"},correctAnswer:"b",explanation:"From a political economy view, NEP transferred resources from public to private sector, reduced state welfare intervention, and increased inequality — fuelling political resistance from left parties, farmers, and labour unions.",marked:false,userAnswer:null},
+
+{id:27,section:"Recent Challenges",text:"The Ayodhya issue's political significance lies in:",options:{a:"Being a purely legal property dispute with no electoral consequences",b:"Mobilising identity-based (religious) politics that reshaped electoral coalitions and brought BJP to national prominence",c:"Resolving communal tensions between Hindus and Muslims permanently",d:"Demonstrating the failure of coalition politics"},correctAnswer:"b",explanation:"The Ram Janmabhoomi movement made Ayodhya a central electoral issue, transforming BJP from a minor party to a major national force through communal mobilisation.",marked:false,userAnswer:null},
+
+// ─── BOOK 2: WORLD POLITICS ────────────────────────────────────────────────
+
+// ── Chapter 1: Disintegration of Second World ──────────────────────────────
+{id:28,section:"Disintegration of Second World",text:"Which of the following BEST explains the internal reasons for the Soviet Union's collapse?",options:{a:"Direct US military invasion of Soviet territory in Afghanistan",b:"Chinese economic competition that destroyed Soviet industrial output",c:"Defeat in Afghanistan, economic stagnation from arms race, and Gorbachev's glasnost/perestroika releasing suppressed nationalisms",d:"Western Europe's trade embargo that starved the Soviet economy"},correctAnswer:"c",explanation:"The USSR collapsed due to multiple internal pressures: economic stagnation, humiliation in Afghanistan, and Gorbachev's reforms which unleashed nationalist movements across Soviet republics.",marked:false,userAnswer:null},
+
+{id:29,section:"Disintegration of Second World",text:"'Shock therapy' implemented in post-Soviet Russia in the 1990s refers to:",options:{a:"Military restructuring and dissolution of the Red Army",b:"Rapid transition to market economy — mass privatisation, withdrawal of state subsidies, and price liberalisation",c:"Political federalisation of Russian regions under Yeltsin",d:"Intelligence service reform after KGB dissolution"},correctAnswer:"b",explanation:"Shock therapy (advised by Western economists) meant rapid mass privatisation, liberalisation, and removal of price controls — it caused economic collapse for most Russians while enriching oligarchs.",marked:false,userAnswer:null},
+
+{id:30,section:"Disintegration of Second World",text:"India's relations with Russia after 1991 are best characterised as:",options:{a:"Deterioration due to Russia's shift toward the West and NATO",b:"Strategic partnership — defence supplies, nuclear energy (Kudankulam), UNSC support — continuing and deepening Cold War-era ties",c:"India replacing Russia entirely with the US as its primary defence and strategic partner",d:"A complete break due to India's renewed Non-Alignment rejecting all great power ties"},correctAnswer:"b",explanation:"India-Russia ties survived the Cold War's end. Russia remains India's largest defence supplier, supports India's UNSC bid, and partners on civilian nuclear energy.",marked:false,userAnswer:null},
+
+// ── Chapter 2: Alternative Centres of Power ───────────────────────────────
+{id:31,section:"Alternative Centres of Power",text:"China's Special Economic Zones introduced under Deng Xiaoping allowed:",options:{a:"Political multiparty democracy in coastal cities as an experiment",b:"Market economy principles and foreign investment in designated coastal areas while the Communist Party maintained nationwide political control",c:"Complete privatisation of all state enterprises across China",d:"Free movement of workers between China and Western countries"},correctAnswer:"b",explanation:"SEZs were enclaves of market capitalism within a socialist state — allowing foreign investment and export production while the CCP maintained political monopoly.",marked:false,userAnswer:null},
+
+{id:32,section:"Alternative Centres of Power",text:"The EU's 'democratic deficit' refers to:",options:{a:"Low voter turnout in EU member countries' national elections",b:"EU institutions (especially Commission and Council) holding significant power but with limited direct democratic accountability to EU citizens",c:"Lack of economic democracy and workers' rights in EU member states",d:"Exclusion of Eastern European countries from meaningful EU decision-making"},correctAnswer:"b",explanation:"The democratic deficit means key EU decisions are made by unelected technocrats (Commission) and intergovernmental councils, with the directly elected European Parliament having limited powers.",marked:false,userAnswer:null},
+
+{id:33,section:"Alternative Centres of Power",text:"ASEAN's approach to regional integration differs from the EU primarily because:",options:{a:"ASEAN has a common currency (ASEAN Dollar) while the EU's Euro covers all members",b:"ASEAN emphasises informal consensus, non-interference in members' internal affairs, and voluntary cooperation over supranational legal authority",c:"ASEAN maintains a unified military force while the EU has no common defence",d:"ASEAN was formed two decades before the EU and thus has more mature institutions"},correctAnswer:"b",explanation:"Unlike the EU's supranational model with binding law and enforcement mechanisms, ASEAN relies on voluntary consensus and non-interference — the 'ASEAN Way.'",marked:false,userAnswer:null},
+
+{id:34,section:"Alternative Centres of Power",text:"India's 'Look East' (now 'Act East') policy, launched in 1991, primarily sought to:",options:{a:"Build military alliances with Middle Eastern nations for energy security",b:"Integrate India into Southeast and East Asian trade, investment, and strategic partnership networks",c:"Establish pipeline diplomacy with Central Asian nations",d:"Provide development assistance to African nations in competition with China"},correctAnswer:"b",explanation:"The Look East Policy (PV Narasimha Rao, 1991) recognised ASEAN's growing economic power and sought to integrate India into Asia-Pacific trade and security architecture.",marked:false,userAnswer:null},
+
+// ── Chapters 3+4: South Asia & International Organisations (MERGED) ────────
+{id:35,section:"South Asia & International Organisations",text:"Sri Lanka's ethnic conflict was primarily between:",options:{a:"Sinhalese Buddhists and Muslim minorities over economic resources",b:"Sinhalese Buddhists and Tamil Hindus/Christians over political representation, language rights, and the demand for a Tamil homeland (Eelam)",c:"India and Sri Lanka over maritime boundary and fishing rights",d:"Buddhist monks and the Sri Lankan state over temple administration"},correctAnswer:"b",explanation:"The LTTE (Tamil Tigers) fought for a Tamil Eelam against the Sinhalese-dominated state from the 1970s until military defeat in 2009.",marked:false,userAnswer:null},
+
+{id:36,section:"South Asia & International Organisations",text:"The SAARC process has been effectively paralysed primarily due to:",options:{a:"Lack of trade complementarity among South Asian economies",b:"India-Pakistan tensions preventing consensus on regional cooperation agendas",c:"US opposition to South Asian regional integration threatening its interests",d:"China blocking SAARC expansion to include itself as a full member"},correctAnswer:"b",explanation:"India-Pakistan hostility — over Kashmir, cross-border terrorism, and strategic rivalry — repeatedly paralyses SAARC summits and prevents meaningful regional integration.",marked:false,userAnswer:null},
+
+{id:37,section:"South Asia & International Organisations",text:"The Simla Agreement (1972) between India and Pakistan established the principle of:",options:{a:"Internationalisation of the Kashmir dispute through mandatory UN mediation",b:"Bilateral resolution of all disputes without third-party intervention, converting the ceasefire line to the Line of Control",c:"Permanent division of Kashmir along the 1949 ceasefire line as an international border",d:"Pakistani recognition of Bangladesh as a condition for return of prisoners of war"},correctAnswer:"b",explanation:"The Simla Agreement committed both countries to resolving all differences bilaterally and peacefully, and formalised the Line of Control in Kashmir.",marked:false,userAnswer:null},
+
+{id:38,section:"South Asia & International Organisations",text:"The G4 nations lobbying together for permanent UNSC membership are:",options:{a:"India, Japan, Brazil, Germany",b:"India, China, Brazil, South Africa",c:"India, Japan, Australia, Canada",d:"India, Japan, France, Italy"},correctAnswer:"a",explanation:"India, Japan, Brazil, and Germany form the G4, all seeking permanent UNSC seats as part of UNSC reform to reflect contemporary global power realities.",marked:false,userAnswer:null},
+
+{id:39,section:"South Asia & International Organisations",text:"A fundamental criticism of World Bank and IMF Structural Adjustment Programs (SAPs) from developing nations is:",options:{a:"They provide too much unconditional aid, creating dependency",b:"They impose austerity and market liberalisation as loan conditions, undermining development sovereignty and social spending",c:"They exclusively fund military projects in strategic countries",d:"They give developing nations excessive voting power disproportionate to their economic size"},correctAnswer:"b",explanation:"SAPs required recipient countries to cut government spending, privatise state enterprises, and liberalise trade — critics argue this harmed social spending and development capacity.",marked:false,userAnswer:null},
+
+{id:40,section:"South Asia & International Organisations",text:"India's contribution to UN peacekeeping is globally significant because:",options:{a:"India contributes the largest share of the UN regular budget",b:"India is historically among the largest troop-contributing nations to UN peacekeeping missions across Africa, Middle East, and Asia",c:"India hosts the UN headquarters in New Delhi",d:"India was the founding nation to deploy UN peacekeepers in 1948"},correctAnswer:"b",explanation:"India has consistently ranked among the top troop-contributing countries to UN peacekeeping, with soldiers deployed across dozens of missions globally.",marked:false,userAnswer:null},
+
+// ── Chapter 5: Security in Contemporary World ──────────────────────────────
+{id:41,section:"Security in Contemporary World",text:"The concept of 'cooperative security' differs from 'collective security' in that:",options:{a:"Cooperative security requires a formal treaty alliance while collective security does not",b:"Cooperative security addresses non-military threats through shared norms and trust-building rather than deterrence between states",c:"Collective security is exclusively available to democratic nations",d:"Cooperative security relies entirely on nuclear deterrence for stability"},correctAnswer:"b",explanation:"Collective security (UN model) deters state aggression. Cooperative security broadens scope to non-military threats (pandemics, climate, terrorism) and relies on multilateral norms and information-sharing.",marked:false,userAnswer:null},
+
+{id:42,section:"Security in Contemporary World",text:"After Pokhran-II tests in 1998, India declared which nuclear doctrine?",options:{a:"First-use nuclear policy targeting Pakistan and China",b:"No First Use with credible minimum deterrence — India will not use nuclear weapons first but will retaliate massively if attacked",c:"Massive retaliation doctrine mirroring US Cold War strategy",d:"Nuclear sharing arrangement with Russia under strategic partnership"},correctAnswer:"b",explanation:"After Pokhran-II, India declared 'No First Use' with 'credible minimum deterrence' — a posture of assured retaliation without initiating nuclear conflict.",marked:false,userAnswer:null},
+
+{id:43,section:"Security in Contemporary World",text:"India has NOT signed the NPT primarily because:",options:{a:"India cannot afford to develop or maintain nuclear weapons",b:"The NPT is discriminatory — it allows the P5 to permanently retain nuclear weapons while denying that right to all others",c:"India has no functional nuclear weapons programme",d:"The UN Security Council prohibited India from signing"},correctAnswer:"b",explanation:"India considers the NPT a two-tier discriminatory system that legitimises P5 nuclear arsenals while freezing others out — India argues for universal disarmament instead.",marked:false,userAnswer:null},
+
+// ── Chapter 6: Environment & Natural Resources ─────────────────────────────
+{id:44,section:"Environment & Natural Resources",text:"The principle of 'Common but Differentiated Responsibilities' (CBDR) in global climate negotiations was first formally articulated in:",options:{a:"The Kyoto Protocol (1997)",b:"The Rio Declaration (1992)",c:"The Stockholm Declaration (1972)",d:"The Paris Agreement (2015)"},correctAnswer:"b",explanation:"CBDR was enshrined in Principle 7 of the Rio Declaration (1992) — acknowledging all states share environmental responsibilities but developed nations bear greater obligations due to historical emissions.",marked:false,userAnswer:null},
+
+{id:45,section:"Environment & Natural Resources",text:"India's position in global climate negotiations is BEST described as:",options:{a:"Unconditional acceptance of binding emission reduction targets equal to developed nations",b:"Development rights are non-negotiable; historical emitters (developed nations) must take the lead and provide technology transfer and climate finance",c:"India should immediately halt all coal use regardless of economic consequences",d:"India prefers unilateral domestic action entirely outside multilateral frameworks"},correctAnswer:"b",explanation:"India consistently argues for the right to develop (as developed nations did), demands historical emitters take primary responsibility, and insists technology transfer and climate finance must accompany obligations.",marked:false,userAnswer:null},
+
+{id:46,section:"Environment & Natural Resources",text:"The 'tragedy of the commons' concept, applied to global environmental politics, explains:",options:{a:"Why governments always cooperate voluntarily on environmental issues",b:"Why individual states rationally over-exploit shared global resources (oceans, atmosphere) in self-interest, producing collective harm for all",c:"How international law successfully prevents all environmental destruction",d:"Why developing nations must bear disproportionate emission reduction burdens"},correctAnswer:"b",explanation:"Garrett Hardin's 'tragedy of the commons' explains why states over-exploit shared resources (fishing, atmosphere as carbon sink) since no state bears the full cost of overuse — a classic collective action problem.",marked:false,userAnswer:null},
+
+{id:47,section:"Environment & Natural Resources",text:"Indigenous peoples' rights in global environmental debates primarily concern:",options:{a:"Their exclusive right to industrialise their ancestral territories before environmental law applies",b:"Customary rights over ancestral lands, forests, and water resources threatened by corporate extraction projects or state-imposed conservation schemes",c:"Their right to veto all international environmental agreements at the UN",d:"Exclusive fishing rights in international waters beyond 200 nautical miles"},correctAnswer:"b",explanation:"Indigenous communities often face displacement from 'development' (dams, mining) or 'conservation' (national parks) that erase traditional resource rights without their free, prior, and informed consent.",marked:false,userAnswer:null},
+
+// ── Chapter 7: Globalisation & Its Critics ─────────────────────────────────
+{id:48,section:"Globalisation & Its Critics",text:"Which perspective argues that globalisation is essentially a continuation of Western imperialism using economic rather than military means?",options:{a:"Hyperglobalist perspective — arguing globalisation benefits everyone equally",b:"Transformationalist perspective — arguing globalisation creates a new world order",c:"Dependency/neo-Marxist perspective — arguing core nations extract value from periphery through MNCs, trade rules, and financial systems",d:"Realist perspective — arguing states remain primary and globalisation is secondary"},correctAnswer:"c",explanation:"Dependency theorists and neo-Marxists see globalisation as a new imperialism — core (Western) nations extract value from periphery (developing) nations through multinational corporations and international financial institutions.",marked:false,userAnswer:null},
+
+{id:49,section:"Globalisation & Its Critics",text:"The WTO's TRIPS (Trade-Related Intellectual Property Rights) agreement has been most controversially criticised for:",options:{a:"Allowing poor countries to freely copy Western technology, harming innovation",b:"Preventing developing countries from producing affordable generic medicines by enforcing pharmaceutical patents — keeping life-saving drugs unaffordable",c:"Creating excessive competition among pharmaceutical companies globally",d:"Banning documentation of traditional knowledge in national patent databases"},correctAnswer:"b",explanation:"TRIPS requires WTO members to enforce pharmaceutical patents, preventing generic drug production — critics argue this keeps life-saving medicines unaffordable in developing nations, most visibly with HIV/AIDS drugs in Africa.",marked:false,userAnswer:null},
+
+// ── Synthesis / CUET Format Questions ─────────────────────────────────────
+{id:50,section:"All Chapters — Synthesis",text:"Assertion (A): Globalisation undermines the sovereignty of nation-states.\nReason (R): MNCs, IMF conditionalities, WTO rules, and global supply chains create structural constraints that significantly limit governments' domestic policy autonomy.\nChoose the correct option:",options:{a:"A is true but R is false — sovereignty is not affected by economic forces",b:"A is false but R is true — the constraints are real but sovereignty remains intact",c:"Both A and R are true, and R correctly explains A — the mechanisms described are precisely how sovereignty erosion occurs",d:"Both A and R are true, but R does NOT explain A — they are independent phenomena"},correctAnswer:"c",explanation:"This assertion-reason pair is correct and causally linked. The mechanisms in R (MNCs, IMF, WTO, supply chains) are the exact channels through which A (sovereignty erosion under globalisation) operates — a central argument in world politics.",marked:false,userAnswer:null},
+
+],
+    duration: 60 * 60,
     markingScheme: { correct: 5, incorrect: -1 }
 };
 
@@ -938,16 +985,40 @@ function submitTest() {
         id: q.id, correct: q.userAnswer === q.correctAnswer,
         answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
     }));
-    const resultData = {
-        chapterId: CHAPTER_ID, subjectId: SUBJECT_ID,
-        userName: localStorage.getItem('cbtUserName') || 'Unknown',
-        date: new Date().toISOString(), score: totalScore, maxScore,
-        correct, incorrect, unanswered, totalQ,
-        percentage: parseFloat(percentage), accuracy: parseFloat(accuracy),
-        timeTaken: mockTest.duration - timeLeft, questions: questionResults
-    };
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
     const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
     const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
     let index = [];
     try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
@@ -986,10 +1057,30 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 <script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
 function startMock() {
-    const input = document.getElementById('username-input').value.trim();
-    if (input === "") { alert("⚠️ Please enter your name to continue!"); document.getElementById('username-input').focus(); return; }
-    localStorage.setItem("cbtUserName", input);
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
     enterFullscreen();
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('instruction-screen').style.display = 'block';
@@ -1021,6 +1112,8 @@ startBtn.addEventListener('click', () => {
     document.getElementById('user-name-display').innerText = "👤 " + name;
     const mn = document.getElementById('mobile-name-display');
     if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
     testStarted = true; enterFullscreen(); initTest();
 });
 
@@ -1132,7 +1225,7 @@ function generatePDF() {
     const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
         <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Political Science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — political science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
                 <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
             </div>
         </div>
@@ -1156,6 +1249,29 @@ function generatePDF() {
     </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
     printWin.document.close(); printWin.focus();
 }
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
 </script>
 
 </body>
