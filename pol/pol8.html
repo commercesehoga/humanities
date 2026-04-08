@@ -1000,7 +1000,7 @@ const resultData = {
         .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
         .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
-    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    const storageKey = `thunderstudy_result_${sId}_${cId}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
     const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
 fetch(GS_URL, {
