@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -648,7 +649,7 @@ Start Test
    ============================================================ */
 const mockTest = {
     title: "political science Mock",
-    questions: [
+    questions:  [
 {id:1,section:"Nation-Building and Its Problems",text:"Which of the following best describes Nehru's approach to nation-building?",options:{a:"Religious and traditional",b:"Democratic, secular and scientific",c:"Military and authoritarian",d:"Federal and decentralised only"},correctAnswer:"b",explanation:"Nehru's approach to nation-building was based on democracy, secularism, scientific temper and planned development.",marked:false,userAnswer:""},
 {id:2,section:"Nation-Building and Its Problems",text:"India was partitioned into how many countries in 1947?",options:{a:"Three",b:"Four",c:"Two",d:"Five"},correctAnswer:"c",explanation:"India was partitioned into two countries — India and Pakistan — in August 1947.",marked:false,userAnswer:""},
 {id:3,section:"Nation-Building and Its Problems",text:"The partition of India was based primarily on which principle?",options:{a:"Linguistic division",b:"Geographic division",c:"Religious division",d:"Economic division"},correctAnswer:"c",explanation:"The partition of India was primarily based on the two-nation theory — religious division between Hindus and Muslims.",marked:false,userAnswer:""},
@@ -939,7 +940,7 @@ const resultData = {
         .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
         .filter(Boolean)     // ← ADD THIS so bookmark system works
 };
-    const storageKey = `thunderstudy_result_${sId}_${cId}`;
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
     const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
 fetch(GS_URL, {
