@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,7 +427,7 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
 </div>
 
 <h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
-  Political Science
+  political science
 </h1>
   <p style="font-size:16px;margin:6px 0;">Chapter <strong style="color:#1a5c34;">2</strong></p>
 <p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
@@ -464,7 +465,9 @@ body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important
     style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
     font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
 </div>
-
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
 <div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
 
   <button onclick="startMock()" style="
@@ -546,16 +549,19 @@ Start Test
 <div id="test-screen">
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2>🗳️ Pol Sci</h2>
-        <div class="timer">01:00:00</div>
+        <h2>political science</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
     </div>
+        <div class="timer">01:00:00</div>
+        
     <div class="test-info">
-        <p><strong>Subject:</strong> <span id="subject-label">Political Science</span></p>
+        <p><strong>Subject:</strong> <span id="subject-label">political science</span></p>
         <p><strong>Questions:</strong> 50</p>
         <p><strong>Duration:</strong> 60 min</p>
         <p><strong>Marking:</strong> +5 / -1</p>
         <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
     </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
     <div class="question-palette">
         <div class="palette-title">
             <span>Questions</span>
@@ -569,6 +575,7 @@ Start Test
 <div class="main-content">
 <div class="mobile-top-bar">
     <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
     <div id="mobile-name-display">👤 Thunder</div>
 </div>
 
@@ -637,10 +644,10 @@ Start Test
 
 <script>
 /* ============================================================
-   POLITICAL SCIENCE MOCK TEST DATA
+   political science MOCK TEST DATA
    ============================================================ */
 const mockTest = {
-    title: "Political Science Mock",
+    title: "political science Mock",
     questions: [
 {id:1,section:"Nation-Building and Its Problems",text:"Which of the following best describes Nehru's approach to nation-building?",options:{a:"Religious and traditional",b:"Democratic, secular and scientific",c:"Military and authoritarian",d:"Federal and decentralised only"},correctAnswer:"b",explanation:"Nehru's approach to nation-building was based on democracy, secularism, scientific temper and planned development.",marked:false,userAnswer:""},
 {id:2,section:"Nation-Building and Its Problems",text:"India was partitioned into how many countries in 1947?",options:{a:"Three",b:"Four",c:"Two",d:"Five"},correctAnswer:"c",explanation:"India was partitioned into two countries — India and Pakistan — in August 1947.",marked:false,userAnswer:""},
@@ -911,16 +918,40 @@ function submitTest() {
         id: q.id, correct: q.userAnswer === q.correctAnswer,
         answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
     }));
-    const resultData = {
-        chapterId: CHAPTER_ID, subjectId: SUBJECT_ID,
-        userName: localStorage.getItem('cbtUserName') || 'Unknown',
-        date: new Date().toISOString(), score: totalScore, maxScore,
-        correct, incorrect, unanswered, totalQ,
-        percentage: parseFloat(percentage), accuracy: parseFloat(accuracy),
-        timeTaken: mockTest.duration - timeLeft, questions: questionResults
-    };
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
     const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
     localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
     const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
     let index = [];
     try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
@@ -959,10 +990,30 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 <script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
 function startMock() {
-    const input = document.getElementById('username-input').value.trim();
-    if (input === "") { alert("⚠️ Please enter your name to continue!"); document.getElementById('username-input').focus(); return; }
-    localStorage.setItem("cbtUserName", input);
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
     enterFullscreen();
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('instruction-screen').style.display = 'block';
@@ -994,6 +1045,8 @@ startBtn.addEventListener('click', () => {
     document.getElementById('user-name-display').innerText = "👤 " + name;
     const mn = document.getElementById('mobile-name-display');
     if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
     testStarted = true; enterFullscreen(); initTest();
 });
 
@@ -1105,7 +1158,7 @@ function generatePDF() {
     const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
         <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Political Science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — political science</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
                 <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
             </div>
         </div>
@@ -1129,6 +1182,29 @@ function generatePDF() {
     </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
     printWin.document.close(); printWin.focus();
 }
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
 </script>
 
 </body>
