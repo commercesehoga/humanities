@@ -1,0 +1,1812 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy CBT — Psychology</title>
+
+<script>
+const SUBJECT_ID  = "psy";
+const CHAPTER_ID  = "psy2";
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary-color: #2d8a4e;
+    --primary-light: #4caf6f;
+    --primary-dark: #1a5c34;
+    --secondary-color: #7ec8a4;
+    --accent: #a8e6bf;
+    --correct-color: #2d8a4e;
+    --incorrect-color: #e05252;
+    --neutral-color: #607d8b;
+    --light-bg: #f0f7f2;
+    --white: #ffffff;
+    --dark-text: #1a2e1f;
+    --light-text: #2d4a36;
+    --card-bg: #ffffff;
+
+    --dark-bg: #0d1f14;
+    --dark-card: #152419;
+    --dark-primary: #4caf6f;
+    --dark-secondary: #7ec8a4;
+    --dark-text-color: #d4edd9;
+    --dark-border: #2a4a34;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+}
+
+/* ── DARK MODE ── */
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+body.dark-mode p, body.dark-mode span:not(.icon),
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,
+body.dark-mode h4,body.dark-mode h5,body.dark-mode h6,
+body.dark-mode label, body.dark-mode li { color: var(--dark-text-color) !important; }
+body.dark-mode a:not(.fancy-btn):not(.footer-btn):not(.button2):not(.join-btn) {
+    color: var(--dark-primary) !important; text-decoration: underline;
+}
+body.dark-mode .fancy-btn,body.dark-mode .footer-btn,body.dark-mode .join-btn,
+body.dark-mode .submit-fancy-btn,body.dark-mode .more-btn,body.dark-mode .back-btn,body.dark-mode .report-btn { color: white !important; }
+body.dark-mode #prev-btn { color: var(--dark-primary) !important; border-color: var(--dark-primary) !important; }
+body.dark-mode #next-btn { color: #000 !important; background-color: var(--dark-primary) !important; }
+body.dark-mode #mark-btn { color: var(--dark-secondary) !important; border-color: var(--dark-secondary) !important; }
+body.dark-mode #mark-btn.marked { background-color: var(--dark-secondary) !important; color: #000 !important; }
+body.dark-mode #start-test-btn { color: white !important; }
+body.dark-mode .close-btn { color: var(--dark-text-color) !important; }
+body.dark-mode .stat-card h3 { color: var(--dark-text-color) !important; }
+body.dark-mode .question-number { color: var(--dark-primary) !important; }
+body.dark-mode .question-text { color: var(--dark-text-color) !important; }
+body.dark-mode .progress-text span { color: #8ab49a !important; }
+body.dark-mode .palette-title span { color: var(--dark-text-color) !important; }
+body.dark-mode .test-info strong { color: #fff !important; }
+body.dark-mode .test-info span { color: #aaccb4 !important; }
+body.dark-mode .sidebar {
+    background-color: var(--dark-card);
+    box-shadow: 2px 0 8px rgba(0,200,80,0.08);
+}
+body.dark-mode .sidebar-header h2,
+body.dark-mode .test-header h2,
+body.dark-mode .modal-header h2 { color: var(--dark-primary); }
+body.dark-mode .timer { background-color: #7a1e1e; color: #fff; }
+body.dark-mode .question-container {
+    background-color: var(--dark-card);
+    box-shadow: 0 2px 8px rgba(0,200,80,0.08);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .modal-content { background-color: var(--dark-card); color: var(--dark-text-color); }
+body.dark-mode .stat-card { background-color: #0d1f14; border: 1px solid var(--dark-border); }
+body.dark-mode #test-screen { background: var(--dark-bg) !important; }
+body.dark-mode .mobile-top-bar { background: var(--dark-card) !important; border-color: var(--dark-border) !important; }
+body.dark-mode .mobile-timer-clone { background-color: #7a1e1e !important; }
+body.dark-mode #start-screen { background-color: #0d1f14 !important; }
+body.dark-mode #start-screen h1 { color: var(--dark-primary) !important; }
+body.dark-mode #start-screen > p { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen li { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen strong { color: #fff !important; }
+body.dark-mode #start-screen input[type="text"] {
+    background: #1a3224 !important; color: #fff !important; border-color: var(--dark-border) !important;
+}
+body.dark-mode #instruction-screen { background: #0d1f14 !important; }
+body.dark-mode #instruction-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-box { background: linear-gradient(135deg, #152a1e, #1a2e20) !important; }
+body.dark-mode .instruction-title { color: var(--dark-primary) !important; border-left-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-list li { background: #1a2e1f !important; color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-list li:hover { background: #1e3828 !important; }
+body.dark-mode .custom-check { border-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox input:checked + .custom-check::after { color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox { color: var(--dark-text-color) !important; }
+
+/* ── OPTIONS ── */
+.option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border: 1.5px solid #c8e6d4;
+    border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+    background: #fff; transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+}
+.option:hover { border-color: #2d8a4e; background: #edf7f1; }
+.option.selected { border-color: #1a5c34; background: #c8e6d4; }
+.option.correct { border-color: #2d8a4e !important; background: rgba(45,138,78,0.15) !important; }
+.option.incorrect { border-color: #e53935 !important; background: rgba(229,57,53,0.1) !important; }
+.opt-letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid #b2dcc2; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; background: #edf7f1; color: #2d8a4e;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.option.selected .opt-letter { background: #1a5c34; border-color: #1a5c34; color: #fff; }
+.option.correct .opt-letter { background: #2d8a4e; border-color: #2d8a4e; color: #fff; }
+.option.incorrect .opt-letter { background: #e53935; border-color: #e53935; color: #fff; }
+.opt-text { font-size: 15px; color: #1a2e1f; flex: 1; line-height: 1.5; }
+.option.selected .opt-text { color: #1a5c34; font-weight: 600; }
+.option.correct .opt-text { color: #1a5c34; font-weight: 600; }
+.option.incorrect .opt-text { color: #b71c1c; font-weight: 600; }
+.option input[type="radio"] { display: none; }
+body.dark-mode .option { background: #1a2e1f !important; border-color: #2a4a34 !important; }
+body.dark-mode .option:hover { border-color: #4caf6f !important; background: #1e3828 !important; }
+body.dark-mode .option.selected { border-color: #7ec8a4 !important; background: #173024 !important; }
+body.dark-mode .opt-letter { background: #1e3828 !important; border-color: #2a4a34 !important; color: #7ec8a4 !important; }
+body.dark-mode .option.selected .opt-letter { background: #2d8a4e !important; border-color: #2d8a4e !important; color: #fff !important; }
+body.dark-mode .opt-text { color: var(--dark-text-color) !important; }
+body.dark-mode .option.selected .opt-text { color: #a8e6bf !important; }
+body.dark-mode .option.correct { border-color: #4caf6f !important; background: rgba(45,138,78,0.2) !important; }
+body.dark-mode .option.incorrect { border-color: #ef9a9a !important; background: rgba(229,57,53,0.15) !important; }
+
+.correct-indicator { margin-left: 8px; font-weight: bold; color: #2d8a4e; font-size: 13px; }
+.incorrect-indicator { margin-left: 8px; font-weight: bold; color: #e53935; font-size: 13px; }
+
+/* ── INSTRUCTION BOX ── */
+.instruction-box {
+    max-width: 900px; margin: auto;
+    background: linear-gradient(135deg, #e8f5ec, #d4eddb);
+    padding: 30px; border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(45,138,78,0.15);
+    line-height: 1.8;
+}
+.instruction-title {
+    font-size: 24px; font-weight: 800; color: #1a5c34;
+    margin-bottom: 15px; border-left: 5px solid #2d8a4e; padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+.instruction-list { padding-left: 20px; }
+.instruction-list li {
+    margin-bottom: 10px; font-size: 16px; background: white;
+    padding: 10px 12px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(45,138,78,0.1); transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.instruction-list li:hover { transform: translateX(5px); background: #edf7f1; border-left-color: #2d8a4e; }
+.instruction-checkbox { display: flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 16px; font-weight: 600; }
+.instruction-checkbox input { display: none; }
+.custom-check {
+    width: 20px; height: 20px; border: 2px solid #2d8a4e;
+    border-radius: 4px; display: inline-block; position: relative; cursor: pointer;
+}
+.instruction-checkbox input:checked + .custom-check::after {
+    content: "\2714"; position: absolute; top: -2px; left: 3px; font-size: 16px; color: #2d8a4e;
+}
+
+#start-test-btn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    box-shadow: 0 6px 15px rgba(45,138,78,0.4); transition: 0.3s; border-radius: 8px;
+}
+#start-test-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,138,78,0.6); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 300px; background-color: var(--white); height: 100vh;
+    padding: 20px; box-shadow: 2px 0 8px rgba(45,138,78,0.12);
+    position: fixed; overflow-y: auto; right: 0; left: auto;
+    border-left: 1px solid #d4eddb;
+}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.sidebar-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.test-info { margin-bottom: 20px; }
+.test-info p { margin: 5px 0; color: var(--light-text); display: flex !important; gap: 6px; font-size: 16px !important; }
+.test-info strong { font-weight: 700 !important; color: #000 !important; }
+.question-palette { margin-bottom: 20px; }
+.palette-title { font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; overflow-x: hidden; }
+.palette-btn {
+    width: 100%; max-width: 40px; aspect-ratio: 1/1; border-radius: 50%;
+    border: 1px solid #ddd; background-color: #FF474D;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; margin: auto; font-size: 12px; font-weight: 700;
+}
+.palette-btn:hover { background-color: #f59e0b; transform: scale(1.1); }
+.palette-btn.answered { background-color: #4caf6f; color: #fff; border-color: #2d8a4e; }
+.palette-btn.marked { background-color: #90D5FF; color: #000; border-color: #0077cc; }
+.palette-btn.current { background-color: #fff; border: 2.5px solid var(--primary-color); color: var(--primary-color); }
+.palette-btn.review-correct { background-color: #22c55e !important; color: #fff !important; border-color: #16a34a !important; }
+.palette-btn.review-wrong { background-color: #ef4444 !important; color: #fff !important; border-color: #dc2626 !important; }
+.palette-btn.review-unanswered { background-color: #3b82f6 !important; color: #fff !important; border-color: #2563eb !important; }
+.palette-btn.review-correct.current,
+.palette-btn.review-wrong.current,
+.palette-btn.review-unanswered.current { outline: 3px solid var(--primary-color); outline-offset: 1px; }
+body.dark-mode .palette-btn { background-color: #FF474D !important; color: var(--dark-primary); border: 2px solid var(--dark-primary); }
+body.dark-mode .palette-btn.answered { background-color: #2d8a4e !important; color: white !important; border-color: #2d8a4e !important; }
+body.dark-mode .palette-btn.marked { background-color: #0077cc !important; color: white !important; border-color: #0077cc !important; }
+body.dark-mode .palette-btn.current { background-color: white !important; border: 2.5px solid var(--dark-primary) !important; color: var(--dark-primary) !important; }
+body.dark-mode .palette-btn.review-correct { background-color: #16a34a !important; border-color: #15803d !important; }
+body.dark-mode .palette-btn.review-wrong { background-color: #dc2626 !important; border-color: #b91c1c !important; }
+body.dark-mode .palette-btn.review-unanswered { background-color: #2563eb !important; border-color: #1d4ed8 !important; }
+
+/* ── BUTTONS ── */
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: #edf7f1; }
+.mark-btn {
+    margin-left: 10px; background-color: transparent;
+    border: 1.5px solid #2d8a4e; color: #2d8a4e;
+    padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+.mark-btn.marked { background-color: #2d8a4e; color: white; }
+body.dark-mode .btn-primary { background-color: var(--dark-primary); color: #000; }
+body.dark-mode .btn-outline { border-color: var(--dark-primary); color: var(--dark-primary); }
+body.dark-mode .mark-btn { border-color: var(--dark-secondary); color: var(--dark-secondary); }
+body.dark-mode .mark-btn.marked { background-color: var(--dark-secondary); color: #000; }
+
+/* ── FANCY BUTTONS ── */
+.fancy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 16px; font-weight: 700; border-radius: 50px;
+    border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.4px;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+.fancy-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; border-radius: inherit; }
+.fancy-btn:hover::after { background: rgba(255,255,255,0.12); }
+.fancy-btn:active { transform: scale(0.96) !important; }
+.fancy-btn:hover { transform: translateY(-3px) scale(1.03); }
+.join-btn { background: linear-gradient(135deg, #0088cc, #006699); color: white; box-shadow: 0 5px 18px rgba(0,136,204,0.45); }
+.join-btn:hover { box-shadow: 0 8px 24px rgba(0,136,204,0.65); color: white; }
+.submit-fancy-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); color: white; box-shadow: 0 5px 18px rgba(45,138,78,0.45); flex: 1; max-width: 280px; }
+.submit-fancy-btn:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.65); }
+.pdf-download-btn {
+    background: linear-gradient(135deg, #f97316, #ea580c); color: white !important;
+    font-weight: 700; border-radius: 30px; transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4); padding: 13px 28px; font-size: 16px;
+    flex: 1; max-width: 280px; display: inline-flex; align-items: center; justify-content: center;
+}
+.pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(249,115,22,0.6); color: white !important; }
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
+    text-decoration: none; color: white; letter-spacing: 0.3px;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease, filter 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.footer-btn:hover { transform: translateY(-3px) scale(1.06); filter: brightness(1.1); color: white; }
+.footer-btn:active { transform: scale(0.95); }
+.more-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); box-shadow: 0 4px 14px rgba(45,138,78,0.4); }
+.more-btn:hover { box-shadow: 0 7px 20px rgba(45,138,78,0.65); }
+.back-btn { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
+.back-btn:hover { box-shadow: 0 7px 20px rgba(34,197,94,0.65); }
+.report-btn { background: linear-gradient(135deg, #f97316, #dc2626); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+.report-btn:hover { box-shadow: 0 7px 20px rgba(239,68,68,0.65); }
+
+/* ── LAYOUT ── */
+.main-content { flex: 1; margin-left: 0; margin-right: 300px; padding: 20px; }
+.test-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb;
+}
+.test-header h2 { font-family: 'Playfair Display', serif; color: var(--primary-dark); font-size: 20px; }
+body.dark-mode .test-header h2 { color: var(--dark-primary) !important; }
+.timer {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white; padding: 10px 20px; border-radius: 40px;
+    font-weight: 800; font-size: 18px; min-width: 140px; text-align: center;
+    font-family: 'DM Sans', monospace; letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+.progress-container { margin-bottom: 20px; }
+.progress-bar { height: 10px; background-color: #d4eddb; border-radius: 5px; overflow: hidden; }
+.progress { height: 100%; background: linear-gradient(90deg, #2d8a4e, #7ec8a4); width: 0%; transition: width 0.3s; border-radius: 5px; }
+.progress-text { display: flex; justify-content: space-between; margin-top: 5px; font-size: 14px; color: var(--light-text); }
+.question-container {
+    background-color: var(--white); border-radius: 12px; padding: 24px;
+    margin-bottom: 20px; box-shadow: 0 4px 16px rgba(45,138,78,0.1);
+    border: 1px solid #d4eddb;
+}
+.question-number { color: var(--primary-color); font-weight: 800; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.question-text { margin-bottom: 20px; font-size: 17px; line-height: 1.6; color: var(--dark-text); }
+.options { margin-left: 0; }
+.navigation-btns { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+.submit-section {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 620px; margin: 24px auto; gap: 14px; flex-wrap: wrap;
+}
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,30,10,0.6); z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: white; border-radius: 14px; width: 80%; max-width: 600px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.modal-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--light-text); }
+.result-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card { background-color: var(--light-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #d4eddb; }
+.stat-card h3 { color: #000; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { font-size: 28px; font-weight: 800; }
+.correct-stat { color: var(--correct-color); }
+.incorrect-stat { color: var(--incorrect-color); }
+.score-stat { color: var(--primary-color); }
+.review-btn { margin-top: 20px; width: 100%; }
+.button2 {
+    background-color: #2d8a4e; color: white; border: none;
+    padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 30px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(45,138,78,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.button2:hover { background-color: #1a5c34; box-shadow: 0 6px 12px rgba(45,138,78,0.5); color: #fff; }
+
+/* ── DARK MODE TOGGLE ── */
+#dark-mode-toggle-bottom {
+    position: absolute; top: 18px; right: 18px; font-size: 22px; padding: 8px 18px;
+    border-radius: 40px; border: none; cursor: pointer;
+    background: linear-gradient(45deg, #1a5c34, #2d8a4e); color: white;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 15px rgba(45,138,78,0.5);
+    transition: background 0.4s, box-shadow 0.4s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+}
+#dark-mode-toggle-bottom:hover { box-shadow: 0 6px 20px rgba(45,138,78,0.8); }
+body.dark-mode #dark-mode-toggle-bottom {
+    background: linear-gradient(45deg, #f7971e, #ffd200) !important;
+    box-shadow: 0 4px 15px rgba(255,210,0,0.6) !important;
+}
+body.dark-mode #dark-mode-toggle-bottom .icon { color: #333 !important; }
+body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important; }
+
+#test-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-bg); z-index: 9998; display: none; overflow: auto; }
+#user-name-display {
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 14px;
+}
+.mobile-top-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #d4eddb;
+        margin-bottom: 8px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-timer-clone {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white; padding: 6px 14px; border-radius: 30px;
+        font-weight: 800; font-size: 15px; min-width: 100px; text-align: center;
+    }
+    #mobile-name-display {
+        background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+        color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;
+    }
+    #user-name-display { display: none !important; }
+    .sidebar .timer { display: none !important; }
+    .sidebar .sidebar-header { display: none !important; }
+    body { display: flex; flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; right: 0; left: 0; box-shadow: none; margin-bottom: 10px; }
+    .question-palette { max-height: 200px; overflow-y: auto; }
+    .main-content { margin: 0 !important; width: 100%; padding: 10px; }
+    .navigation-btns { flex-direction: row !important; gap: 8px; align-items: center; }
+    #prev-btn { padding: 8px 14px !important; font-size: 13px !important; border-radius: 6px !important; flex-shrink: 0; }
+    #next-btn { padding: 14px 28px !important; font-size: 17px !important; border-radius: 8px !important; flex: 1; }
+    .navigation-btns > div { display: flex; flex: 1; gap: 8px; align-items: center; }
+    #mark-btn { font-size: 11px !important; padding: 6px 8px !important; flex-shrink: 0; }
+}
+@media (max-width: 576px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } .result-stats { grid-template-columns: 1fr; } }
+#pdf-print-area { display: none; }
+@media print {
+    body > * { display: none !important; }
+    #pdf-print-area { display: block !important; font-family: Arial, sans-serif; color: #111; padding: 20px; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:white;z-index:9999;display:flex;
+    flex-direction:column;justify-content:flex-start;align-items:center;
+    text-align:center;padding:40px 20px 40px;overflow-y:auto;
+    font-family:'DM Sans',sans-serif;">
+
+<button id="dark-mode-toggle-bottom" aria-label="Toggle dark mode">
+  <span class="icon" style="display:inline-block;transition:transform 0.6s ease;">🌙</span>
+  <span style="font-size:13px;font-weight:700;letter-spacing:0.5px;">Dark</span>
+</button>
+
+<!-- Logo / Brand -->
+<div style="margin-bottom:6px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a5c34,#4caf6f);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+    box-shadow:0 8px 24px rgba(45,138,78,0.35);font-size:34px;">🗳️</div>
+</div>
+
+<h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
+  Psychology
+</h1>
+  <p style="font-size:16px;margin:6px 0;">Full mock <strong style="color:#1a5c34;">1</strong></p>
+<p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
+
+<a href="https://t.me/thunderstudy_official" target="_blank"
+  style="display:inline-flex;align-items:center;gap:8px;margin:8px 0 14px;
+  background:linear-gradient(135deg,#0088cc,#006699);color:white;text-decoration:none;
+  padding:10px 24px;border-radius:30px;font-size:15px;font-weight:700;
+  box-shadow:0 5px 16px rgba(0,136,204,0.45);
+  transition:transform 0.18s,box-shadow 0.18s;"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 22px rgba(0,136,204,0.65)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 5px 16px rgba(0,136,204,0.45)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.04 9.607c-.148.666-.543.828-1.098.516l-3.04-2.24-1.467 1.413c-.162.162-.298.298-.611.298l.217-3.083 5.613-5.067c.244-.217-.054-.337-.378-.12L7.08 14.807 4.09 13.89c-.657-.205-.67-.657.137-.973l10.88-4.196c.548-.198 1.027.133.855.973z"/>
+  </svg>
+  @thunderstudy_official
+</a>
+
+<div style="max-width:560px;text-align:left;margin:10px auto 18px;
+  background:linear-gradient(135deg,#edf7f1,#d4eddb);
+  border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
+  <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
+  <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
+    <li><strong>50 Questions</strong></li>
+    <li><strong>60 Minutes</strong> total time</li>
+    <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
+    <li>No penalty for <strong>unanswered</strong> questions</li>
+    <li>Test <strong>auto-submits</strong> when time ends</li>
+    <li>Do <strong>not switch tabs</strong> or exit fullscreen during test</li>
+  </ul>
+</div>
+
+<div style="margin:10px 0;">
+  <input type="text" id="username-input" placeholder="Enter your name"
+    style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
+    font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
+</div>
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
+
+  <button onclick="startMock()" style="
+      width:260px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(45,138,78,0.45);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 28px rgba(45,138,78,0.65)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(45,138,78,0.45)'"
+    onmousedown="this.style.transform='scale(0.97)'"
+    onmouseup="this.style.transform='translateY(-3px) scale(1.04)'">
+    🚀 Start Mock
+  </button>
+
+  <button onclick="window.location.href='https://commercesehoga.github.io/commerce/bst/result.html'" style="
+      width:260px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(34,197,94,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📊 Previous Result
+  </button>
+
+  <button onclick="window.open('https://commercesehoga.blogspot.com/','_blank')" style="
+      width:260px;background:linear-gradient(135deg,#2d8a4e,#7ec8a4);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(126,200,164,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📚 More Mock Tests
+  </button>
+
+</div>
+</div>
+
+<!-- INSTRUCTION SCREEN -->
+<div id="instruction-screen" style="
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:white;z-index:9999;display:none;overflow:auto;padding:30px;">
+<h2 style="text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;color:#1a5c34;">Please read the instructions carefully</h2>
+<div class="instruction-box">
+<h3 class="instruction-title">General Instructions</h3>
+<ol class="instruction-list">
+<li>Total duration of test is <strong>60 minutes</strong>. Timer shown in sidebar.</li>
+<li>Test <strong>auto-submits</strong> when the timer reaches zero.</li>
+<li>The test runs in <strong>fullscreen mode</strong>. Exiting fullscreen starts a <strong>5-second countdown</strong> to auto-submit.</li>
+<li><strong>Do not switch tabs</strong>. Switching tabs starts a <strong>2-second countdown</strong> to auto-submit.</li>
+<li>Return to fullscreen or the tab before the countdown ends to continue safely.</li>
+<li>Question palette on the right shows answered, marked, and current status.</li>
+<li>Each correct answer: <strong>+5 marks</strong>. Each wrong answer: <strong>−1 mark</strong>. Unanswered: <strong>0 marks</strong>.</li>
+</ol>
+<div style="margin-top:20px;">
+  <strong>Question Status Legend:</strong>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;border:2px solid #2d8a4e;background:white;"></div><span>Current</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#FF474D;border:1px solid #ddd;"></div><span>Unanswered</span></div>
+  </div>
+</div>
+<label class="instruction-checkbox">
+    <input type="checkbox" id="agree-checkbox">
+    <span class="custom-check"></span>
+    I have read and understood all instructions
+</label>
+<br><br>
+<button id="start-test-btn" disabled style="
+background:#2d8a4e;color:white;padding:12px 24px;border:none;
+border-radius:8px;font-size:18px;cursor:not-allowed;opacity:0.6;
+font-family:'DM Sans',sans-serif;font-weight:700;">
+Start Test
+</button>
+</div>
+</div>
+
+<!-- TEST SCREEN -->
+<div id="test-screen">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Psychology</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
+    </div>
+        <div class="timer">01:00:00</div>
+        
+    <div class="test-info">
+        <p><strong>Subject:</strong> <span id="subject-label">Psychology</span></p>
+        <p><strong>Questions:</strong> 50</p>
+        <p><strong>Duration:</strong> 60 min</p>
+        <p><strong>Marking:</strong> +5 / -1</p>
+        <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
+    </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
+    <div class="question-palette">
+        <div class="palette-title">
+            <span>Questions</span>
+            <span id="answered-count">0/50</span>
+        </div>
+        <div class="palette-grid" id="question-palette-grid"></div>
+        <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
+    </div>
+</div>
+
+<div class="main-content">
+<div class="mobile-top-bar">
+    <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
+    <div id="mobile-name-display">👤 Thunder</div>
+</div>
+
+<div class="test-header">
+  <div id="user-name-display">👤 Thunder</div>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
+    <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
+  </div>
+</div>
+
+<div class="question-container">
+<div class="question-number">Question <span id="q-number">1</span></div>
+<div class="question-text" id="question-text"></div>
+<div class="options" id="options-container"></div>
+<div class="navigation-btns">
+<button class="btn btn-outline" id="prev-btn">&#8592; Previous</button>
+<div>
+<button class="mark-btn" id="mark-btn">Mark for Review</button>
+<button class="btn btn-primary" id="next-btn">Next &#8594;</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+    <a href="https://t.me/thunderstudy_official" target="_blank" class="fancy-btn join-btn">⚡ Join Thunder</a>
+    <button class="fancy-btn submit-fancy-btn" id="submit-test-btn">✅ Submit Test</button>
+</div>
+
+<footer style="background:linear-gradient(135deg,#0a1f0e,#152419);color:#d4edd9;text-align:center;padding:22px 16px;margin-top:10px;border-top:2px solid #2d8a4e;">
+   <p style="font-size:13px;color:#7ec8a4;margin-bottom:14px;">© 2025 Thunder. All Rights Reserved.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn more-btn">📚 More Mock</a>
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn back-btn">🌐 Back To Website</a>
+    <a href="https://t.me/mindmaster_robot" target="_blank" class="footer-btn report-btn">🚨 Report Error</a>
+</div>
+</footer>
+
+<!-- Results Modal -->
+<div class="modal" id="results-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🗳️ Test Results</h2>
+<button class="close-btn" id="close-modal">×</button>
+</div>
+<div class="result-stats">
+<div class="stat-card"><h3>Correct</h3><p class="correct-stat" id="correct-answers">0</p></div>
+<div class="stat-card"><h3>Incorrect</h3><p class="incorrect-stat" id="incorrect-answers">0</p></div>
+<div class="stat-card"><h3>Unanswered</h3><p style="color:#6b7280;" id="unanswered">50</p></div>
+<div class="stat-card"><h3>Total Score</h3><p class="score-stat" id="total-score">0</p></div>
+</div>
+<div style="margin-top:8px;padding:12px;background:#edf7f1;border-radius:8px;border:1px solid #d4eddb;">
+<p style="margin:3px 0;">Percentage: <strong><span id="percentage">0</span>%</strong></p>
+<p style="margin:3px 0;">Accuracy: <strong><span id="accuracy">0</span>%</strong></p>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+<button class="btn btn-primary review-btn" id="review-btn" style="flex:1;margin-top:0;border-radius:8px;">Review Answers</button>
+<button class="btn pdf-download-btn" id="download-pdf-btn" style="flex:1;">📄 Download PDF</button>
+</div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /test-screen -->
+
+<script>
+/* ============================================================
+   Psychology MOCK TEST DATA
+   ============================================================ */
+const mockTest = {
+    title: "Psychology Mock",
+    questions: [
+  {
+    id: 1,
+    section: "Case Study",
+    text: `READ THE FOLLOWING CASE STUDY CAREFULLY AND ANSWER QUESTIONS 1 TO 5:\n\nRajiv, a 28-year-old software engineer from Bengaluru, has always been described as extremely organised, perfectionistic, and emotionally reserved. He maintains a strict daily routine, becomes distressed when plans change unexpectedly, and has difficulty delegating tasks to colleagues because he believes only he can do them correctly. His wife reports that he checks the gas stove and door locks exactly five times before leaving home, and he keeps a detailed log of all household expenses. At work, he is highly successful but frequently clashes with teammates whom he perceives as careless. Over the past year, Rajiv has experienced recurrent thoughts of contamination after using public transport, leading him to wash his hands for 20 minutes each time. He recognises that these thoughts and behaviours are excessive but feels unable to control them. A clinical psychologist diagnoses him with Obsessive-Compulsive Disorder (OCD) and notes that his personality structure shows high conscientiousness and neuroticism. The psychologist recommends a combination of Exposure and Response Prevention (ERP) and cognitive restructuring.\n\nQ1. Based on the case study, Rajiv’s persistent doubts about whether he locked the door, despite having checked multiple times, best illustrates which cognitive feature of OCD?`,
+    options: {
+      a: "Magical thinking",
+      b: "Thought-action fusion",
+      c: "Inflated responsibility",
+      d: "Perfectionism"
+    },
+    correctAnswer: "c",
+    explanation: "Inflated responsibility is the belief that one has the power to prevent harm and must therefore check repeatedly. Thought-action fusion is believing thoughts are equivalent to actions. Magical thinking involves superstitious beliefs. Perfectionism is broader. NCERT Class 12 Chapter 2 on OCD cognitive features."
+  },
+  {
+    id: 2,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ2. The psychologist’s description of Rajiv as having high conscientiousness and neuroticism is based on which model of personality?`,
+    options: {
+      a: "Eysenck’s PEN model",
+      b: "Cattell’s 16PF model",
+      c: "Allport’s trait theory",
+      d: "Big Five (Five-Factor) model"
+    },
+    correctAnswer: "d",
+    explanation: "Conscientiousness and neuroticism are two of the Big Five traits (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism). Eysenck’s PEN has Psychoticism, Extraversion, Neuroticism — no Conscientiousness. Cattell has 16 factors. Allport is idiographic. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 3,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ3. Rajiv’s belief that “only he can do tasks correctly” and his difficulty delegating suggest a personality organisation that, when extreme, is characteristic of which personality disorder?`,
+    options: {
+      a: "Histrionic personality disorder",
+      b: "Narcissistic personality disorder",
+      c: "Obsessive-Compulsive Personality Disorder (OCPD)",
+      d: "Avoidant personality disorder"
+    },
+    correctAnswer: "c",
+    explanation: "OCPD involves perfectionism, orderliness, control, and difficulty delegating. Unlike OCD (ego-dystonic obsessions/compulsions), OCPD is ego-syntonic. Histrionic is dramatic, narcissistic is grandiosity, avoidant is social inhibition. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 4,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ4. The recommended therapy, Exposure and Response Prevention (ERP), is derived from which theoretical orientation to personality and psychopathology?`,
+    options: {
+      a: "Psychodynamic approach",
+      b: "Humanistic approach",
+      c: "Behavioural approach",
+      d: "Trait approach"
+    },
+    correctAnswer: "c",
+    explanation: "ERP is a behavioural technique based on classical and operant conditioning — exposing the person to anxiety-provoking stimuli while preventing compulsive responses to extinguish the conditioned anxiety. Psychodynamic focuses on unconscious conflicts, humanistic on self-actualisation. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 5,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ5. Rajiv’s recognition that his thoughts and behaviours are excessive but uncontrollable indicates that his condition is ego-dystonic. Which personality disorder is typically ego-syntonic, meaning the individual sees their traits as natural and justified?`,
+    options: {
+      a: "Obsessive-Compulsive Disorder",
+      b: "Obsessive-Compulsive Personality Disorder",
+      c: "Generalised Anxiety Disorder",
+      d: "Social Anxiety Disorder"
+    },
+    correctAnswer: "b",
+    explanation: "OCPD traits are ego-syntonic — the person believes their perfectionism and orderliness are correct. OCD is ego-dystonic — the person is distressed by their symptoms. NCERT Class 12 Chapter 2 distinguishes these."
+  },
+  {
+    id: 6,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Id\n(B) Ego\n(C) Superego\n(D) Libido\n\nList-II:\n(I) Reality principle\n(II) Morality and ideals\n(III) Pleasure principle\n(IV) Psychic energy\n\nChoose the correct answer from the options given below:`,
+    options: {
+      a: "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)",
+      b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      c: "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)",
+      d: "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+    },
+    correctAnswer: "a",
+    explanation: "Id operates on pleasure principle (III). Ego operates on reality principle (I). Superego contains morality (II). Libido is psychic energy (IV). Freudian structure per NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 7,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Extraversion\n(B) Neuroticism\n(C) Psychoticism\n(D) Agreeableness\n\nList-II:\n(I) Eysenck’s PEN model\n(II) Big Five model\n(III) Cattell’s 16PF\n(IV) Eysenck’s PEN model only\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(I), (B)-(I), (C)-(I), (D)-(II)",
+      b: "(A)-(II), (B)-(II), (C)-(II), (D)-(I)",
+      c: "(A)-(I) and (II), (B)-(I) and (II), (C)-(I) only, (D)-(II) only",
+      d: "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+    },
+    correctAnswer: "c",
+    explanation: "Extraversion and neuroticism appear in both Eysenck’s PEN and Big Five. Psychoticism is unique to Eysenck. Agreeableness is unique to Big Five. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 8,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Self-efficacy\n(B) Self-esteem\n(C) Self-concept\n(D) Self-regulation\n\nList-II:\n(I) Evaluation of one’s own worth\n(II) Belief in one’s ability to succeed\n(III) Cognitive representation of self\n(IV) Controlling one’s behaviour and impulses\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)",
+      b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+    },
+    correctAnswer: "a",
+    explanation: "Self-efficacy = belief in ability (Bandura). Self-esteem = evaluative component. Self-concept = overall cognitive representation. Self-regulation = controlling behaviour. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 9,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Projective test\n(B) Self-report inventory\n(C) Behavioural assessment\n(D) Situational test\n\nList-II:\n(I) MMPI\n(II) Rorschach inkblot test\n(III) Observation in a controlled setting\n(IV) Role-playing in a simulated scenario\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)",
+      b: "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+    },
+    correctAnswer: "a",
+    explanation: "Rorschach is projective. MMPI is self-report inventory. Behavioural assessment uses observation. Situational tests involve simulated scenarios (e.g., stress interview). NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 10,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Personal unconscious\n(B) Collective unconscious\n(C) Archetypes\n(D) Ego\n\nList-II:\n(I) Jung’s universal symbolic images\n(II) Jung’s repressed memories and thoughts\n(III) Jung’s shared ancestral memories\n(IV) Conscious executive in Jung’s model\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)",
+      b: "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)",
+      c: "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)",
+      d: "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+    },
+    correctAnswer: "a",
+    explanation: "Personal unconscious = repressed material (II). Collective unconscious = shared ancestral memories (III). Archetypes = universal symbols (I). Ego = conscious part (IV). Jungian concepts in NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 11,
+    section: "Assertion-Reason",
+    text: `Assertion (A): According to Freud, the ego develops from the id during the first year of life to mediate between the id’s demands and external reality.\nReason (R): The ego operates on the reality principle and uses secondary process thinking.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "a",
+    explanation: "Both true. Ego indeed develops from id (around 6-8 months) to manage reality. R correctly explains that reality principle and secondary process are ego’s functions. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 12,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Bandura’s social cognitive theory emphasises reciprocal determinism, where behaviour, personal factors, and environmental influences interact.\nReason (R): Self-efficacy is a key personal factor that influences which behaviours an individual will attempt.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "b",
+    explanation: "Both statements are true. Reciprocal determinism includes personal factors like self-efficacy. However, R does not explain A; it gives an example of a personal factor, not an explanation of the triadic model. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 13,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Rorschach inkblot test has high reliability but low validity in predicting real-world behaviour.\nReason (R): Projective tests are based on the projective hypothesis that individuals project unconscious conflicts onto ambiguous stimuli.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "b",
+    explanation: "A is true (Rorschach shows consistency issues; many studies show low predictive validity). R is true (projective hypothesis). But R does not explain why reliability is high but validity low; it’s a separate theoretical basis. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 14,
+    section: "Assertion-Reason",
+    text: `Assertion (A): According to Carl Rogers, incongruence between the real self and ideal self leads to psychological distress.\nReason (R): Unconditional positive regard from others allows a person to reduce incongruence and move towards self-actualisation.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "b",
+    explanation: "Both true. Incongruence causes distress (A). Unconditional positive regard reduces incongruence (R). However, R explains how to reduce distress, not why incongruence causes distress; thus R is not a direct explanation of A. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 15,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Eysenck’s biological trait theory proposes that introverts have higher baseline cortical arousal than extraverts.\nReason (R): Introverts seek less external stimulation because they are already near their optimal arousal level.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "a",
+    explanation: "Both true. Eysenck’s theory states introverts have higher baseline arousal (reticular activating system). R explains why introverts avoid stimulation — to maintain optimal arousal. R correctly explains A. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 16,
+    section: "Choose Correct Combination",
+    text: `Which of the following are defence mechanisms according to Freud?\n(A) Rationalisation\n(B) Projection\n(C) Self-actualisation\n(D) Displacement\n\nChoose the correct answer from the options given below:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Rationalisation, projection, and displacement are Freudian defence mechanisms. Self-actualisation is a humanistic concept (Maslow/Rogers), not a defence mechanism. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 17,
+    section: "Choose Correct Combination",
+    text: `Which of the following are characteristics of the humanistic approach to personality?\n(A) Emphasis on free will and self-determination\n(B) Focus on unconscious sexual conflicts\n(C) Belief in the innate drive towards self-actualisation\n(D) Use of projective tests as primary assessment\n\nChoose the correct answer:`,
+    options: {
+      a: "(A) and (C) only",
+      b: "(A), (C) and (D) only",
+      c: "(B) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Humanistic approach (Rogers, Maslow) emphasises free will, self-determination, and self-actualisation. Unconscious conflicts are psychodynamic. Projective tests are psychodynamic, not humanistic. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 18,
+    section: "Choose Correct Combination",
+    text: `Which of the following are sources of self-efficacy according to Bandura?\n(A) Vicarious experiences\n(B) Verbal persuasion\n(C) Genetic inheritance\n(D) Emotional arousal\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Bandura’s four sources: mastery experiences, vicarious experiences (A), verbal persuasion (B), and emotional/physiological arousal (D). Genetic inheritance is not a source; self-efficacy is learned. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 19,
+    section: "Choose Correct Combination",
+    text: `Which of the following are limitations of self-report personality inventories like the MMPI?\n(A) Social desirability bias\n(B) Lack of standardisation\n(C) Faking good or bad\n(D) High subjectivity in scoring\n\nChoose the correct answer:`,
+    options: {
+      a: "(A) and (C) only",
+      b: "(A), (C) and (D) only",
+      c: "(B) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Self-report inventories have social desirability bias (A) and faking (C). They are standardised (not B) and have objective scoring (not D). NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 20,
+    section: "Choose Correct Combination",
+    text: `Which of the following are components of the self according to William James?\n(A) Material self\n(B) Social self\n(C) Spiritual self\n(D) Unconscious self\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (C) only",
+      b: "(A), (B) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "James proposed three components: material self (body, possessions), social self (recognition from others), and spiritual self (inner psychological faculties). Unconscious self is Freudian, not Jamesian. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 21,
+    section: "Application MCQ",
+    text: `Anjali, a college student from Pune, avoids taking on leadership roles because she believes she will fail despite having excellent academic records. According to Bandura, Anjali has low:`,
+    options: {
+      a: "Self-esteem",
+      b: "Self-efficacy",
+      c: "Self-concept",
+      d: "Self-regulation"
+    },
+    correctAnswer: "b",
+    explanation: "Self-efficacy is belief in one’s ability to succeed in specific situations. Low self-efficacy leads to avoidance of challenges despite actual competence. Self-esteem is global self-worth. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 22,
+    section: "Application MCQ",
+    text: `During a stressful exam, Vikram tells himself, “I have prepared well, and I can handle this.” This internal speech is an example of which concept in personality?`,
+    options: {
+      a: "Defence mechanism",
+      b: "Self-regulation",
+      c: "Reciprocal determinism",
+      d: "Archetype"
+    },
+    correctAnswer: "b",
+    explanation: "Self-regulation involves managing thoughts, emotions, and behaviours to achieve goals. Positive self-talk is a self-regulatory strategy. Defence mechanisms are unconscious. Reciprocal determinism is Bandura’s triadic model. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 23,
+    section: "Application MCQ",
+    text: `Rohit is extremely outgoing, enjoys parties, and feels energised around people. On Eysenck’s personality dimensions, Rohit would score high on:`,
+    options: {
+      a: "Neuroticism",
+      b: "Psychoticism",
+      c: "Extraversion",
+      d: "Introversion"
+    },
+    correctAnswer: "c",
+    explanation: "Extraversion is characterised by sociability, talkativeness, and energy from social interaction. Neuroticism is emotional instability. Psychoticism is tough-mindedness. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 24,
+    section: "Application MCQ",
+    text: `A therapist asks a client to complete the sentence: “My mother always _____.” This is an example of which type of personality assessment?`,
+    options: {
+      a: "Self-report inventory",
+      b: "Projective test (sentence completion)",
+      c: "Behavioural assessment",
+      d: "Situational test"
+    },
+    correctAnswer: "b",
+    explanation: "Sentence completion tests are projective techniques where the individual projects unconscious thoughts onto incomplete sentences. Self-report inventories have fixed response options. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 25,
+    section: "Application MCQ",
+    text: `According to Carl Rogers, a child who is told, “I love you only when you get A grades” is experiencing:`,
+    options: {
+      a: "Unconditional positive regard",
+      b: "Conditions of worth",
+      c: "Incongruence",
+      d: "Self-actualisation"
+    },
+    correctAnswer: "b",
+    explanation: "Conditions of worth are requirements placed by others for receiving positive regard. This leads to incongruence. Unconditional positive regard is acceptance without conditions. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 26,
+    section: "Application MCQ",
+    text: `A person who blames their own failure on a coworker’s jealousy rather than accepting their own lack of effort is using which defence mechanism?`,
+    options: {
+      a: "Rationalisation",
+      b: "Projection",
+      c: "Displacement",
+      d: "Reaction formation"
+    },
+    correctAnswer: "b",
+    explanation: "Projection involves attributing one’s own unacceptable feelings or traits to others. Rationalisation is creating logical excuses. Displacement redirects emotion to a safer target. Reaction formation expresses opposite impulse. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 27,
+    section: "Application MCQ",
+    text: `In a study, children who observed an adult behaving aggressively towards a Bobo doll later imitated that behaviour. This finding supports Bandura’s concept of:`,
+    options: {
+      a: "Operant conditioning",
+      b: "Observational learning",
+      c: "Classical conditioning",
+      d: "Reciprocal inhibition"
+    },
+    correctAnswer: "b",
+    explanation: "Bobo doll experiment demonstrated observational learning (modelling) — learning through watching others. Operant conditioning requires reinforcement. Classical conditioning pairs stimuli. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 28,
+    section: "Application MCQ",
+    text: `A person who is meticulous, punctual, and overly organised to the point of rigidity would likely score high on which Big Five trait?`,
+    options: {
+      a: "Openness to experience",
+      b: "Agreeableness",
+      c: "Conscientiousness",
+      d: "Neuroticism"
+    },
+    correctAnswer: "c",
+    explanation: "Conscientiousness includes organisation, punctuality, and diligence. Extreme conscientiousness leads to rigidity. Openness is creativity, agreeableness is kindness, neuroticism is emotional instability. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 29,
+    section: "Application MCQ",
+    text: `According to Freud, a person who is stuck in the oral stage due to early weaning might develop which adult personality traits?`,
+    options: {
+      a: "Orderliness and parsimony",
+      b: "Gullibility and dependency",
+      c: "Vanity and exhibitionism",
+      d: "Indecisiveness and insecurity"
+    },
+    correctAnswer: "b",
+    explanation: "Oral fixation can lead to dependency, gullibility (oral receptive) or aggression, cynicism (oral aggressive). Orderliness is anal stage. Vanity is phallic stage. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 30,
+    section: "Application MCQ",
+    text: `A teacher gives students a list of adjectives and asks them to rate how well each describes themselves. This is an example of:`,
+    options: {
+      a: "Q-sort technique",
+      b: "Adjective check list",
+      c: "Semantic differential",
+      d: "Projective test"
+    },
+    correctAnswer: "b",
+    explanation: "Adjective check list is a self-report method where individuals endorse adjectives that apply to them. Q-sort involves sorting cards. Semantic differential uses bipolar scales. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 31,
+    section: "Application MCQ",
+    text: `Neha feels anxious before giving a presentation. She tells herself, “My heart is racing because I am excited, not scared.” This cognitive reappraisal is an example of:`,
+    options: {
+      a: "Emotion-focused coping",
+      b: "Problem-focused coping",
+      c: "Defence mechanism",
+      d: "Self-handicapping"
+    },
+    correctAnswer: "a",
+    explanation: "Emotion-focused coping changes emotional response to a stressor without changing the stressor itself. Reappraisal is emotion-focused. Problem-focused coping addresses the problem directly. NCERT Class 12 Chapter 2 (coping strategies)."
+  },
+  {
+    id: 32,
+    section: "Application MCQ",
+    text: `According to Jung, the “persona” is an archetype representing:`,
+    options: {
+      a: "The dark side of personality",
+      b: "The social mask we present to others",
+      c: "The feminine side of a man",
+      d: "The collective unconscious itself"
+    },
+    correctAnswer: "b",
+    explanation: "Persona is the social mask or role we adopt to meet societal expectations. Shadow is the dark side. Anima/animus are feminine/masculine aspects. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 33,
+    section: "Application MCQ",
+    text: `A student who consistently attributes success to luck and failure to lack of ability is displaying a _____ explanatory style, which is associated with _____.`,
+    options: {
+      a: "Pessimistic; depression",
+      b: "Optimistic; high self-esteem",
+      c: "Realistic; resilience",
+      d: "External; high self-efficacy"
+    },
+    correctAnswer: "a",
+    explanation: "Pessimistic explanatory style (internal, stable, global attributions for failure) is linked to depression. Attributing success to external factors (luck) is also pessimistic. NCERT Class 12 Chapter 2 on self-concept and attribution."
+  },
+  {
+    id: 34,
+    section: "Application MCQ",
+    text: `The Minnesota Multiphasic Personality Inventory (MMPI) contains validity scales (e.g., L, F, K) primarily to detect:`,
+    options: {
+      a: "Intellectual disability",
+      b: "Response biases (lying, faking)",
+      c: "Unconscious conflicts",
+      d: "Behavioural deficits"
+    },
+    correctAnswer: "b",
+    explanation: "MMPI validity scales detect social desirability (L), faking bad (F), and defensiveness (K). They ensure response validity. Projective tests target unconscious conflicts. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 35,
+    section: "Application MCQ",
+    text: `According to Maslow’s hierarchy, a person who is homeless and hungry will be primarily motivated by _____ needs, and self-actualisation becomes possible only after _____ needs are met.`,
+    options: {
+      a: "Safety; esteem",
+      b: "Physiological; lower",
+      c: "Belongingness; safety",
+      d: "Esteem; physiological"
+    },
+    correctAnswer: "b",
+    explanation: "Physiological needs (hunger, thirst) are most basic. Higher needs like self-actualisation emerge only after lower needs are satisfied. Maslow’s hierarchy: physiological → safety → belonging → esteem → self-actualisation. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 36,
+    section: "Application MCQ",
+    text: `A person who reacts to a minor criticism with extreme rage, yelling at the critic, is displaying a personality pattern that Eysenck would describe as high on which dimension?`,
+    options: {
+      a: "Extraversion",
+      b: "Neuroticism",
+      c: "Psychoticism",
+      d: "Introversion"
+    },
+    correctAnswer: "b",
+    explanation: "Neuroticism is emotional instability, tendency to react intensely to stressors. High neuroticism leads to disproportionate anger. Psychoticism is tough-mindedness, not necessarily emotional reactivity. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 37,
+    section: "Application MCQ",
+    text: `In the Thematic Apperception Test (TAT), a person is shown ambiguous pictures and asked to tell a story. This test is based on the assumption that the person will:`,
+    options: {
+      a: "Report socially desirable responses",
+      b: "Project their unconscious motives onto the characters",
+      c: "Demonstrate learned behaviours",
+      d: "Show their self-efficacy beliefs"
+    },
+    correctAnswer: "b",
+    explanation: "TAT is projective; the individual projects their own needs, motives, and conflicts onto the ambiguous stimuli. Social desirability is a concern for self-report tests. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 38,
+    section: "Application MCQ",
+    text: `A person who believes that they have no control over their life outcomes and that external forces determine everything has a(n) _____ locus of control, a concept introduced by _____.`,
+    options: {
+      a: "Internal; Rotter",
+      b: "External; Rotter",
+      c: "Internal; Bandura",
+      d: "External; Bandura"
+    },
+    correctAnswer: "b",
+    explanation: "External locus of control = belief that outcomes are controlled by outside forces (luck, fate, others). Internal = belief in personal control. Rotter introduced locus of control. Bandura introduced self-efficacy. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 39,
+    section: "Application MCQ",
+    text: `Which of the following is a key criticism of projective tests like the Rorschach?`,
+    options: {
+      a: "They are too structured and limit responses",
+      b: "They have low inter-rater reliability and poor validity",
+      c: "They cannot be used with children",
+      d: "They measure only conscious thoughts"
+    },
+    correctAnswer: "b",
+    explanation: "Major criticisms: scoring inconsistency (low reliability) and weak predictive validity. They are unstructured, used with children, and aim to measure unconscious material. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 40,
+    section: "Application MCQ",
+    text: `According to Karen Horney’s psychoanalytic theory, basic anxiety arises from:`,
+    options: {
+      a: "Unresolved Oedipus complex",
+      b: "Childhood experiences of neglect or rejection",
+      c: "Fixation at the anal stage",
+      d: "Collective unconscious conflicts"
+    },
+    correctAnswer: "b",
+    explanation: "Horney emphasised social and cultural factors; basic anxiety results from interpersonal experiences like neglect, rejection, or inconsistent parenting. She disagreed with Freud’s emphasis on psychosexual stages. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 41,
+    section: "Application MCQ",
+    text: `A person who constantly seeks admiration, feels entitled to special treatment, and lacks empathy for others is likely to be diagnosed with which personality disorder?`,
+    options: {
+      a: "Histrionic personality disorder",
+      b: "Narcissistic personality disorder",
+      c: "Antisocial personality disorder",
+      d: "Borderline personality disorder"
+    },
+    correctAnswer: "b",
+    explanation: "Narcissistic PD features grandiosity, need for admiration, entitlement, and lack of empathy. Histrionic is dramatic but not necessarily entitled. Antisocial involves rule-breaking. Borderline involves instability. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 42,
+    section: "Application MCQ",
+    text: `In Eysenck’s PEN model, the biological basis of introversion-extraversion is the level of activity in the:`,
+    options: {
+      a: "Limbic system",
+      b: "Reticular activating system (RAS)",
+      c: "Prefrontal cortex",
+      d: "Amygdala"
+    },
+    correctAnswer: "b",
+    explanation: "Eysenck proposed that introverts have higher baseline arousal in the RAS, leading to avoidance of stimulation. Extraverts have lower baseline arousal, seeking stimulation. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 43,
+    section: "Application MCQ",
+    text: `A researcher using the Q-sort technique asks participants to sort cards into piles from “most like me” to “least like me.” The resulting profile is then correlated with an ideal self-sort. A high correlation indicates:`,
+    options: {
+      a: "Low self-esteem",
+      b: "High congruence between real and ideal self",
+      c: "High social desirability bias",
+      d: "High neuroticism"
+    },
+    correctAnswer: "b",
+    explanation: "Q-sort measures self-concept. High correlation between real self and ideal self indicates congruence (Rogers), associated with psychological well-being. Low correlation indicates incongruence and distress. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 44,
+    section: "Application MCQ",
+    text: `According to Allport’s trait theory, a “cardinal trait” is one that:`,
+    options: {
+      a: "Is common to all people",
+      b: "Dominates and organises a person’s entire life",
+      c: "Is situational and less stable",
+      d: "Is measured by factor analysis"
+    },
+    correctAnswer: "b",
+    explanation: "Cardinal traits are so pervasive that almost every action is traceable to them (e.g., Machiavellianism). Central traits are major characteristics. Secondary traits are situational. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 45,
+    section: "Application MCQ",
+    text: `A person who says “I am a failure at everything” after failing one test is demonstrating which cognitive distortion?`,
+    options: {
+      a: "Arbitrary inference",
+      b: "Overgeneralisation",
+      c: "Magnification",
+      d: "Personalisation"
+    },
+    correctAnswer: "b",
+    explanation: "Overgeneralisation is drawing a broad conclusion from a single event. Arbitrary inference is jumping to a conclusion without evidence. Magnification is exaggerating importance. Personalisation is taking external events personally. NCERT Class 12 Chapter 2 (cognitive perspective)."
+  },
+  {
+    id: 46,
+    section: "Application MCQ",
+    text: `Which of the following is a key difference between Freud and Jung regarding the unconscious?`,
+    options: {
+      a: "Freud believed in a collective unconscious; Jung did not",
+      b: "Jung believed in a collective unconscious; Freud focused on personal unconscious",
+      c: "Both believed only in personal unconscious",
+      d: "Both rejected the concept of unconscious"
+    },
+    correctAnswer: "b",
+    explanation: "Jung added collective unconscious (shared ancestral memories/archetypes). Freud focused on personal unconscious (repressed individual experiences). This is a major theoretical difference. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 47,
+    section: "Application MCQ",
+    text: `A student who procrastinates before an exam and then claims, “I would have done well if I had started earlier,” is engaging in:`,
+    options: {
+      a: "Self-handicapping",
+      b: "Self-efficacy",
+      c: "Self-monitoring",
+      d: "Self-verification"
+    },
+    correctAnswer: "a",
+    explanation: "Self-handicapping is creating obstacles or excuses to protect self-esteem from potential failure. Procrastination is a behavioural self-handicap. NCERT Class 12 Chapter 2 on self-protection strategies."
+  },
+  {
+    id: 48,
+    section: "Application MCQ",
+    text: `According to the Big Five model, a person who is curious, imaginative, and open to new experiences scores high on:`,
+    options: {
+      a: "Conscientiousness",
+      b: "Extraversion",
+      c: "Openness to experience",
+      d: "Agreeableness"
+    },
+    correctAnswer: "c",
+    explanation: "Openness to experience includes curiosity, imagination, creativity, and preference for novelty. Conscientiousness is organisation. Extraversion is sociability. Agreeableness is kindness. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 49,
+    section: "Application MCQ",
+    text: `A therapist using Carl Rogers’ client-centred therapy provides unconditional positive regard. This means the therapist:`,
+    options: {
+      a: "Approves of all client behaviours",
+      b: "Accepts the client without judgement regardless of their actions",
+      c: "Gives advice freely",
+      d: "Focuses only on unconscious conflicts"
+    },
+    correctAnswer: "b",
+    explanation: "Unconditional positive regard means accepting and valuing the client as a person without conditions or judgement, not approving all behaviours. It is non-directive and does not focus on unconscious conflicts. NCERT Class 12 Chapter 2."
+  },
+  {
+    id: 50,
+    section: "Application MCQ",
+    text: `A person who scores very high on the MMPI’s “Hypochondriasis” scale is likely to:`,
+    options: {
+      a: "Be overly concerned with bodily functions and minor symptoms",
+      b: "Show antisocial behaviour",
+      c: "Have delusions of grandeur",
+      d: "Exhibit social withdrawal"
+    },
+    correctAnswer: "a",
+    explanation: "Hypochondriasis scale (Hs) measures excessive concern with physical health and somatic symptoms. Antisocial behaviour is scale Pd (Psychopathic deviate). Grandeur is part of mania scale. Withdrawal is Si (Social introversion). NCERT Class 12 Chapter 2."
+  }
+],
+
+    duration: 60 * 60,
+    markingScheme: { correct: 5, incorrect: -1 }
+};
+
+/* ============================================================
+   CORE TEST ENGINE
+   ============================================================ */
+const timerElement = document.querySelector('.timer');
+const questionTextElement = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const questionNumberElement = document.getElementById('q-number');
+const currentQNumberElement = document.getElementById('current-q-number');
+const progressBar = document.getElementById('test-progress');
+const progressPercent = document.getElementById('progress-percent');
+const questionPaletteGrid = document.getElementById('question-palette-grid');
+const answeredCountElement = document.getElementById('answered-count');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markBtn = document.getElementById('mark-btn');
+const submitTestBtn = document.getElementById('submit-test-btn');
+const resultsModal = document.getElementById('results-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const correctAnswersElement = document.getElementById('correct-answers');
+const incorrectAnswersElement = document.getElementById('incorrect-answers');
+const unansweredElement = document.getElementById('unanswered');
+const totalScoreElement = document.getElementById('total-score');
+const percentageElement = document.getElementById('percentage');
+const accuracyElement = document.getElementById('accuracy');
+const reviewBtn = document.getElementById('review-btn');
+
+let currentQuestionIndex = 0;
+let timeLeft = mockTest.duration;
+let timer;
+let testSubmitted = false;
+let testStarted = false;
+
+function initTest() {
+    renderQuestionPalette(); renderQuestion(); startTimer(); updateProgress(); renderLegend(false);
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    markBtn.addEventListener('click', toggleMarkForReview);
+    submitTestBtn.addEventListener('click', confirmSubmit);
+    closeModalBtn.addEventListener('click', closeResultsModal);
+    reviewBtn.addEventListener('click', reviewAnswers);
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
+}
+
+function renderLegend(reviewMode) {
+    const leg = document.getElementById('palette-legend');
+    if (!leg) return;
+    if (reviewMode) {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#22c55e;"></div><span>Correct</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#ef4444;"></div><span>Wrong</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;"></div><span>Not Answered</span></div></div>`;
+    } else {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#FF474D;"></div><span>Unanswered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #2d8a4e;"></div><span>Current</span></div></div>`;
+    }
+}
+
+function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) { clearInterval(timer); submitTest(); }
+        if (timeLeft === 300) { alert('Only 5 minutes remaining!'); }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    const str = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timerElement.textContent = str;
+    const mt = document.querySelector('.mobile-timer-clone');
+    if (mt) mt.textContent = str;
+}
+
+function renderQuestion() {
+    const q = mockTest.questions[currentQuestionIndex];
+    document.getElementById('current-section').textContent = q.section;
+    questionTextElement.innerHTML = `
+        <div style="display:inline-block;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px;">
+            🗳️ ${q.section || "General"}
+        </div>
+        ${q.image ? `<div style="margin:10px 0;"><img src="${q.image}" style="max-width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>` : ""}
+        <div style="margin-top:8px;font-size:17px;line-height:1.6;">${q.text}</div>`;
+    questionNumberElement.textContent = q.id;
+    currentQNumberElement.textContent = q.id;
+    optionsContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(q.options)) {
+        const od = document.createElement('div');
+        od.className = 'option';
+        if (testSubmitted) {
+            if (key === q.correctAnswer) od.classList.add('correct');
+            else if (key === q.userAnswer && key !== q.correctAnswer) od.classList.add('incorrect');
+        } else {
+            if (key === q.userAnswer) od.classList.add('selected');
+        }
+        if (!testSubmitted) {
+            od.addEventListener('click', () => {
+                optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                od.classList.add('selected');
+                selectAnswer(key);
+            });
+        }
+        const inp = document.createElement('input');
+        inp.type='radio'; inp.name='question-option'; inp.value=key;
+        inp.checked = q.userAnswer === key; inp.disabled = testSubmitted;
+        const ld = document.createElement('div');
+        ld.className='opt-letter'; ld.textContent=key.toUpperCase();
+        const ts = document.createElement('span');
+        ts.className='opt-text'; ts.textContent=value;
+        if (testSubmitted) {
+            if (key === q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='correct-indicator'; ind.textContent=' ✓ Correct Answer'; ts.appendChild(ind);
+            } else if (key === q.userAnswer && key !== q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='incorrect-indicator'; ind.textContent=' ✗ Your Answer'; ts.appendChild(ind);
+            }
+        }
+        od.appendChild(inp); od.appendChild(ld); od.appendChild(ts);
+        optionsContainer.appendChild(od);
+    }
+    if (testSubmitted) {
+        const ed = document.createElement('div');
+        ed.style.cssText = "margin-top:15px;padding:12px;border-radius:8px;background:linear-gradient(135deg,#edf7f1,#d4eddb);border-left:4px solid #2d8a4e;font-size:15px;";
+        ed.innerHTML = `<strong>💡 Explanation:</strong><br>${q.explanation || "No explanation available."}`;
+        optionsContainer.appendChild(ed);
+    }
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = currentQuestionIndex === mockTest.questions.length - 1 ? 'hidden' : 'visible';
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.disabled = currentQuestionIndex === mockTest.questions.length - 1;
+    updateQuestionPalette();
+}
+
+function selectAnswer(answer) {
+    mockTest.questions[currentQuestionIndex].userAnswer = answer;
+    updateQuestionPalette(); updateProgress();
+}
+
+function toggleMarkForReview() {
+    const q = mockTest.questions[currentQuestionIndex];
+    q.marked = !q.marked;
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    updateQuestionPalette();
+}
+
+function goToPreviousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+function goToNextQuestion() { if (currentQuestionIndex < mockTest.questions.length - 1) { currentQuestionIndex++; renderQuestion(); } }
+
+function renderQuestionPalette() {
+    questionPaletteGrid.innerHTML = '';
+    mockTest.questions.forEach((q, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'palette-btn'; btn.textContent = q.id;
+        btn.addEventListener('click', () => navigateToQuestion(i));
+        questionPaletteGrid.appendChild(btn);
+    });
+    updateQuestionPalette();
+}
+
+function updateQuestionPalette() {
+    const btns = questionPaletteGrid.querySelectorAll('.palette-btn');
+    btns.forEach(b => { b.className = 'palette-btn'; });
+    mockTest.questions.forEach((q, i) => {
+        const btn = btns[i];
+        if (testSubmitted) {
+            if (!q.userAnswer) btn.classList.add('review-unanswered');
+            else if (q.userAnswer === q.correctAnswer) btn.classList.add('review-correct');
+            else btn.classList.add('review-wrong');
+        } else {
+            if (q.userAnswer) btn.classList.add('answered');
+            if (q.marked) btn.classList.add('marked');
+        }
+        if (i === currentQuestionIndex) btn.classList.add('current');
+    });
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    answeredCountElement.textContent = `${ac}/${mockTest.questions.length}`;
+}
+
+function navigateToQuestion(index) { currentQuestionIndex = index; renderQuestion(); }
+
+function updateProgress() {
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    const p = (ac / mockTest.questions.length) * 100;
+    progressBar.style.width = `${p}%`;
+    progressPercent.textContent = `${Math.round(p)}%`;
+}
+
+function confirmSubmit() { if (confirm('Are you sure you want to submit the test?')) { submitTest(); } }
+
+function submitTest() {
+    if (testSubmitted) return;
+    testSubmitted = true; clearInterval(timer);
+    let correct = 0, incorrect = 0, unanswered = 0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++;
+        else if (q.userAnswer === q.correctAnswer) correct++;
+        else incorrect++;
+    });
+    const totalQ = mockTest.questions.length;
+    const maxScore = totalQ * mockTest.markingScheme.correct;
+    const totalScore = (correct * mockTest.markingScheme.correct) + (incorrect * mockTest.markingScheme.incorrect);
+    const percentage = ((totalScore / maxScore) * 100).toFixed(2);
+    const accuracy = correct + incorrect > 0 ? (correct / (correct + incorrect) * 100).toFixed(2) : '0';
+
+    const questionResults = mockTest.questions.map(q => ({
+        id: q.id, correct: q.userAnswer === q.correctAnswer,
+        answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
+    }));
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
+    const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
+    let index = [];
+    try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
+    if (!index.includes(CHAPTER_ID)) index.push(CHAPTER_ID);
+    localStorage.setItem(indexKey, JSON.stringify(index));
+
+    correctAnswersElement.textContent = correct;
+    incorrectAnswersElement.textContent = incorrect;
+    unansweredElement.textContent = unanswered;
+    totalScoreElement.textContent = totalScore;
+    percentageElement.textContent = percentage;
+    accuracyElement.textContent = accuracy;
+    resultsModal.style.display = 'flex';
+    renderQuestion();
+
+    const sb = document.getElementById('submit-test-btn');
+    sb.textContent = '📄 Download PDF';
+    sb.classList.remove('submit-fancy-btn');
+    sb.classList.add('pdf-download-btn');
+    sb.onclick = generatePDF;
+    renderLegend(true);
+}
+
+function closeResultsModal() { resultsModal.style.display = 'none'; }
+function reviewAnswers() { resultsModal.style.display = 'none'; currentQuestionIndex = 0; renderQuestion(); }
+
+document.addEventListener("visibilitychange", function() {
+    if (!testStarted || testSubmitted) return;
+    if (document.hidden) startCountdown('tab'); else cancelCountdown();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('test-screen').style.display === 'none') return;
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if (currentQuestionIndex < mockTest.questions.length-1) { currentQuestionIndex++; renderQuestion(); } }
+    else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+});
+</script>
+
+<script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
+function startMock() {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
+    enterFullscreen();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('instruction-screen').style.display = 'block';
+}
+
+const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom');
+darkModeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggles.forEach(btn => {
+            const iconSpan = btn.querySelector('.icon');
+            if (iconSpan) iconSpan.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    });
+});
+
+const checkbox = document.getElementById('agree-checkbox');
+const startBtn = document.getElementById('start-test-btn');
+checkbox.addEventListener('change', () => {
+    startBtn.disabled = !checkbox.checked;
+    startBtn.style.opacity = checkbox.checked ? "1" : "0.6";
+    startBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+});
+startBtn.addEventListener('click', () => {
+    if (!checkbox.checked) { alert("Please accept instructions first!"); return; }
+    document.getElementById('instruction-screen').style.display = 'none';
+    document.getElementById('test-screen').style.display = 'block';
+    const name = localStorage.getItem("cbtUserName") || "Thunder";
+    document.getElementById('user-name-display').innerText = "👤 " + name;
+    const mn = document.getElementById('mobile-name-display');
+    if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
+    testStarted = true; enterFullscreen(); initTest();
+});
+
+function enterFullscreen() {
+    const el = document.documentElement;
+    try {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } catch(e) {}
+}
+
+document.addEventListener('fullscreenchange', onFSChange);
+document.addEventListener('webkitfullscreenchange', onFSChange);
+document.addEventListener('mozfullscreenchange', onFSChange);
+document.addEventListener('MSFullscreenChange', onFSChange);
+
+function isInFullscreen() {
+    return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);
+}
+function onFSChange() {
+    if (!testStarted||testSubmitted) return;
+    if (document.getElementById('test-screen').style.display==='none') return;
+    if (!isInFullscreen()) startCountdown('fullscreen'); else cancelCountdown();
+}
+
+let countdownTimer = null, countdownSeconds = 0;
+function startCountdown(reason) {
+    if (!testStarted||testSubmitted) return;
+    if (countdownTimer) return;
+    countdownSeconds = (reason==='tab') ? 2 : 5;
+    const msg = (reason==='tab') ? '⚠️ You switched tabs!' : '⚠️ You exited fullscreen!';
+    const hint = (reason==='tab') ? 'Switch back to this tab to cancel.' : 'Click the button below to return to fullscreen.';
+    showOverlay(msg, hint, countdownSeconds, reason==='fullscreen');
+    countdownTimer = setInterval(() => {
+        countdownSeconds--;
+        updateOverlayCount(countdownSeconds);
+        if (countdownSeconds <= 0) { cancelCountdown(); submitTest(); }
+    }, 1000);
+}
+function cancelCountdown() { if (countdownTimer) { clearInterval(countdownTimer); countdownTimer=null; } hideOverlay(); }
+function showOverlay(msg, hint, secs, showBtn) {
+    let ov = document.getElementById('security-overlay');
+    if (!ov) {
+        ov = document.createElement('div'); ov.id = 'security-overlay';
+        ov.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,5,0.92);z-index:999999;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'DM Sans',sans-serif;color:#fff;text-align:center;padding:24px;`;
+        document.body.appendChild(ov);
+    }
+    ov.innerHTML = `<div style="font-size:60px;margin-bottom:14px;">🚨</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:8px;">${msg}</div>
+        <div style="font-size:15px;color:#7ec8a4;margin-bottom:20px;">${hint}</div>
+        <div style="font-size:16px;color:#d4edd9;margin-bottom:6px;">Auto-submitting in</div>
+        <div id="overlay-count" style="font-size:72px;font-weight:900;color:#f87171;line-height:1;">${secs}</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:4px;">seconds</div>
+        ${showBtn ? `<button onclick="enterFullscreen()" style="margin-top:24px;padding:13px 34px;border-radius:30px;border:none;background:linear-gradient(135deg,#2d8a4e,#1a5c34);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(45,138,78,0.5);">🔲 Return to Fullscreen</button>` : ''}`;
+    ov.style.display = 'flex';
+}
+function updateOverlayCount(n) { const el=document.getElementById('overlay-count'); if(el) el.textContent=n; }
+function hideOverlay() { const ov=document.getElementById('security-overlay'); if(ov) ov.style.display='none'; }
+</script>
+
+<div id="pdf-print-area"></div>
+<script>
+function generatePDF() {
+    const name = localStorage.getItem('cbtUserName') || 'Thunder';
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    let correct=0,incorrect=0,unanswered=0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++; else if (q.userAnswer===q.correctAnswer) correct++; else incorrect++;
+    });
+    const totalScore = (correct*mockTest.markingScheme.correct)+(incorrect*mockTest.markingScheme.incorrect);
+    const maxScore = mockTest.questions.length*mockTest.markingScheme.correct;
+    const pct = ((totalScore/maxScore)*100).toFixed(1);
+    const optionLabel = {a:'A',b:'B',c:'C',d:'D'};
+    let questionsHTML = '';
+    mockTest.questions.forEach((q,i) => {
+        const isCorrect = q.userAnswer===q.correctAnswer;
+        const isWrong = q.userAnswer&&!isCorrect;
+        const isSkipped = !q.userAnswer;
+        const statusColor = isCorrect?'#16a34a':isWrong?'#dc2626':'#9ca3af';
+        const statusLabel = isCorrect?'✓ Correct':isWrong?'✗ Wrong':'— Skipped';
+        const rowBg = isCorrect?'#f0fdf4':isWrong?'#fef2f2':'#fafafa';
+        let optionsHTML = '';
+        for (const [key,val] of Object.entries(q.options)) {
+            const isRight=key===q.correctAnswer, isUser=key===q.userAnswer;
+            let bg='transparent',fw='normal',prefix='';
+            if(isRight){bg='#dcfce7';fw='bold';prefix='✓ ';}
+            if(isUser&&!isRight){bg='#fee2e2';fw='bold';prefix='✗ ';}
+            optionsHTML+=`<div style="display:flex;gap:8px;padding:4px 8px;margin:2px 0;border-radius:4px;background:${bg};font-weight:${fw};font-size:12px;"><span style="min-width:18px;font-weight:700;">${optionLabel[key]}.</span><span>${prefix}${val}</span></div>`;
+        }
+        let yourAnswer = isSkipped
+            ? '<span style="color:#9ca3af;">Not Attempted</span>'
+            : `<span style="color:${isCorrect?'#16a34a':'#dc2626'};font-weight:bold;">${optionLabel[q.userAnswer]}. ${q.options[q.userAnswer]}</span>`;
+        questionsHTML+=`<div style="margin-bottom:18px;padding:14px 16px;border-radius:8px;background:${rowBg};border:1px solid #e5e7eb;page-break-inside:avoid;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div style="font-weight:700;font-size:13px;color:#374151;">Q${i+1}. ${q.text}</div>
+                <div style="font-weight:700;font-size:12px;color:${statusColor};white-space:nowrap;margin-left:12px;">${statusLabel}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:8px;">${optionsHTML}</div>
+            <div style="font-size:12px;border-top:1px solid #e5e7eb;padding-top:6px;margin-top:4px;">
+                <span style="color:#6b7280;">Your answer: </span>${yourAnswer}&nbsp;&nbsp;
+                <span style="color:#6b7280;">Correct: </span><span style="color:#16a34a;font-weight:bold;">${optionLabel[q.correctAnswer]}. ${q.options[q.correctAnswer]}</span>
+            </div></div>`;
+    });
+    const scoreColor = pct>=60?'#16a34a':pct>=35?'#d97706':'#dc2626';
+    const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
+        <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Psychology</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
+            </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #d4eddb;border-top:none;padding:16px 24px;border-radius:0 0 10px 10px;margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SCORE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${totalScore}<span style="font-size:14px;color:#6b7280;">/${maxScore}</span></div></div>
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">PERCENTAGE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${pct}%</div></div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#16a34a;">CORRECT</div><div style="font-size:24px;font-weight:800;color:#16a34a;">${correct}</div></div>
+                <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#dc2626;">WRONG</div><div style="font-size:24px;font-weight:800;color:#dc2626;">${incorrect}</div></div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SKIPPED</div><div style="font-size:24px;font-weight:800;color:#6b7280;">${unanswered}</div></div>
+            </div>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #2d8a4e;">📋 Question-wise Answer Key</div>
+        ${questionsHTML}
+        <div style="text-align:center;margin-top:24px;padding:14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#6b7280;">Generated by <b>Thunderstudy CBT</b> | t.me/thunderstudy_official | ${dateStr}</div>
+    </div>`;
+    const printWin = window.open('','_blank','width=950,height=700,scrollbars=yes');
+    if (!printWin) { alert('Popup blocked! Please allow popups and try again.'); return; }
+    printWin.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Thunderstudy_Psychology_${name}_${dateStr.replace(/ /g,'-')}</title>
+    <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#fff;padding:20px;}@media print{body{padding:0;}.no-print{display:none !important;}}.print-btn{display:block;margin:0 auto 20px;padding:12px 36px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;}</style>
+    </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
+    printWin.document.close(); printWin.focus();
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
+</script>
+
+</body>
+</html>
