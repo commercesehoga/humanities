@@ -1,0 +1,1812 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy CBT — Psychology</title>
+
+<script>
+const SUBJECT_ID  = "psy";
+const CHAPTER_ID  = "psy3";
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary-color: #2d8a4e;
+    --primary-light: #4caf6f;
+    --primary-dark: #1a5c34;
+    --secondary-color: #7ec8a4;
+    --accent: #a8e6bf;
+    --correct-color: #2d8a4e;
+    --incorrect-color: #e05252;
+    --neutral-color: #607d8b;
+    --light-bg: #f0f7f2;
+    --white: #ffffff;
+    --dark-text: #1a2e1f;
+    --light-text: #2d4a36;
+    --card-bg: #ffffff;
+
+    --dark-bg: #0d1f14;
+    --dark-card: #152419;
+    --dark-primary: #4caf6f;
+    --dark-secondary: #7ec8a4;
+    --dark-text-color: #d4edd9;
+    --dark-border: #2a4a34;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+}
+
+/* ── DARK MODE ── */
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+body.dark-mode p, body.dark-mode span:not(.icon),
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,
+body.dark-mode h4,body.dark-mode h5,body.dark-mode h6,
+body.dark-mode label, body.dark-mode li { color: var(--dark-text-color) !important; }
+body.dark-mode a:not(.fancy-btn):not(.footer-btn):not(.button2):not(.join-btn) {
+    color: var(--dark-primary) !important; text-decoration: underline;
+}
+body.dark-mode .fancy-btn,body.dark-mode .footer-btn,body.dark-mode .join-btn,
+body.dark-mode .submit-fancy-btn,body.dark-mode .more-btn,body.dark-mode .back-btn,body.dark-mode .report-btn { color: white !important; }
+body.dark-mode #prev-btn { color: var(--dark-primary) !important; border-color: var(--dark-primary) !important; }
+body.dark-mode #next-btn { color: #000 !important; background-color: var(--dark-primary) !important; }
+body.dark-mode #mark-btn { color: var(--dark-secondary) !important; border-color: var(--dark-secondary) !important; }
+body.dark-mode #mark-btn.marked { background-color: var(--dark-secondary) !important; color: #000 !important; }
+body.dark-mode #start-test-btn { color: white !important; }
+body.dark-mode .close-btn { color: var(--dark-text-color) !important; }
+body.dark-mode .stat-card h3 { color: var(--dark-text-color) !important; }
+body.dark-mode .question-number { color: var(--dark-primary) !important; }
+body.dark-mode .question-text { color: var(--dark-text-color) !important; }
+body.dark-mode .progress-text span { color: #8ab49a !important; }
+body.dark-mode .palette-title span { color: var(--dark-text-color) !important; }
+body.dark-mode .test-info strong { color: #fff !important; }
+body.dark-mode .test-info span { color: #aaccb4 !important; }
+body.dark-mode .sidebar {
+    background-color: var(--dark-card);
+    box-shadow: 2px 0 8px rgba(0,200,80,0.08);
+}
+body.dark-mode .sidebar-header h2,
+body.dark-mode .test-header h2,
+body.dark-mode .modal-header h2 { color: var(--dark-primary); }
+body.dark-mode .timer { background-color: #7a1e1e; color: #fff; }
+body.dark-mode .question-container {
+    background-color: var(--dark-card);
+    box-shadow: 0 2px 8px rgba(0,200,80,0.08);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .modal-content { background-color: var(--dark-card); color: var(--dark-text-color); }
+body.dark-mode .stat-card { background-color: #0d1f14; border: 1px solid var(--dark-border); }
+body.dark-mode #test-screen { background: var(--dark-bg) !important; }
+body.dark-mode .mobile-top-bar { background: var(--dark-card) !important; border-color: var(--dark-border) !important; }
+body.dark-mode .mobile-timer-clone { background-color: #7a1e1e !important; }
+body.dark-mode #start-screen { background-color: #0d1f14 !important; }
+body.dark-mode #start-screen h1 { color: var(--dark-primary) !important; }
+body.dark-mode #start-screen > p { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen li { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen strong { color: #fff !important; }
+body.dark-mode #start-screen input[type="text"] {
+    background: #1a3224 !important; color: #fff !important; border-color: var(--dark-border) !important;
+}
+body.dark-mode #instruction-screen { background: #0d1f14 !important; }
+body.dark-mode #instruction-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-box { background: linear-gradient(135deg, #152a1e, #1a2e20) !important; }
+body.dark-mode .instruction-title { color: var(--dark-primary) !important; border-left-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-list li { background: #1a2e1f !important; color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-list li:hover { background: #1e3828 !important; }
+body.dark-mode .custom-check { border-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox input:checked + .custom-check::after { color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox { color: var(--dark-text-color) !important; }
+
+/* ── OPTIONS ── */
+.option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border: 1.5px solid #c8e6d4;
+    border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+    background: #fff; transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+}
+.option:hover { border-color: #2d8a4e; background: #edf7f1; }
+.option.selected { border-color: #1a5c34; background: #c8e6d4; }
+.option.correct { border-color: #2d8a4e !important; background: rgba(45,138,78,0.15) !important; }
+.option.incorrect { border-color: #e53935 !important; background: rgba(229,57,53,0.1) !important; }
+.opt-letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid #b2dcc2; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; background: #edf7f1; color: #2d8a4e;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.option.selected .opt-letter { background: #1a5c34; border-color: #1a5c34; color: #fff; }
+.option.correct .opt-letter { background: #2d8a4e; border-color: #2d8a4e; color: #fff; }
+.option.incorrect .opt-letter { background: #e53935; border-color: #e53935; color: #fff; }
+.opt-text { font-size: 15px; color: #1a2e1f; flex: 1; line-height: 1.5; }
+.option.selected .opt-text { color: #1a5c34; font-weight: 600; }
+.option.correct .opt-text { color: #1a5c34; font-weight: 600; }
+.option.incorrect .opt-text { color: #b71c1c; font-weight: 600; }
+.option input[type="radio"] { display: none; }
+body.dark-mode .option { background: #1a2e1f !important; border-color: #2a4a34 !important; }
+body.dark-mode .option:hover { border-color: #4caf6f !important; background: #1e3828 !important; }
+body.dark-mode .option.selected { border-color: #7ec8a4 !important; background: #173024 !important; }
+body.dark-mode .opt-letter { background: #1e3828 !important; border-color: #2a4a34 !important; color: #7ec8a4 !important; }
+body.dark-mode .option.selected .opt-letter { background: #2d8a4e !important; border-color: #2d8a4e !important; color: #fff !important; }
+body.dark-mode .opt-text { color: var(--dark-text-color) !important; }
+body.dark-mode .option.selected .opt-text { color: #a8e6bf !important; }
+body.dark-mode .option.correct { border-color: #4caf6f !important; background: rgba(45,138,78,0.2) !important; }
+body.dark-mode .option.incorrect { border-color: #ef9a9a !important; background: rgba(229,57,53,0.15) !important; }
+
+.correct-indicator { margin-left: 8px; font-weight: bold; color: #2d8a4e; font-size: 13px; }
+.incorrect-indicator { margin-left: 8px; font-weight: bold; color: #e53935; font-size: 13px; }
+
+/* ── INSTRUCTION BOX ── */
+.instruction-box {
+    max-width: 900px; margin: auto;
+    background: linear-gradient(135deg, #e8f5ec, #d4eddb);
+    padding: 30px; border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(45,138,78,0.15);
+    line-height: 1.8;
+}
+.instruction-title {
+    font-size: 24px; font-weight: 800; color: #1a5c34;
+    margin-bottom: 15px; border-left: 5px solid #2d8a4e; padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+.instruction-list { padding-left: 20px; }
+.instruction-list li {
+    margin-bottom: 10px; font-size: 16px; background: white;
+    padding: 10px 12px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(45,138,78,0.1); transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.instruction-list li:hover { transform: translateX(5px); background: #edf7f1; border-left-color: #2d8a4e; }
+.instruction-checkbox { display: flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 16px; font-weight: 600; }
+.instruction-checkbox input { display: none; }
+.custom-check {
+    width: 20px; height: 20px; border: 2px solid #2d8a4e;
+    border-radius: 4px; display: inline-block; position: relative; cursor: pointer;
+}
+.instruction-checkbox input:checked + .custom-check::after {
+    content: "\2714"; position: absolute; top: -2px; left: 3px; font-size: 16px; color: #2d8a4e;
+}
+
+#start-test-btn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    box-shadow: 0 6px 15px rgba(45,138,78,0.4); transition: 0.3s; border-radius: 8px;
+}
+#start-test-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,138,78,0.6); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 300px; background-color: var(--white); height: 100vh;
+    padding: 20px; box-shadow: 2px 0 8px rgba(45,138,78,0.12);
+    position: fixed; overflow-y: auto; right: 0; left: auto;
+    border-left: 1px solid #d4eddb;
+}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.sidebar-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.test-info { margin-bottom: 20px; }
+.test-info p { margin: 5px 0; color: var(--light-text); display: flex !important; gap: 6px; font-size: 16px !important; }
+.test-info strong { font-weight: 700 !important; color: #000 !important; }
+.question-palette { margin-bottom: 20px; }
+.palette-title { font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; overflow-x: hidden; }
+.palette-btn {
+    width: 100%; max-width: 40px; aspect-ratio: 1/1; border-radius: 50%;
+    border: 1px solid #ddd; background-color: #FF474D;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; margin: auto; font-size: 12px; font-weight: 700;
+}
+.palette-btn:hover { background-color: #f59e0b; transform: scale(1.1); }
+.palette-btn.answered { background-color: #4caf6f; color: #fff; border-color: #2d8a4e; }
+.palette-btn.marked { background-color: #90D5FF; color: #000; border-color: #0077cc; }
+.palette-btn.current { background-color: #fff; border: 2.5px solid var(--primary-color); color: var(--primary-color); }
+.palette-btn.review-correct { background-color: #22c55e !important; color: #fff !important; border-color: #16a34a !important; }
+.palette-btn.review-wrong { background-color: #ef4444 !important; color: #fff !important; border-color: #dc2626 !important; }
+.palette-btn.review-unanswered { background-color: #3b82f6 !important; color: #fff !important; border-color: #2563eb !important; }
+.palette-btn.review-correct.current,
+.palette-btn.review-wrong.current,
+.palette-btn.review-unanswered.current { outline: 3px solid var(--primary-color); outline-offset: 1px; }
+body.dark-mode .palette-btn { background-color: #FF474D !important; color: var(--dark-primary); border: 2px solid var(--dark-primary); }
+body.dark-mode .palette-btn.answered { background-color: #2d8a4e !important; color: white !important; border-color: #2d8a4e !important; }
+body.dark-mode .palette-btn.marked { background-color: #0077cc !important; color: white !important; border-color: #0077cc !important; }
+body.dark-mode .palette-btn.current { background-color: white !important; border: 2.5px solid var(--dark-primary) !important; color: var(--dark-primary) !important; }
+body.dark-mode .palette-btn.review-correct { background-color: #16a34a !important; border-color: #15803d !important; }
+body.dark-mode .palette-btn.review-wrong { background-color: #dc2626 !important; border-color: #b91c1c !important; }
+body.dark-mode .palette-btn.review-unanswered { background-color: #2563eb !important; border-color: #1d4ed8 !important; }
+
+/* ── BUTTONS ── */
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: #edf7f1; }
+.mark-btn {
+    margin-left: 10px; background-color: transparent;
+    border: 1.5px solid #2d8a4e; color: #2d8a4e;
+    padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+.mark-btn.marked { background-color: #2d8a4e; color: white; }
+body.dark-mode .btn-primary { background-color: var(--dark-primary); color: #000; }
+body.dark-mode .btn-outline { border-color: var(--dark-primary); color: var(--dark-primary); }
+body.dark-mode .mark-btn { border-color: var(--dark-secondary); color: var(--dark-secondary); }
+body.dark-mode .mark-btn.marked { background-color: var(--dark-secondary); color: #000; }
+
+/* ── FANCY BUTTONS ── */
+.fancy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 16px; font-weight: 700; border-radius: 50px;
+    border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.4px;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+.fancy-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; border-radius: inherit; }
+.fancy-btn:hover::after { background: rgba(255,255,255,0.12); }
+.fancy-btn:active { transform: scale(0.96) !important; }
+.fancy-btn:hover { transform: translateY(-3px) scale(1.03); }
+.join-btn { background: linear-gradient(135deg, #0088cc, #006699); color: white; box-shadow: 0 5px 18px rgba(0,136,204,0.45); }
+.join-btn:hover { box-shadow: 0 8px 24px rgba(0,136,204,0.65); color: white; }
+.submit-fancy-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); color: white; box-shadow: 0 5px 18px rgba(45,138,78,0.45); flex: 1; max-width: 280px; }
+.submit-fancy-btn:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.65); }
+.pdf-download-btn {
+    background: linear-gradient(135deg, #f97316, #ea580c); color: white !important;
+    font-weight: 700; border-radius: 30px; transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4); padding: 13px 28px; font-size: 16px;
+    flex: 1; max-width: 280px; display: inline-flex; align-items: center; justify-content: center;
+}
+.pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(249,115,22,0.6); color: white !important; }
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
+    text-decoration: none; color: white; letter-spacing: 0.3px;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease, filter 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.footer-btn:hover { transform: translateY(-3px) scale(1.06); filter: brightness(1.1); color: white; }
+.footer-btn:active { transform: scale(0.95); }
+.more-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); box-shadow: 0 4px 14px rgba(45,138,78,0.4); }
+.more-btn:hover { box-shadow: 0 7px 20px rgba(45,138,78,0.65); }
+.back-btn { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
+.back-btn:hover { box-shadow: 0 7px 20px rgba(34,197,94,0.65); }
+.report-btn { background: linear-gradient(135deg, #f97316, #dc2626); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+.report-btn:hover { box-shadow: 0 7px 20px rgba(239,68,68,0.65); }
+
+/* ── LAYOUT ── */
+.main-content { flex: 1; margin-left: 0; margin-right: 300px; padding: 20px; }
+.test-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb;
+}
+.test-header h2 { font-family: 'Playfair Display', serif; color: var(--primary-dark); font-size: 20px; }
+body.dark-mode .test-header h2 { color: var(--dark-primary) !important; }
+.timer {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white; padding: 10px 20px; border-radius: 40px;
+    font-weight: 800; font-size: 18px; min-width: 140px; text-align: center;
+    font-family: 'DM Sans', monospace; letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+.progress-container { margin-bottom: 20px; }
+.progress-bar { height: 10px; background-color: #d4eddb; border-radius: 5px; overflow: hidden; }
+.progress { height: 100%; background: linear-gradient(90deg, #2d8a4e, #7ec8a4); width: 0%; transition: width 0.3s; border-radius: 5px; }
+.progress-text { display: flex; justify-content: space-between; margin-top: 5px; font-size: 14px; color: var(--light-text); }
+.question-container {
+    background-color: var(--white); border-radius: 12px; padding: 24px;
+    margin-bottom: 20px; box-shadow: 0 4px 16px rgba(45,138,78,0.1);
+    border: 1px solid #d4eddb;
+}
+.question-number { color: var(--primary-color); font-weight: 800; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.question-text { margin-bottom: 20px; font-size: 17px; line-height: 1.6; color: var(--dark-text); }
+.options { margin-left: 0; }
+.navigation-btns { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+.submit-section {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 620px; margin: 24px auto; gap: 14px; flex-wrap: wrap;
+}
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,30,10,0.6); z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: white; border-radius: 14px; width: 80%; max-width: 600px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.modal-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--light-text); }
+.result-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card { background-color: var(--light-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #d4eddb; }
+.stat-card h3 { color: #000; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { font-size: 28px; font-weight: 800; }
+.correct-stat { color: var(--correct-color); }
+.incorrect-stat { color: var(--incorrect-color); }
+.score-stat { color: var(--primary-color); }
+.review-btn { margin-top: 20px; width: 100%; }
+.button2 {
+    background-color: #2d8a4e; color: white; border: none;
+    padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 30px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(45,138,78,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.button2:hover { background-color: #1a5c34; box-shadow: 0 6px 12px rgba(45,138,78,0.5); color: #fff; }
+
+/* ── DARK MODE TOGGLE ── */
+#dark-mode-toggle-bottom {
+    position: absolute; top: 18px; right: 18px; font-size: 22px; padding: 8px 18px;
+    border-radius: 40px; border: none; cursor: pointer;
+    background: linear-gradient(45deg, #1a5c34, #2d8a4e); color: white;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 15px rgba(45,138,78,0.5);
+    transition: background 0.4s, box-shadow 0.4s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+}
+#dark-mode-toggle-bottom:hover { box-shadow: 0 6px 20px rgba(45,138,78,0.8); }
+body.dark-mode #dark-mode-toggle-bottom {
+    background: linear-gradient(45deg, #f7971e, #ffd200) !important;
+    box-shadow: 0 4px 15px rgba(255,210,0,0.6) !important;
+}
+body.dark-mode #dark-mode-toggle-bottom .icon { color: #333 !important; }
+body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important; }
+
+#test-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-bg); z-index: 9998; display: none; overflow: auto; }
+#user-name-display {
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 14px;
+}
+.mobile-top-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #d4eddb;
+        margin-bottom: 8px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-timer-clone {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white; padding: 6px 14px; border-radius: 30px;
+        font-weight: 800; font-size: 15px; min-width: 100px; text-align: center;
+    }
+    #mobile-name-display {
+        background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+        color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;
+    }
+    #user-name-display { display: none !important; }
+    .sidebar .timer { display: none !important; }
+    .sidebar .sidebar-header { display: none !important; }
+    body { display: flex; flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; right: 0; left: 0; box-shadow: none; margin-bottom: 10px; }
+    .question-palette { max-height: 200px; overflow-y: auto; }
+    .main-content { margin: 0 !important; width: 100%; padding: 10px; }
+    .navigation-btns { flex-direction: row !important; gap: 8px; align-items: center; }
+    #prev-btn { padding: 8px 14px !important; font-size: 13px !important; border-radius: 6px !important; flex-shrink: 0; }
+    #next-btn { padding: 14px 28px !important; font-size: 17px !important; border-radius: 8px !important; flex: 1; }
+    .navigation-btns > div { display: flex; flex: 1; gap: 8px; align-items: center; }
+    #mark-btn { font-size: 11px !important; padding: 6px 8px !important; flex-shrink: 0; }
+}
+@media (max-width: 576px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } .result-stats { grid-template-columns: 1fr; } }
+#pdf-print-area { display: none; }
+@media print {
+    body > * { display: none !important; }
+    #pdf-print-area { display: block !important; font-family: Arial, sans-serif; color: #111; padding: 20px; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:white;z-index:9999;display:flex;
+    flex-direction:column;justify-content:flex-start;align-items:center;
+    text-align:center;padding:40px 20px 40px;overflow-y:auto;
+    font-family:'DM Sans',sans-serif;">
+
+<button id="dark-mode-toggle-bottom" aria-label="Toggle dark mode">
+  <span class="icon" style="display:inline-block;transition:transform 0.6s ease;">🌙</span>
+  <span style="font-size:13px;font-weight:700;letter-spacing:0.5px;">Dark</span>
+</button>
+
+<!-- Logo / Brand -->
+<div style="margin-bottom:6px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a5c34,#4caf6f);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+    box-shadow:0 8px 24px rgba(45,138,78,0.35);font-size:34px;">🗳️</div>
+</div>
+
+<h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
+  Psychology
+</h1>
+  <p style="font-size:16px;margin:6px 0;">Full mock <strong style="color:#1a5c34;">1</strong></p>
+<p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
+
+<a href="https://t.me/thunderstudy_official" target="_blank"
+  style="display:inline-flex;align-items:center;gap:8px;margin:8px 0 14px;
+  background:linear-gradient(135deg,#0088cc,#006699);color:white;text-decoration:none;
+  padding:10px 24px;border-radius:30px;font-size:15px;font-weight:700;
+  box-shadow:0 5px 16px rgba(0,136,204,0.45);
+  transition:transform 0.18s,box-shadow 0.18s;"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 22px rgba(0,136,204,0.65)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 5px 16px rgba(0,136,204,0.45)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.04 9.607c-.148.666-.543.828-1.098.516l-3.04-2.24-1.467 1.413c-.162.162-.298.298-.611.298l.217-3.083 5.613-5.067c.244-.217-.054-.337-.378-.12L7.08 14.807 4.09 13.89c-.657-.205-.67-.657.137-.973l10.88-4.196c.548-.198 1.027.133.855.973z"/>
+  </svg>
+  @thunderstudy_official
+</a>
+
+<div style="max-width:560px;text-align:left;margin:10px auto 18px;
+  background:linear-gradient(135deg,#edf7f1,#d4eddb);
+  border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
+  <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
+  <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
+    <li><strong>50 Questions</strong></li>
+    <li><strong>60 Minutes</strong> total time</li>
+    <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
+    <li>No penalty for <strong>unanswered</strong> questions</li>
+    <li>Test <strong>auto-submits</strong> when time ends</li>
+    <li>Do <strong>not switch tabs</strong> or exit fullscreen during test</li>
+  </ul>
+</div>
+
+<div style="margin:10px 0;">
+  <input type="text" id="username-input" placeholder="Enter your name"
+    style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
+    font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
+</div>
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
+
+  <button onclick="startMock()" style="
+      width:260px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(45,138,78,0.45);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 28px rgba(45,138,78,0.65)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(45,138,78,0.45)'"
+    onmousedown="this.style.transform='scale(0.97)'"
+    onmouseup="this.style.transform='translateY(-3px) scale(1.04)'">
+    🚀 Start Mock
+  </button>
+
+  <button onclick="window.location.href='https://commercesehoga.github.io/commerce/bst/result.html'" style="
+      width:260px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(34,197,94,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📊 Previous Result
+  </button>
+
+  <button onclick="window.open('https://commercesehoga.blogspot.com/','_blank')" style="
+      width:260px;background:linear-gradient(135deg,#2d8a4e,#7ec8a4);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(126,200,164,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📚 More Mock Tests
+  </button>
+
+</div>
+</div>
+
+<!-- INSTRUCTION SCREEN -->
+<div id="instruction-screen" style="
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:white;z-index:9999;display:none;overflow:auto;padding:30px;">
+<h2 style="text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;color:#1a5c34;">Please read the instructions carefully</h2>
+<div class="instruction-box">
+<h3 class="instruction-title">General Instructions</h3>
+<ol class="instruction-list">
+<li>Total duration of test is <strong>60 minutes</strong>. Timer shown in sidebar.</li>
+<li>Test <strong>auto-submits</strong> when the timer reaches zero.</li>
+<li>The test runs in <strong>fullscreen mode</strong>. Exiting fullscreen starts a <strong>5-second countdown</strong> to auto-submit.</li>
+<li><strong>Do not switch tabs</strong>. Switching tabs starts a <strong>2-second countdown</strong> to auto-submit.</li>
+<li>Return to fullscreen or the tab before the countdown ends to continue safely.</li>
+<li>Question palette on the right shows answered, marked, and current status.</li>
+<li>Each correct answer: <strong>+5 marks</strong>. Each wrong answer: <strong>−1 mark</strong>. Unanswered: <strong>0 marks</strong>.</li>
+</ol>
+<div style="margin-top:20px;">
+  <strong>Question Status Legend:</strong>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;border:2px solid #2d8a4e;background:white;"></div><span>Current</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#FF474D;border:1px solid #ddd;"></div><span>Unanswered</span></div>
+  </div>
+</div>
+<label class="instruction-checkbox">
+    <input type="checkbox" id="agree-checkbox">
+    <span class="custom-check"></span>
+    I have read and understood all instructions
+</label>
+<br><br>
+<button id="start-test-btn" disabled style="
+background:#2d8a4e;color:white;padding:12px 24px;border:none;
+border-radius:8px;font-size:18px;cursor:not-allowed;opacity:0.6;
+font-family:'DM Sans',sans-serif;font-weight:700;">
+Start Test
+</button>
+</div>
+</div>
+
+<!-- TEST SCREEN -->
+<div id="test-screen">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Psychology</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
+    </div>
+        <div class="timer">01:00:00</div>
+        
+    <div class="test-info">
+        <p><strong>Subject:</strong> <span id="subject-label">Psychology</span></p>
+        <p><strong>Questions:</strong> 50</p>
+        <p><strong>Duration:</strong> 60 min</p>
+        <p><strong>Marking:</strong> +5 / -1</p>
+        <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
+    </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
+    <div class="question-palette">
+        <div class="palette-title">
+            <span>Questions</span>
+            <span id="answered-count">0/50</span>
+        </div>
+        <div class="palette-grid" id="question-palette-grid"></div>
+        <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
+    </div>
+</div>
+
+<div class="main-content">
+<div class="mobile-top-bar">
+    <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
+    <div id="mobile-name-display">👤 Thunder</div>
+</div>
+
+<div class="test-header">
+  <div id="user-name-display">👤 Thunder</div>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
+    <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
+  </div>
+</div>
+
+<div class="question-container">
+<div class="question-number">Question <span id="q-number">1</span></div>
+<div class="question-text" id="question-text"></div>
+<div class="options" id="options-container"></div>
+<div class="navigation-btns">
+<button class="btn btn-outline" id="prev-btn">&#8592; Previous</button>
+<div>
+<button class="mark-btn" id="mark-btn">Mark for Review</button>
+<button class="btn btn-primary" id="next-btn">Next &#8594;</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+    <a href="https://t.me/thunderstudy_official" target="_blank" class="fancy-btn join-btn">⚡ Join Thunder</a>
+    <button class="fancy-btn submit-fancy-btn" id="submit-test-btn">✅ Submit Test</button>
+</div>
+
+<footer style="background:linear-gradient(135deg,#0a1f0e,#152419);color:#d4edd9;text-align:center;padding:22px 16px;margin-top:10px;border-top:2px solid #2d8a4e;">
+   <p style="font-size:13px;color:#7ec8a4;margin-bottom:14px;">© 2025 Thunder. All Rights Reserved.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn more-btn">📚 More Mock</a>
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn back-btn">🌐 Back To Website</a>
+    <a href="https://t.me/mindmaster_robot" target="_blank" class="footer-btn report-btn">🚨 Report Error</a>
+</div>
+</footer>
+
+<!-- Results Modal -->
+<div class="modal" id="results-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🗳️ Test Results</h2>
+<button class="close-btn" id="close-modal">×</button>
+</div>
+<div class="result-stats">
+<div class="stat-card"><h3>Correct</h3><p class="correct-stat" id="correct-answers">0</p></div>
+<div class="stat-card"><h3>Incorrect</h3><p class="incorrect-stat" id="incorrect-answers">0</p></div>
+<div class="stat-card"><h3>Unanswered</h3><p style="color:#6b7280;" id="unanswered">50</p></div>
+<div class="stat-card"><h3>Total Score</h3><p class="score-stat" id="total-score">0</p></div>
+</div>
+<div style="margin-top:8px;padding:12px;background:#edf7f1;border-radius:8px;border:1px solid #d4eddb;">
+<p style="margin:3px 0;">Percentage: <strong><span id="percentage">0</span>%</strong></p>
+<p style="margin:3px 0;">Accuracy: <strong><span id="accuracy">0</span>%</strong></p>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+<button class="btn btn-primary review-btn" id="review-btn" style="flex:1;margin-top:0;border-radius:8px;">Review Answers</button>
+<button class="btn pdf-download-btn" id="download-pdf-btn" style="flex:1;">📄 Download PDF</button>
+</div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /test-screen -->
+
+<script>
+/* ============================================================
+   Psychology MOCK TEST DATA
+   ============================================================ */
+const mockTest = {
+    title: "Psychology Mock",
+    questions: [
+  {
+    id: 1,
+    section: "Case Study",
+    text: `READ THE FOLLOWING CASE STUDY CAREFULLY AND ANSWER QUESTIONS 1 TO 5:\n\nSunita, a 35-year-old single mother from Kolkata, works as a nurse in a busy government hospital. Two years ago, her husband died unexpectedly from a heart attack. Since then, she has been the sole caregiver for her 8-year-old son and her elderly mother who has diabetes. Sunita works 12-hour shifts, often night shifts, and then returns home to cook, clean, and help her son with homework. She has started experiencing frequent headaches, back pain, insomnia, and irritability. At work, she feels overwhelmed, makes minor medication errors, and has snapped at colleagues. She also reports feeling hopeless about the future and has stopped meeting friends. Her son’s teacher noted that he has become withdrawn. The hospital counsellor evaluates Sunita and concludes that she is experiencing chronic stress and early symptoms of burnout. The counsellor recommends stress management techniques, including relaxation training, cognitive restructuring, and seeking social support from her siblings who live nearby.\n\nQ1. Based on the case study, Sunita’s physical symptoms (headaches, back pain, insomnia) are best understood as which type of stress response?`,
+    options: {
+      a: "Psychological stress response",
+      b: "Physiological stress response",
+      c: "Behavioural stress response",
+      d: "Cognitive stress response"
+    },
+    correctAnswer: "b",
+    explanation: "Physiological stress responses include somatic complaints like headaches, muscle tension (back pain), and sleep disturbances. Psychological responses include anxiety/depression. Behavioural responses include snapping at colleagues. Cognitive responses include hopelessness. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 2,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ2. The counsellor’s recommendation of cognitive restructuring aims to address which component of Sunita’s stress?`,
+    options: {
+      a: "Physiological arousal",
+      b: "Maladaptive thought patterns",
+      c: "Deficient social support",
+      d: "Workplace environment"
+    },
+    correctAnswer: "b",
+    explanation: "Cognitive restructuring (from cognitive therapy) targets irrational or maladaptive thoughts (e.g., ‘I can’t cope’, ‘everything is hopeless’). It changes appraisals of stressors. NCERT Class 12 Chapter 3 on cognitive techniques for stress management."
+  },
+  {
+    id: 3,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ3. Sunita’s condition is described as ‘burnout’. Which of the following is a core dimension of burnout according to Maslach?`,
+    options: {
+      a: "Post-traumatic growth",
+      b: "Emotional exhaustion",
+      c: "General adaptation syndrome",
+      d: "Type A behaviour pattern"
+    },
+    correctAnswer: "b",
+    explanation: "Maslach’s burnout model has three dimensions: emotional exhaustion, depersonalisation (cynicism), and reduced personal accomplishment. Sunita shows emotional exhaustion (overwhelmed, irritable) and reduced accomplishment (medication errors). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 4,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ4. The fact that Sunita’s son has become withdrawn suggests that stress can have secondary effects on family members. This phenomenon is known as:`,
+    options: {
+      a: "Crossover of stress",
+      b: "Primary appraisal",
+      c: "Stress inoculation",
+      d: "Eustress"
+    },
+    correctAnswer: "a",
+    explanation: "Crossover of stress occurs when stress experienced by one person affects the well-being of others in their social network. Primary appraisal is initial evaluation of a stressor. Stress inoculation is a training program. Eustress is positive stress. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 5,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ5. The counsellor’s suggestion to seek social support from siblings is based on research showing that social support buffers stress. This buffering effect is explained by which theory?`,
+    options: {
+      a: "General Adaptation Syndrome",
+      b: "Transactional Model of Stress (Lazarus & Folkman)",
+      c: "Drive Reduction Theory",
+      d: "Cognitive Dissonance Theory"
+    },
+    correctAnswer: "b",
+    explanation: "Lazarus & Folkman’s transactional model emphasises appraisal and coping resources, including social support as a coping resource that influences secondary appraisal. General Adaptation Syndrome (Selye) is physiological. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 6,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) General Adaptation Syndrome (GAS)\n(B) Transactional model of stress\n(C) Burnout\n(D) Stress inoculation training\n\nList-II:\n(I) Lazarus & Folkman\n(II) Hans Selye\n(III) Meichenbaum\n(IV) Maslach\n\nChoose the correct answer from the options given below:`,
+    options: {
+      a: "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)",
+      b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+    },
+    correctAnswer: "a",
+    explanation: "GAS by Hans Selye (II). Transactional model by Lazarus & Folkman (I). Burnout by Maslach (IV). Stress inoculation training by Meichenbaum (III). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 7,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Alarm reaction\n(B) Resistance stage\n(C) Exhaustion stage\n(D) Coping\n\nList-II:\n(I) Prolonged stress leads to resource depletion\n(II) Body mobilises resources for fight-or-flight\n(III) Body attempts to adapt to continued stress\n(IV) Cognitive and behavioural efforts to manage stress\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)",
+      b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+    },
+    correctAnswer: "a",
+    explanation: "Alarm reaction = mobilisation (II). Resistance = adaptation attempts (III). Exhaustion = resource depletion (I). Coping = managing stress (IV). Selye’s GAS stages plus coping definition. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 8,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Problem-focused coping\n(B) Emotion-focused coping\n(C) Avoidance coping\n(D) Meaning-focused coping\n\nList-II:\n(I) Denying or distancing from stressor\n(II) Changing the stressor through action\n(III) Finding positive meaning in adversity\n(IV) Managing emotional distress\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)",
+      b: "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)",
+      c: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      d: "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+    },
+    correctAnswer: "a",
+    explanation: "Problem-focused = changing stressor (II). Emotion-focused = regulating emotions (IV). Avoidance = denial/distancing (I). Meaning-focused = finding benefit/growth (III). NCERT Class 12 Chapter 3 on coping strategies."
+  },
+  {
+    id: 9,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Type A behaviour pattern\n(B) Type B behaviour pattern\n(C) Type C behaviour pattern\n(D) Type D behaviour pattern\n\nList-II:\n(I) Distressed, negative emotions, social inhibition\n(II) Competitive, impatient, hostile\n(III) Relaxed, non-competitive\n(IV) Suppressed emotions, helplessness\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)",
+      b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+    },
+    correctAnswer: "a",
+    explanation: "Type A: competitive, hostile, impatient (II). Type B: relaxed (III). Type C: suppressed emotions, helplessness (IV) — linked to cancer. Type D: distressed, negative affect, social inhibition (I). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 10,
+    section: "Match the Following",
+    text: `Match List-I with List-II\n\nList-I:\n(A) Primary appraisal\n(B) Secondary appraisal\n(C) Reappraisal\n(D) Eustress\n\nList-II:\n(I) Evaluating one’s resources to cope\n(II) Positive, motivating stress\n(III) Initial evaluation of stressor significance\n(IV) Changing one’s evaluation based on new info\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)",
+      b: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      c: "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)",
+      d: "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+    },
+    correctAnswer: "a",
+    explanation: "Primary appraisal: ‘Is this stressful?’ (III). Secondary appraisal: ‘Can I cope?’ (I). Reappraisal: updating evaluation (IV). Eustress: positive stress (II). Lazarus & Folkman’s model. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 11,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Chronic stress can suppress immune system functioning, increasing susceptibility to illness.\nReason (R): Prolonged cortisol release downregulates immune responses and reduces lymphocyte proliferation.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "a",
+    explanation: "Both true. Chronic stress elevates cortisol, which suppresses immune function (reduces lymphocytes, natural killer cells). R correctly explains the mechanism behind A. NCERT Class 12 Chapter 3 (stress and immunity)."
+  },
+  {
+    id: 12,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Type A behaviour pattern is a risk factor for coronary heart disease independent of traditional risk factors like smoking.\nReason (R): The hostility component of Type A, not competitiveness alone, is the toxic element for cardiovascular health.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "a",
+    explanation: "Both true. Research (Friedman & Rosenman) shows Type A predicts CHD even controlling for other factors. Hostility/anger is the key pathogenic component. R explains why Type A is harmful. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 13,
+    section: "Assertion-Reason",
+    text: `Assertion (A): According to Selye’s General Adaptation Syndrome, the resistance stage cannot be maintained indefinitely.\nReason (R): The body’s adaptive resources are finite and eventually become depleted, leading to the exhaustion stage.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "a",
+    explanation: "Both true. Resistance stage involves adaptation but resources are limited. Prolonged stress exhausts resources, leading to exhaustion stage. R correctly explains why resistance cannot be maintained. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 14,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Problem-focused coping is generally more effective than emotion-focused coping for uncontrollable stressors.\nReason (R): Uncontrollable stressors cannot be changed by action, so attempting problem-focused coping may lead to frustration.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "d",
+    explanation: "A is false — problem-focused coping is better for controllable stressors, not uncontrollable. For uncontrollable stressors, emotion-focused coping is more effective. R is true — attempting to change the unchangeable causes frustration. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 15,
+    section: "Assertion-Reason",
+    text: `Assertion (A): Resilience is a stable personality trait that cannot be developed through training.\nReason (R): Resilience involves genetic factors such as temperament, which are fixed from birth.\n\nChoose the correct answer:`,
+    options: {
+      a: "Both A and R are true and R is the correct explanation of A",
+      b: "Both A and R are true but R is NOT the correct explanation of A",
+      c: "A is true but R is false",
+      d: "A is false but R is true"
+    },
+    correctAnswer: "d",
+    explanation: "A is false — resilience can be developed through interventions (e.g., stress inoculation training, positive coping skills). R is partially true (genetic factors influence temperament) but not the whole story; however, the key is A is false. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 16,
+    section: "Choose Correct Combination",
+    text: `Which of the following are physiological responses to acute stress?\n(A) Increased heart rate\n(B) Pupil dilation\n(C) Decreased blood pressure\n(D) Release of adrenaline\n\nChoose the correct answer from the options given below:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Acute stress triggers sympathetic activation: increased heart rate (A), pupil dilation (B), and adrenaline release (D). Blood pressure increases, not decreases (C is false). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 17,
+    section: "Choose Correct Combination",
+    text: `Which of the following are effective stress management techniques discussed in NCERT?\n(A) Progressive muscle relaxation\n(B) Meditation\n(C) Avoidance of all social contact\n(D) Cognitive restructuring\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "NCERT lists relaxation (PMR), meditation, cognitive restructuring, exercise, social support. Avoidance of social contact is maladaptive, not effective. Thus (A),(B),(D) correct. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 18,
+    section: "Choose Correct Combination",
+    text: `Which of the following are associated with post-traumatic growth (PTG)?\n(A) Greater appreciation of life\n(B) Enhanced personal strength\n(C) Increased avoidance behaviours\n(D) Deeper spiritual or existential understanding\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "PTG (Tedeschi & Calhoun) includes appreciation of life, personal strength, spiritual growth, closer relationships, new possibilities. Avoidance behaviours are signs of distress, not growth. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 19,
+    section: "Choose Correct Combination",
+    text: `Which of the following are sources of stress (stressors) according to NCERT?\n(A) Major life events\n(B) Daily hassles\n(C) Traumatic events\n(D) Positive life events (eustress)\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (C) only",
+      b: "(A), (C) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "d",
+    explanation: "All four are sources: major life events (Holmes & Rahe), daily hassles (Lazarus), traumatic events, and even positive events can be stressful (eustress is positive stress but still a stressor). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 20,
+    section: "Choose Correct Combination",
+    text: `Which of the following are components of Hardiness (Kobasa)?\n(A) Commitment\n(B) Control\n(C) Challenge\n(D) Conformity\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (C) only",
+      b: "(A), (B) and (D) only",
+      c: "(B), (C) and (D) only",
+      d: "(A), (B), (C) and (D)"
+    },
+    correctAnswer: "a",
+    explanation: "Kobasa’s hardiness has three C’s: Commitment (involvement), Control (belief in influencing outcomes), Challenge (viewing change as opportunity). Conformity is not a component. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 21,
+    section: "Application MCQ",
+    text: `Ravi, a college student from Delhi, feels overwhelmed by exam pressure. He decides to make a detailed study schedule and join a study group. This coping strategy is best described as:`,
+    options: {
+      a: "Emotion-focused coping",
+      b: "Problem-focused coping",
+      c: "Avoidance coping",
+      d: "Meaning-focused coping"
+    },
+    correctAnswer: "b",
+    explanation: "Problem-focused coping directly addresses the stressor (exams) through planning and seeking resources. Emotion-focused would manage anxiety without changing the situation. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 22,
+    section: "Application MCQ",
+    text: `Meera lost her job and initially felt devastated. Over time, she started a small home business and now says, “Losing that job made me realise my own strength.” This reflects:`,
+    options: {
+      a: "Burnout",
+      b: "Post-traumatic growth",
+      c: "General adaptation syndrome",
+      d: "Type C personality"
+    },
+    correctAnswer: "b",
+    explanation: "Post-traumatic growth involves positive psychological changes after adversity, including increased personal strength and new possibilities. Burnout is negative exhaustion. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 23,
+    section: "Application MCQ",
+    text: `According to Lazarus & Folkman, when a person first encounters a potential stressor and asks, “Is this harmful to me?” they are engaged in:`,
+    options: {
+      a: "Secondary appraisal",
+      b: "Reappraisal",
+      c: "Primary appraisal",
+      d: "Problem-focused appraisal"
+    },
+    correctAnswer: "c",
+    explanation: "Primary appraisal evaluates the significance of the event (harm, threat, challenge). Secondary appraisal evaluates coping resources. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 24,
+    section: "Application MCQ",
+    text: `Which of the following is an example of a daily hassle as a source of stress?`,
+    options: {
+      a: "Getting married",
+      b: "Losing a parent",
+      c: "Being stuck in traffic daily",
+      d: "Winning a lottery"
+    },
+    correctAnswer: "c",
+    explanation: "Daily hassles are minor irritating events that accumulate (traffic, misplacing keys, noisy neighbours). Major life events (marriage, loss) are different. Winning lottery is positive but also a major event. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 25,
+    section: "Application MCQ",
+    text: `A person who believes that stressful events are opportunities for growth rather than threats is demonstrating which component of hardiness?`,
+    options: {
+      a: "Commitment",
+      b: "Control",
+      c: "Challenge",
+      d: "Conscientiousness"
+    },
+    correctAnswer: "c",
+    explanation: "Challenge orientation views change and stress as opportunities for development, not threats. Commitment is involvement, control is belief in personal influence. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 26,
+    section: "Application MCQ",
+    text: `After a natural disaster, a community organises support groups and counselling services. This is an example of which level of stress intervention?`,
+    options: {
+      a: "Primary prevention",
+      b: "Secondary prevention",
+      c: "Tertiary prevention",
+      d: "Stress inoculation"
+    },
+    correctAnswer: "b",
+    explanation: "Secondary prevention focuses on reducing the impact of an already occurring stressor (early intervention, counselling after disaster). Primary prevents occurrence, tertiary rehabilitates long-term. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 27,
+    section: "Application MCQ",
+    text: `In Selye’s General Adaptation Syndrome, the stage where the body’s resources are mobilised for fight-or-flight is called:`,
+    options: {
+      a: "Resistance stage",
+      b: "Exhaustion stage",
+      c: "Alarm reaction",
+      d: "Recovery stage"
+    },
+    correctAnswer: "c",
+    explanation: "Alarm reaction is the immediate fight-or-flight response. Resistance is adaptation. Exhaustion is depletion. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 28,
+    section: "Application MCQ",
+    text: `A student who consistently scores high on measures of neuroticism is more likely to experience stress because they:`,
+    options: {
+      a: "Have more actual life events",
+      b: "Perceive events as more threatening",
+      c: "Lack social support",
+      d: "Have Type A behaviour"
+    },
+    correctAnswer: "b",
+    explanation: "Neurotic individuals tend to appraise events more negatively and as more threatening (primary appraisal bias). They don’t necessarily have more events, but react more strongly. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 29,
+    section: "Application MCQ",
+    text: `Meichenbaum’s Stress Inoculation Training (SIT) involves three phases. The correct order is:`,
+    options: {
+      a: "Rehearsal → Application → Conceptualisation",
+      b: "Conceptualisation → Skills acquisition → Application",
+      c: "Skills acquisition → Conceptualisation → Rehearsal",
+      d: "Application → Conceptualisation → Skills acquisition"
+    },
+    correctAnswer: "b",
+    explanation: "SIT phases: 1) Conceptualisation (understanding stress), 2) Skills acquisition and rehearsal (coping skills), 3) Application and follow-through (practising in real situations). NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 30,
+    section: "Application MCQ",
+    text: `Research shows that social support buffers stress. Which mechanism explains this for emotional support?`,
+    options: {
+      a: "Providing tangible resources",
+      b: "Offering advice to solve problems",
+      c: "Reducing perceived threat through validation",
+      d: "Increasing cortisol levels"
+    },
+    correctAnswer: "c",
+    explanation: "Emotional support (listening, validation) reduces the perceived threat of the stressor (affects primary appraisal). Tangible aid and advice are instrumental support. Cortisol increases with stress. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 31,
+    section: "Application MCQ",
+    text: `A person who responds to a traffic jam by listening to calming music and taking deep breaths is using:`,
+    options: {
+      a: "Problem-focused coping",
+      b: "Emotion-focused coping",
+      c: "Avoidance coping",
+      d: "Meaning-focused coping"
+    },
+    correctAnswer: "b",
+    explanation: "Emotion-focused coping regulates emotional distress (music, deep breathing) without changing the traffic jam. Problem-focused would find alternate routes. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 32,
+    section: "Application MCQ",
+    text: `Which of the following is a characteristic of Type C personality as described by Temoshok?`,
+    options: {
+      a: "Hostility and impatience",
+      b: "Suppression of emotions and helplessness",
+      c: "Relaxed and easy-going",
+      d: "Social inhibition and negative affect"
+    },
+    correctAnswer: "b",
+    explanation: "Type C (cancer-prone) is characterised by suppressed emotions, especially anger, and feelings of helplessness. Hostility is Type A. Relaxed is Type B. Social inhibition/negative affect is Type D. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 33,
+    section: "Application MCQ",
+    text: `The Holmes and Rahe Social Readjustment Rating Scale (SRRS) assigns Life Change Units (LCUs) to events. A high LCU score predicts:`,
+    options: {
+      a: "Higher resistance to stress",
+      b: "Increased likelihood of illness",
+      c: "Greater hardiness",
+      d: "Lower cortisol levels"
+    },
+    correctAnswer: "b",
+    explanation: "High LCU scores (major life event accumulation) are associated with increased risk of physical and mental illness. It measures stress load, not resistance. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 34,
+    section: "Application MCQ",
+    text: `A person who repeatedly thinks, “I can’t handle this, everything is going wrong,” is engaging in which cognitive pattern that exacerbates stress?`,
+    options: {
+      a: "Positive reappraisal",
+      b: "Rumination",
+      c: "Mindfulness",
+      d: "Problem-solving"
+    },
+    correctAnswer: "b",
+    explanation: "Rumination is repetitive, negative thinking about stressors, amplifying distress. Positive reappraisal is adaptive. Mindfulness is non-judgemental awareness. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 35,
+    section: "Application MCQ",
+    text: `According to the transactional model, stress occurs when:`,
+    options: {
+      a: "There is an objective threat present",
+      b: "A person has no physiological resources",
+      c: "Perceived demands exceed perceived coping resources",
+      d: "There is a genetic predisposition"
+    },
+    correctAnswer: "c",
+    explanation: "Lazarus & Folkman: Stress is a transaction between person and environment where demands are appraised as exceeding resources. It’s subjective, not purely objective. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 36,
+    section: "Application MCQ",
+    text: `A corporate employee works 80-hour weeks, is highly competitive, and frequently gets angry at delays. This person is at increased risk for which health condition?`,
+    options: {
+      a: "Asthma",
+      b: "Coronary heart disease",
+      c: "Type 2 diabetes",
+      d: "Rheumatoid arthritis"
+    },
+    correctAnswer: "b",
+    explanation: "Type A behaviour pattern (competitive, impatient, hostile) is a risk factor for coronary heart disease due to sympathetic overactivation and inflammation. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 37,
+    section: "Application MCQ",
+    text: `Progressive muscle relaxation (PMR), developed by Jacobson, reduces stress by:`,
+    options: {
+      a: "Increasing heart rate",
+      b: "Alternately tensing and relaxing muscle groups",
+      c: "Visualising calming scenes",
+      d: "Repeating a mantra"
+    },
+    correctAnswer: "b",
+    explanation: "PMR involves systematically tensing and then relaxing different muscle groups to reduce physiological arousal. Visualisation and mantras are other techniques. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 38,
+    section: "Application MCQ",
+    text: `Which of the following is an example of a cognitive stress management technique?`,
+    options: {
+      a: "Aerobics",
+      b: "Biofeedback",
+      c: "Cognitive restructuring",
+      d: "Deep breathing"
+    },
+    correctAnswer: "c",
+    explanation: "Cognitive restructuring changes maladaptive thought patterns (cognitive). Aerobics is physical, biofeedback is physiological, deep breathing is physiological/behavioural. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 39,
+    section: "Application MCQ",
+    text: `After a traumatic car accident, Sanjay experiences flashbacks, nightmares, and avoids driving. He is likely suffering from:`,
+    options: {
+      a: "General Adaptation Syndrome",
+      b: "Post-Traumatic Stress Disorder (PTSD)",
+      c: "Burnout",
+      d: "Type A behaviour"
+    },
+    correctAnswer: "b",
+    explanation: "PTSD symptoms include re-experiencing (flashbacks), hyperarousal (nightmares), and avoidance. Burnout is work-related. GAS is a physiological model. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 40,
+    section: "Application MCQ",
+    text: `The concept of ‘eustress’ refers to stress that is:`,
+    options: {
+      a: "Harmful and damaging",
+      b: "Chronic and low-intensity",
+      c: "Positive and motivating",
+      d: "Uncontrollable and traumatic"
+    },
+    correctAnswer: "c",
+    explanation: "Eustress (Selye) is positive stress that enhances performance and well-being (e.g., excitement of a challenge). Distress is negative stress. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 41,
+    section: "Application MCQ",
+    text: `A study finds that widows who attend support groups have lower depression than those who do not. This illustrates the stress-buffering effect of:`,
+    options: {
+      a: "Instrumental support",
+      b: "Informational support",
+      c: "Emotional support",
+      d: "Tangible support"
+    },
+    correctAnswer: "c",
+    explanation: "Support groups provide emotional support (empathy, validation, belonging) which buffers grief-related stress. Instrumental/tangible would be financial help. Informational would be advice. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 42,
+    section: "Application MCQ",
+    text: `In the exhaustion stage of GAS, the body becomes vulnerable to diseases of adaptation such as:`,
+    options: {
+      a: "Mild headaches",
+      b: "Hypertension and ulcers",
+      c: "Muscle soreness",
+      d: "Seasonal allergies"
+    },
+    correctAnswer: "b",
+    explanation: "Selye’s ‘diseases of adaptation’ include hypertension, ulcers, asthma, and immune disorders due to prolonged stress hormone exposure. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 43,
+    section: "Application MCQ",
+    text: `Which coping strategy is associated with better outcomes in situations that are uncontrollable (e.g., terminal illness)?`,
+    options: {
+      a: "Problem-focused coping",
+      b: "Acceptance and meaning-making",
+      c: "Active planning",
+      d: "Confrontive coping"
+    },
+    correctAnswer: "b",
+    explanation: "For uncontrollable stressors, emotion-focused and meaning-focused coping (acceptance, finding positive meaning) are more adaptive than problem-focused which would be futile. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 44,
+    section: "Application MCQ",
+    text: `A person who uses alcohol to cope with work stress is engaging in:`,
+    options: {
+      a: "Adaptive coping",
+      b: "Maladaptive avoidance coping",
+      c: "Problem-focused coping",
+      d: "Meaning-focused coping"
+    },
+    correctAnswer: "b",
+    explanation: "Substance use is a maladaptive avoidance coping strategy — it reduces distress temporarily but creates long-term problems. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 45,
+    section: "Application MCQ",
+    text: `The concept of ‘resilience’ refers to:`,
+    options: {
+      a: "Absence of stress in life",
+      b: "Positive adaptation despite significant adversity",
+      c: "Genetic immunity to stress",
+      d: "Avoiding all challenging situations"
+    },
+    correctAnswer: "b",
+    explanation: "Resilience is the ability to bounce back and adapt successfully despite exposure to severe stressors, not absence of stress. It is developable. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 46,
+    section: "Application MCQ",
+    text: `A teacher attends a workshop on ‘mindfulness-based stress reduction’ (MBSR). This technique primarily involves:`,
+    options: {
+      a: "Intense physical exercise",
+      b: "Non-judgemental present-moment awareness",
+      c: "Cognitive restructuring of irrational beliefs",
+      d: "Progressive muscle relaxation only"
+    },
+    correctAnswer: "b",
+    explanation: "MBSR (Kabat-Zinn) focuses on mindfulness — paying attention to the present moment without judgement. It may include meditation and yoga, not just PMR. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 47,
+    section: "Application MCQ",
+    text: `Which of the following is a limitation of the Holmes and Rahe Social Readjustment Rating Scale?`,
+    options: {
+      a: "It ignores daily hassles",
+      b: "It only measures positive events",
+      c: "It does not consider individual appraisal",
+      d: "Both A and C"
+    },
+    correctAnswer: "d",
+    explanation: "SRRS only measures major life events (ignores daily hassles) and assumes events are equally stressful for everyone (ignores appraisal). NCERT Class 12 Chapter 3 discusses these limitations."
+  },
+  {
+    id: 48,
+    section: "Application MCQ",
+    text: `A cancer patient who says, “This illness made me closer to my family and appreciate each day,” is demonstrating:`,
+    options: {
+      a: "Denial",
+      b: "Post-traumatic growth",
+      c: "Emotional suppression",
+      d: "Catastrophising"
+    },
+    correctAnswer: "b",
+    explanation: "Post-traumatic growth includes improved relationships and appreciation of life. Denial and suppression are avoidance. Catastrophising is negative exaggeration. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 49,
+    section: "Application MCQ",
+    text: `According to research, which of the following personality traits is most strongly associated with better stress outcomes?`,
+    options: {
+      a: "Neuroticism",
+      b: "Type A hostility",
+      c: "Hardiness (commitment, control, challenge)",
+      d: "Type C emotional suppression"
+    },
+    correctAnswer: "c",
+    explanation: "Hardiness (Kobasa) is a stress-resilience personality trait linked to better health outcomes. Neuroticism and Type A/C patterns increase vulnerability. NCERT Class 12 Chapter 3."
+  },
+  {
+    id: 50,
+    section: "Application MCQ",
+    text: `A person who views a job loss as a challenge and an opportunity to find a better career is engaging in which type of appraisal?`,
+    options: {
+      a: "Threat appraisal",
+      b: "Harm/loss appraisal",
+      c: "Challenge appraisal",
+      d: "Secondary appraisal"
+    },
+    correctAnswer: "c",
+    explanation: "Challenge appraisal (Lazarus) sees potential for growth or gain from a stressor. Threat sees danger, harm/loss sees damage already done. NCERT Class 12 Chapter 3."
+  }
+],
+
+    duration: 60 * 60,
+    markingScheme: { correct: 5, incorrect: -1 }
+};
+
+/* ============================================================
+   CORE TEST ENGINE
+   ============================================================ */
+const timerElement = document.querySelector('.timer');
+const questionTextElement = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const questionNumberElement = document.getElementById('q-number');
+const currentQNumberElement = document.getElementById('current-q-number');
+const progressBar = document.getElementById('test-progress');
+const progressPercent = document.getElementById('progress-percent');
+const questionPaletteGrid = document.getElementById('question-palette-grid');
+const answeredCountElement = document.getElementById('answered-count');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markBtn = document.getElementById('mark-btn');
+const submitTestBtn = document.getElementById('submit-test-btn');
+const resultsModal = document.getElementById('results-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const correctAnswersElement = document.getElementById('correct-answers');
+const incorrectAnswersElement = document.getElementById('incorrect-answers');
+const unansweredElement = document.getElementById('unanswered');
+const totalScoreElement = document.getElementById('total-score');
+const percentageElement = document.getElementById('percentage');
+const accuracyElement = document.getElementById('accuracy');
+const reviewBtn = document.getElementById('review-btn');
+
+let currentQuestionIndex = 0;
+let timeLeft = mockTest.duration;
+let timer;
+let testSubmitted = false;
+let testStarted = false;
+
+function initTest() {
+    renderQuestionPalette(); renderQuestion(); startTimer(); updateProgress(); renderLegend(false);
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    markBtn.addEventListener('click', toggleMarkForReview);
+    submitTestBtn.addEventListener('click', confirmSubmit);
+    closeModalBtn.addEventListener('click', closeResultsModal);
+    reviewBtn.addEventListener('click', reviewAnswers);
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
+}
+
+function renderLegend(reviewMode) {
+    const leg = document.getElementById('palette-legend');
+    if (!leg) return;
+    if (reviewMode) {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#22c55e;"></div><span>Correct</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#ef4444;"></div><span>Wrong</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;"></div><span>Not Answered</span></div></div>`;
+    } else {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#FF474D;"></div><span>Unanswered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #2d8a4e;"></div><span>Current</span></div></div>`;
+    }
+}
+
+function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) { clearInterval(timer); submitTest(); }
+        if (timeLeft === 300) { alert('Only 5 minutes remaining!'); }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    const str = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timerElement.textContent = str;
+    const mt = document.querySelector('.mobile-timer-clone');
+    if (mt) mt.textContent = str;
+}
+
+function renderQuestion() {
+    const q = mockTest.questions[currentQuestionIndex];
+    document.getElementById('current-section').textContent = q.section;
+    questionTextElement.innerHTML = `
+        <div style="display:inline-block;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px;">
+            🗳️ ${q.section || "General"}
+        </div>
+        ${q.image ? `<div style="margin:10px 0;"><img src="${q.image}" style="max-width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>` : ""}
+        <div style="margin-top:8px;font-size:17px;line-height:1.6;">${q.text}</div>`;
+    questionNumberElement.textContent = q.id;
+    currentQNumberElement.textContent = q.id;
+    optionsContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(q.options)) {
+        const od = document.createElement('div');
+        od.className = 'option';
+        if (testSubmitted) {
+            if (key === q.correctAnswer) od.classList.add('correct');
+            else if (key === q.userAnswer && key !== q.correctAnswer) od.classList.add('incorrect');
+        } else {
+            if (key === q.userAnswer) od.classList.add('selected');
+        }
+        if (!testSubmitted) {
+            od.addEventListener('click', () => {
+                optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                od.classList.add('selected');
+                selectAnswer(key);
+            });
+        }
+        const inp = document.createElement('input');
+        inp.type='radio'; inp.name='question-option'; inp.value=key;
+        inp.checked = q.userAnswer === key; inp.disabled = testSubmitted;
+        const ld = document.createElement('div');
+        ld.className='opt-letter'; ld.textContent=key.toUpperCase();
+        const ts = document.createElement('span');
+        ts.className='opt-text'; ts.textContent=value;
+        if (testSubmitted) {
+            if (key === q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='correct-indicator'; ind.textContent=' ✓ Correct Answer'; ts.appendChild(ind);
+            } else if (key === q.userAnswer && key !== q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='incorrect-indicator'; ind.textContent=' ✗ Your Answer'; ts.appendChild(ind);
+            }
+        }
+        od.appendChild(inp); od.appendChild(ld); od.appendChild(ts);
+        optionsContainer.appendChild(od);
+    }
+    if (testSubmitted) {
+        const ed = document.createElement('div');
+        ed.style.cssText = "margin-top:15px;padding:12px;border-radius:8px;background:linear-gradient(135deg,#edf7f1,#d4eddb);border-left:4px solid #2d8a4e;font-size:15px;";
+        ed.innerHTML = `<strong>💡 Explanation:</strong><br>${q.explanation || "No explanation available."}`;
+        optionsContainer.appendChild(ed);
+    }
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = currentQuestionIndex === mockTest.questions.length - 1 ? 'hidden' : 'visible';
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.disabled = currentQuestionIndex === mockTest.questions.length - 1;
+    updateQuestionPalette();
+}
+
+function selectAnswer(answer) {
+    mockTest.questions[currentQuestionIndex].userAnswer = answer;
+    updateQuestionPalette(); updateProgress();
+}
+
+function toggleMarkForReview() {
+    const q = mockTest.questions[currentQuestionIndex];
+    q.marked = !q.marked;
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    updateQuestionPalette();
+}
+
+function goToPreviousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+function goToNextQuestion() { if (currentQuestionIndex < mockTest.questions.length - 1) { currentQuestionIndex++; renderQuestion(); } }
+
+function renderQuestionPalette() {
+    questionPaletteGrid.innerHTML = '';
+    mockTest.questions.forEach((q, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'palette-btn'; btn.textContent = q.id;
+        btn.addEventListener('click', () => navigateToQuestion(i));
+        questionPaletteGrid.appendChild(btn);
+    });
+    updateQuestionPalette();
+}
+
+function updateQuestionPalette() {
+    const btns = questionPaletteGrid.querySelectorAll('.palette-btn');
+    btns.forEach(b => { b.className = 'palette-btn'; });
+    mockTest.questions.forEach((q, i) => {
+        const btn = btns[i];
+        if (testSubmitted) {
+            if (!q.userAnswer) btn.classList.add('review-unanswered');
+            else if (q.userAnswer === q.correctAnswer) btn.classList.add('review-correct');
+            else btn.classList.add('review-wrong');
+        } else {
+            if (q.userAnswer) btn.classList.add('answered');
+            if (q.marked) btn.classList.add('marked');
+        }
+        if (i === currentQuestionIndex) btn.classList.add('current');
+    });
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    answeredCountElement.textContent = `${ac}/${mockTest.questions.length}`;
+}
+
+function navigateToQuestion(index) { currentQuestionIndex = index; renderQuestion(); }
+
+function updateProgress() {
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    const p = (ac / mockTest.questions.length) * 100;
+    progressBar.style.width = `${p}%`;
+    progressPercent.textContent = `${Math.round(p)}%`;
+}
+
+function confirmSubmit() { if (confirm('Are you sure you want to submit the test?')) { submitTest(); } }
+
+function submitTest() {
+    if (testSubmitted) return;
+    testSubmitted = true; clearInterval(timer);
+    let correct = 0, incorrect = 0, unanswered = 0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++;
+        else if (q.userAnswer === q.correctAnswer) correct++;
+        else incorrect++;
+    });
+    const totalQ = mockTest.questions.length;
+    const maxScore = totalQ * mockTest.markingScheme.correct;
+    const totalScore = (correct * mockTest.markingScheme.correct) + (incorrect * mockTest.markingScheme.incorrect);
+    const percentage = ((totalScore / maxScore) * 100).toFixed(2);
+    const accuracy = correct + incorrect > 0 ? (correct / (correct + incorrect) * 100).toFixed(2) : '0';
+
+    const questionResults = mockTest.questions.map(q => ({
+        id: q.id, correct: q.userAnswer === q.correctAnswer,
+        answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
+    }));
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
+    const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
+    let index = [];
+    try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
+    if (!index.includes(CHAPTER_ID)) index.push(CHAPTER_ID);
+    localStorage.setItem(indexKey, JSON.stringify(index));
+
+    correctAnswersElement.textContent = correct;
+    incorrectAnswersElement.textContent = incorrect;
+    unansweredElement.textContent = unanswered;
+    totalScoreElement.textContent = totalScore;
+    percentageElement.textContent = percentage;
+    accuracyElement.textContent = accuracy;
+    resultsModal.style.display = 'flex';
+    renderQuestion();
+
+    const sb = document.getElementById('submit-test-btn');
+    sb.textContent = '📄 Download PDF';
+    sb.classList.remove('submit-fancy-btn');
+    sb.classList.add('pdf-download-btn');
+    sb.onclick = generatePDF;
+    renderLegend(true);
+}
+
+function closeResultsModal() { resultsModal.style.display = 'none'; }
+function reviewAnswers() { resultsModal.style.display = 'none'; currentQuestionIndex = 0; renderQuestion(); }
+
+document.addEventListener("visibilitychange", function() {
+    if (!testStarted || testSubmitted) return;
+    if (document.hidden) startCountdown('tab'); else cancelCountdown();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('test-screen').style.display === 'none') return;
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if (currentQuestionIndex < mockTest.questions.length-1) { currentQuestionIndex++; renderQuestion(); } }
+    else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+});
+</script>
+
+<script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
+function startMock() {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
+    enterFullscreen();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('instruction-screen').style.display = 'block';
+}
+
+const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom');
+darkModeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggles.forEach(btn => {
+            const iconSpan = btn.querySelector('.icon');
+            if (iconSpan) iconSpan.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    });
+});
+
+const checkbox = document.getElementById('agree-checkbox');
+const startBtn = document.getElementById('start-test-btn');
+checkbox.addEventListener('change', () => {
+    startBtn.disabled = !checkbox.checked;
+    startBtn.style.opacity = checkbox.checked ? "1" : "0.6";
+    startBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+});
+startBtn.addEventListener('click', () => {
+    if (!checkbox.checked) { alert("Please accept instructions first!"); return; }
+    document.getElementById('instruction-screen').style.display = 'none';
+    document.getElementById('test-screen').style.display = 'block';
+    const name = localStorage.getItem("cbtUserName") || "Thunder";
+    document.getElementById('user-name-display').innerText = "👤 " + name;
+    const mn = document.getElementById('mobile-name-display');
+    if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
+    testStarted = true; enterFullscreen(); initTest();
+});
+
+function enterFullscreen() {
+    const el = document.documentElement;
+    try {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } catch(e) {}
+}
+
+document.addEventListener('fullscreenchange', onFSChange);
+document.addEventListener('webkitfullscreenchange', onFSChange);
+document.addEventListener('mozfullscreenchange', onFSChange);
+document.addEventListener('MSFullscreenChange', onFSChange);
+
+function isInFullscreen() {
+    return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);
+}
+function onFSChange() {
+    if (!testStarted||testSubmitted) return;
+    if (document.getElementById('test-screen').style.display==='none') return;
+    if (!isInFullscreen()) startCountdown('fullscreen'); else cancelCountdown();
+}
+
+let countdownTimer = null, countdownSeconds = 0;
+function startCountdown(reason) {
+    if (!testStarted||testSubmitted) return;
+    if (countdownTimer) return;
+    countdownSeconds = (reason==='tab') ? 2 : 5;
+    const msg = (reason==='tab') ? '⚠️ You switched tabs!' : '⚠️ You exited fullscreen!';
+    const hint = (reason==='tab') ? 'Switch back to this tab to cancel.' : 'Click the button below to return to fullscreen.';
+    showOverlay(msg, hint, countdownSeconds, reason==='fullscreen');
+    countdownTimer = setInterval(() => {
+        countdownSeconds--;
+        updateOverlayCount(countdownSeconds);
+        if (countdownSeconds <= 0) { cancelCountdown(); submitTest(); }
+    }, 1000);
+}
+function cancelCountdown() { if (countdownTimer) { clearInterval(countdownTimer); countdownTimer=null; } hideOverlay(); }
+function showOverlay(msg, hint, secs, showBtn) {
+    let ov = document.getElementById('security-overlay');
+    if (!ov) {
+        ov = document.createElement('div'); ov.id = 'security-overlay';
+        ov.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,5,0.92);z-index:999999;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'DM Sans',sans-serif;color:#fff;text-align:center;padding:24px;`;
+        document.body.appendChild(ov);
+    }
+    ov.innerHTML = `<div style="font-size:60px;margin-bottom:14px;">🚨</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:8px;">${msg}</div>
+        <div style="font-size:15px;color:#7ec8a4;margin-bottom:20px;">${hint}</div>
+        <div style="font-size:16px;color:#d4edd9;margin-bottom:6px;">Auto-submitting in</div>
+        <div id="overlay-count" style="font-size:72px;font-weight:900;color:#f87171;line-height:1;">${secs}</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:4px;">seconds</div>
+        ${showBtn ? `<button onclick="enterFullscreen()" style="margin-top:24px;padding:13px 34px;border-radius:30px;border:none;background:linear-gradient(135deg,#2d8a4e,#1a5c34);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(45,138,78,0.5);">🔲 Return to Fullscreen</button>` : ''}`;
+    ov.style.display = 'flex';
+}
+function updateOverlayCount(n) { const el=document.getElementById('overlay-count'); if(el) el.textContent=n; }
+function hideOverlay() { const ov=document.getElementById('security-overlay'); if(ov) ov.style.display='none'; }
+</script>
+
+<div id="pdf-print-area"></div>
+<script>
+function generatePDF() {
+    const name = localStorage.getItem('cbtUserName') || 'Thunder';
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    let correct=0,incorrect=0,unanswered=0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++; else if (q.userAnswer===q.correctAnswer) correct++; else incorrect++;
+    });
+    const totalScore = (correct*mockTest.markingScheme.correct)+(incorrect*mockTest.markingScheme.incorrect);
+    const maxScore = mockTest.questions.length*mockTest.markingScheme.correct;
+    const pct = ((totalScore/maxScore)*100).toFixed(1);
+    const optionLabel = {a:'A',b:'B',c:'C',d:'D'};
+    let questionsHTML = '';
+    mockTest.questions.forEach((q,i) => {
+        const isCorrect = q.userAnswer===q.correctAnswer;
+        const isWrong = q.userAnswer&&!isCorrect;
+        const isSkipped = !q.userAnswer;
+        const statusColor = isCorrect?'#16a34a':isWrong?'#dc2626':'#9ca3af';
+        const statusLabel = isCorrect?'✓ Correct':isWrong?'✗ Wrong':'— Skipped';
+        const rowBg = isCorrect?'#f0fdf4':isWrong?'#fef2f2':'#fafafa';
+        let optionsHTML = '';
+        for (const [key,val] of Object.entries(q.options)) {
+            const isRight=key===q.correctAnswer, isUser=key===q.userAnswer;
+            let bg='transparent',fw='normal',prefix='';
+            if(isRight){bg='#dcfce7';fw='bold';prefix='✓ ';}
+            if(isUser&&!isRight){bg='#fee2e2';fw='bold';prefix='✗ ';}
+            optionsHTML+=`<div style="display:flex;gap:8px;padding:4px 8px;margin:2px 0;border-radius:4px;background:${bg};font-weight:${fw};font-size:12px;"><span style="min-width:18px;font-weight:700;">${optionLabel[key]}.</span><span>${prefix}${val}</span></div>`;
+        }
+        let yourAnswer = isSkipped
+            ? '<span style="color:#9ca3af;">Not Attempted</span>'
+            : `<span style="color:${isCorrect?'#16a34a':'#dc2626'};font-weight:bold;">${optionLabel[q.userAnswer]}. ${q.options[q.userAnswer]}</span>`;
+        questionsHTML+=`<div style="margin-bottom:18px;padding:14px 16px;border-radius:8px;background:${rowBg};border:1px solid #e5e7eb;page-break-inside:avoid;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div style="font-weight:700;font-size:13px;color:#374151;">Q${i+1}. ${q.text}</div>
+                <div style="font-weight:700;font-size:12px;color:${statusColor};white-space:nowrap;margin-left:12px;">${statusLabel}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:8px;">${optionsHTML}</div>
+            <div style="font-size:12px;border-top:1px solid #e5e7eb;padding-top:6px;margin-top:4px;">
+                <span style="color:#6b7280;">Your answer: </span>${yourAnswer}&nbsp;&nbsp;
+                <span style="color:#6b7280;">Correct: </span><span style="color:#16a34a;font-weight:bold;">${optionLabel[q.correctAnswer]}. ${q.options[q.correctAnswer]}</span>
+            </div></div>`;
+    });
+    const scoreColor = pct>=60?'#16a34a':pct>=35?'#d97706':'#dc2626';
+    const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
+        <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Psychology</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
+            </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #d4eddb;border-top:none;padding:16px 24px;border-radius:0 0 10px 10px;margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SCORE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${totalScore}<span style="font-size:14px;color:#6b7280;">/${maxScore}</span></div></div>
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">PERCENTAGE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${pct}%</div></div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#16a34a;">CORRECT</div><div style="font-size:24px;font-weight:800;color:#16a34a;">${correct}</div></div>
+                <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#dc2626;">WRONG</div><div style="font-size:24px;font-weight:800;color:#dc2626;">${incorrect}</div></div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SKIPPED</div><div style="font-size:24px;font-weight:800;color:#6b7280;">${unanswered}</div></div>
+            </div>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #2d8a4e;">📋 Question-wise Answer Key</div>
+        ${questionsHTML}
+        <div style="text-align:center;margin-top:24px;padding:14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#6b7280;">Generated by <b>Thunderstudy CBT</b> | t.me/thunderstudy_official | ${dateStr}</div>
+    </div>`;
+    const printWin = window.open('','_blank','width=950,height=700,scrollbars=yes');
+    if (!printWin) { alert('Popup blocked! Please allow popups and try again.'); return; }
+    printWin.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Thunderstudy_Psychology_${name}_${dateStr.replace(/ /g,'-')}</title>
+    <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#fff;padding:20px;}@media print{body{padding:0;}.no-print{display:none !important;}}.print-btn{display:block;margin:0 auto 20px;padding:12px 36px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;}</style>
+    </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
+    printWin.document.close(); printWin.focus();
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
+</script>
+
+</body>
+</html>
