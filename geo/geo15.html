@@ -649,167 +649,533 @@ Start Test
 const mockTest = {
     title: "Geography Mock",
     questions: [
+// ─────────────────────────────────────────────
+// SECTION 1 · Calculation / Factual (Q1–Q15)
+// ─────────────────────────────────────────────
 {
-id: 1,
-section: "Natural Vegetation — MCQ",
-text: "Which type of vegetation is found in areas receiving more than 200 cm rainfall?",
-options: { a: "Tropical deciduous", b: "Tropical evergreen", c: "Thorn forest", d: "Montane forest" },
-correctAnswer: "b",
-explanation: "Tropical evergreen forests occur in regions of heavy rainfall (>200 cm).",
-marked: false,
-userAnswer: ""
+  id: 1,
+  section: "Natural Vegetation — Factual",
+  text: "<svg width='220' height='110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='200' height='90' rx='8' fill='#e8f5e9'/><text x='110' y='38' text-anchor='middle' font-size='13' fill='#2e7d32' font-weight='bold'>Tropical Rainforest</text><text x='110' y='60' text-anchor='middle' font-size='11' fill='#388e3c'>Rainfall &gt; 200 cm/year</text><text x='110' y='80' text-anchor='middle' font-size='11' fill='#388e3c'>Temperature &gt; 25 °C</text></svg> Which type of natural vegetation is found where annual rainfall exceeds 200 cm and temperature remains above 25 °C throughout the year?",
+  options: { a: "Tropical Evergreen Forest", b: "Tropical Deciduous Forest", c: "Montane Forest", d: "Mangrove Forest" },
+  correctAnswer: "a",
+  explanation: "Tropical Evergreen (Rainforest) vegetation thrives in areas with rainfall >200 cm and high year-round temperatures. Option a is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 2,
-section: "Natural Vegetation — MCQ",
-text: "Tropical deciduous forests are also known as:",
-options: { a: "Rainforests", b: "Monsoon forests", c: "Alpine forests", d: "Mangrove forests" },
-correctAnswer: "b",
-explanation: "They shed leaves seasonally and are influenced by monsoon climate.",
-marked: false,
-userAnswer: ""
+  id: 2,
+  section: "Natural Vegetation — Factual",
+  text: "Which of the following trees is the most valuable timber tree of the tropical deciduous forests of India?",
+  options: { a: "Sal", b: "Teak", c: "Shisham", d: "Sandalwood" },
+  correctAnswer: "b",
+  explanation: "Teak (Tectona grandis) is the most commercially important timber tree of India's tropical deciduous forests. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 3,
-section: "Natural Vegetation — MCQ",
-text: "Which tree is commonly found in tropical deciduous forests?",
-options: { a: "Teak", b: "Pine", c: "Cactus", d: "Mangrove" },
-correctAnswer: "a",
-explanation: "Teak is a dominant species in deciduous forests.",
-marked: false,
-userAnswer: ""
+  id: 3,
+  section: "Natural Vegetation — Factual",
+  text: "Mangrove forests are found in which type of coastal areas?",
+  options: { a: "Tidal/Delta regions", b: "Rocky coasts", c: "Sandy desert coasts", d: "Plateau coasts" },
+  correctAnswer: "a",
+  explanation: "Mangroves grow in tidal, delta, and estuarine mudflats along coastlines. Option a is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 4,
-section: "Natural Vegetation — MCQ",
-text: "Which vegetation type sheds leaves in dry season?",
-options: { a: "Evergreen", b: "Deciduous", c: "Mangrove", d: "Alpine" },
-correctAnswer: "b",
-explanation: "Deciduous forests shed leaves to conserve water.",
-marked: false,
-userAnswer: ""
+  id: 4,
+  section: "Natural Vegetation — Factual",
+  text: "The 'Sunderbans' in West Bengal is famous for which type of vegetation?",
+  options: { a: "Tropical evergreen forest", b: "Mangrove forest", c: "Montane forest", d: "Tropical deciduous forest" },
+  correctAnswer: "b",
+  explanation: "Sunderbans (meaning beautiful forest) is the world's largest mangrove delta. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 5,
-section: "Natural Vegetation — MCQ",
-text: "Thorn forests are found in areas with rainfall less than:",
-options: { a: "200 cm", b: "100 cm", c: "70 cm", d: "50 cm" },
-correctAnswer: "c",
-explanation: "Thorn forests occur in regions with low rainfall (<70 cm).",
-marked: false,
-userAnswer: ""
+  id: 5,
+  section: "Natural Vegetation — Factual",
+  text: "In India, the natural vegetation is broadly divided into how many main types based on rainfall and temperature?",
+  options: { a: "3", b: "5", c: "6", d: "8" },
+  correctAnswer: "b",
+  explanation: "India's natural vegetation is classified into 5 main types: tropical evergreen, tropical deciduous, thorny/scrub, montane, and mangrove. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 6,
-section: "Natural Vegetation — MCQ",
-text: "Mangrove forests are mainly found in:",
-options: { a: "Mountains", b: "River deltas", c: "Plateaus", d: "Deserts" },
-correctAnswer: "b",
-explanation: "Mangroves grow in saline tidal waters of deltas.",
-marked: false,
-userAnswer: ""
+  id: 6,
+  section: "Natural Vegetation — Factual",
+  text: "Which of the following forests sheds its leaves during the dry season?",
+  options: { a: "Tropical Evergreen Forest", b: "Tropical Deciduous Forest", c: "Mangrove Forest", d: "Alpine Forest" },
+  correctAnswer: "b",
+  explanation: "Tropical Deciduous forests shed leaves in the dry (summer) season to conserve moisture. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 7,
-section: "Natural Vegetation — MCQ",
-text: "Sundarbans are famous for:",
-options: { a: "Teak forests", b: "Mangrove vegetation", c: "Thorn forests", d: "Alpine forests" },
-correctAnswer: "b",
-explanation: "Sundarbans is the largest mangrove forest.",
-marked: false,
-userAnswer: ""
+  id: 7,
+  section: "Natural Vegetation — Factual",
+  text: "Thorny bushes and scrub vegetation are found in regions with annual rainfall less than:",
+  options: { a: "25 cm", b: "50 cm", c: "75 cm", d: "100 cm" },
+  correctAnswer: "c",
+  explanation: "Thorn/scrub vegetation is found in arid and semi-arid regions with rainfall below 75 cm. Option c is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 8,
-section: "Natural Vegetation — MCQ",
-text: "Which tree grows in tidal water areas?",
-options: { a: "Neem", b: "Banyan", c: "Sundari", d: "Sal" },
-correctAnswer: "c",
-explanation: "Sundari trees are typical of mangrove forests.",
-marked: false,
-userAnswer: ""
+  id: 8,
+  section: "Natural Vegetation — Factual",
+  text: "Which plant is commonly found in the Thar Desert region as part of thorny scrub vegetation?",
+  options: { a: "Teak", b: "Cactus and Khejri", c: "Bamboo", d: "Sal" },
+  correctAnswer: "b",
+  explanation: "Cactus, Khejri (Prosopis cineraria), and similar xerophytic plants dominate Thar Desert vegetation. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 9,
-section: "Natural Vegetation — MCQ",
-text: "Montane forests are found in:",
-options: { a: "Plains", b: "Coastal areas", c: "Mountains", d: "Deserts" },
-correctAnswer: "c",
-explanation: "Montane forests grow in mountainous regions.",
-marked: false,
-userAnswer: ""
+  id: 9,
+  section: "Natural Vegetation — Factual",
+  text: "Alpine grasslands found above 3,600 m in the Himalayas are locally known as:",
+  options: { a: "Sholas", b: "Bugyals", c: "Tarai", d: "Bhabhar" },
+  correctAnswer: "b",
+  explanation: "High-altitude Himalayan meadows/alpine pastures are called 'Bugyals'. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 {
-id: 10,
-section: "Natural Vegetation — MCQ",
-text: "Which vegetation type is found in Rajasthan?",
-options: { a: "Evergreen", b: "Deciduous", c: "Thorn forest", d: "Mangrove" },
-correctAnswer: "c",
-explanation: "Rajasthan has dry climate suitable for thorn forests.",
-marked: false,
-userAnswer: ""
+  id: 10,
+  section: "Natural Vegetation — Factual",
+  text: "Which of the following states has the highest percentage of forest cover in India (as per recent Forest Survey)?",
+  options: { a: "Madhya Pradesh", b: "Arunachal Pradesh", c: "Chhattisgarh", d: "Mizoram" },
+  correctAnswer: "d",
+  explanation: "Mizoram has the highest percentage of geographical area under forest cover (~85%). Option d is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 11,
+  section: "Natural Vegetation — Factual",
+  text: "Which state has the largest area of forest cover in absolute terms in India?",
+  options: { a: "Arunachal Pradesh", b: "Madhya Pradesh", c: "Maharashtra", d: "Chhattisgarh" },
+  correctAnswer: "b",
+  explanation: "Madhya Pradesh has the largest total forest area in India in absolute terms. Option b is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 12,
+  section: "Natural Vegetation — Factual",
+  text: "The Silent Valley National Park, a biodiversity hotspot with tropical rainforest, is located in:",
+  options: { a: "Tamil Nadu", b: "Kerala", c: "Karnataka", d: "Andhra Pradesh" },
+  correctAnswer: "b",
+  explanation: "Silent Valley National Park is in Palakkad district, Kerala, known for undisturbed tropical rainforest. Option b is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 13,
+  section: "Natural Vegetation — Factual",
+  text: "Bamboo forests are most extensively found in which region of India?",
+  options: { a: "Rajasthan", b: "North-East India", c: "Western Rajasthan", d: "Deccan Plateau" },
+  correctAnswer: "b",
+  explanation: "North-East India (Assam, Meghalaya, Manipur) has the richest bamboo forests. Option b is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 14,
+  section: "Natural Vegetation — Factual",
+  text: "The term 'Biosphere Reserve' in India was first established under:",
+  options: { a: "UNESCO's Man and the Biosphere Programme", b: "Convention on Biological Diversity", c: "Wildlife Protection Act 1972", d: "Forest Conservation Act 1980" },
+  correctAnswer: "a",
+  explanation: "India's Biosphere Reserves are established under UNESCO's Man and the Biosphere (MAB) Programme. Option a is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 15,
+  section: "Natural Vegetation — Factual",
+  text: "The 'shola' forests are a unique type of vegetation found in:",
+  options: { a: "Himalayan valleys", b: "High-altitude plateau grasslands of Western Ghats", c: "Mangrove deltas", d: "Thar Desert margins" },
+  correctAnswer: "b",
+  explanation: "Shola forests are patches of subtropical montane forest found in hollows of the high-altitude rolling grasslands (sholas) of the Nilgiris and Western Ghats. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 },
 
-// Match the Following
+// ─────────────────────────────────────────────
+// SECTION 2 · Match the Following (Q16–Q20)
+// ─────────────────────────────────────────────
 {
-id: 11,
-section: "Natural Vegetation — Match the Following",
-text: "Match List-I (Vegetation) with List-II (Region)\n(A) Evergreen\n(B) Deciduous\n(C) Thorn\n(D) Mangrove\n\n(I) Rajasthan\n(II) Western Ghats\n(III) Central India\n(IV) Sundarbans",
-options: { a: "A-II, B-III, C-I, D-IV", b: "A-I, B-II, C-III, D-IV", c: "A-III, B-IV, C-I, D-II", d: "A-IV, B-I, C-II, D-III" },
-correctAnswer: "a",
-explanation: "Evergreen: Western Ghats, Deciduous: Central India, Thorn: Rajasthan, Mangrove: Sundarbans.",
-marked: false,
-userAnswer: ""
+  id: 16,
+  section: "Natural Vegetation — Match the Following",
+  text: "Match List-I (Vegetation type) with List-II (Characteristic tree/plant)\n\nList-I:\n(A) Tropical Evergreen\n(B) Tropical Deciduous\n(C) Thorny Scrub\n(D) Mangrove\n\nList-II:\n(I) Sundri\n(II) Khejri\n(III) Teak\n(IV) Ebony",
+  options: { a: "A-IV, B-III, C-II, D-I", b: "A-I, B-II, C-III, D-IV", c: "A-II, B-IV, C-I, D-III", d: "A-III, B-I, C-IV, D-II" },
+  correctAnswer: "a",
+  explanation: "Tropical Evergreen: Ebony (IV). Tropical Deciduous: Teak (III). Thorny Scrub: Khejri (II). Mangrove: Sundri (I). Hence A-IV, B-III, C-II, D-I.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 17,
+  section: "Natural Vegetation — Match the Following",
+  text: "Match List-I (Vegetation zone altitude in Himalayas) with List-II (Type of vegetation)\n\nList-I:\n(A) Up to 1000 m\n(B) 1000–2000 m\n(C) 2000–3000 m\n(D) Above 3600 m\n\nList-II:\n(I) Alpine meadows / mosses\n(II) Temperate coniferous (Deodar, Pine)\n(III) Subtropical broadleaf (Sal, Bamboo)\n(IV) Temperate deciduous (Oak, Chestnut)",
+  options: { a: "A-III, B-IV, C-II, D-I", b: "A-I, B-II, C-III, D-IV", c: "A-II, B-III, C-IV, D-I", d: "A-IV, B-I, C-II, D-III" },
+  correctAnswer: "a",
+  explanation: "Up to 1000 m: subtropical broadleaf (III). 1000–2000 m: temperate deciduous (IV). 2000–3000 m: coniferous (II). Above 3600 m: alpine (I). Hence A-III, B-IV, C-II, D-I.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 18,
+  section: "Natural Vegetation — Match the Following",
+  text: "Match List-I (National Park / Reserve) with List-II (State)\n\nList-I:\n(A) Kaziranga\n(B) Gir\n(C) Sunderbans\n(D) Silent Valley\n\nList-II:\n(I) Kerala\n(II) Gujarat\n(III) West Bengal\n(IV) Assam",
+  options: { a: "A-IV, B-II, C-III, D-I", b: "A-I, B-IV, C-II, D-III", c: "A-III, B-I, C-IV, D-II", d: "A-II, B-III, C-I, D-IV" },
+  correctAnswer: "a",
+  explanation: "Kaziranga: Assam (IV). Gir: Gujarat (II). Sunderbans: West Bengal (III). Silent Valley: Kerala (I). Hence A-IV, B-II, C-III, D-I.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 19,
+  section: "Natural Vegetation — Match the Following",
+  text: "Match List-I (Vegetation type) with List-II (Rainfall range)\n\nList-I:\n(A) Tropical Evergreen\n(B) Tropical Deciduous\n(C) Thorny Scrub\n(D) Mangrove\n\nList-II:\n(I) Less than 75 cm\n(II) 100–200 cm\n(III) More than 200 cm\n(IV) Coastal/tidal — rainfall variable",
+  options: { a: "A-III, B-II, C-I, D-IV", b: "A-I, B-III, C-II, D-IV", c: "A-II, B-IV, C-III, D-I", d: "A-IV, B-I, C-III, D-II" },
+  correctAnswer: "a",
+  explanation: "Evergreen >200 cm (III). Deciduous 100–200 cm (II). Thorny <75 cm (I). Mangrove: coastal tidal (IV). Hence A-III, B-II, C-I, D-IV.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 20,
+  section: "Natural Vegetation — Match the Following",
+  text: "Match List-I (Special tree/product) with List-II (Forest/State association)\n\nList-I:\n(A) Sandalwood\n(B) Deodar\n(C) Rosewood\n(D) Sundri\n\nList-II:\n(I) Sunderbans, West Bengal\n(II) Western Ghats / Karnataka\n(III) Himachal Pradesh / J&K Himalayas\n(IV) Kerala rainforests",
+  options: { a: "A-II, B-III, C-IV, D-I", b: "A-I, B-II, C-III, D-IV", c: "A-III, B-IV, C-I, D-II", d: "A-IV, B-I, C-II, D-III" },
+  correctAnswer: "a",
+  explanation: "Sandalwood: Western Ghats/Karnataka (II). Deodar: Himalayas (III). Rosewood: Kerala rainforests (IV). Sundri: Sunderbans (I). Hence A-II, B-III, C-IV, D-I.",
+  marked: false,
+  userAnswer: ""
 },
 
-// Assertion Reason
+// ─────────────────────────────────────────────
+// SECTION 3 · Assertion-Reason (Q21–Q25)
+// ─────────────────────────────────────────────
 {
-id: 12,
-section: "Natural Vegetation — Assertion-Reason",
-text: "Assertion (A): Evergreen forests remain green throughout the year.\nReason (R): They receive high rainfall.",
-options: { a: "Both A and R are true and R is correct explanation", b: "Both true but not explanation", c: "A true R false", d: "A false R true" },
-correctAnswer: "a",
-explanation: "High rainfall prevents leaf shedding.",
-marked: false,
-userAnswer: ""
+  id: 21,
+  section: "Natural Vegetation — Assertion-Reason",
+  text: "Assertion (A): Tropical evergreen forests of India are found mainly on the western slopes of the Western Ghats, the Andaman and Nicobar Islands, and the North-Eastern states.\nReason (R): These regions receive very heavy and well-distributed rainfall throughout the year, often exceeding 200 cm annually, which supports dense, multi-layered canopy growth with no distinct dry season, allowing trees to retain their leaves all year round without seasonal shedding.",
+  options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+  correctAnswer: "a",
+  explanation: "A is true — these regions indeed host tropical evergreen forests. R correctly explains that heavy year-round rainfall (>200 cm) removes the dry season trigger for leaf shedding, enabling perpetual evergreen canopy. Hence option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 22,
+  section: "Natural Vegetation — Assertion-Reason",
+  text: "Assertion (A): Mangrove forests have roots that project above the water surface (pneumatophores/prop roots).\nReason (R): These aerial root systems allow the plants to obtain oxygen in waterlogged, anaerobic, saline tidal mudflat conditions where normal underground root respiration is impossible, representing a specialized adaptation to the unique intertidal ecosystem they inhabit along coastlines and river deltas.",
+  options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+  correctAnswer: "a",
+  explanation: "A is true — mangroves possess stilt/prop roots and pneumatophores. R correctly explains the aerobic respiration need in anaerobic waterlogged saline soils. Hence option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 23,
+  section: "Natural Vegetation — Assertion-Reason",
+  text: "Assertion (A): The natural vegetation of India shows a change from dense forest to scrub and desert vegetation as one moves from the east to the west across the Indo-Gangetic plains toward Rajasthan.\nReason (R): Annual rainfall progressively decreases from the Bay of Bengal coast westward due to the diminishing effect of the Bay of Bengal branch of the south-west monsoon, resulting in increasingly arid conditions that can no longer support closed canopy forest cover.",
+  options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+  correctAnswer: "a",
+  explanation: "A is true — vegetation transitions east-to-west from forest to scrub/desert. R correctly explains the west-ward rainfall gradient as the driving mechanism. Hence option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 24,
+  section: "Natural Vegetation — Assertion-Reason",
+  text: "Assertion (A): Teak trees shed their leaves in summer (dry season) even in tropical deciduous forests.\nReason (R): Leaf-shedding (abscission) in deciduous trees is an adaptation to reduce water loss through transpiration during the dry season when soil moisture is critically low, enabling the tree to survive prolonged drought periods without permanent damage to its tissues.",
+  options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+  correctAnswer: "a",
+  explanation: "A is true — teak is a classic deciduous species shedding leaves in summer. R correctly explains leaf-shedding as a xerophytic water-conservation mechanism. Hence option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 25,
+  section: "Natural Vegetation — Assertion-Reason",
+  text: "Assertion (A): Alpine vegetation in the higher Himalayas consists mainly of mosses, lichens, and sparse grasses.\nReason (R): At very high altitudes (above 3,600 m), temperatures remain extremely cold for most of the year, soil development is poor and thin, the growing season is very short (only 2–3 months), and intense UV radiation limits the survival and growth of larger woody plants, so only cold-hardy, low-growing species can establish themselves.",
+  options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+  correctAnswer: "a",
+  explanation: "A is true — mosses, lichens, sparse grasses characterize alpine zones above tree line. R correctly explains the multi-factor limiting conditions (cold, thin soil, short season, UV) that prevent woody growth. Hence option a.",
+  marked: false,
+  userAnswer: ""
 },
 
-// Passage Based
+// ─────────────────────────────────────────────
+// SECTION 4 · Case Study / Passage Based (Q26–Q35)
+// ─────────────────────────────────────────────
 {
-id: 13,
-section: "Natural Vegetation — Passage Based",
-text: "Passage: Tropical forests are rich in biodiversity. They are found in areas with heavy rainfall and high temperature.\n\nWhich forest type has maximum biodiversity?",
-options: { a: "Thorn", b: "Deciduous", c: "Evergreen", d: "Alpine" },
-correctAnswer: "c",
-explanation: "Evergreen forests have dense vegetation and high biodiversity.",
-marked: false,
-userAnswer: ""
+  id: 26,
+  section: "Natural Vegetation — Case Study",
+  text: "<svg width='320' height='200' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='310' height='190' rx='10' fill='#f1f8e9' stroke='#558b2f' stroke-width='2'/><text x='160' y='28' text-anchor='middle' font-size='13' font-weight='bold' fill='#33691e'>Passage A: Tropical Evergreen Forests of India</text><text x='15' y='52' font-size='10' fill='#37474f'>India's tropical evergreen forests are found in the Western Ghats, Andaman and Nicobar</text><text x='15' y='67' font-size='10' fill='#37474f'>Islands, and parts of North-Eastern India. These forests receive rainfall exceeding 200 cm</text><text x='15' y='82' font-size='10' fill='#37474f'>per year and have no definite dry season. The trees are tall (up to 60 m), multi-layered,</text><text x='15' y='97' font-size='10' fill='#37474f'>and do not shed leaves simultaneously. Important trees include Ebony, Mahogany, Rosewood,</text><text x='15' y='112' font-size='10' fill='#37474f'>and Rubber. Due to the dense canopy, sunlight barely reaches the ground, supporting thick</text><text x='15' y='127' font-size='10' fill='#37474f'>undergrowth of ferns, mosses, and climbers. These forests are rich in biodiversity and</text><text x='15' y='142' font-size='10' fill='#37474f'>are sometimes called 'Jungle' due to the dense impenetrable growth. They cover about 7%</text><text x='15' y='157' font-size='10' fill='#37474f'>of India's total land area. The Silent Valley of Kerala is a famous example.</text></svg> According to the passage, what is the approximate maximum height of trees in tropical evergreen forests?",
+  options: { a: "30 m", b: "45 m", c: "60 m", d: "80 m" },
+  correctAnswer: "c",
+  explanation: "The passage explicitly states trees can grow up to 60 m in tropical evergreen forests. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 27,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage A (Q26). Which of the following is NOT mentioned as an important tree of tropical evergreen forests?",
+  options: { a: "Ebony", b: "Teak", c: "Mahogany", d: "Rosewood" },
+  correctAnswer: "b",
+  explanation: "The passage lists Ebony, Mahogany, Rosewood, and Rubber — not Teak. Teak belongs to deciduous forests. Option b.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 28,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage A (Q26). Why does sunlight barely reach the ground in these forests?",
+  options: { a: "Due to monsoon clouds", b: "Due to the dense canopy formed by tall trees", c: "Due to underground water table", d: "Due to mountainous terrain" },
+  correctAnswer: "b",
+  explanation: "The passage states 'due to the dense canopy, sunlight barely reaches the ground'. Option b.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 29,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage A (Q26). What percentage of India's total land area do tropical evergreen forests cover approximately?",
+  options: { a: "3%", b: "5%", c: "7%", d: "10%" },
+  correctAnswer: "c",
+  explanation: "The passage states these forests cover about 7% of India's total land area. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 30,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage A (Q26). Which of the following best describes the leaf-shedding pattern in tropical evergreen forests?",
+  options: { a: "All trees shed leaves simultaneously in summer", b: "Trees do not shed leaves simultaneously — different trees shed at different times", c: "Trees never shed any leaves", d: "Leaf shedding occurs only during monsoon" },
+  correctAnswer: "b",
+  explanation: "The passage mentions trees 'do not shed leaves simultaneously', hence they appear evergreen. Option b.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 31,
+  section: "Natural Vegetation — Case Study",
+  text: "<svg width='320' height='200' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='310' height='190' rx='10' fill='#fff8e1' stroke='#f9a825' stroke-width='2'/><text x='160' y='28' text-anchor='middle' font-size='13' font-weight='bold' fill='#e65100'>Passage B: Tropical Deciduous Forests — The Monsoon Forests</text><text x='15' y='52' font-size='10' fill='#37474f'>Tropical deciduous forests are the most widespread forests in India, covering the largest</text><text x='15' y='67' font-size='10' fill='#37474f'>area. They grow in regions receiving 70–200 cm of annual rainfall. They are also called</text><text x='15' y='82' font-size='10' fill='#37474f'>'Monsoon Forests'. The trees shed their leaves in the dry season (March to May) to conserve</text><text x='15' y='97' font-size='10' fill='#37474f'>water. Teak, Sal, Shisham, Sandalwood, Khair, Kusum, and Arjun are important trees.</text><text x='15' y='112' font-size='10' fill='#37474f'>These forests are divided into 'moist deciduous' (100–200 cm rainfall) and 'dry deciduous'</text><text x='15' y='127' font-size='10' fill='#37474f'>(70–100 cm). Moist deciduous forests are found in Odisha, MP, and parts of the Deccan.</text><text x='15' y='142' font-size='10' fill='#37474f'>Dry deciduous are spread across Rajasthan, UP, and central India. These forests provide</text><text x='15' y='157' font-size='10' fill='#37474f'>commercially important timber and are most exploited by humans.</text></svg> According to Passage B, what is another name for tropical deciduous forests?",
+  options: { a: "Jungle forests", b: "Monsoon forests", c: "Tropical rainforests", d: "Scrub forests" },
+  correctAnswer: "b",
+  explanation: "Passage B explicitly calls them 'Monsoon Forests'. Option b.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 32,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage B (Q31). What is the rainfall range for 'moist deciduous' forests?",
+  options: { a: "50–70 cm", b: "70–100 cm", c: "100–200 cm", d: "More than 200 cm" },
+  correctAnswer: "c",
+  explanation: "The passage states moist deciduous receive 100–200 cm rainfall. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 33,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage B (Q31). In which months do deciduous trees shed their leaves?",
+  options: { a: "June to August", b: "October to December", c: "March to May", d: "January to February" },
+  correctAnswer: "c",
+  explanation: "The passage states leaves are shed in the dry season, March to May. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 34,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage B (Q31). Which of the following is NOT listed as an important tree of tropical deciduous forests?",
+  options: { a: "Teak", b: "Sal", c: "Ebony", d: "Shisham" },
+  correctAnswer: "c",
+  explanation: "Ebony belongs to tropical evergreen forests, not listed in Passage B's deciduous tree list. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 35,
+  section: "Natural Vegetation — Case Study",
+  text: "Refer to Passage B (Q31). Why are tropical deciduous forests the most exploited by humans?",
+  options: { a: "They are near the coast", b: "They provide commercially important timber and are most widespread", c: "They are easy to irrigate", d: "They grow near rivers only" },
+  correctAnswer: "b",
+  explanation: "The passage says these forests 'provide commercially important timber and are most exploited by humans', being the most widespread type. Option b.",
+  marked: false,
+  userAnswer: ""
 },
 
-// Arrange
+// ─────────────────────────────────────────────
+// SECTION 5 · Arrange / Choose Correct (Q36–Q40)
+// ─────────────────────────────────────────────
 {
-id: 14,
-section: "Natural Vegetation — Arrange / Choose Correct",
-text: "Arrange vegetation types by rainfall (highest to lowest):\n(A) Evergreen\n(B) Deciduous\n(C) Thorn",
-options: { a: "A, B, C", b: "C, B, A", c: "B, A, C", d: "A, C, B" },
-correctAnswer: "a",
-explanation: "Evergreen needs highest rainfall, then deciduous, then thorn.",
-marked: false,
-userAnswer: ""
+  id: 36,
+  section: "Natural Vegetation — Arrange / Choose Correct",
+  text: "Arrange the following vegetation types in order of decreasing rainfall requirement (highest to lowest rainfall):\n(A) Thorny Scrub\n(B) Tropical Evergreen\n(C) Mangrove\n(D) Tropical Deciduous",
+  options: { a: "(B), (C), (D), (A)", b: "(A), (B), (C), (D)", c: "(D), (C), (A), (B)", d: "(C), (B), (D), (A)" },
+  correctAnswer: "a",
+  explanation: "Tropical Evergreen (>200 cm) → Mangrove (coastal variable, high) → Tropical Deciduous (70–200 cm) → Thorny Scrub (<75 cm). Hence B, C, D, A. Option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 37,
+  section: "Natural Vegetation — Arrange / Choose Correct",
+  text: "Choose the correct combination of statements about natural vegetation:\n(A) Ebony and Mahogany are found in tropical evergreen forests.\n(B) Teak is the most important timber tree of tropical deciduous forests.\n(C) Khejri is the state tree of Rajasthan.\n(D) Sundri tree gives the Sunderbans its name.",
+  options: { a: "(A), (B), (C) and (D)", b: "(A), (B) and (C) only", c: "(B), (C) and (D) only", d: "(A) and (D) only" },
+  correctAnswer: "a",
+  explanation: "All four statements are factually correct. Ebony/Mahogany: evergreen ✓, Teak: deciduous ✓, Khejri: state tree of Rajasthan ✓, Sundri → Sunderbans ✓. Option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 38,
+  section: "Natural Vegetation — Arrange / Choose Correct",
+  text: "Arrange the following Himalayan vegetation zones in correct order from lowest to highest altitude:\n(A) Alpine meadows and mosses\n(B) Temperate coniferous forest (Deodar, Pine)\n(C) Subtropical broadleaf forest (Sal)\n(D) Temperate deciduous forest (Oak, Rhododendron)",
+  options: { a: "(C), (D), (B), (A)", b: "(A), (B), (C), (D)", c: "(B), (A), (D), (C)", d: "(D), (C), (A), (B)" },
+  correctAnswer: "a",
+  explanation: "Correct order: Subtropical broadleaf (C, up to 1000 m) → Temperate deciduous (D, 1000–2000 m) → Coniferous (B, 2000–3600 m) → Alpine (A, above 3600 m). Option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 39,
+  section: "Natural Vegetation — Arrange / Choose Correct",
+  text: "Choose the incorrect statement(s) about Indian forests:\n(A) India has about 24% of its land area under forest cover as per the National Forest Policy goal.\n(B) Forest Survey of India (FSI) is headquartered in Dehradun.\n(C) Reserved forests are the most protected and cover the largest area.\n(D) Protected forests have no restrictions on cutting.",
+  options: { a: "(D) only", b: "(A) and (D)", c: "(B) and (C)", d: "None — all are correct" },
+  correctAnswer: "a",
+  explanation: "Statement D is incorrect: Protected forests do have legal restrictions, though less strict than Reserved forests. A, B, and C are correct. Option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 40,
+  section: "Natural Vegetation — Arrange / Choose Correct",
+  text: "Arrange the following biosphere reserves in order of their establishment (earliest to latest):\n(A) Nilgiri Biosphere Reserve\n(B) Sunderbans Biosphere Reserve\n(C) Gulf of Mannar Biosphere Reserve\n(D) Nanda Devi Biosphere Reserve",
+  options: { a: "(A), (B), (C), (D)", b: "(D), (C), (B), (A)", c: "(B), (A), (D), (C)", d: "(C), (D), (A), (B)" },
+  correctAnswer: "a",
+  explanation: "Nilgiri (1986), Sunderbans (1989), Gulf of Mannar (1989), Nanda Devi (1988). Nilgiri was India's first biosphere reserve. Correct earliest-to-latest order: A, B, C, D. Option a.",
+  marked: false,
+  userAnswer: ""
 },
 
-// Hard Application
+// ─────────────────────────────────────────────
+// SECTION 6 · Fill in the Blank (Q41–Q45)
+// ─────────────────────────────────────────────
 {
-id: 15,
-section: "Natural Vegetation — Hard Application",
-text: "Which forest type is most affected by deforestation in India?",
-options: { a: "Mangrove", b: "Evergreen", c: "Deciduous", d: "Alpine" },
-correctAnswer: "c",
-explanation: "Deciduous forests are widely used for agriculture and timber.",
-marked: false,
-userAnswer: ""
+  id: 41,
+  section: "Natural Vegetation — Fill in the Blank",
+  text: "The __________ tree, whose wood is used for making railway sleepers and furniture, is the most economically important tree of tropical deciduous forests in India.",
+  options: { a: "Teak", b: "Ebony", c: "Deodar", d: "Sundri" },
+  correctAnswer: "a",
+  explanation: "Teak (Tectona grandis) is the most economically important tree of India's tropical deciduous forests, used for furniture, railway sleepers, ship-building, etc. Option a.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 42,
+  section: "Natural Vegetation — Fill in the Blank",
+  text: "The __________ forests, found along tidal coasts and deltas, are known for their specialized aerial root systems called pneumatophores.",
+  options: { a: "Montane", b: "Tropical Evergreen", c: "Mangrove", d: "Thorny Scrub" },
+  correctAnswer: "c",
+  explanation: "Mangrove forests are the coastal tidal forests with pneumatophores/prop roots for oxygen uptake in waterlogged conditions. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 43,
+  section: "Natural Vegetation — Fill in the Blank",
+  text: "India's first biosphere reserve, established in 1986, was the __________ Biosphere Reserve in South India.",
+  options: { a: "Sunderbans", b: "Nilgiri", c: "Gulf of Mannar", d: "Nanda Devi" },
+  correctAnswer: "b",
+  explanation: "Nilgiri Biosphere Reserve (Tamil Nadu, Kerala, Karnataka) was established in 1986 as India's first biosphere reserve. Option b.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 44,
+  section: "Natural Vegetation — Fill in the Blank",
+  text: "The __________ tree, found in the Sunderbans, gives that famous mangrove forest its name.",
+  options: { a: "Sal", b: "Teak", c: "Sundri", d: "Ebony" },
+  correctAnswer: "c",
+  explanation: "The Sundri (Heritiera fomes) tree is the dominant species and gives 'Sunderbans' (Sundri + ban = Sundri forest) its name. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 45,
+  section: "Natural Vegetation — Fill in the Blank",
+  text: "The high-altitude Himalayan meadows and pastures above the tree line (above ~3,600 m), used for summer grazing by nomadic communities, are called __________.",
+  options: { a: "Sholas", b: "Tarai", c: "Bugyals", d: "Bhabhar" },
+  correctAnswer: "c",
+  explanation: "Bugyals (also called 'Meadows in the Sky') are alpine meadows above the treeline in the Himalayas, used as seasonal pastures. Option c.",
+  marked: false,
+  userAnswer: ""
+},
+
+// ─────────────────────────────────────────────
+// SECTION 7 · Hard Application (Q46–Q50)
+// ─────────────────────────────────────────────
+{
+  id: 46,
+  section: "Natural Vegetation — Hard Application",
+  text: "Which of the following is the correct classification of forests under the Indian Forest Act?",
+  options: { a: "Reserved, Protected, and Unclassed forests", b: "Reserved, State, and Private forests", c: "National, State, and Panchayat forests", d: "Dense, Open, and Scrub forests" },
+  correctAnswer: "a",
+  explanation: "The Indian Forest Act classifies forests into: Reserved Forests (most protected), Protected Forests (limited rights), and Unclassed Forests. Option a is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 47,
+  section: "Natural Vegetation — Hard Application",
+  text: "The 'Van Mahotsav' festival, a week-long tree-planting drive, was started by which Union Minister of Agriculture?",
+  options: { a: "Jawaharlal Nehru", b: "K. M. Munshi", c: "B. R. Ambedkar", d: "Sardar Vallabhbhai Patel" },
+  correctAnswer: "b",
+  explanation: "Van Mahotsav was initiated by K. M. Munshi (Kanaiyalal Maneklal Munshi), Union Minister for Agriculture, in 1950 to promote afforestation. Option b is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 48,
+  section: "Natural Vegetation — Hard Application",
+  text: "Which of the following statements correctly differentiates 'flora' from 'fauna'?",
+  options: { a: "Flora refers to plant life; Fauna refers to animal life of a region", b: "Flora refers to animal life; Fauna refers to plant life of a region", c: "Both terms refer to plant life only", d: "Flora is terrestrial plants; Fauna is aquatic plants" },
+  correctAnswer: "a",
+  explanation: "Flora = all plant life; Fauna = all animal life of a given region or time period. Option a is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 49,
+  section: "Natural Vegetation — Hard Application",
+  text: "Which of the following Himalayan trees is known as the 'God tree' (Devdar) and is the state tree of Himachal Pradesh?",
+  options: { a: "Blue Pine", b: "Spruce", c: "Deodar (Himalayan Cedar)", d: "Silver Fir" },
+  correctAnswer: "c",
+  explanation: "Deodar (Cedrus deodara), meaning 'divine tree/God tree' in Sanskrit, is the state tree of Himachal Pradesh. Option c is correct.",
+  marked: false,
+  userAnswer: ""
+},
+{
+  id: 50,
+  section: "Natural Vegetation — Hard Application",
+  text: "The 'Chipko Movement', which aimed to protect forest trees from logging by physically hugging them, started in which state of India?",
+  options: { a: "Himachal Pradesh", b: "Uttarakhand (then UP hills)", c: "Rajasthan", d: "Kerala" },
+  correctAnswer: "b",
+  explanation: "The Chipko Movement started in 1973 in the Chamoli district of Uttarakhand (then part of Uttar Pradesh) under the leadership of Sunderlal Bahuguna and Chandi Prasad Bhatt. Option b is correct.",
+  marked: false,
+  userAnswer: ""
 }
-
 ],
 
     duration: 60 * 60,
