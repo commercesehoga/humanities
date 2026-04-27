@@ -1,0 +1,2855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thunder⚡ CBT – CUET geo Mock Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root {
+    --pink-primary: #e91e8c;
+    --pink-dark: #c0156e;
+    --pink-deeper: #9b0f58;
+    --pink-light: #f48fb1;
+    --pink-pale: #fce4ec;
+    --pink-soft: #fdf0f6;
+    --pink-mid: #f8bbd9;
+    --jee-bg: #f0f0f0;
+    --jee-header-bg: #e8e8e8;
+    --jee-border: #c8c8c8;
+    --jee-text: #222;
+    --jee-green: #28a745;
+    --jee-red: #dc3545;
+    --jee-orange: #f5a623;
+    --jee-blue: #1976d2;
+    --jee-purple: #7b1fa2;
+    --gray-dark: #1a1a2e;
+    --gray-mid: #4a4a6a;
+    --gray-light: #f5f5f5;
+    --shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, sans-serif; background: var(--jee-bg); color: var(--jee-text); min-height:100vh; overflow-x:hidden; }
+
+  /* ===== SCREENS ===== */
+  .screen { display:none; min-height:100vh; }
+  .screen.active { display:block; }
+
+  /* ===============================================================
+     LOGIN SCREEN
+  =============================================================== */
+  #screen-login {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  #screen-login.active { display: flex; }
+  .login-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    width: 100%; max-width: 440px;
+    overflow: hidden;
+  }
+  .login-header {
+    background: linear-gradient(135deg, #1976d2, #0a3880);
+    padding: 28px 30px 22px;
+    text-align: center;
+  }
+  .login-header .login-logo { font-size: 36px; margin-bottom: 8px; }
+  .login-header h2 { font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; color: white; letter-spacing: 1px; }
+  .login-header p { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 4px; }
+  .login-body { padding: 28px 30px 32px; }
+  .login-field { margin-bottom: 18px; }
+  .login-field label { display: block; font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .login-field input {
+    width: 100%; padding: 12px 14px; border: 2px solid #e0e0e0; border-radius: 8px;
+    font-size: 14px; font-family: Arial, sans-serif; transition: border-color 0.2s;
+    background: #fafafa;
+  }
+  .login-field input:focus { outline: none; border-color: #1976d2; background: white; }
+  .login-remember { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; font-size: 13px; color: #666; }
+  .login-remember input { width: 15px; height: 15px; accent-color: #1976d2; }
+  .btn-login {
+    width: 100%; padding: 13px; background: linear-gradient(135deg, #1976d2, #0d47a1);
+    color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; letter-spacing: 1px; transition: all 0.2s; text-transform: uppercase;
+  }
+  .btn-login:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(233,30,140,0.4); }
+  .login-note { text-align: center; font-size: 11.5px; color: #aaa; margin-top: 14px; }
+
+  /* ===============================================================
+     JEE-STYLE EXAM HEADER (test screen)
+  =============================================================== */
+  .jee-header {
+    background: var(--jee-header-bg);
+    border-bottom: 2px solid var(--jee-border);
+    padding: 10px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-wrap: wrap; gap: 8px;
+  }
+  .jee-candidate-block {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .jee-photo {
+    width: 64px; height: 72px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    background: #d0d0d0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .jee-photo svg { width: 44px; height: 44px; }
+  .jee-info-table { font-size: 13.5px; }
+  .jee-info-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
+  .jee-info-label { color: #444; font-weight: 400; min-width: 110px; }
+  .jee-info-value { font-weight: 700; color: #e65100; }
+  .jee-info-value.name-val { color: #e65100; }
+  .jee-info-value.time-val {
+    background: #1976d2; color: white; padding: 2px 12px;
+    border-radius: 4px; font-weight: 700; font-size: 14px; font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .jee-info-value.time-val.warning { background: #c62828; }
+  .jee-lang-block { display: flex; align-items: center; gap: 8px; }
+  .jee-lang-select {
+    padding: 7px 32px 7px 12px;
+    border: 1px solid #bbb; border-radius: 4px;
+    font-size: 13px; background: white; cursor: pointer;
+    appearance: auto; min-width: 120px;
+  }
+
+  /* Instruction screen header (pink) */
+  .exam-header {
+    background: linear-gradient(135deg, #1976d2 0%, #0a3880 100%);
+    padding: 0; box-shadow: 0 4px 16px rgba(0,0,0,0.2); position: relative; overflow: hidden;
+  }
+  .exam-header::before { content:''; position:absolute; top:-30px; right:-30px; width:120px; height:120px; background:rgba(255,255,255,0.08); border-radius:50%; }
+  .exam-header::after { content:''; position:absolute; bottom:-20px; left:40%; width:80px; height:80px; background:rgba(255,255,255,0.06); border-radius:50%; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; max-width:1400px; margin:0 auto; }
+  .header-logo { display:flex; align-items:center; gap:12px; }
+  .logo-icon { width:46px; height:46px; background:white; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .logo-text h1 { font-family:'Arial',sans-serif; font-size:20px; font-weight:700; color:white; line-height:1; letter-spacing:1px; }
+  .logo-text p { font-size:11px; color:rgba(255,255,255,0.8); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+  .header-candidate { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.12); padding:6px 14px; border-radius:30px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); }
+  .candidate-avatar { width:34px; height:34px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; overflow:hidden; }
+  .candidate-info .name { color:white; font-weight:700; font-size:13px; }
+  .candidate-info .roll { color:rgba(255,255,255,0.75); font-size:11px; }
+
+  /* ===== INSTRUCTION SCREENS ===== */
+  #screen-instructions { background: #eff6ff; }
+  .instr-body { max-width:900px; margin:0 auto; padding:24px 16px 40px; }
+  .instr-card { background:white; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:20px; border:1px solid #bfdbfe; }
+  .instr-card-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:14px 20px; border-bottom:2px solid #1976d2; display:flex; align-items:center; gap:10px; }
+  .instr-card-header h3 { font-family:'Arial',sans-serif; font-size:16px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .instr-card-icon { width:32px; height:32px; background:#1976d2; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; color:white; }
+  .instr-card-body { padding:18px 20px; }
+  .exam-info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:4px; }
+  .exam-info-item { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 14px; text-align:center; }
+  .exam-info-item .label { font-size:11px; color:#0d47a1; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+  .exam-info-item .value { font-size:20px; font-weight:800; color:#1976d2; font-family:'Arial',sans-serif; }
+  .instr-list { list-style:none; }
+  .instr-list li { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid #dbeafe; font-size:13.5px; color:var(--gray-mid); line-height:1.5; }
+  .instr-list li:last-child { border-bottom:none; }
+  .instr-list li .num { min-width:22px; height:22px; background:#1976d2; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:1px; flex-shrink:0; }
+  .legend-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .legend-item { display:flex; align-items:center; gap:10px; padding:8px 12px; background:#eff6ff; border-radius:8px; font-size:12.5px; color:var(--gray-mid); font-weight:600; }
+  .legend-dot { width:28px; height:28px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:white; }
+
+  /* JEE palette legend dots */
+  .dot-not-visited  { background:#fff; border:2px solid #999; color:#666; }
+  .dot-not-answered { background:var(--jee-red); clip-path:polygon(50% 0%,100% 30%,100% 100%,0% 100%,0% 30%); border-radius:0; color:white; }
+  .dot-answered     { background:var(--jee-green); border-radius:50% !important; color:white; }
+  .dot-marked       { background:var(--jee-purple); border-radius:50% !important; color:white; }
+  .dot-answered-marked { background:var(--jee-purple); border-radius:50% !important; color:white; position:relative; }
+  .dot-answered-marked::after { content:'✓'; position:absolute; bottom:-3px; right:-3px; background:var(--jee-green); width:13px; height:13px; border-radius:50%; font-size:8px; display:flex; align-items:center; justify-content:center; border:1px solid white; }
+
+  /* Step progress */
+  .step-progress-wrap { background:white; border-bottom:2px solid #bfdbfe; padding:0; }
+  .step-progress { max-width:900px; margin:0 auto; display:flex; align-items:stretch; }
+  .step-item { flex:1; display:flex; align-items:center; gap:10px; padding:14px 20px; position:relative; cursor:default; border-bottom:3px solid transparent; transition:all 0.2s; }
+  .step-item.active { border-bottom-color:#1976d2; }
+  .step-item.done { border-bottom-color:#2e7d32; }
+  .step-num { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Arial',sans-serif; font-size:14px; font-weight:700; flex-shrink:0; transition:all 0.2s; background:#e0e0e0; color:#9e9e9e; }
+  .step-item.active .step-num { background:#1976d2; color:white; box-shadow:0 3px 10px rgba(233,30,140,0.35); }
+  .step-item.done .step-num { background:#2e7d32; color:white; }
+  .step-label { font-size:12px; font-weight:700; color:#9e9e9e; line-height:1.3; }
+  .step-item.active .step-label { color:#1976d2; }
+  .step-item.done .step-label { color:#2e7d32; }
+  .step-connector { width:1px; background:#bfdbfe; align-self:stretch; margin:8px 0; }
+
+  /* Step panels */
+  .instr-step { display:none; }
+  .instr-step.active { display:block; }
+
+ 
+  /* Step nav */
+  .step-nav { display:flex; justify-content:space-between; align-items:center; margin-top:20px; gap:12px; }
+  .btn-step-next { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:12px 36px; border-radius:50px; font-family:'Arial',sans-serif; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 4px 16px rgba(233,30,140,0.35); transition:all 0.25s; letter-spacing:1px; display:flex; align-items:center; gap:8px; text-transform:uppercase; }
+  .btn-step-next:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(233,30,140,0.45); }
+  .btn-step-back { background:white; color:var(--gray-mid); border:2px solid #bfdbfe; padding:12px 28px; border-radius:50px; font-family:'Arial',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.2s; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+  .btn-step-back:hover { border-color:var(--pink-light); color:#1976d2; }
+  .step-spacer { flex:1; }
+  .agree-check { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px; font-size:13px; color:var(--gray-mid); font-weight:600; cursor:pointer; }
+  .agree-check input { width:16px; height:16px; accent-color:#1976d2; cursor:pointer; }
+  .start-btn-wrap { text-align:center; margin-top:24px; }
+  .btn-start-exam { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:14px 50px; border-radius:50px; font-family:'Arial',sans-serif; font-size:20px; font-weight:700; letter-spacing:1.5px; cursor:pointer; box-shadow:0 6px 24px rgba(233,30,140,0.4); transition:all 0.3s; text-transform:uppercase; position:relative; overflow:hidden; }
+  .btn-start-exam:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(233,30,140,0.5); }
+
+  /* ===============================================================
+     TEST SCREEN LAYOUT
+  =============================================================== */
+  #screen-test { background: var(--jee-bg); }
+
+  .jee-subject-bar {
+    background: white;
+    border-bottom: 1px solid var(--jee-border);
+    padding: 6px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .jee-subject-tag {
+    font-size: 13px; font-weight: 700; color: #333;
+    background: #e8f4fd; border: 1px solid #90caf9;
+    padding: 4px 14px; border-radius: 4px;
+  }
+  .jee-marks-info { display:flex; gap:10px; align-items:center; }
+  .jee-mark-chip { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; }
+  .jee-mark-chip.pos { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+  .jee-mark-chip.neg { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+
+  /* Main test layout */
+  .test-layout { display:grid; grid-template-columns:1fr 300px; min-height:calc(100vh - 115px); }
+
+  /* Question panel */
+  .question-panel { padding:0; background:#fff; border-right:1px solid var(--jee-border); display:flex; flex-direction:column; }
+  .q-header-bar { background:#f7f7f7; border-bottom:1px solid var(--jee-border); padding:8px 16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .q-num-badge { background:#1976d2; color:white; padding:4px 14px; border-radius:4px; font-size:14px; font-weight:700; }
+  .q-topic-tag { font-size:12px; color:#555; font-weight:600; background:#eee; padding:3px 10px; border-radius:4px; }
+
+  .question-scroll { flex:1; overflow-y:auto; padding:16px 18px; }
+  .q-text { font-size:15px; color:#1a1a1a; line-height:1.75; margin-bottom:18px; font-weight:400; }
+  .q-text .formula { font-weight:700; color:#1976d2; background:#dbeafe; padding:2px 6px; border-radius:4px; display:inline-block; margin:0 2px; }
+
+  .options-label { font-size:13px; font-weight:700; color:#333; margin-bottom:10px; }
+  .options-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .opt-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1.5px solid #ddd; border-radius:6px; cursor:pointer; transition:all 0.15s; background:white; }
+  .opt-item:hover { border-color:#90caf9; background:#f0f8ff; }
+  .opt-item.selected { border-color:var(--jee-green); background:#f1fff1; }
+  .opt-radio { width:18px; height:18px; border:2px solid #aaa; border-radius:50%; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+  .opt-item.selected .opt-radio { border-color:var(--jee-green); background:var(--jee-green); }
+  .opt-radio-dot { width:8px; height:8px; background:white; border-radius:50%; display:none; }
+  .opt-item.selected .opt-radio-dot { display:block; }
+  .opt-key { font-size:13px; font-weight:700; color:#444; min-width:18px; margin-top:1px; }
+  .opt-content { font-size:14px; color:#222; line-height:1.5; flex:1; }
+  .chem-svg-wrap { width:130px; height:80px; border:1.5px solid #ddd; border-radius:6px; background:white; display:flex; align-items:center; justify-content:center; padding:4px; overflow:hidden; margin-top:6px; }
+  .chem-svg-wrap svg { width:100%; height:100%; }
+  .options-grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+  /* ===== JEE ACTION ROW ===== */
+  .jee-action-row {
+    background: #f0f0f0;
+    border-top: 2px solid var(--jee-border);
+    padding: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .jee-action-left { display:flex; gap:8px; flex-wrap:wrap; }
+  .jee-action-right { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .jbtn {
+    padding: 9px 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-family: Arial, sans-serif;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 5px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .jbtn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+  .jbtn-green  { background: var(--jee-green); color: white; border-color: #1e7e34; }
+  .jbtn-white  { background: white; color: #333; border: 2px solid #aaa; }
+  .jbtn-white:hover { border-color: #666; }
+  .jbtn-orange { background: var(--jee-orange); color: white; border-color: #d4891b; }
+  .jbtn-blue   { background: var(--jee-blue); color: white; border-color: #1256a3; }
+  .jbtn-gray   { background: #666; color: white; border-color: #444; }
+  .jbtn-purple { background: var(--jee-purple); color: white; border-color: #5c1580; }
+
+  /* ===== RIGHT PANEL ===== */
+  .right-panel { background: white; border-left:1px solid var(--jee-border); display:flex; flex-direction:column; overflow-y:auto; max-height:calc(100vh - 115px); position:sticky; top:0; }
+
+  /* JEE-style legend box */
+  .jee-legend-box {
+    border: 1.5px dashed #bbb;
+    border-radius: 6px;
+    margin: 12px 12px 6px;
+    padding: 12px 10px;
+    background: #fafafa;
+  }
+  .jee-legend-row { display:grid; grid-template-columns:1fr 1fr; gap:8px 4px; }
+  .jee-legend-item { display:flex; align-items:center; gap:8px; font-size:12px; color:#333; }
+  .jee-legend-count {
+    min-width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+    font-family: Arial, sans-serif;
+  }
+  /* Not visited — plain square */
+  .jlc-nv { background:white; border:2px solid #999; border-radius:3px; color:#333; }
+  /* Not answered — red pentagon flag shape */
+  .jlc-na {
+    background: var(--jee-red); color: white; border-radius: 3px 3px 0 0;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  }
+  /* Answered — green circle */
+  .jlc-ans { background: var(--jee-green); color: white; border-radius: 50%; }
+  /* Marked — purple circle */
+  .jlc-mrk { background: var(--jee-purple); color: white; border-radius: 50%; }
+  /* Answered+Marked — purple circle with green small dot */
+  .jlc-am { background: var(--jee-purple); color: white; border-radius: 50%; position: relative; }
+  .jlc-am::after { content:''; position:absolute; bottom:0; right:0; width:13px; height:13px; background:var(--jee-green); border-radius:50%; border:1.5px solid white; }
+  .jee-legend-text { line-height:1.3; }
+
+  /* Stats bar below legend */
+  .jee-stats-bar { padding: 6px 12px; border-bottom: 1px solid #eee; }
+  .jee-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+  .jee-stat-chip { text-align:center; padding:5px 4px; border-radius:5px; }
+  .jee-stat-chip .snum { font-size:17px; font-weight:700; font-family:Arial,sans-serif; }
+  .jee-stat-chip .slbl { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
+  .jsc-nv  { background:#f5f5f5; } .jsc-nv .snum { color:#777; }
+  .jsc-na  { background:#ffebee; } .jsc-na .snum { color:#c62828; }
+  .jsc-ans { background:#e8f5e9; } .jsc-ans .snum { color:#2e7d32; }
+  .jsc-mrk { background:#f3e5f5; } .jsc-mrk .snum { color:#7b1fa2; }
+  .jee-stat-chip .slbl { color:#555; }
+
+  /* Palette section */
+  .palette-section { padding: 8px 12px 4px; }
+  .palette-section-title { font-size:12px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:4px; }
+  .q-palette { display:grid; grid-template-columns:repeat(5,1fr); gap:5px; }
+
+  /* JEE palette buttons — shapes per status */
+  .q-palette-btn { aspect-ratio:1; border:none; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.12s; font-family:Arial,sans-serif; position:relative; display:flex; align-items:center; justify-content:center; }
+  .q-palette-btn:hover { transform:scale(1.1); }
+
+  /* Not visited: white with gray border */
+  .qb-not-visited { background:white; border:2px solid #aaa !important; color:#555; border-radius:4px; }
+  /* Not answered: red pentagon/flag */
+  .qb-not-answered {
+    background: var(--jee-red); color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 68%, 50% 100%, 0 68%);
+    border-radius: 0;
+  }
+  /* Answered: green circle */
+  .qb-answered { background: var(--jee-green); color: white; border-radius: 50%; }
+  /* Marked: purple circle */
+  .qb-marked { background: var(--jee-purple); color: white; border-radius: 50%; }
+  /* Answered+Marked: purple circle with green bottom-right dot */
+  .qb-answered-marked { background: var(--jee-purple); color: white; border-radius: 50%; }
+  .qb-answered-marked::after { content:''; position:absolute; bottom:0; right:0; width:35%; height:35%; background:var(--jee-green); border-radius:50%; border:1.5px solid white; }
+  /* Current highlight */
+  .qb-current { outline: 3px solid #1976d2; outline-offset: 1px; }
+
+  /* Post-result palette */
+  .qb-result-correct  { background:#2e7d32; color:white; border-radius:4px; }
+  .qb-result-wrong    { background:#c62828; color:white; border-radius:4px; }
+  .qb-result-skip     { background:#1565c0; color:white; border-radius:4px; }
+
+  /* Submit button in right panel */
+  .submit-wrap { padding:10px 12px; margin-top:auto; }
+  .btn-submit { width:100%; padding:11px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:6px; font-family:Arial,sans-serif; font-size:16px; font-weight:700; letter-spacing:1px; cursor:pointer; box-shadow:0 4px 16px rgba(233,30,140,0.35); transition:all 0.2s; text-transform:uppercase; }
+  .btn-submit:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(233,30,140,0.45); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+  .modal-overlay.active { display:flex; }
+  .modal-box { background:white; border-radius:16px; padding:28px; max-width:420px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3); border:2px solid #bfdbfe; animation:modalIn 0.3s ease; }
+  @keyframes modalIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
+  .modal-icon { text-align:center; font-size:46px; margin-bottom:10px; }
+  .modal-title { text-align:center; font-size:20px; font-weight:700; color:var(--gray-dark); margin-bottom:8px; }
+  .modal-text { text-align:center; font-size:13px; color:var(--gray-mid); line-height:1.6; margin-bottom:18px; }
+  .modal-summary { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px; margin-bottom:18px; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .ms-item { display:flex; flex-direction:column; align-items:center; }
+  .ms-item .ms-num { font-size:22px; font-weight:800; }
+  .ms-item .ms-lbl { font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-mid); }
+  .modal-actions { display:flex; gap:10px; }
+  .modal-actions .btn { flex:1; justify-content:center; }
+  .btn { padding:9px 18px; border-radius:6px; border:none; font-family:Arial,sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:6px; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn-cancel { background:#f5f5f5; color:var(--gray-mid); border:1px solid #e0e0e0; }
+  .btn-confirm-submit { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; box-shadow:0 4px 14px rgba(233,30,140,0.35); }
+
+  /* ===== RESULT SCREEN ===== */
+  #screen-result { background:#eff6ff; padding-bottom:40px; }
+  .result-body { max-width:760px; margin:0 auto; padding:24px 16px; }
+  .result-hero { text-align:center; padding:28px 20px; background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid #bfdbfe; margin-bottom:18px; position:relative; overflow:hidden; }
+  .result-hero::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background:#dbeafe; border-radius:50%; }
+  .result-trophy { font-size:56px; margin-bottom:8px; position:relative; z-index:1; }
+  .result-hero h2 { font-size:26px; font-weight:700; color:var(--gray-dark); margin-bottom:4px; position:relative; z-index:1; }
+  .result-hero p { color:var(--gray-mid); font-size:13px; position:relative; z-index:1; }
+  .score-ring-wrap { display:flex; justify-content:center; margin:18px 0; position:relative; z-index:1; }
+  .score-ring { width:130px; height:130px; border-radius:50%; background:conic-gradient(#1976d2 0%, #bfdbfe var(--score-pct), #eee var(--score-pct)); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(233,30,140,0.3); position:relative; }
+  .score-ring::before { content:''; position:absolute; width:90px; height:90px; background:white; border-radius:50%; }
+  .score-inner { position:relative; z-index:1; text-align:center; }
+  .score-inner .score-num { font-size:28px; font-weight:700; color:#1976d2; line-height:1; }
+  .score-inner .score-total { font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .result-stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:18px; }
+  .result-stat { background:white; border-radius:10px; padding:14px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08); border:1px solid #eee; }
+  .result-stat .rs-num { font-size:24px; font-weight:700; }
+  .result-stat .rs-lbl { font-size:11px; font-weight:700; color:var(--gray-mid); text-transform:uppercase; }
+  .rs-correct .rs-num { color:#2e7d32; } .rs-wrong .rs-num { color:#c62828; } .rs-unattempted .rs-num { color:#9e9e9e; } .rs-score .rs-num { color:#1976d2; }
+  .result-palette-legend { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; padding:10px 12px; background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe; }
+  .rpl-item { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .rpl-dot { width:18px; height:18px; border-radius:4px; flex-shrink:0; }
+  .answer-review { margin-bottom:18px; }
+  .review-q { background:white; border-radius:10px; padding:14px; margin-bottom:8px; border:1px solid #eee; box-shadow:0 1px 6px rgba(0,0,0,0.06); }
+  .review-q.rq-correct { border-left:5px solid #2e7d32; } .review-q.rq-wrong { border-left:5px solid #c62828; } .review-q.rq-skip { border-left:5px solid #1565c0; }
+  .review-q-num { font-weight:800; color:#1976d2; font-size:13px; margin-bottom:5px; }
+  .review-q-marks { display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:800; margin-left:6px; }
+  .rqm-correct { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+  .rqm-wrong { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+  .rqm-skip { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+  .review-q-text { font-size:13.5px; color:var(--gray-dark); margin-bottom:8px; line-height:1.5; }
+  .review-answers { display:flex; gap:8px; flex-wrap:wrap; }
+  .ra-chip { padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; }
+  .ra-your { background:#e3f2fd; color:#1565c0; } .ra-your.wrong { background:#ffebee; color:#c62828; } .ra-correct { background:#e8f5e9; color:#2e7d32; }
+  .result-action-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:22px; }
+  .btn-retry { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:13px 36px; border-radius:50px; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(233,30,140,0.35); transition:all 0.2s; text-transform:uppercase; }
+  .btn-retry:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(233,30,140,0.45); }
+  .btn-pdf { background:linear-gradient(135deg,#1565c0,#0d47a1); color:white; border:none; padding:13px 36px; border-radius:50px; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(21,101,192,0.4); transition:all 0.2s; display:flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:1px; }
+  .btn-pdf:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(21,101,192,0.5); }
+  .instr-card { background:white; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,0.08); overflow:hidden; margin-bottom:16px; border:1px solid #bfdbfe; }
+  .instr-card-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:12px 18px; border-bottom:2px solid #1976d2; display:flex; align-items:center; gap:10px; }
+  .instr-card-header h3 { font-size:15px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .instr-card-body { padding:16px 18px; }
+
+  /* ===== TOAST ===== */
+  .toast-container { position:fixed; top:80px; right:20px; z-index:2000; display:flex; flex-direction:column; gap:8px; }
+  .toast { padding:10px 16px; border-radius:8px; font-size:13px; font-weight:700; color:white; box-shadow:0 4px 16px rgba(0,0,0,0.2); animation:toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards; display:flex; align-items:center; gap:8px; }
+  .toast.success { background:#2e7d32; } .toast.info { background:#1976d2; } .toast.warning { background:#e65100; }
+  @keyframes toastIn { from{transform:translateX(100%);opacity:0} to{transform:translateX(0);opacity:1} }
+  @keyframes toastOut { from{opacity:1} to{opacity:0;transform:translateX(100%)} }
+
+  @media(max-width:768px) {
+    .test-layout { grid-template-columns:1fr; }
+    .right-panel { max-height:none; border-left:none; border-top:2px solid var(--jee-border); }
+    .jee-header { flex-direction:column; align-items:flex-start; }
+    .jbtn { font-size:11px; padding:7px 10px; }
+  }
+
+  /* ===== LOGIN SCREEN ===== */
+  #screen-login { min-height:100vh; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px; }
+  #screen-login.active { display:flex; }
+  .login-card { background:white; border-radius:18px; box-shadow:0 24px 64px rgba(0,0,0,0.45); width:100%; max-width:460px; overflow:hidden; }
+  .login-header { background:linear-gradient(135deg,#1976d2,#0a3880); padding:30px 32px 24px; text-align:center; }
+  .login-logo { font-size:42px; margin-bottom:8px; }
+  .login-header h2 { font-size:24px; font-weight:800; color:white; letter-spacing:1px; margin-bottom:4px; }
+  .login-header p { color:rgba(255,255,255,0.8); font-size:13px; font-weight:600; }
+  .login-body { padding:28px 32px 32px; }
+  .login-field { margin-bottom:18px; }
+  .login-field label { display:block; font-size:11.5px; font-weight:700; color:#555; margin-bottom:7px; text-transform:uppercase; letter-spacing:0.5px; }
+  .login-field input { width:100%; padding:12px 14px; border:2px solid #e0e0e0; border-radius:8px; font-size:14px; font-family:Arial,sans-serif; transition:border-color 0.2s; background:#fafafa; outline:none; }
+  .login-field input:focus { border-color:#1976d2; background:white; }
+  .login-remember { display:flex; align-items:center; gap:8px; margin-bottom:22px; font-size:13px; color:#666; font-weight:600; cursor:pointer; }
+  .login-remember input { width:15px; height:15px; accent-color:#1976d2; cursor:pointer; }
+  .btn-login { width:100%; padding:13px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:8px; font-size:16px; font-weight:700; cursor:pointer; letter-spacing:1px; transition:all 0.2s; text-transform:uppercase; font-family:Arial,sans-serif; }
+  .btn-login:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(233,30,140,0.4); }
+  .login-note { text-align:center; font-size:11.5px; color:#bbb; margin-top:14px; font-weight:600; }
+
+  /* ===== START SCREEN ===== */
+  #screen-start { min-height:100vh; background:linear-gradient(160deg,#fdf0f6 0%,#fff 60%,#fce4ec 100%); }
+  #screen-start.active { display:block; }
+  .flow-bar { background:white; border-bottom:1px solid #bfdbfe; padding:10px 20px; display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; }
+  .flow-step { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#bbb; padding:6px 10px; border-radius:20px; transition:all 0.2s; white-space:nowrap; }
+  .flow-step.done  { color:#2e7d32; }
+  .flow-step.active { color:#1976d2; background:#dbeafe; }
+  .flow-step .fsnum { width:22px; height:22px; border-radius:50%; background:#e0e0e0; color:#888; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
+  .flow-step.done  .fsnum { background:#2e7d32; color:white; }
+  .flow-step.active .fsnum { background:#1976d2; color:white; }
+  .flow-arrow { color:#ccc; font-size:16px; padding:0 4px; }
+  .start-body { max-width:820px; margin:0 auto; padding:28px 16px 48px; }
+  .start-hero { text-align:center; padding:34px 24px 26px; background:white; border-radius:20px; box-shadow:0 6px 28px rgba(233,30,140,0.12); border:1px solid #bfdbfe; margin-bottom:20px; position:relative; overflow:hidden; }
+  .start-hero::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; background:#dbeafe; border-radius:50%; }
+  .start-hero::after  { content:''; position:absolute; bottom:-30px; left:-30px; width:120px; height:120px; background:#dbeafe; border-radius:50%; }
+  .start-hero-icon { font-size:52px; margin-bottom:10px; position:relative; z-index:1; }
+  .start-hero h2 { font-size:24px; font-weight:800; color:var(--gray-dark); margin-bottom:5px; position:relative; z-index:1; }
+  .start-hero p  { color:var(--gray-mid); font-size:13.5px; font-weight:600; position:relative; z-index:1; }
+  .start-cand-card { background:linear-gradient(135deg,#1976d2,#0a3880); border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:16px; margin-bottom:20px; box-shadow:0 6px 20px rgba(233,30,140,0.3); flex-wrap:wrap; }
+  .start-cand-avatar { width:56px; height:56px; background:rgba(255,255,255,0.2); border-radius:50%; border:3px solid rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+  .start-cand-info { flex:1; }
+  .start-cand-name { font-size:20px; font-weight:800; color:white; line-height:1.2; }
+  .start-cand-meta { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; margin-top:3px; }
+  .start-cand-edit { background:rgba(255,255,255,0.18); color:white; border:2px solid rgba(255,255,255,0.4); border-radius:20px; padding:6px 16px; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:Arial,sans-serif; }
+  .start-cand-edit:hover { background:rgba(255,255,255,0.3); }
+  .start-info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:22px; }
+  .start-info-tile { background:white; border-radius:12px; padding:14px 16px; text-align:center; border:1px solid #bfdbfe; box-shadow:0 2px 8px rgba(233,30,140,0.07); }
+  .start-info-tile .sit-label { font-size:10.5px; font-weight:700; color:#0d47a1; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:5px; }
+  .start-info-tile .sit-value { font-size:19px; font-weight:800; color:#1976d2; }
+  .btn-go-instructions { display:block; width:100%; padding:16px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:12px; font-size:20px; font-weight:700; cursor:pointer; letter-spacing:1px; box-shadow:0 6px 24px rgba(233,30,140,0.4); transition:all 0.3s; text-transform:uppercase; font-family:Arial,sans-serif; position:relative; overflow:hidden; }
+  .btn-go-instructions::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition:left 0.5s; }
+  .btn-go-instructions:hover::before { left:100%; }
+  .btn-go-instructions:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(233,30,140,0.5); }
+
+ 
+  /* ===== FULLSCREEN WARNING MODAL ===== */
+  .fs-warning-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.82); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(6px); }
+  .fs-warning-overlay.active { display:flex; }
+  .fs-warning-box { background:white; border-radius:20px; padding:36px 32px; max-width:440px; width:90%; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.5); border:3px solid #c62828; animation:modalIn 0.3s ease; }
+  .fs-warning-icon { font-size:56px; margin-bottom:12px; }
+  .fs-warning-title { font-size:22px; font-weight:800; color:#c62828; margin-bottom:8px; }
+  .fs-warning-text  { font-size:14px; color:#555; line-height:1.6; margin-bottom:20px; }
+  .fs-countdown { font-size:42px; font-weight:800; color:#c62828; margin-bottom:16px; font-family:Arial,sans-serif; }
+  .fs-warning-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .btn-fs-return { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:12px 28px; border-radius:8px; font-size:15px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; }
+  .btn-fs-submit  { background:white; color:#c62828; border:2px solid #ef9a9a; padding:12px 24px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; }
+  .history-section { background:white; border-radius:16px; border:1px solid #bfdbfe; box-shadow:0 2px 12px rgba(233,30,140,0.08); overflow:hidden; margin-bottom:22px; }
+  .history-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:14px 20px; border-bottom:2px solid #1976d2; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .history-header-left { display:flex; align-items:center; gap:10px; }
+  .history-icon { width:32px; height:32px; background:#1976d2; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; color:white; flex-shrink:0; }
+  .history-header h3 { font-size:15px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .btn-clear-hist { background:white; border:1.5px solid #ef9a9a; color:#c62828; border-radius:20px; padding:4px 14px; font-size:11px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; transition:all 0.2s; }
+  .btn-clear-hist:hover { background:#ffebee; }
+  .history-empty { padding:32px; text-align:center; color:#bbb; }
+  .history-empty .he-icon { font-size:36px; margin-bottom:10px; }
+  .history-empty p { font-size:14px; font-weight:600; }
+  .history-wrap { overflow-x:auto; }
+  .history-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .history-table thead tr { background:#eff6ff; }
+  .history-table th { padding:9px 14px; text-align:left; font-size:10.5px; font-weight:700; color:#0d47a1; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #bfdbfe; white-space:nowrap; }
+  .history-table td { padding:10px 14px; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+  .history-table tr:last-child td { border-bottom:none; }
+  .history-table tbody tr:hover td { background:#eff6ff; }
+  .ht-set { font-weight:700; color:#1976d2; white-space:nowrap; }
+  .ht-score { font-weight:800; font-size:15px; }
+  .ht-pct { display:inline-block; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:800; }
+  .ht-pct.high { background:#e8f5e9; color:#2e7d32; }
+  .ht-pct.mid  { background:#fff3e0; color:#e65100; }
+  .ht-pct.low  { background:#ffebee; color:#c62828; }
+  .ht-correct { color:#2e7d32; font-weight:700; }
+  .ht-wrong   { color:#c62828; font-weight:700; }
+  .ht-skip    { color:#9e9e9e; font-weight:700; }
+  .ht-date    { color:#999; font-size:11.5px; }
+  .ht-grade   { font-weight:800; font-size:16px; }
+  .history-summary-bar { display:flex; gap:16px; flex-wrap:wrap; padding:11px 18px; background:#eff6ff; border-top:1px solid #bfdbfe; font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .history-summary-bar span { color:#1976d2; }
+</style>
+</head>
+<body>
+<!-- ==================== TOAST ==================== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ==================== 1. LOGIN SCREEN ==================== -->
+<div class="screen active" id="screen-login">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo">⚡</div>
+      <h2>Thunder CBT</h2>
+      <p>CUET geo — CUET Mock Test</p>
+    </div>
+    <div class="login-body">
+      <div class="login-field">
+        <label>Candidate Name</label>
+        <input type="text" id="loginName" placeholder="Enter your full Name" autocomplete="name" onkeydown="if(event.key==='Enter')document.getElementById('loginPass').focus()">
+      </div>
+      <div class="login-field">
+        <label>Password / Roll No</label>
+        <input type="password" id="loginPass" placeholder="Enter password or roll number" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <label class="login-remember">
+        <input type="checkbox" id="loginRemember"> Remember me on this device
+      </label>
+      <button class="btn-login" onclick="doLogin()">▶ Login &amp; Continue</button>
+      <p class="login-note">Your credentials are saved locally on this device only.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 2. START SCREEN ==================== -->
+<div class="screen" id="screen-start">
+  <!-- Flow progress bar -->
+  <div class="flow-bar">
+    <div class="flow-step done"   id="flow-login"><span class="fsnum">✓</span> Login</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step active" id="flow-start"><span class="fsnum">2</span> Start</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"        id="flow-instr"><span class="fsnum">3</span> Instructions</div>
+<span class="flow-arrow">›</span>
+<div class="flow-step"        id="flow-test"><span class="fsnum">4</span> Test</div>
+<span class="flow-arrow">›</span>
+<div class="flow-step"        id="flow-result"><span class="fsnum">5</span> Result</div>
+  </div>
+
+  <div class="start-body">
+    <!-- Welcome hero -->
+    <div class="start-hero">
+      <div class="start-hero-icon">⚡</div>
+      <h2>Thunder CBT — CUET geo</h2>
+      <p>CUET Computer Based Test · CUET · 50 Questions Each</p>
+    </div>
+
+    <!-- Candidate card -->
+    <div class="start-cand-card">
+      <div class="start-cand-avatar">👤</div>
+      <div class="start-cand-info">
+        <div class="start-cand-name" id="startCandName">Candidate</div>
+        <div class="start-cand-meta">
+          Roll No: <span id="startCandRoll">—</span> &nbsp;·&nbsp; CUET &nbsp;·&nbsp; CUET — geo
+        </div>
+      </div>
+      <button class="start-cand-edit" onclick="showScreen('login')">✏️ Edit Details</button>
+    </div>
+
+    <!-- Exam info tiles -->
+    <div class="start-info-grid">
+      <div class="start-info-tile">
+        <div class="sit-label">Questions / Set</div>
+        <div class="sit-value">50</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Total Sets</div>
+        <div class="sit-value">4</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Duration / Set</div>
+        <div class="sit-value">60 min</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Max Marks</div>
+        <div class="sit-value">250</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Correct</div>
+        <div class="sit-value" style="color:#2e7d32;">+5</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Wrong</div>
+        <div class="sit-value" style="color:#c62828;">−1</div>
+      </div>
+    </div>
+
+    <!-- Test Result History -->
+    <div class="history-section">
+      <div class="history-header">
+        <div class="history-header-left">
+          <div class="history-icon">📊</div>
+          <h3>Test Result History</h3>
+        </div>
+        <button class="btn-clear-hist" onclick="clearHistory()">🗑 Clear History</button>
+      </div>
+      <div id="historyContent">
+        <div class="history-empty">
+          <div class="he-icon">📭</div>
+          <p>No attempts yet — complete a test to see your history here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proceed button -->
+    <button class="btn-go-instructions" onclick="proceedToInstructions()">
+  ⚗️ Start geo Mock →
+</button>
+  </div>
+</div>
+
+
+<!-- ==================== FULLSCREEN WARNING MODAL ==================== -->
+<div class="fs-warning-overlay" id="fsWarningModal">
+  <div class="fs-warning-box">
+    <div class="fs-warning-icon">⚠️</div>
+    <div class="fs-warning-title">Fullscreen Exited!</div>
+    <div class="fs-warning-text" id="fsWarningText">
+      You have exited fullscreen mode. The exam requires fullscreen. Please return to fullscreen or your test will be auto-submitted.
+    </div>
+    <div class="fs-countdown" id="fsCountdown">3</div>
+    <div class="fs-warning-btns">
+      <button class="btn-fs-return" onclick="returnToFullscreen()">↩ Return to Fullscreen</button>
+      <button class="btn-fs-submit" onclick="forceSubmit()">Submit Now</button>
+    </div>
+  </div>
+</div>
+<div class="screen" id="screen-instructions">
+  <!-- 6-step flow bar (same as other screens) -->
+  <div class="flow-bar">
+    <div class="flow-step done"><span class="fsnum">✓</span> Login</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step done"><span class="fsnum">✓</span> Start</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step active"><span class="fsnum">4</span> Instructions</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"><span class="fsnum">5</span> Test</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"><span class="fsnum">6</span> Result</div>
+  </div>
+
+  <!-- Pink header bar with candidate name -->
+  <div class="exam-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1>Thunder CBT</h1>
+          <p>CUET Mock Test Series</p>
+        </div>
+      </div>
+      <div class="header-candidate">
+        <div class="candidate-avatar">👤</div>
+        <div class="candidate-info">
+          <div class="name" id="instrCandName">Candidate</div>
+          <div class="roll" id="instrCandRoll">Roll No: TH-2024-CHM-001</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instr-body">
+
+    <!-- General Instructions -->
+    <div class="instr-card">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">📌</div>
+        <h3>General Instructions</h3>
+      </div>
+      <div class="instr-card-body">
+        <ul class="instr-list">
+          <li><span class="num">1</span>This test contains <strong>50 MCQ questions</strong> from CUET geo syllabus (Class 12). Your set was selected on the previous screen.</li>
+          <li><span class="num">2</span>Each correct answer carries <strong>+5 marks</strong>. Each wrong answer carries <strong>−1 mark</strong>. Unattempted questions carry <strong>0 marks</strong>.</li>
+          <li><span class="num">3</span>Click on an option to select it. You can change your answer any time before final submission.</li>
+          <li><span class="num">4</span>Use the <strong>Question Palette</strong> on the right side to navigate to any question directly.</li>
+          <li><span class="num">5</span>You can mark questions <strong>"Mark for Review"</strong> to revisit them later before submission.</li>
+          <li><span class="num">6</span>The timer is displayed at the top. The test will <strong>auto-submit</strong> when time runs out.</li>
+          <li><span class="num">7</span>The exam runs in <strong>fullscreen mode</strong>. Exiting fullscreen will trigger a 3-sgeond auto-submit warning.</li>
+          <li><span class="num">8</span>Switching browser tabs will cause <strong>immediate auto-submission</strong> of your test.</li>
+          <li><span class="num">9</span>Click <strong>"Save &amp; Next"</strong> to save your answer and move to the next question.</li>
+          <li><span class="num">10</span>Once you click <strong>"Submit Test"</strong>, a confirmation popup will appear before final submission.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Question Palette Legend -->
+    <div class="instr-card">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">🗂️</div>
+        <h3>Question Palette — Colour Guide</h3>
+      </div>
+      <div class="instr-card-body">
+        <p style="font-size:12.5px;color:var(--gray-mid);font-weight:600;margin-bottom:12px;">During the exam, the question palette on the right uses these colours:</p>
+        <div class="legend-grid">
+          <div class="legend-item"><div class="legend-dot dot-not-visited">1</div> Not Visited — Not opened yet</div>
+          <div class="legend-item"><div class="legend-dot dot-not-answered">2</div> Not Answered — Opened, no answer</div>
+          <div class="legend-item"><div class="legend-dot dot-answered">3</div> Answered — Answer saved</div>
+          <div class="legend-item"><div class="legend-dot dot-marked">4</div> Marked for Review — Will be evaluated</div>
+          <div class="legend-item"><div class="legend-dot dot-answered-marked">5</div> Answered + Marked — Saved &amp; flagged</div>
+        </div>
+        <div style="margin-top:14px;padding:12px;background:#eff6ff;border-radius:10px;border:1px solid #bfdbfe;">
+          <p style="font-size:12px;font-weight:700;color:#0a3880;margin-bottom:6px;">📊 After submission, palette changes to:</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#2e7d32;"><span style="width:18px;height:18px;background:#2e7d32;border-radius:4px;display:inline-block;"></span> Green = Correct</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#c62828;"><span style="width:18px;height:18px;background:#c62828;border-radius:4px;display:inline-block;"></span> Red = Wrong</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1565c0;"><span style="width:18px;height:18px;background:#1565c0;border-radius:4px;display:inline-block;"></span> Blue = Unattempted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agreement & Start -->
+    <label class="agree-check">
+      <input type="checkbox" id="agreeCheck" onchange="toggleStartBtn()">
+      I have read all the instructions carefully and I am ready to start the examination.
+    </label>
+
+    <div class="step-nav">
+      <button class="btn-step-back" onclick="showScreen('start')">← Back</button>
+      <button class="btn-start-exam" id="startBtn" onclick="startExam()" style="opacity:0.5;pointer-events:none;">
+        ⚡ Start Exam
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== TEST SCREEN ==================== -->
+<div class="screen" id="screen-test">
+
+  <!-- JEE-style top candidate header -->
+  <div class="jee-header">
+    <div class="jee-candidate-block">
+      <div class="jee-photo">
+        <svg viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="22" r="14" fill="#888"/>
+          <ellipse cx="30" cy="58" rx="22" ry="14" fill="#888"/>
+        </svg>
+      </div>
+      <div class="jee-info-table">
+        <div class="jee-info-row"><span class="jee-info-label">Candidate Name</span><span class="jee-info-value name-val" id="jeeNameDisp">: [Your Name]</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Exam Name</span><span class="jee-info-value">: CUET</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Subject Name</span><span class="jee-info-value">: CUET — geo</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Remaining Time</span><span class="jee-info-value time-val" id="timerDisplay">60:00:00</span></div>
+      </div>
+    </div>
+    <div class="jee-lang-block">
+      <select class="jee-lang-select" onchange="showToast('Language: '+this.value,'info')">
+        <option>English</option>
+        <option>Hindi</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Subject bar -->
+  <div class="jee-subject-bar">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <div class="jee-subject-tag" id="testSetTabLabel">⚗️ geo</div>
+  <div style="background:#dbeafe;border:1px solid #90caf9;padding:3px 12px;border-radius:4px;font-size:12px;font-weight:700;color:#0d47a1;">
+    Subject: <span id="subjectIdTag">chem</span>
+  </div>
+  <div style="background:#e3f2fd;border:1px solid #90caf9;padding:3px 12px;border-radius:4px;font-size:12px;font-weight:700;color:#0d47a1;">
+    Chapter: <span id="chapterIdTag">chem-cuet-set1</span>
+  </div>
+</div>
+    <div class="jee-marks-info">
+      <span class="jee-mark-chip pos">✓ Correct: +5</span>
+      <span class="jee-mark-chip neg">✗ Wrong: −1</span>
+      <span style="font-size:12px;color:#555;font-weight:600;">Unattempted: 0</span>
+    </div>
+  </div>
+
+  <!-- Main two-column layout -->
+  <div class="test-layout">
+
+    <!-- LEFT: Question panel -->
+    <div class="question-panel">
+      <!-- Q header -->
+      <div class="q-header-bar">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="q-num-badge" id="qNumBadge">Question 1</span>
+          <span class="q-topic-tag" id="qTopicTag">Topic</span>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <span class="jee-mark-chip pos" style="font-size:11px;">+5</span>
+          <span class="jee-mark-chip neg" style="font-size:11px;">−1</span>
+        </div>
+      </div>
+
+      <!-- Scrollable question body -->
+      <div class="question-scroll" id="questionBody">
+        <!-- Loaded dynamically -->
+      </div>
+
+      <!-- JEE-style action row -->
+      <div class="jee-action-row">
+  <div class="jee-action-left">
+    <button class="jbtn jbtn-green" onclick="saveAndNext()">Save &amp; Next ▶</button>
+    <button class="jbtn jbtn-white" onclick="clearResponse()">Clear</button>
+    <button class="jbtn jbtn-orange" onclick="saveMarkAndNext()">Save &amp; Mark for Review</button>
+    <button class="jbtn jbtn-blue" onclick="markAndNext()">Mark for Review</button>
+  </div>
+  <div class="jee-action-right" style="display:flex;align-items:center;gap:8px;width:100%;justify-content:space-between;">
+    <div style="display:flex;gap:8px;">
+      <button class="jbtn jbtn-gray" onclick="goBack()">◀ Back</button>
+      <button class="jbtn jbtn-gray" onclick="if(currentQ < questions.length-1) renderQuestion(currentQ+1)">Next ▶</button>
+    </div>
+    <button class="jbtn jbtn-purple" onclick="showSubmitModal()" style="margin-left:auto;">🏁 Submit Test</button>
+  </div>
+</div>
+    </div>
+
+    <!-- RIGHT: Palette panel -->
+    <div class="right-panel">
+
+      <!-- JEE Legend box -->
+      <div class="jee-legend-box">
+        <div class="jee-legend-row">
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-nv" id="stat-nv">50</div>
+            <span class="jee-legend-text">Not Visited</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-na" id="stat-na">0</div>
+            <span class="jee-legend-text">Not Answered</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-ans" id="stat-ans">0</div>
+            <span class="jee-legend-text">Answered</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-mrk" id="stat-mrk">0</div>
+            <span class="jee-legend-text">Marked for Review</span>
+          </div>
+          <div class="jee-legend-item" style="grid-column:span 2;">
+            <div class="jee-legend-count jlc-am" id="stat-am">0</div>
+            <span class="jee-legend-text">Answered &amp; Marked for Review <small style="color:#777;">(will be evaluated)</small></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Palette -->
+      <div class="palette-section">
+        <div class="palette-section-title">⚗️ geo — <span id="paletteSetLabel">Mock</span></div>
+        <div class="q-palette" id="questionPalette"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESULT SCREEN ==================== -->
+<div class="screen" id="screen-result">
+  <div class="exam-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1>Thunder CBT</h1>
+          <p>Result — CUET geo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="result-body">
+    <div class="result-hero">
+      <div class="result-trophy" id="resultTrophy">🏆</div>
+      <h2 id="resultTitle">Test Completed!</h2>
+      <p id="resultSubtitle">Here's your performance breakdown for geo</p>
+      <div class="score-ring-wrap">
+        <div class="score-ring" id="scoreRing" style="--score-pct:0%">
+          <div class="score-inner">
+            <div class="score-num" id="resultScoreNum">0</div>
+            <div class="score-total">/ 250</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-stats-grid">
+      <div class="result-stat rs-correct">
+        <div class="rs-num" id="res-correct">0</div>
+        <div class="rs-lbl">Correct</div>
+      </div>
+      <div class="result-stat rs-wrong">
+        <div class="rs-num" id="res-wrong">0</div>
+        <div class="rs-lbl">Wrong</div>
+      </div>
+      <div class="result-stat rs-unattempted">
+        <div class="rs-num" id="res-unattempted">0</div>
+        <div class="rs-lbl">Unattempted</div>
+      </div>
+      <div class="result-stat rs-score">
+        <div class="rs-num" id="res-score">0</div>
+        <div class="rs-lbl">Final Score</div>
+      </div>
+    </div>
+
+    <div class="instr-card answer-review">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">📊</div>
+        <h3>Answer Review</h3>
+      </div>
+      <div class="instr-card-body">
+        <!-- Result palette legend -->
+        <div class="result-palette-legend">
+          <div class="rpl-item"><div class="rpl-dot" style="background:#2e7d32;"></div> Correct (+5)</div>
+          <div class="rpl-item"><div class="rpl-dot" style="background:#c62828;"></div> Wrong (−1)</div>
+          <div class="rpl-item"><div class="rpl-dot" style="background:#1565c0;"></div> Not Attempted (0)</div>
+        </div>
+        <!-- Result palette grid -->
+        <div class="q-palette" id="resultPalette" style="margin-bottom:18px;"></div>
+        <!-- Detailed answer review -->
+        <div id="answerReviewBody"></div>
+      </div>
+    </div>
+
+    <div class="result-action-row">
+      <button class="btn-pdf" onclick="downloadPDF()">📄 Download PDF Report</button>
+      <button class="btn-retry" onclick="retryTest()" style="margin:0;">🔄 Retry Test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SUBMIT MODAL ==================== -->
+<div class="modal-overlay" id="submitModal">
+  <div class="modal-box">
+    <div class="modal-icon">📤</div>
+    <div class="modal-title">Submit Test?</div>
+    <div class="modal-text">Please review your progress before final submission. This action cannot be undone.</div>
+    <div class="modal-summary" id="modalSummary"></div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeModal()">✕ Cancel</button>
+      <button class="btn btn-confirm-submit" onclick="confirmSubmit()">✓ Confirm Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SUBJECT_ID  = "geo";
+const CHAPTER_ID  = "geo-pyq24";
+const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+
+// ===== SET 1: 10 REAL + 40 PLACEHOLDERS =====
+const questions = [
+  {
+    id: 1,
+    section: "Application MCQ",
+    text: `'Boro', 'Aman' and 'Aus' are:`,
+    options: {
+      a: "tribes which are found in the north-eastern part of India",
+      b: "types of folk dance",
+      c: "names of rice crops",
+      d: "types of cotton crop"
+    },
+    correctAnswer: "c",
+    explanation: "Boro, Aman, and Aus are seasonal rice varieties. Boro is cultivated in dry season, Aman in monsoon, Aus in summer. Options a, b, d are incorrect as these are not tribes, dances, or cotton types. NCERT Class 12 Geography (India People and Economy) Ch. 5: Agricultural crops.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 2,
+    section: "Application MCQ",
+    text: `_____ is an example of ancient towns in India.`,
+    options: {
+      a: "Madurai",
+      b: "Hyderabad",
+      c: "Kolkata",
+      d: "Delhi"
+    },
+    correctAnswer: "a",
+    explanation: "Madurai is one of the oldest continuously inhabited cities (over 2,500 years), known as 'Athens of the East'. Hyderabad founded 1591, Kolkata 1690, Delhi ancient but Madurai more deeply rooted in ancient Tamil civilization. NCERT Class 12 Geography (India) Ch. 4: Classification of towns.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 3,
+    section: "Application MCQ",
+    text: `Which of the following towns developed as a satellite town?`,
+    options: {
+      a: "Rohtak",
+      b: "Sindri",
+      c: "Dispur",
+      d: "Mhow"
+    },
+    correctAnswer: "a",
+    explanation: "Rohtak developed as satellite town of Delhi NCR. Sindri is industrial town (fertilizer plant), Dispur is administrative capital of Assam, Mhow is cantonment town. NCERT Class 12 Geography (India) Ch. 4: Satellite towns.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 4,
+    section: "Application MCQ",
+    text: `Dhani is an example of _____ type of rural settlements.`,
+    options: {
+      a: "Hamleted",
+      b: "Dispersed",
+      c: "Semi-clustered",
+      d: "Clustered"
+    },
+    correctAnswer: "a",
+    explanation: "Dhani (Rajasthan) refers to small clusters of houses - hamleted settlements. Dispersed are scattered individual houses; semi-clustered is mix; clustered is dense grouping. NCERT Class 12 Geography (Fundamentals) Ch. 4: Rural settlement types.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 5,
+    section: "Application MCQ",
+    text: `Which of the following States registered the highest population growth rate during 2001-2011?`,
+    options: {
+      a: "Karnataka",
+      b: "Tamil Nadu",
+      c: "Rajasthan",
+      d: "Maharashtra"
+    },
+    correctAnswer: "c",
+    explanation: "Rajasthan registered highest growth rate ~21.31% among given states. Karnataka ~15.67%, Tamil Nadu ~15.61%, Maharashtra ~15.99%. NCERT Class 12 Geography (India) Ch. 1: Population growth rates.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 6,
+    section: "Application MCQ",
+    text: `Among the following, which was the least populated state in 2011?`,
+    options: {
+      a: "Haryana",
+      b: "Tripura",
+      c: "Jharkhand",
+      d: "Sikkim"
+    },
+    correctAnswer: "d",
+    explanation: "Sikkim had population ~610,577 (least among given). Haryana ~25.35 million, Tripura ~3.67 million, Jharkhand ~32.96 million. NCERT Class 12 Geography (India) Ch. 1: Population distribution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 7,
+    section: "Application MCQ",
+    text: `When and by whom was the first Human Development Report published?`,
+    options: {
+      a: "WHO in 1992",
+      b: "UNDP in 1992",
+      c: "WHO in 1991",
+      d: "UNDP in 1990"
+    },
+    correctAnswer: "d",
+    explanation: "First Human Development Report published by UNDP in 1990, introduced HDI (health, education, living standards). WHO focuses on health only. NCERT Class 12 Geography (Fundamentals) Ch. 1: Human Development Index.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 8,
+    section: "Application MCQ",
+    text: `Which of the following is not a push factor for the migration of the rural population in India?`,
+    options: {
+      a: "High population pressure on the land",
+      b: "Availability of regular work",
+      c: "Lack of basic infrastructural facilities like health care, education, etc",
+      d: "Local conflicts"
+    },
+    correctAnswer: "b",
+    explanation: "Availability of regular work is a pull factor (attracts migrants), not a push factor. Push factors drive people away: land pressure, lack of facilities, conflicts. NCERT Class 12 Geography (India) Ch. 2: Push-pull factors of migration.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 9,
+    section: "Application MCQ",
+    text: `What is the pattern of settlement that develops around a lake?`,
+    options: {
+      a: "Rectangular pattern",
+      b: "Linear pattern",
+      c: "T-shaped pattern",
+      d: "Circular pattern"
+    },
+    correctAnswer: "d",
+    explanation: "Circular pattern develops around lake as water body serves as central point for equal access. Rectangular (grid planning), linear (along road/river), T-shaped (junction). NCERT Class 12 Geography (Fundamentals) Ch. 4: Settlement patterns.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 10,
+    section: "Application MCQ",
+    text: `In which country is milk transported from farms to factories through pipelines?`,
+    options: {
+      a: "India",
+      b: "New Zealand",
+      c: "Canada",
+      d: "Mexico"
+    },
+    correctAnswer: "b",
+    explanation: "New Zealand uses pipeline transport for milk to maintain quality. India, Canada, Mexico use tankers/trucks. NCERT Class 12 Geography (Fundamentals) Ch. 5: Dairy farming technology.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 11,
+    section: "Application MCQ",
+    text: `Which of the following is not one of the pillars of Human Development?`,
+    options: {
+      a: "Equity",
+      b: "Affordability",
+      c: "Sustainability",
+      d: "Empowerment"
+    },
+    correctAnswer: "b",
+    explanation: "UNDP pillars of Human Development: Equity, Sustainability, Empowerment, Productivity. Affordability is not a pillar. NCERT Class 12 Geography (Fundamentals) Ch. 1: Human Development pillars.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 12,
+    section: "Application MCQ",
+    text: `Which of the following approaches was initially proposed by the International Labour Organization?`,
+    options: {
+      a: "Basic needs approach",
+      b: "Income approach",
+      c: "Capability approach",
+      d: "Welfare approach"
+    },
+    correctAnswer: "a",
+    explanation: "Basic Needs Approach proposed by ILO in 1970s focusing on access to essential services. Income approach is traditional; Capability approach by Amartya Sen; Welfare approach is social safety nets. NCERT Class 12 Geography (Fundamentals) Ch. 1: Development approaches.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 13,
+    section: "Application MCQ",
+    text: `Which of the following country's population does not have triangular shaped age-sex pyramid?`,
+    options: {
+      a: "Australia",
+      b: "Bangladesh",
+      c: "Nigeria",
+      d: "Mexico"
+    },
+    correctAnswer: "a",
+    explanation: "Australia has rectangular/columnar pyramid (stable population). Bangladesh, Nigeria, Mexico have triangular pyramids (high birth rates, young population). NCERT Class 12 Geography (Fundamentals) Ch. 2: Population pyramids.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 14,
+    section: "Application MCQ",
+    text: `Which of the following geographers described the 'state/country' as a 'living organism'?`,
+    options: {
+      a: "French",
+      b: "German",
+      c: "Australian",
+      d: "Indian"
+    },
+    correctAnswer: "b",
+    explanation: "German geographer Friedrich Ratzel proposed Organic Theory of State (Lebensraum). French (Blache - possibilism), Australian (Taylor), Indian - not associated with this theory. NCERT Class 12 Geography (Fundamentals) Ch. 1: Political geography.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 15,
+    section: "Application MCQ",
+    text: `"Geography is the study of human beings and environment where nature is supreme that dictates the lifestyle of human beings." Identify the geographical approach referred to in this statement.`,
+    options: {
+      a: "Possibilism",
+      b: "Environmental Determinism",
+      c: "Behaviouralism",
+      d: "Humanism"
+    },
+    correctAnswer: "b",
+    explanation: "Environmental Determinism states nature dictates human lifestyle. Possibilism says humans modify environment; Behaviouralism focuses on psychological processes; Humanism emphasizes human values. NCERT Class 12 Geography (Fundamentals) Ch. 1: Approaches to human geography.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 16,
+    section: "Application MCQ",
+    text: `Who defined Human Geography as "Conception resulting from a more synthetic knowledge of the physical laws governing our earth and of the relations between the living beings which inhabit it"?`,
+    options: {
+      a: "Ratzel",
+      b: "Blache",
+      c: "Taylor",
+      d: "Semple"
+    },
+    correctAnswer: "b",
+    explanation: "Paul Vidal de la Blache (French geographer) gave this definition. Ratzel (German) gave organic theory; Taylor (Australian) environmental determinism; Semple (American) possibilism. NCERT Class 12 Geography (Fundamentals) Ch. 1: Definition of Human Geography.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 17,
+    section: "Application MCQ",
+    text: `Jhabua district is located in which agro-climatic zone of Madhya Pradesh?`,
+    options: {
+      a: "Northernmost",
+      b: "Southernmost",
+      c: "Easternmost",
+      d: "Westernmost"
+    },
+    correctAnswer: "d",
+    explanation: "Jhabua is in westernmost agro-climatic zone of Madhya Pradesh, bordering Gujarat, characterized by hills and plateaus. NCERT Class 12 Geography (India) Ch. 6: Watershed management case study.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 18,
+    section: "Application MCQ",
+    text: `Which among the following was not used by Bhils to revitalise Common Property Resources?`,
+    options: {
+      a: "Plantation of fodder grass",
+      b: "Plantation of trees",
+      c: "Open grazing",
+      d: "Social-fencing"
+    },
+    correctAnswer: "c",
+    explanation: "Open grazing leads to overgrazing and degradation. Bhils used fodder grass plantation, tree plantation, and social-fencing (voluntary grazing restrictions). NCERT Class 12 Geography (India) Ch. 6: Common property resource management.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 19,
+    section: "Application MCQ",
+    text: `The Watershed Management Programmes, which have been successfully implemented in Jhabua were funded by:`,
+    options: {
+      a: "Ministry of Tourism",
+      b: "Ministries of Rural Development and Agriculture",
+      c: "Ministry of Road Transport and Highways",
+      d: "Ministry of Tribal Affairs"
+    },
+    correctAnswer: "b",
+    explanation: "Watershed Management Programmes in Jhabua funded by Ministries of Rural Development and Agriculture (through Rajiv Gandhi Mission for Watershed Management). Others not involved in watershed funding. NCERT Class 12 Geography (India) Ch. 6: Watershed development schemes.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 20,
+    section: "Application MCQ",
+    text: `Which tribal community has high concentration in the district of Jhabua?`,
+    options: {
+      a: "Bhils",
+      b: "Munda",
+      c: "Santhal",
+      d: "Meena"
+    },
+    correctAnswer: "a",
+    explanation: "Bhils are largest tribal group in Jhabua. Munda and Santhal are in Jharkhand/Odisha; Meena in Rajasthan. NCERT Class 12 Geography (India) Ch. 3: Tribal population distribution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 21,
+    section: "Application MCQ",
+    text: `Petlawad block of Jhabua is located in which part of the district?`,
+    options: {
+      a: "Southernmost",
+      b: "Westernmost",
+      c: "Northernmost",
+      d: "Easternmost"
+    },
+    correctAnswer: "c",
+    explanation: "Petlawad block is in northernmost part of Jhabua district. NCERT Class 12 Geography (India) Ch. 6: Watershed management case study details.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 22,
+    section: "Application MCQ",
+    text: `Which of the following is not a product of cottage industry?`,
+    options: {
+      a: "Mat",
+      b: "Shoes",
+      c: "Car",
+      d: "Basket"
+    },
+    correctAnswer: "c",
+    explanation: "Car requires large-scale industrial production (assembly lines, specialized machinery). Mats, shoes (handmade), baskets are cottage industry products. NCERT Class 12 Geography (India) Ch. 6: Cottage industries.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 23,
+    section: "Application MCQ",
+    text: `Large scale manufacturing is not:`,
+    options: {
+      a: "capital intensive",
+      b: "energy intensive",
+      c: "technology intensive",
+      d: "labour intensive"
+    },
+    correctAnswer: "d",
+    explanation: "Large scale manufacturing is capital, energy, and technology intensive, but NOT labour intensive (uses automation). Small scale/cottage industries are labour intensive. NCERT Class 12 Geography (India) Ch. 6: Manufacturing characteristics.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 24,
+    section: "Application MCQ",
+    text: `From the following, identify the feature of the cottage industry:`,
+    options: {
+      a: "Use of advanced technology",
+      b: "Specialized workers",
+      c: "Finished products may be for consumption in the same household",
+      d: "Mass production"
+    },
+    correctAnswer: "c",
+    explanation: "Cottage industry products are often consumed within household or sold locally. Advanced technology, specialized workers, mass production are features of large-scale industry. NCERT Class 12 Geography (India) Ch. 6: Cottage industry features.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 25,
+    section: "Arrange / Choose Correct",
+    text: `Which one of the following is not a feature of small scale manufacturing?`,
+    options: {
+      a: "It engages semi-skilled labour force.",
+      b: "It provides employment and raises local purchasing power.",
+      c: "The artisans produce goods in their homes with the help of their family members or part-time labour.",
+      d: "It is labour intensive manufacturing"
+    },
+    correctAnswer: "c",
+    explanation: "Option c describes cottage industry, not small scale manufacturing. Small scale manufacturing uses semi-skilled labour, provides employment, is labour intensive but typically in workshops, not homes. NCERT Class 12 Geography (India) Ch. 6: Small scale vs cottage industries.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 26,
+    section: "Application MCQ",
+    text: `The small scale manufacturing and the cottage manufacturing are distinguished on the basis of:`,
+    options: {
+      a: "raw materials",
+      b: "quantity of production",
+      c: "production techniques",
+      d: "scale of profits"
+    },
+    correctAnswer: "c",
+    explanation: "Production techniques differentiate them: small scale uses modern machinery/automation; cottage uses traditional methods/manual labour. Raw materials and quantity may be similar; profits vary. NCERT Class 12 Geography (India) Ch. 6: Small scale vs cottage.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 27,
+    section: "Arrange / Choose Correct",
+    text: `Identify the correct statements about transportation in India:\n\n(A) Atal Tunnel passes through Pir Panjal Range.\n(B) About 80% Indian Railway track is of metre gauge.\n(C) The Inland Waterways Authority was set up in 1986.\n(D) Konkan Railway connects Roha in Karnataka to Mangalore in Kerala.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (C) only",
+      b: "(A) and (C) only",
+      c: "(A) and (B) only",
+      d: "(B), (C) and (D) only"
+    },
+    correctAnswer: "b",
+    explanation: "A and C are correct. B is false: Indian Railways predominantly broad gauge (~80%+). D is false: Konkan Railway connects Roha (Maharashtra) to Mangalore (Karnataka). NCERT Class 12 Geography (India) Ch. 8: Transport.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 28,
+    section: "Arrange / Choose Correct",
+    text: `Identify the correct statements with reference to oil refineries in India:\n\n(A) Digboi is an example of market-based oil refinery.\n(B) Tatipaka Oil Refinery is located in Andhra Pradesh.\n(C) Numaligarh Oil Refinery is located in north-east India.\n(D) Bina Oil Refinery is located in Madhya Pradesh.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (B) and (C) only",
+      c: "(A), (C) and (D) only",
+      d: "(B), (C) and (D) only"
+    },
+    correctAnswer: "d",
+    explanation: "B, C, D are correct. A is false: Digboi is location-based (near oil fields), not market-based. NCERT Class 12 Geography (India) Ch. 7: Oil refineries.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 29,
+    section: "Match the Following",
+    text: `Match List-I with List-II:\n\nList-I (Economic Activity):\n(A) Quaternary\n(B) Secondary\n(C) Tertiary\n(D) Primary\n\nList-II (Example):\n(I) Manufacturing\n(II) Mining\n(III) Taxi services\n(IV) Research scientist\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      b: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      c: "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)",
+      d: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+    },
+    correctAnswer: "c",
+    explanation: "Quaternary = Research scientist (IV); Secondary = Manufacturing (I); Tertiary = Taxi services (III); Primary = Mining (II). NCERT Class 12 Geography (Fundamentals) Ch. 5: Types of economic activities.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 30,
+    section: "Arrange / Choose Correct",
+    text: `Identify the correct statements with reference to the metropolis:\n\n(A) It is often the chief centre or seat of some form of activity.\n(B) It could be administrative, commercial or industrial centre.\n(C) It generally serves a small hinterland.\n(D) It is a very large city or agglomeration of population.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(A), (B) and (C) only",
+      d: "(B), (C) and (D) only"
+    },
+    correctAnswer: "a",
+    explanation: "A, B, D are correct. C is false: Metropolis serves a large hinterland (wide area). NCERT Class 12 Geography (Fundamentals) Ch. 4: Metropolis characteristics.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 31,
+    section: "Match the Following",
+    text: `Match List-I with List-II:\n\nList-I (Type of Town):\n(A) Industrial\n(B) Commercial\n(C) Transport\n(D) Garrison\n\nList-II (Example):\n(I) Mhow\n(II) Katni\n(III) Satna\n(IV) Modinagar\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)",
+      b: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      c: "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)",
+      d: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+    },
+    correctAnswer: "a",
+    explanation: "Industrial = Modinagar (IV); Commercial = Satna (III); Transport = Katni (II); Garrison = Mhow (I). NCERT Class 12 Geography (India) Ch. 4: Functional classification of towns.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 32,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following states in descending order of their population density as per Census of India, 2011:\n\n(A) West Bengal\n(B) Uttar Pradesh\n(C) Kerala\n(D) Tamil Nadu\n\nChoose the correct answer:`,
+    options: {
+      a: "(D), (A), (C), (B)",
+      b: "(A), (C), (B), (D)",
+      c: "(B), (A), (D), (C)",
+      d: "(C), (B), (D), (A)"
+    },
+    correctAnswer: "b",
+    explanation: "Descending: West Bengal (1028) > Kerala (860) > Uttar Pradesh (828) > Tamil Nadu (555). Option b (A, C, B, D) correct. NCERT Class 12 Geography (India) Ch. 1: Population density.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 33,
+    section: "Application MCQ",
+    text: `Identify from the following the statement which is not correct about the Rhine waterways.`,
+    options: {
+      a: "It is navigable for 700 km",
+      b: "It flows through a rich coalfield and the whole basin has become a prosperous manufacturing area",
+      c: "Ocean-going vessels can reach upto Cologne.",
+      d: "It connects the industrial areas of Switzerland, France and Russia."
+    },
+    correctAnswer: "d",
+    explanation: "Rhine does not connect Russia (flows through Switzerland, Germany, France, Netherlands). A, B, C are correct. NCERT Class 12 Geography (Fundamentals) Ch. 8: Major waterways.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 34,
+    section: "Arrange / Choose Correct",
+    text: `Which of the following statements are correct with respect to land degradation?\n\n(A) All degraded lands are wasteland.\n(B) All degraded lands may not be wasteland, but unchecked process of development may lead the conversion to wasteland.\n(C) Land degradation is permanent or temporary decline in productive capacity of the land.\n(D) Waterlogged, marshy areas and gullied lands are different types of degraded lands.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (C) and (D) only",
+      b: "(A), (B) and (D) only",
+      c: "(A), (B) and (C) only",
+      d: "(B), (C) and (D) only"
+    },
+    correctAnswer: "d",
+    explanation: "B, C, D are correct. A is false: degraded land may still be in use but less productive; wasteland is completely unproductive. NCERT Class 12 Geography (India) Ch. 6: Land degradation.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 35,
+    section: "Match the Following",
+    text: `Match List-I with List-II:\n\nList-I (Energy Type):\n(A) Nuclear energy\n(B) Wind energy\n(C) Tidal energy\n(D) Geothermal energy\n\nList-II (Key Locations/Regions):\n(I) Gujarat and Rajasthan\n(II) West Coast of India\n(III) Tarapur\n(IV) Manikaran\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      b: "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)",
+      c: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      d: "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
+    },
+    correctAnswer: "b",
+    explanation: "Nuclear = Tarapur (III); Wind = Gujarat/Rajasthan (I); Tidal = West Coast (II); Geothermal = Manikaran (IV). NCERT Class 12 Geography (India) Ch. 7: Energy resources.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 36,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the agricultural development of India in chronological order from Independence to present day:\n\n(A) Green Revolution\n(B) Agro-Climatic Planning\n(C) Intensive Agricultural District Programme\n(D) National Mission for Sustainable Agriculture\n\nChoose the correct answer:`,
+    options: {
+      a: "(C), (A), (B), (D)",
+      b: "(B), (C), (D), (A)",
+      c: "(B), (A), (D), (C)",
+      d: "(D), (A), (C), (B)"
+    },
+    correctAnswer: "a",
+    explanation: "Chronological: Intensive Agricultural District Programme (1960s) → Green Revolution (mid-1960s) → Agro-Climatic Planning (1980s) → National Mission for Sustainable Agriculture (2010). NCERT Class 12 Geography (India) Ch. 5: Agricultural development.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 37,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following copper mines in North to South direction:\n\n(A) Alwar\n(B) Bhilwara\n(C) Khetri\n(D) Udaipur\n\nChoose the correct answer:`,
+    options: {
+      a: "(B), (D), (C), (A)",
+      b: "(C), (B), (A), (D)",
+      c: "(B), (C), (D), (A)",
+      d: "(C), (A), (B), (D)"
+    },
+    correctAnswer: "d",
+    explanation: "North to south: Khetri → Alwar → Bhilwara → Udaipur (all in Rajasthan). NCERT Class 12 Geography (India) Ch. 7: Mineral distribution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 38,
+    section: "Match the Following",
+    text: `Match List-I with List-II:\n\nList-I (Station):\n(A) Chita\n(B) Winnipeg\n(C) Broken Hill\n(D) Chicago\n\nList-II (Trans-Continental Railway):\n(I) Australian Trans-Continental Railway\n(II) Union Pacific Railway\n(III) Trans-Siberian Railway\n(IV) Trans-Canadian Railway\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      b: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)",
+      c: "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)",
+      d: "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+    },
+    correctAnswer: "b",
+    explanation: "Chita → Trans-Siberian (III); Winnipeg → Trans-Canadian (IV); Broken Hill → Australian (I); Chicago → Union Pacific (II). NCERT Class 12 Geography (Fundamentals) Ch. 8: Trans-continental railways.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 39,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following as per the stages of demographic transition model:\n\n(A) Population growth is slow due to high birth and high death rate.\n(B) Fertility remains high, but mortality declines at a faster pace.\n(C) Fertility declines at a faster pace, but mortality declines gradually.\n(D) Population growth is slow due to low birth and low death rate.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B), (C), (D)",
+      b: "(A), (C), (B), (D)",
+      c: "(D), (B), (C), (A)",
+      d: "(D), (C), (B), (A)"
+    },
+    correctAnswer: "a",
+    explanation: "Stage 1: High stationary (A); Stage 2: Early expanding (B); Stage 3: Late expanding (C); Stage 4: Low stationary (D). NCERT Class 12 Geography (Fundamentals) Ch. 2: Demographic transition.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 40,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following agricultural regions from equator to pole:\n\n(A) Commercial grain farming in the Prairies\n(B) Reindeer rearing by the Eskimos\n(C) Tea plantations of north-east India\n(D) Primitive subsistence farming in Indonesia\n\nChoose the correct answer:`,
+    options: {
+      a: "(C), (D), (A), (B)",
+      b: "(D), (C), (A), (B)",
+      c: "(D), (C), (B), (A)",
+      d: "(C), (D), (B), (A)"
+    },
+    correctAnswer: "b",
+    explanation: "Equator to pole: Indonesia (equator) → NE India (subtropical) → Prairies (temperate) → Eskimo (polar). NCERT Class 12 Geography (Fundamentals) Ch. 5: Agricultural regions.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 41,
+    section: "Arrange / Choose Correct",
+    text: `Identify the correct statements with reference to intensive subsistence agriculture dominated by wet paddy cultivation:\n\n(A) Land holdings are very small due to high density of population.\n(B) Farmers work with the help of family labour leading to intensive use of land.\n(C) Farm yard manure is used to maintain fertility of soil.\n(D) The yield per unit area is low, but productivity per labour is high.\n\nChoose the correct answer:`,
+    options: {
+      a: "(A), (B) and (D) only",
+      b: "(A), (C) and (D) only",
+      c: "(A), (B) and (C) only",
+      d: "(B), (C) and (D) only"
+    },
+    correctAnswer: "c",
+    explanation: "A, B, C are correct. D is false: yield per unit area is high (intensive farming), but productivity per labour is low (labour-intensive). NCERT Class 12 Geography (Fundamentals) Ch. 5: Wet paddy cultivation.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 42,
+    section: "Match the Following",
+    text: `Match List-I with List-II:\n\nList-I (Approaches in Human Geography):\n(A) Areal Differentiation\n(B) Spatial Organisation\n(C) Behavioural School\n(D) Post-modernism\n\nList-II (Broad features):\n(I) Identifying uniqueness of region\n(II) Application of quantitative techniques\n(III) Discontent with quantitative revolution\n(IV) Focus on local context\n\nChoose the correct answer:`,
+    options: {
+      a: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)",
+      b: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)",
+      c: "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)",
+      d: "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+    },
+    correctAnswer: "a",
+    explanation: "Areal Differentiation = regional uniqueness (I); Spatial Organisation = quantitative techniques (II); Behavioural School = discontent with quantitative (III); Post-modernism = local context (IV). NCERT Class 12 Geography (Fundamentals) Ch. 1: Approaches.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 43,
+    section: "Application MCQ",
+    text: `Canberra was planned by:`,
+    options: {
+      a: "Patrick Geddes",
+      b: "Walter Burley Griffin",
+      c: "Jean Gottmann",
+      d: "George Zipf"
+    },
+    correctAnswer: "b",
+    explanation: "Walter Burley Griffin (American architect) designed Canberra (1912 competition). Geddes (town planning), Gottmann (megalopolis), Zipf (Zipf's law) unrelated. NCERT Class 12 Geography (Fundamentals) Ch. 4: Planned cities.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 44,
+    section: "Application MCQ",
+    text: `The first radio programme was broadcast in India in:`,
+    options: {
+      a: "1910",
+      b: "1913",
+      c: "1923",
+      d: "1932"
+    },
+    correctAnswer: "c",
+    explanation: "First radio programme broadcast by Bombay Presidency Radio Club in 1923. All India Radio (AIR) established 1936. NCERT Class 12 Geography (India) Ch. 8: Communication evolution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 45,
+    section: "Application MCQ",
+    text: `The total utilisable water resources in India is about _____ cubic km.`,
+    options: {
+      a: "4,000",
+      b: "1,969",
+      c: "1,869",
+      d: "1,122"
+    },
+    correctAnswer: "d",
+    explanation: "Total utilisable water resources: 1,122 cubic km (surface water 690 + groundwater 432). Total renewable water resources ~4,000 but not fully utilisable. NCERT Class 12 Geography (India) Ch. 6: Water resources.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 46,
+    section: "Application MCQ",
+    text: `Pykara Hydroelectric Plant was built in:`,
+    options: {
+      a: "1929",
+      b: "1931",
+      c: "1932",
+      d: "1942"
+    },
+    correctAnswer: "c",
+    explanation: "Pykara Hydroelectric Plant (Nilgiris, Tamil Nadu) commissioned in 1932, one of oldest hydroelectric plants in South India. NCERT Class 12 Geography (India) Ch. 7: Hydroelectric power.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 47,
+    section: "Application MCQ",
+    text: `The General Agreement on Tariffs and Trade (GATT) was transformed into the World Trade Organization in:`,
+    options: {
+      a: "1995",
+      b: "1991",
+      c: "2005",
+      d: "1976"
+    },
+    correctAnswer: "a",
+    explanation: "WTO established on 1 January 1995 after Uruguay Round (1986-1994). GATT was 1947. NCERT Class 12 Geography (Fundamentals) Ch. 9: International trade organizations.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 48,
+    section: "Application MCQ",
+    text: `Where is the headquarters of the 'Organisation of the Petroleum Exporting Countries' (OPEC)?`,
+    options: {
+      a: "Montevideo",
+      b: "Vienna",
+      c: "Minsk",
+      d: "Aden"
+    },
+    correctAnswer: "b",
+    explanation: "OPEC headquarters in Vienna, Austria. Founded in Baghdad (1960). Montevideo (Uruguay), Minsk (Belarus), Aden (Yemen) not correct. NCERT Class 12 Geography (Fundamentals) Ch. 9: International organizations.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 49,
+    section: "Application MCQ",
+    text: `Which of the following ports is confronted with the problem of silt accumulation?`,
+    options: {
+      a: "Mumbai port",
+      b: "New Mangalore port",
+      c: "Kolkata port",
+      d: "Paradwip port"
+    },
+    correctAnswer: "c",
+    explanation: "Kolkata port (on Hooghly River) faces severe siltation requiring regular dredging. Mumbai, New Mangalore, Paradwip are coastal ports without significant silt issues. NCERT Class 12 Geography (India) Ch. 8: Major ports.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 50,
+    section: "Application MCQ",
+    text: `Which of the following is a land-locked harbour?`,
+    options: {
+      a: "Paradwip port",
+      b: "Tuticorin port",
+      c: "Haldia port",
+      d: "Visakhapatnam port"
+    },
+    correctAnswer: "d",
+    explanation: "Visakhapatnam port is a land-locked natural harbour (protected by hills). Paradwip, Tuticorin (artificial), Haldia (riverine) are not land-locked. NCERT Class 12 Geography (India) Ch. 8: Harbour types.",
+    marked: false,
+    userAnswer: ""
+  }
+];
+
+const questionSets = { 1: questions };
+let activeQuestions = questions; // mutable reference
+
+// ===== STATE =====
+let selectedSet = 1;
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+let status = new Array(questions.length).fill('not-visited');
+let timerInterval = null;
+let timeLeft = 60 * 60;
+let candidateName = 'Candidate';
+
+// ===== LOGIN & NAVIGATION =====
+const LS_CRED = 'thunderCBT_creds';
+const LS_KEY  = 'thunderCBT_lastAttempts';
+
+function unlockNextBtn() {
+  const btn = document.getElementById('step1NextBtn');
+  if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
+}
+
+function populateStartScreen(name, pass) {
+  const sn = document.getElementById('startCandName');
+  const sr = document.getElementById('startCandRoll');
+  const ih = document.getElementById('instrCandName');
+  const ir = document.getElementById('instrCandRoll');
+  if (sn) sn.textContent = name;
+  if (sr) sr.textContent = pass;
+  if (ih) ih.textContent = name;
+  if (ir) ir.textContent = 'Roll No: ' + pass;
+  unlockNextBtn();
+  loadLastAttempts();
+  renderHistory();
+}
+
+function doLogin() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome back, ' + savedName + '!', 'success');
+    return;
+  }
+
+  // Not found — show message with button to open dashboard
+  const loginCard = document.querySelector('.login-card');
+  if (loginCard) {
+    loginCard.innerHTML = `
+      <div class="login-header">
+        <div class="login-logo">⚡</div>
+        <h2>Thunder CBT</h2>
+        <p>CUET geo — Mock Test Series</p>
+      </div>
+      <div class="login-body" style="text-align:center;padding:32px 28px;">
+        <div style="font-size:48px;margin-bottom:14px;">🔐</div>
+        <div style="font-size:17px;font-weight:800;color:#1a1d2e;margin-bottom:8px;">
+          Dashboard Login Required
+        </div>
+        <div style="font-size:13px;color:#666;line-height:1.7;margin-bottom:22px;">
+          You need to log in via the <strong>Thunderstudy Dashboard</strong> first 
+          to generate your Student ID before taking this test.
+        </div>
+        <a href="https://commercesehoga.github.io/dashboard/" target="_blank"
+          style="display:block;width:100%;padding:14px;background:linear-gradient(135deg,#1976d2,#0d47a1);
+          color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;
+          cursor:pointer;text-dgeoration:none;letter-spacing:1px;margin-bottom:12px;
+          box-sizing:border-box;">
+          🌐 Open Thunderstudy Dashboard
+        </a>
+        <button onclick="checkAndRetry()" 
+          style="width:100%;padding:12px;background:white;color:#1976d2;
+          border:2px solid #1976d2;border-radius:8px;font-size:14px;font-weight:700;
+          cursor:pointer;letter-spacing:0.5px;">
+          ✅ I've Logged In — Retry
+        </button>
+        <p style="font-size:11px;color:#aaa;margin-top:14px;">
+          After logging in on the dashboard, come back here and click Retry.
+        </p>
+      </div>`;
+  }
+}
+
+  function checkAndRetry() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome, ' + savedName + '!', 'success');
+  } else {
+    showToast('⚠️ Still not found. Please log in on the Dashboard first.', 'warning');
+    // Flash the button to draw attention
+    const btn = document.querySelector('.login-body a');
+    if (btn) {
+      btn.style.animation = 'none';
+      btn.style.background = '#c62828';
+      setTimeout(() => btn.style.background = 'linear-gradient(135deg,#1976d2,#0d47a1)', 600);
+    }
+  }
+}
+
+function proceedToInstructions() {
+  selectedSet = 1;
+  const ag = document.getElementById('agreeCheck');
+  if (ag) ag.checked = false;
+  toggleStartBtn();
+  showScreen('instructions');
+  setTimeout(enterFullscreen, 300);
+}
+
+function goToInstructions() {
+  goToStep(1);
+  showScreen('instructions');
+}
+
+// Run after DOM is fully loaded
+window.addEventListener('DOMContentLoaded', function() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    // Auto-login silently
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome back, ' + savedName + '!', 'success');
+  } else {
+    // Show the no-data message immediately without waiting for button click
+    showScreen('login');
+    doLogin(); // This will render the "go to dashboard" card
+  }
+});
+
+
+// ===== FULLSCREEN =====
+let fsCountdownTimer = null;
+let fsExitedBySystem = false; // true = timer ran out (allowed to exit)
+
+function enterFullscreen() {
+  const el = document.documentElement;
+  try {
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  } catch(e) {}
+}
+
+function exitFullscreenAPI() {
+  try {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+    else if (document.msExitFullscreen) document.msExitFullscreen();
+  } catch(e) {}
+}
+
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function returnToFullscreen() {
+  clearFsCountdown();
+  hideFsWarning();
+  enterFullscreen();
+}
+
+function forceSubmit() {
+  clearFsCountdown();
+  hideFsWarning();
+  exitFullscreenAPI();
+  clearInterval(timerInterval);
+  calculateResult();
+}
+
+function showFsWarning(text) {
+  const modal = document.getElementById('fsWarningModal');
+  const textEl = document.getElementById('fsWarningText');
+  if (textEl && text) textEl.textContent = text;
+  if (modal) modal.classList.add('active');
+  let count = 3;
+  const cd = document.getElementById('fsCountdown');
+  if (cd) cd.textContent = count;
+  clearFsCountdown();
+  fsCountdownTimer = setInterval(() => {
+    count--;
+    if (cd) cd.textContent = count;
+    if (count <= 0) {
+      clearFsCountdown();
+      hideFsWarning();
+      exitFullscreenAPI();
+      clearInterval(timerInterval);
+      calculateResult();
+    }
+  }, 1000);
+}
+
+function hideFsWarning() {
+  const modal = document.getElementById('fsWarningModal');
+  if (modal) modal.classList.remove('active');
+}
+
+function clearFsCountdown() {
+  if (fsCountdownTimer) { clearInterval(fsCountdownTimer); fsCountdownTimer = null; }
+}
+
+// Fullscreen change event — fires when user presses Esc
+function onFullscreenChange() {
+  const testScreen  = document.getElementById('screen-test');
+  const instrScreen = document.getElementById('screen-instructions');
+  const testActive  = testScreen  && testScreen.classList.contains('active');
+  const instrActive = instrScreen && instrScreen.classList.contains('active');
+  if (!testActive && !instrActive) return;
+  if (fsExitedBySystem) return;
+  if (!isFullscreen()) {
+    if (testActive) {
+      showFsWarning('You exited fullscreen. Return to fullscreen or the test will auto-submit in 3 sgeonds.');
+    } else {
+      // On instructions screen — warn and silently re-enter
+      showToast('⚠️ Please stay in fullscreen during the exam!', 'warning');
+      setTimeout(enterFullscreen, 800);
+    }
+  }
+}
+document.addEventListener('fullscreenchange',       onFullscreenChange);
+document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+document.addEventListener('mozfullscreenchange',    onFullscreenChange);
+document.addEventListener('MSFullscreenChange',     onFullscreenChange);
+
+// Tab visibility — fires when user switches tabs
+document.addEventListener('visibilitychange', () => {
+  const testScreen = document.getElementById('screen-test');
+  if (!testScreen || !testScreen.classList.contains('active')) return;
+  if (fsExitedBySystem) return;
+  if (document.hidden) {
+    // Tab switched — immediate auto-submit (no countdown)
+    clearFsCountdown();
+    hideFsWarning();
+    exitFullscreenAPI();
+    clearInterval(timerInterval);
+    showToast('⚠️ Tab switch detected — auto-submitting!', 'warning');
+    setTimeout(calculateResult, 800);
+  }
+});
+
+// ===== STEP NAVIGATION =====
+function goToStep(step) {
+  [1, 2, 3].forEach(s => {
+    const sp = document.getElementById(`sp-${s}`);
+    sp.classList.remove('active', 'done');
+    if (s < step) sp.classList.add('done');
+    else if (s === step) sp.classList.add('active');
+  });
+  document.querySelectorAll('.instr-step').forEach(el => el.classList.remove('active'));
+  const panel = document.getElementById(`istep-${step}`);
+  if (panel) { panel.classList.add('active'); window.scrollTo(0, 0); }
+}
+
+// ===== HISTORY (localStorage) =====
+const LS_HIST = 'thunderCBT_history';
+
+function saveToHistory(setNum, correct, wrong, unattempted, score, maxScore, pct, name) {
+  let hist = [];
+  try { hist = JSON.parse(localStorage.getItem(LS_HIST) || '[]'); } catch(e) {}
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  const timeStr = now.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  hist.unshift({
+    id: Date.now(),
+    set: setNum,
+    name: name || 'Candidate',
+    correct, wrong, unattempted,
+    score, maxScore, pct,
+    date: dateStr, time: timeStr
+  });
+  // Keep only last 50 rgeords
+  if (hist.length > 50) hist = hist.slice(0, 50);
+  try { localStorage.setItem(LS_HIST, JSON.stringify(hist)); } catch(e) {}
+}
+
+function getGrade(pct) {
+  if (pct >= 90) return { g: 'A+', c: '#2e7d32' };
+  if (pct >= 75) return { g: 'A',  c: '#388e3c' };
+  if (pct >= 60) return { g: 'B+', c: '#1976d2' };
+  if (pct >= 45) return { g: 'B',  c: '#1565c0' };
+  if (pct >= 33) return { g: 'C',  c: '#e65100' };
+  return { g: 'F', c: '#c62828' };
+}
+
+function renderHistory() {
+  const el = document.getElementById('historyContent');
+  if (!el) return;
+  let hist = [];
+  try { hist = JSON.parse(localStorage.getItem(LS_HIST) || '[]'); } catch(e) {}
+  if (!hist.length) {
+    el.innerHTML = `<div class="history-empty"><div class="he-icon">📭</div><p>No attempts yet — complete a test to see your history here.</p></div>`;
+    return;
+  }
+  // Summary bar stats
+  const totalAttempts = hist.length;
+  const bestPct = Math.max(...hist.map(h => h.pct));
+  const avgPct  = Math.round(hist.reduce((a,h) => a + h.pct, 0) / hist.length);
+
+  let rows = hist.map((h, i) => {
+    const pctCls = h.pct >= 60 ? 'high' : h.pct >= 33 ? 'mid' : 'low';
+    const { g, c } = getGrade(h.pct);
+    const isBest = h.pct === bestPct && hist.filter(x => x.pct === bestPct)[0].id === h.id;
+    return `<tr>
+      <td style="font-weight:700;color:#888;font-size:12px;">${i+1}</td>
+      <td class="ht-set">⚗️ Set ${h.set}</td>
+      <td style="font-size:12px;color:#555;">${h.name}</td>
+      <td class="ht-score">${h.score}<span style="font-size:11px;color:#aaa;">/${h.maxScore}</span></td>
+      <td><span class="ht-pct ${pctCls}">${h.pct}%</span>${isBest ? ' 🏆' : ''}</td>
+      <td class="ht-grade" style="color:${c};">${g}</td>
+      <td class="ht-correct">✓ ${h.correct}</td>
+      <td class="ht-wrong">✗ ${h.wrong}</td>
+      <td class="ht-skip">— ${h.unattempted}</td>
+      <td class="ht-date">${h.date}<br><span style="font-size:10.5px;">${h.time}</span></td>
+    </tr>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="history-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Set</th><th>Name</th><th>Score</th><th>Percent</th>
+            <th>Grade</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Date & Time</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="history-summary-bar">
+      Total Attempts: <span>${totalAttempts}</span>
+      &nbsp;·&nbsp; Best Score: <span>${bestPct}%</span>
+      &nbsp;·&nbsp; Average: <span>${avgPct}%</span>
+    </div>`;
+}
+
+function clearHistory() {
+  if (!confirm('Clear all test history? This cannot be undone.')) return;
+  try { localStorage.removeItem(LS_HIST); } catch(e) {}
+  renderHistory();
+  showToast('🗑 History cleared', 'info');
+}
+
+function loadLastAttempts() {
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) {}
+  [1, 2, 3, 4].forEach(s => {
+    const el = document.getElementById(`sla-${s}`);
+    if (!el) return;
+    if (data[s] !== undefined) {
+      const pct = data[s];
+      const cls = pct >= 60 ? 'pct-high' : pct >= 35 ? 'pct-mid' : 'pct-low';
+      el.innerHTML = `<span class="sla-pct ${cls}">${pct}%</span><span class="sla-label">Last</span>`;
+    } else {
+      el.innerHTML = `<span class="sla-new">New</span>`;
+    }
+  });
+}
+
+function saveLastAttempt(setNum, pct) {
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) {}
+  data[setNum] = pct;
+  try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+// ===== INIT =====
+function toggleStartBtn() {
+  const cb = document.getElementById('agreeCheck');
+  const btn = document.getElementById('startBtn');
+  if (!cb || !btn) return;
+  btn.style.opacity = cb.checked ? '1' : '0.5';
+  btn.style.pointerEvents = cb.checked ? 'auto' : 'none';
+}
+
+function startExam() {
+  activeQuestions = questionSets[selectedSet];
+  // Use a getter so all code using 'questions' still works
+Object.defineProperty(window, 'questions', { get: () => activeQuestions });
+  answers = new Array(questions.length).fill(null);
+  status = new Array(questions.length).fill('not-visited');
+  timeLeft = 60 * 60;
+  fsExitedBySystem = false;
+
+  const tabLabel = document.getElementById('testSetTabLabel');
+  const paletteLabel = document.getElementById('paletteSetLabel');
+  const nameDisp = document.getElementById('jeeNameDisp');
+  if (tabLabel) tabLabel.textContent = `⚗️ geo — Set ${selectedSet}`;
+  if (paletteLabel) paletteLabel.textContent = `Set ${selectedSet}`;
+  if (nameDisp) nameDisp.textContent = ': ' + candidateName;
+
+  showScreen('test');
+  renderQuestion(0);
+  buildPalette();
+  startTimer();
+  showToast(`⚗️ geo Set ${selectedSet} started! All the best!`, 'info');
+}
+
+// ===== SCREEN SWITCH =====
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+    s.style.display = 'none';
+  });
+  const target = document.getElementById('screen-' + name);
+  if (target) {
+    target.style.display = '';
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+}
+
+// ===== TIMER =====
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const h = Math.floor(timeLeft / 3600);
+    const m = Math.floor((timeLeft % 3600) / 60);
+    const s = timeLeft % 60;
+    const display = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const el = document.getElementById('timerDisplay');
+    if (el) el.textContent = display;
+    if (timeLeft <= 300) el.classList.add('warning');
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      fsExitedBySystem = true; // timer ran out, allow fullscreen exit
+      exitFullscreenAPI();
+      showToast('⏰ Time up! Auto-submitting...', 'warning');
+      setTimeout(confirmSubmit, 1500);
+    }
+  }, 1000);
+}
+
+// ===== RENDER QUESTION =====
+function renderQuestion(idx) {
+  currentQ = idx;
+  const q = questions[idx];
+  if (status[idx] === 'not-visited') status[idx] = 'not-answered';
+
+  document.getElementById('qNumBadge').textContent = `Question ${idx + 1}:`;
+  const topicEl = document.getElementById('qTopicTag');
+  if (topicEl) topicEl.textContent = q.section || '';
+
+  // ── Split passage from question ──────────────────────────
+  let passageHTML = '';
+  let questionHTML = '';
+  const rawText = q.text;
+
+  // Detect passage questions (Case Study or Passage Based)
+  const hasPassage = (
+    rawText.includes('READ THE FOLLOWING') ||
+    rawText.includes('PASSAGE') ||
+    rawText.includes('Refer to') ||
+    (q.section && (q.section.toLowerCase().includes('case') || q.section.toLowerCase().includes('passage')))
+  );
+
+  if (hasPassage) {
+    // Try to split at Q-number pattern like "\nQ1." or "\nQ21." or "(Refer to"
+    const splitMatch = rawText.match(/(\n)(Q\d+\.|Refer to the (?:case study|passage))/i);
+    if (splitMatch) {
+      const splitIdx = rawText.indexOf(splitMatch[0]);
+      const passage = rawText.substring(0, splitIdx).trim();
+      const question = rawText.substring(splitIdx).trim();
+      passageHTML = passage;
+      questionHTML = question;
+    } else {
+    questionHTML = rawText;
+    // Auto-fetch passage from the nearest earlier question that has one
+    for (let pi = idx - 1; pi >= 0; pi--) {
+      const prev = questions[pi];
+      if (prev.text.includes('READ THE FOLLOWING') || prev.text.includes('PASSAGE')) {
+        const prevSplit = prev.text.match(/(\n)(Q\d+\.)/i);
+        passageHTML = prevSplit
+          ? prev.text.substring(0, prev.text.indexOf(prevSplit[0])).trim()
+          : prev.text;
+        break;
+      }
+    }
+  }
+  } else {
+    questionHTML = rawText;
+  }
+
+  // ── Format Assertion-Reason ──────────────────────────────
+  let formattedQuestion = questionHTML;
+  if (formattedQuestion.includes('Assertion') && formattedQuestion.includes('Reason')) {
+    formattedQuestion = formattedQuestion.replace(
+      /(Assertion\s*\(A\):\s*)(.*?)(\nReason\s*\(R\):\s*)([\s\S]*?)(\n\nChoose|\nChoose|$)/,
+      (match, aL, aT, rL, rT, end) => {
+        return `<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;"><thead><tr><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:18%;">Type</th><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:82%;">Statement</th></tr></thead><tbody><tr style="background:#e3f2fd;"><td style="padding:9px 12px;border:1px solid #90caf9;font-weight:700;color:#1565c0;white-space:nowrap;">Assertion (A)</td><td style="padding:9px 12px;border:1px solid #90caf9;">${aT.trim()}</td></tr><tr style="background:#ffffff;"><td style="padding:9px 12px;border:1px solid #90caf9;font-weight:700;color:#2e7d32;white-space:nowrap;">Reason (R)</td><td style="padding:9px 12px;border:1px solid #90caf9;">${rT.trim()}</td></tr></tbody></table>${end}`;
+      }
+    );
+  }
+
+  // ── Format List-I / List-II ──────────────────────────────
+  if (formattedQuestion.includes('List-I') && formattedQuestion.includes('List-II')) {
+    formattedQuestion = formattedQuestion.replace(
+      /List-I:([\s\S]*?)List-II:([\s\S]*?)(?=\n\nChoose|\nChoose|$)/,
+      (match, list1, list2) => {
+        const parseAlpha  = str => str.trim().split('\n').filter(l => l.trim().match(/^\([A-Z]\)/)).map(l => l.trim());
+        const parseRoman  = str => str.trim().split('\n').filter(l => l.trim().match(/^\([IVX]+\)/)).map(l => l.trim());
+        const l1 = parseAlpha(list1);
+        const l2 = parseRoman(list2);
+        const rows = Math.max(l1.length, l2.length);
+        // REPLACE the entire let tableHTML = ... loop ... tableHTML += </tbody></table> block with:
+let tableHTML = `<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;"><thead><tr><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:50%;">List-I</th><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:50%;">List-II</th></tr></thead><tbody>`;
+for (let i = 0; i < rows; i++) {
+  const bg = i % 2 === 0 ? '#e3f2fd' : '#ffffff';
+  tableHTML += `<tr style="background:${bg};"><td style="padding:9px 12px;border:1px solid #90caf9;">${l1[i] || ''}</td><td style="padding:9px 12px;border:1px solid #90caf9;">${l2[i] || ''}</td></tr>`;
+}
+tableHTML += `</tbody></table>`;
+return tableHTML;
+      }
+    );
+  }
+
+  // ── Build the layout ─────────────────────────────────────
+  let html = '';
+
+  if (passageHTML) {
+    // NTA-style: passage on left, question on right in two-column layout
+    html += `<div style="display:flex;flex-direction:column;gap:12px;">
+  <div style="
+    width:100%;
+    background:#fffde7;
+    border:1.5px solid #f9a825;
+    border-left:5px solid #f9a825;
+    border-radius:8px;padding:14px;
+    font-size:13px;line-height:1.75;
+    color:#1a1a1a;
+    max-height:260px;overflow-y:auto;
+  ">
+    <div style="font-size:10.5px;font-weight:800;color:#f57f17;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;border-bottom:1px solid #ffe082;padding-bottom:5px;">📄 Passage / Case Study</div>
+    ${applyLineBreaks(formatText(passageHTML))}
+  </div>
+  <div style="width:100%;">
+    <div class="q-text">${applyLineBreaks(formatText(formattedQuestion))}</div>
+  </div>
+</div>`;
+  } else {
+    html += `<div class="q-text">${formatText(formattedQuestion).replace(/\n/g,'<br>')}</div>`;
+  }
+
+  html += `<div class="options-label" style="margin-top:14px;">Options :</div>`;
+
+const optKeys = ['a','b','c','d'];
+  const optLabels = ['A','B','C','D'];
+  html += `<ul class="options-list">`;
+  optKeys.forEach((key, i) => {
+    const opt = q.options[key];
+    if (!opt) return;
+    const sel = answers[idx] === i ? 'selected' : '';
+    html += `
+      <li class="opt-item ${sel}" onclick="selectOption(${i})">
+        <div class="opt-radio"><div class="opt-radio-dot"></div></div>
+        <span class="opt-key">${optLabels[i]}.</span>
+        <div class="opt-content">${formatText(opt)}</div>
+      </li>`;
+  });
+  html += `</ul>`;
+
+  document.getElementById('questionBody').innerHTML = html;
+  updatePalette();
+  updateStats();
+}
+
+function applyLineBreaks(str) {
+  // Replace \n with <br> only outside HTML tags
+  return str.replace(/(<[^>]*>)|(\n)/g, (m, tag, nl) => tag || '<br>');
+}
+
+function formatText(txt) {
+  txt = txt
+    .replace(/₀/g,'<sub>0</sub>').replace(/₁/g,'<sub>1</sub>').replace(/₂/g,'<sub>2</sub>')
+    .replace(/₃/g,'<sub>3</sub>').replace(/₄/g,'<sub>4</sub>').replace(/₅/g,'<sub>5</sub>')
+    .replace(/₆/g,'<sub>6</sub>').replace(/₇/g,'<sub>7</sub>').replace(/₈/g,'<sub>8</sub>')
+    .replace(/⁺/g,'<sup>+</sup>').replace(/²⁻/g,'<sup>2−</sup>').replace(/³⁺/g,'<sup>3+</sup>')
+    .replace(/²/g,'<sup>2</sup>').replace(/³/g,'<sup>3</sup>').replace(/⁻²/g,'<sup>−2</sup>');
+  return txt;
+}
+
+// ===== SELECT OPTION =====
+function selectOption(i) {
+  answers[currentQ] = i;
+  if (status[currentQ] === 'marked') status[currentQ] = 'answered-marked';
+  else status[currentQ] = 'answered';
+  renderQuestion(currentQ);
+}
+
+// ===== ACTIONS =====
+function saveAndNext() {
+  if (answers[currentQ] === null) {
+    showToast('⚠️ Please select an option first!', 'warning');
+    status[currentQ] = 'not-answered';
+  } else {
+    showToast('✅ Answer saved!', 'success');
+    status[currentQ] = 'answered';
+  }
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+  else showToast('📋 Last question reached. Review or Submit!', 'info');
+}
+
+function goBack() {
+  if (currentQ > 0) renderQuestion(currentQ - 1);
+}
+
+// Mark for Review & Next (no answer required)
+function markAndNext() {
+  if (answers[currentQ] !== null) status[currentQ] = 'answered-marked';
+  else status[currentQ] = 'marked';
+  showToast('🔖 Marked for Review', 'info');
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+}
+
+// Answer & Mark for Review (save answer AND mark)
+function saveMarkAndNext() {
+  if (answers[currentQ] === null) {
+    showToast('⚠️ Please select an option first!', 'warning');
+    return;
+  }
+  status[currentQ] = 'answered-marked';
+  showToast('✅ Saved & Marked for Review!', 'success');
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+}
+
+// Legacy alias
+function markForReview() { markAndNext(); }
+
+function clearResponse() {
+  answers[currentQ] = null;
+  status[currentQ] = 'not-answered';
+  renderQuestion(currentQ);
+  showToast('🗑 Response cleared', 'info');
+}
+
+// ===== PALETTE =====
+function buildPalette() {
+  const palette = document.getElementById('questionPalette');
+  palette.innerHTML = '';
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-palette-btn';
+    btn.textContent = String(i + 1).padStart(2, '0');
+    btn.onclick = () => renderQuestion(i);
+    palette.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const btns = document.querySelectorAll('.q-palette-btn');
+  btns.forEach((btn, i) => {
+    btn.className = 'q-palette-btn';
+    const s = status[i];
+    if      (s === 'not-visited')     btn.classList.add('qb-not-visited');
+    else if (s === 'not-answered')    btn.classList.add('qb-not-answered');
+    else if (s === 'answered')        btn.classList.add('qb-answered');
+    else if (s === 'marked')          btn.classList.add('qb-marked');
+    else if (s === 'answered-marked') btn.classList.add('qb-answered-marked');
+    if (i === currentQ) btn.classList.add('qb-current');
+  });
+}
+
+function updateStats() {
+  const nv  = status.filter(s => s === 'not-visited').length;
+  const na  = status.filter(s => s === 'not-answered').length;
+  const ans = status.filter(s => s === 'answered').length;
+  const mrk = status.filter(s => s === 'marked').length;
+  const am  = status.filter(s => s === 'answered-marked').length;
+  document.getElementById('stat-nv').textContent  = nv;
+  document.getElementById('stat-na').textContent  = na;
+  document.getElementById('stat-ans').textContent = ans;
+  document.getElementById('stat-mrk').textContent = mrk;
+  const amEl = document.getElementById('stat-am');
+  if (amEl) amEl.textContent = am;
+}
+
+// ===== SUBMIT =====
+function showSubmitModal() {
+  const nv = status.filter(s => s === 'not-visited').length;
+  const na = status.filter(s => s === 'not-answered').length;
+  const ans = status.filter(s => s === 'answered' || s === 'answered-marked').length;
+  const mrk = status.filter(s => s === 'marked' || s === 'answered-marked').length;
+
+  document.getElementById('modalSummary').innerHTML = `
+    <div class="ms-item"><div class="ms-num" style="color:#9e9e9e">${nv}</div><div class="ms-lbl">Not Visited</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#c62828">${na}</div><div class="ms-lbl">Not Answered</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#2e7d32">${ans}</div><div class="ms-lbl">Answered</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#7b1fa2">${mrk}</div><div class="ms-lbl">Marked</div></div>
+  `;
+  document.getElementById('submitModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('submitModal').classList.remove('active');
+}
+
+function confirmSubmit() {
+  clearInterval(timerInterval);
+  fsExitedBySystem = true;
+  exitFullscreenAPI();
+  closeModal();
+  calculateResult();
+}
+
+// ===== RESULT =====
+// Track per-question result for palette colouring
+let questionResults = []; // 'correct' | 'wrong' | 'skip'
+
+function calculateResult() {
+  let correct = 0, wrong = 0, unattempted = 0;
+  questionResults = [];
+
+  questions.forEach((q, i) => {
+    if (answers[i] === null) {
+      unattempted++;
+      questionResults.push('skip');
+    } else if (answers[i] !== null && ['a','b','c','d'][answers[i]] === q.correctAnswer) {
+      correct++;
+      questionResults.push('correct');
+    } else {
+      wrong++;
+      questionResults.push('wrong');
+    }
+  });
+
+  const score = (correct * 5) - (wrong * 1);
+  const maxScore = questions.length * 5;
+  const pct = Math.max(0, Math.round((score / maxScore) * 100));
+
+  // Save last attempt to localStorage
+  saveLastAttempt(selectedSet, pct);
+  // Save to full history
+  saveToHistory(selectedSet, correct, wrong, unattempted, score, maxScore, pct, candidateName);
+
+  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-wrong').textContent = wrong;
+  document.getElementById('res-unattempted').textContent = unattempted;
+  document.getElementById('res-score').textContent = score;
+  document.getElementById('resultScoreNum').textContent = score;
+  document.querySelector('.score-total').textContent = `/ ${maxScore}`;
+
+  const ring = document.getElementById('scoreRing');
+  ring.style.setProperty('--score-pct', pct + '%');
+
+  const trophy = document.getElementById('resultTrophy');
+  const title = document.getElementById('resultTitle');
+  const subtitle = document.getElementById('resultSubtitle');
+  if (pct >= 80) { trophy.textContent = '🏆'; title.textContent = 'Outstanding Performance!'; subtitle.textContent = `Excellent! Set ${selectedSet} conquered!`; }
+  else if (pct >= 60) { trophy.textContent = '🥈'; title.textContent = 'Good Performance!'; subtitle.textContent = 'Keep practising — you\'re almost there!'; }
+  else if (pct >= 40) { trophy.textContent = '🥉'; title.textContent = 'Average Performance'; subtitle.textContent = 'Revise your concepts and try again.'; }
+  else { trophy.textContent = '📚'; title.textContent = 'Needs Improvement'; subtitle.textContent = 'Don\'t give up! Review the topics and retry.'; }
+
+  // ===== BUILD RESULT PALETTE (green/red/blue) =====
+  const rp = document.getElementById('resultPalette');
+  rp.innerHTML = '';
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-palette-btn';
+    btn.textContent = i + 1;
+    const res = questionResults[i];
+    if (res === 'correct') btn.classList.add('qb-result-correct');
+    else if (res === 'wrong') btn.classList.add('qb-result-wrong');
+    else btn.classList.add('qb-result-skip');
+    btn.title = res === 'correct' ? `Q${i+1}: Correct (+5)` : res === 'wrong' ? `Q${i+1}: Wrong (−1)` : `Q${i+1}: Not Attempted (0)`;
+    rp.appendChild(btn);
+  });
+
+  // ===== ANSWER REVIEW =====
+  let reviewHTML = '';
+  questions.forEach((q, i) => {
+    const userAns = answers[i];
+    const res = questionResults[i];
+    const optLabels = ['A','B','C','D'];
+const optKeysList = ['a','b','c','d'];
+    let userLabel = userAns !== null ? optLabels[userAns] : '—';
+    let correctLabel = (q.correctAnswer || q.correct || '').toUpperCase();
+    let userText = userAns !== null ? (q.options[optKeysList[userAns]] || 'Not Attempted') : 'Not Attempted';
+    let correctText = q.options[q.correctAnswer] || q.options[q.correct] || '';
+    const marksChip = res === 'correct'
+      ? `<span class="review-q-marks rqm-correct">+5</span>`
+      : res === 'wrong'
+      ? `<span class="review-q-marks rqm-wrong">−1</span>`
+      : `<span class="review-q-marks rqm-skip">0</span>`;
+
+    reviewHTML += `
+      <div class="review-q rq-${res}">
+        <div class="review-q-num">Q${i+1} · ${q.topic} ${marksChip}</div>
+        <div class="review-q-text">${q.text.substring(0,120)}${q.text.length > 120 ? '...' : ''}</div>
+        <div class="review-answers">
+          <span class="ra-chip ra-your ${res === 'wrong' ? 'wrong' : ''}">
+            Your: ${userLabel}. ${String(userText).replace(' ✓','').substring(0,35)}
+          </span>
+          <span class="ra-chip ra-correct">
+            ✓ Correct: ${correctLabel}. ${String(correctText).replace(' ✓','').substring(0,35)}
+          </span>
+        </div>
+      </div>`;
+  });
+  document.getElementById('answerReviewBody').innerHTML = reviewHTML;
+// ---- Auto-save to Google Sheet ----
+  const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: candidateName,
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    set: selectedSet,
+    date: new Date().toISOString(),
+    score: score,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: wrong,
+    skipped: unattempted,
+    totalQ: questions.length,
+    percentage: pct,
+    timeTaken: (60 * 60) - timeLeft
+  };
+  const lsKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+  try { localStorage.setItem(lsKey, JSON.stringify(resultData)); } catch(e) {}
+  fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+  }).catch(err => console.error('Sheet sync failed', err));
+  const idxKey = `thunderstudy_index_${SUBJECT_ID}`;
+  let idx = [];
+  try { idx = JSON.parse(localStorage.getItem(idxKey) || '[]'); } catch(e) {}
+  if (!idx.includes(CHAPTER_ID)) idx.push(CHAPTER_ID);
+  try { localStorage.setItem(idxKey, JSON.stringify(idx)); } catch(e) {}
+  // ---- End auto-save ----
+  showScreen('result');
+}
+
+// ===== PDF DOWNLOAD =====
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const PW = 210, PH = 297;
+  const ML = 12, MR = 12;
+  const CW = PW - ML - MR;          // 186 mm usable width
+  const INNER = CW - 10;            // inner text width inside a card
+  const TEXT_X = ML + 8;            // left edge for text inside card
+  const TEXT_W = INNER - 4;         // max text wrap width
+  let y = 14;
+  let pageNum = 1;
+
+  const correct     = parseInt(document.getElementById('res-correct').textContent);
+  const wrong       = parseInt(document.getElementById('res-wrong').textContent);
+  const unattempted = parseInt(document.getElementById('res-unattempted').textContent);
+  const score       = parseInt(document.getElementById('res-score').textContent);
+  const maxScore    = questions.length * 5;
+
+  // ── helpers ──────────────────────────────────────────────
+  function rgb(hex) {
+    return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)];
+  }
+  function fill(hex)  { doc.setFillColor(...rgb(hex)); }
+  function stroke(hex){ doc.setDrawColor(...rgb(hex)); }
+  function color(hex) { doc.setTextColor(...rgb(hex)); }
+
+  function addFooter() {
+    doc.setFontSize(7.5); color('#aaaaaa');
+    doc.setFont('helvetica','normal');
+    doc.text(`@ThunderStudy  ·  Thunder CBT  ·  CUET geo Set ${selectedSet}  ·  Page ${pageNum}`, PW/2, PH - 6, {align:'center'});
+  }
+
+  function addPageHeader() {
+    fill('#e91e8c'); doc.rect(0, 0, PW, 9, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); color('#ffffff');
+    doc.text(`⚡ Thunder CBT  ·  @ThunderStudy  ·  CUET geo Set ${selectedSet}  ·  Answer Key`, PW/2, 6, {align:'center'});
+    y = 14;
+  }
+
+  function needsPage(h) {
+    if (y + h > PH - 14) {
+      addFooter();
+      doc.addPage();
+      pageNum++;
+      addPageHeader();
+    }
+  }
+
+  // ── COVER HEADER ─────────────────────────────────────────
+  fill('#e91e8c'); doc.rect(0, 0, PW, 40, 'F');
+  fill('#c0156e'); doc.rect(0, 34, PW, 6, 'F');
+
+  doc.setFont('helvetica','bold'); doc.setFontSize(20); color('#ffffff');
+  doc.text('⚡ Thunder CBT', ML, 13);
+  doc.setFontSize(10); color('#fce4ec');
+  doc.text('CUET geo Mock Test  ·  Question Paper & Answer Key', ML, 21);
+  doc.setFontSize(8.5); color('#ffffff');
+  doc.text(`geo Set ${selectedSet}   ·   50 Questions   ·   Class 12 Syllabus   ·   60 Minutes`, ML, 28);
+
+  // @ThunderStudy watermark on cover
+  doc.setFont('helvetica','bold'); doc.setFontSize(10); color('#fce4ec');
+  doc.text('@ThunderStudy', PW - MR, 28, {align:'right'});
+
+  // Candidate name on cover
+  doc.setFont('helvetica','normal'); doc.setFontSize(8); color('#fce4ec');
+  doc.text(`Candidate: ${candidateName}`, ML, 35);
+  const now = new Date();
+  doc.text(`Date: ${now.toLocaleDateString('en-IN')}  ${now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`, PW - MR, 35, {align:'right'});
+
+  y = 46;
+
+  // ── SCORE SUMMARY ─────────────────────────────────────────
+  fill('#fdf0f6'); doc.roundedRect(ML, y, CW, 28, 3, 3, 'F');
+  stroke('#e91e8c'); doc.setLineWidth(0.5); doc.roundedRect(ML, y, CW, 28, 3, 3, 'S');
+  doc.setFont('helvetica','bold'); doc.setFontSize(9); color('#9b0f58');
+  doc.text('PERFORMANCE SUMMARY', ML+5, y+6);
+
+  const cols = [
+    {label:'Correct',  val:String(correct),    col:'#2e7d32'},
+    {label:'Wrong',    val:String(wrong),       col:'#c62828'},
+    {label:'Skipped',  val:String(unattempted), col:'#1565c0'},
+    {label:'Score',    val:`${score}/${maxScore}`, col:'#e91e8c'},
+  ];
+  const bw = (CW - 14) / 4;
+  cols.forEach((c, ci) => {
+    const bx = ML + 5 + ci*(bw+3);
+    const by = y + 9;
+    fill('#ffffff'); doc.roundedRect(bx, by, bw, 14, 2, 2, 'F');
+    stroke(c.col); doc.roundedRect(bx, by, bw, 14, 2, 2, 'S');
+    doc.setFont('helvetica','bold'); doc.setFontSize(12); color(c.col);
+    doc.text(c.val, bx+bw/2, by+8.5, {align:'center'});
+    doc.setFontSize(6.5); color('#666666');
+    doc.text(c.label, bx+bw/2, by+13, {align:'center'});
+  });
+  y += 34;
+
+  // ── MARKING SCHEME ────────────────────────────────────────
+  needsPage(12);
+  fill('#fce4ec'); doc.roundedRect(ML, y, CW, 10, 2, 2, 'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(8); color('#9b0f58');
+  doc.text('MARKING SCHEME:   Correct = +5   |   Wrong = −1   |   Not Attempted = 0', ML+4, y+6.5);
+  y += 15;
+
+  // ── QUESTIONS ─────────────────────────────────────────────
+  const optKeys = ['A','B','C','D'];
+
+  questions.forEach((q, qi) => {
+    const userAns   = answers[qi];
+    const res       = questionResults[qi];
+    const marksText = res === 'correct' ? '+5' : res === 'wrong' ? '−1' : '0';
+    const statusTxt = res === 'correct' ? 'CORRECT' : res === 'wrong' ? 'WRONG' : 'SKIPPED';
+    const bgHex     = res === 'correct' ? '#e8f5e9' : res === 'wrong' ? '#ffebee' : '#e3f2fd';
+    const brdHex    = res === 'correct' ? '#2e7d32' : res === 'wrong' ? '#c62828' : '#1565c0';
+
+    // Strip SVG tags from question text for PDF
+    const cleanText = q.text.replace(/<[^>]*>/g, '');
+
+    // Calculate wrapped lines
+    doc.setFontSize(9); doc.setFont('helvetica','normal');
+    const qLines = doc.splitTextToSize(cleanText, TEXT_W);
+
+    const optLineArr = optKeys.map((k, oi) => {
+      const raw = q.type === 'text-options'
+        ? q.options[oi]
+        : q.options[oi].label.replace(' ✓','');
+      const clean = raw.replace(/<[^>]*>/g, '');
+      doc.setFontSize(8.5); doc.setFont('helvetica','normal');
+      return doc.splitTextToSize(`${k}.  ${clean}`, TEXT_W - 4);
+    });
+
+    const optsTotalH = optLineArr.reduce((a, ls) => a + ls.length * 5 + 2, 0);
+    const blockH     = 7 + qLines.length * 5.2 + 3 + optsTotalH + 5;
+
+    needsPage(blockH);
+
+    // Card background + border
+    fill(bgHex); doc.roundedRect(ML, y, CW, blockH, 2.5, 2.5, 'F');
+    stroke(brdHex); doc.setLineWidth(0.4); doc.roundedRect(ML, y, CW, blockH, 2.5, 2.5, 'S');
+    // Left stripe
+    fill(brdHex); doc.rect(ML, y, 3.5, blockH, 'F');
+
+    let qy = y + 6;
+
+    // Q number + topic
+    doc.setFont('helvetica','bold'); doc.setFontSize(9); color('#1a1a2e');
+    doc.text(`Q${qi+1}`, ML+6, qy);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5); color('#555555');
+    const topicX = ML + 16;
+    const topicMaxW = CW - 38;
+    const topicLine = doc.splitTextToSize(q.topic, topicMaxW)[0];
+    doc.text(topicLine, topicX, qy);
+
+    // Status badge — right side
+    const bdgW = 28, bdgX = ML + CW - bdgW - 2;
+    fill(brdHex); doc.roundedRect(bdgX, qy-5, bdgW, 7, 2, 2, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(7); color('#ffffff');
+    doc.text(`${statusTxt}  ${marksText}`, bdgX + bdgW/2, qy-0.3, {align:'center'});
+
+    qy += 4;
+
+    // Question text — properly wrapped
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); color('#1a1a2e');
+    qLines.forEach(line => {
+      doc.text(line, TEXT_X, qy);
+      qy += 5.2;
+    });
+    qy += 2;
+
+    // Options
+    optLineArr.forEach((lines, oi) => {
+      const isUser    = userAns === oi;
+      const isCorrect = q.correct === oi;
+      const optColor  = isCorrect ? '#1b5e20' : (isUser && !isCorrect) ? '#b71c1c' : '#333333';
+      const optBg     = isCorrect ? '#c8e6c9' : (isUser && !isCorrect) ? '#ffcdd2' : null;
+
+      const optH = lines.length * 5 + 3;
+      if (optBg) {
+        fill(optBg);
+        doc.roundedRect(TEXT_X - 1, qy - 3.5, TEXT_W + 4, optH, 1, 1, 'F');
+      }
+
+      doc.setFont('helvetica', (isCorrect || isUser) ? 'bold' : 'normal');
+      doc.setFontSize(8.5);
+      color(optColor);
+      lines.forEach((line, li) => {
+        doc.text(line, TEXT_X + 1, qy + li * 5);
+      });
+      // Correct tick symbol
+      if (isCorrect) {
+        doc.setFontSize(9); color('#2e7d32');
+        doc.text('✓', ML + CW - 7, qy);
+      }
+      qy += optH;
+    });
+
+    y += blockH + 4;
+  });
+
+  // Final footer
+  addFooter();
+
+  doc.save(`Thunder_CBT_Set${selectedSet}_${candidateName.replace(/\s+/g,'_')}.pdf`);
+  showToast('📄 PDF downloaded!', 'success');
+}
+
+function retryTest() {
+  clearInterval(timerInterval);
+  selectedSet = 1;
+  answers = new Array(questions.length).fill(null);
+  status = new Array(questions.length).fill('not-visited');
+  timeLeft = 60 * 60;
+  currentQ = 0;
+  const ag = document.getElementById('agreeCheck');
+  if (ag) { ag.checked = false; toggleStartBtn(); }
+  loadLastAttempts();
+  renderHistory();
+  showScreen('start');
+}
+
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', function(e) {
+  const testScreen = document.getElementById('screen-test');
+  if (!testScreen || !testScreen.classList.contains('active')) return;
+  // Ignore if typing in an input
+  if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+
+  switch(e.key) {
+    case 'ArrowRight':
+      e.preventDefault();
+      if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+      break;
+    case 'ArrowLeft':
+      e.preventDefault();
+      if (currentQ > 0) renderQuestion(currentQ - 1);
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      window.scrollBy({ top: 120, behavior: 'smooth' });
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      window.scrollBy({ top: -120, behavior: 'smooth' });
+      break;
+  }
+});
+function showToast(msg, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3100);
+}
+</script>
+</body>
+</html>
