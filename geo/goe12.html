@@ -1,0 +1,1713 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thunderstudy CBT — Geography</title>
+
+<script>
+const SUBJECT_ID  = "geo";
+const CHAPTER_ID  = "geo12";
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary-color: #2d8a4e;
+    --primary-light: #4caf6f;
+    --primary-dark: #1a5c34;
+    --secondary-color: #7ec8a4;
+    --accent: #a8e6bf;
+    --correct-color: #2d8a4e;
+    --incorrect-color: #e05252;
+    --neutral-color: #607d8b;
+    --light-bg: #f0f7f2;
+    --white: #ffffff;
+    --dark-text: #1a2e1f;
+    --light-text: #2d4a36;
+    --card-bg: #ffffff;
+
+    --dark-bg: #0d1f14;
+    --dark-card: #152419;
+    --dark-primary: #4caf6f;
+    --dark-secondary: #7ec8a4;
+    --dark-text-color: #d4edd9;
+    --dark-border: #2a4a34;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+}
+
+/* ── DARK MODE ── */
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+body.dark-mode p, body.dark-mode span:not(.icon),
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,
+body.dark-mode h4,body.dark-mode h5,body.dark-mode h6,
+body.dark-mode label, body.dark-mode li { color: var(--dark-text-color) !important; }
+body.dark-mode a:not(.fancy-btn):not(.footer-btn):not(.button2):not(.join-btn) {
+    color: var(--dark-primary) !important; text-decoration: underline;
+}
+body.dark-mode .fancy-btn,body.dark-mode .footer-btn,body.dark-mode .join-btn,
+body.dark-mode .submit-fancy-btn,body.dark-mode .more-btn,body.dark-mode .back-btn,body.dark-mode .report-btn { color: white !important; }
+body.dark-mode #prev-btn { color: var(--dark-primary) !important; border-color: var(--dark-primary) !important; }
+body.dark-mode #next-btn { color: #000 !important; background-color: var(--dark-primary) !important; }
+body.dark-mode #mark-btn { color: var(--dark-secondary) !important; border-color: var(--dark-secondary) !important; }
+body.dark-mode #mark-btn.marked { background-color: var(--dark-secondary) !important; color: #000 !important; }
+body.dark-mode #start-test-btn { color: white !important; }
+body.dark-mode .close-btn { color: var(--dark-text-color) !important; }
+body.dark-mode .stat-card h3 { color: var(--dark-text-color) !important; }
+body.dark-mode .question-number { color: var(--dark-primary) !important; }
+body.dark-mode .question-text { color: var(--dark-text-color) !important; }
+body.dark-mode .progress-text span { color: #8ab49a !important; }
+body.dark-mode .palette-title span { color: var(--dark-text-color) !important; }
+body.dark-mode .test-info strong { color: #fff !important; }
+body.dark-mode .test-info span { color: #aaccb4 !important; }
+body.dark-mode .sidebar {
+    background-color: var(--dark-card);
+    box-shadow: 2px 0 8px rgba(0,200,80,0.08);
+}
+body.dark-mode .sidebar-header h2,
+body.dark-mode .test-header h2,
+body.dark-mode .modal-header h2 { color: var(--dark-primary); }
+body.dark-mode .timer { background-color: #7a1e1e; color: #fff; }
+body.dark-mode .question-container {
+    background-color: var(--dark-card);
+    box-shadow: 0 2px 8px rgba(0,200,80,0.08);
+    border: 1px solid var(--dark-border);
+}
+body.dark-mode .modal-content { background-color: var(--dark-card); color: var(--dark-text-color); }
+body.dark-mode .stat-card { background-color: #0d1f14; border: 1px solid var(--dark-border); }
+body.dark-mode #test-screen { background: var(--dark-bg) !important; }
+body.dark-mode .mobile-top-bar { background: var(--dark-card) !important; border-color: var(--dark-border) !important; }
+body.dark-mode .mobile-timer-clone { background-color: #7a1e1e !important; }
+body.dark-mode #start-screen { background-color: #0d1f14 !important; }
+body.dark-mode #start-screen h1 { color: var(--dark-primary) !important; }
+body.dark-mode #start-screen > p { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen li { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode #start-screen strong { color: #fff !important; }
+body.dark-mode #start-screen input[type="text"] {
+    background: #1a3224 !important; color: #fff !important; border-color: var(--dark-border) !important;
+}
+body.dark-mode #instruction-screen { background: #0d1f14 !important; }
+body.dark-mode #instruction-screen h2 { color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-box { background: linear-gradient(135deg, #152a1e, #1a2e20) !important; }
+body.dark-mode .instruction-title { color: var(--dark-primary) !important; border-left-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-list li { background: #1a2e1f !important; color: var(--dark-text-color) !important; }
+body.dark-mode .instruction-list li:hover { background: #1e3828 !important; }
+body.dark-mode .custom-check { border-color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox input:checked + .custom-check::after { color: var(--dark-primary) !important; }
+body.dark-mode .instruction-checkbox { color: var(--dark-text-color) !important; }
+
+/* ── OPTIONS ── */
+.option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border: 1.5px solid #c8e6d4;
+    border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+    background: #fff; transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+}
+.option:hover { border-color: #2d8a4e; background: #edf7f1; }
+.option.selected { border-color: #1a5c34; background: #c8e6d4; }
+.option.correct { border-color: #2d8a4e !important; background: rgba(45,138,78,0.15) !important; }
+.option.incorrect { border-color: #e53935 !important; background: rgba(229,57,53,0.1) !important; }
+.opt-letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid #b2dcc2; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; background: #edf7f1; color: #2d8a4e;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.option.selected .opt-letter { background: #1a5c34; border-color: #1a5c34; color: #fff; }
+.option.correct .opt-letter { background: #2d8a4e; border-color: #2d8a4e; color: #fff; }
+.option.incorrect .opt-letter { background: #e53935; border-color: #e53935; color: #fff; }
+.opt-text { font-size: 15px; color: #1a2e1f; flex: 1; line-height: 1.5; }
+.option.selected .opt-text { color: #1a5c34; font-weight: 600; }
+.option.correct .opt-text { color: #1a5c34; font-weight: 600; }
+.option.incorrect .opt-text { color: #b71c1c; font-weight: 600; }
+.option input[type="radio"] { display: none; }
+body.dark-mode .option { background: #1a2e1f !important; border-color: #2a4a34 !important; }
+body.dark-mode .option:hover { border-color: #4caf6f !important; background: #1e3828 !important; }
+body.dark-mode .option.selected { border-color: #7ec8a4 !important; background: #173024 !important; }
+body.dark-mode .opt-letter { background: #1e3828 !important; border-color: #2a4a34 !important; color: #7ec8a4 !important; }
+body.dark-mode .option.selected .opt-letter { background: #2d8a4e !important; border-color: #2d8a4e !important; color: #fff !important; }
+body.dark-mode .opt-text { color: var(--dark-text-color) !important; }
+body.dark-mode .option.selected .opt-text { color: #a8e6bf !important; }
+body.dark-mode .option.correct { border-color: #4caf6f !important; background: rgba(45,138,78,0.2) !important; }
+body.dark-mode .option.incorrect { border-color: #ef9a9a !important; background: rgba(229,57,53,0.15) !important; }
+
+.correct-indicator { margin-left: 8px; font-weight: bold; color: #2d8a4e; font-size: 13px; }
+.incorrect-indicator { margin-left: 8px; font-weight: bold; color: #e53935; font-size: 13px; }
+
+/* ── INSTRUCTION BOX ── */
+.instruction-box {
+    max-width: 900px; margin: auto;
+    background: linear-gradient(135deg, #e8f5ec, #d4eddb);
+    padding: 30px; border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(45,138,78,0.15);
+    line-height: 1.8;
+}
+.instruction-title {
+    font-size: 24px; font-weight: 800; color: #1a5c34;
+    margin-bottom: 15px; border-left: 5px solid #2d8a4e; padding-left: 10px;
+    font-family: 'Playfair Display', serif;
+}
+.instruction-list { padding-left: 20px; }
+.instruction-list li {
+    margin-bottom: 10px; font-size: 16px; background: white;
+    padding: 10px 12px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(45,138,78,0.1); transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.instruction-list li:hover { transform: translateX(5px); background: #edf7f1; border-left-color: #2d8a4e; }
+.instruction-checkbox { display: flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 16px; font-weight: 600; }
+.instruction-checkbox input { display: none; }
+.custom-check {
+    width: 20px; height: 20px; border: 2px solid #2d8a4e;
+    border-radius: 4px; display: inline-block; position: relative; cursor: pointer;
+}
+.instruction-checkbox input:checked + .custom-check::after {
+    content: "\2714"; position: absolute; top: -2px; left: 3px; font-size: 16px; color: #2d8a4e;
+}
+
+#start-test-btn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    box-shadow: 0 6px 15px rgba(45,138,78,0.4); transition: 0.3s; border-radius: 8px;
+}
+#start-test-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45,138,78,0.6); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 300px; background-color: var(--white); height: 100vh;
+    padding: 20px; box-shadow: 2px 0 8px rgba(45,138,78,0.12);
+    position: fixed; overflow-y: auto; right: 0; left: auto;
+    border-left: 1px solid #d4eddb;
+}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.sidebar-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.test-info { margin-bottom: 20px; }
+.test-info p { margin: 5px 0; color: var(--light-text); display: flex !important; gap: 6px; font-size: 16px !important; }
+.test-info strong { font-weight: 700 !important; color: #000 !important; }
+.question-palette { margin-bottom: 20px; }
+.palette-title { font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; overflow-x: hidden; }
+.palette-btn {
+    width: 100%; max-width: 40px; aspect-ratio: 1/1; border-radius: 50%;
+    border: 1px solid #ddd; background-color: #FF474D;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; margin: auto; font-size: 12px; font-weight: 700;
+}
+.palette-btn:hover { background-color: #f59e0b; transform: scale(1.1); }
+.palette-btn.answered { background-color: #4caf6f; color: #fff; border-color: #2d8a4e; }
+.palette-btn.marked { background-color: #90D5FF; color: #000; border-color: #0077cc; }
+.palette-btn.current { background-color: #fff; border: 2.5px solid var(--primary-color); color: var(--primary-color); }
+.palette-btn.review-correct { background-color: #22c55e !important; color: #fff !important; border-color: #16a34a !important; }
+.palette-btn.review-wrong { background-color: #ef4444 !important; color: #fff !important; border-color: #dc2626 !important; }
+.palette-btn.review-unanswered { background-color: #3b82f6 !important; color: #fff !important; border-color: #2563eb !important; }
+.palette-btn.review-correct.current,
+.palette-btn.review-wrong.current,
+.palette-btn.review-unanswered.current { outline: 3px solid var(--primary-color); outline-offset: 1px; }
+body.dark-mode .palette-btn { background-color: #FF474D !important; color: var(--dark-primary); border: 2px solid var(--dark-primary); }
+body.dark-mode .palette-btn.answered { background-color: #2d8a4e !important; color: white !important; border-color: #2d8a4e !important; }
+body.dark-mode .palette-btn.marked { background-color: #0077cc !important; color: white !important; border-color: #0077cc !important; }
+body.dark-mode .palette-btn.current { background-color: white !important; border: 2.5px solid var(--dark-primary) !important; color: var(--dark-primary) !important; }
+body.dark-mode .palette-btn.review-correct { background-color: #16a34a !important; border-color: #15803d !important; }
+body.dark-mode .palette-btn.review-wrong { background-color: #dc2626 !important; border-color: #b91c1c !important; }
+body.dark-mode .palette-btn.review-unanswered { background-color: #2563eb !important; border-color: #1d4ed8 !important; }
+
+/* ── BUTTONS ── */
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: #edf7f1; }
+.mark-btn {
+    margin-left: 10px; background-color: transparent;
+    border: 1.5px solid #2d8a4e; color: #2d8a4e;
+    padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+.mark-btn.marked { background-color: #2d8a4e; color: white; }
+body.dark-mode .btn-primary { background-color: var(--dark-primary); color: #000; }
+body.dark-mode .btn-outline { border-color: var(--dark-primary); color: var(--dark-primary); }
+body.dark-mode .mark-btn { border-color: var(--dark-secondary); color: var(--dark-secondary); }
+body.dark-mode .mark-btn.marked { background-color: var(--dark-secondary); color: #000; }
+
+/* ── FANCY BUTTONS ── */
+.fancy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 16px; font-weight: 700; border-radius: 50px;
+    border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.4px;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+.fancy-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; border-radius: inherit; }
+.fancy-btn:hover::after { background: rgba(255,255,255,0.12); }
+.fancy-btn:active { transform: scale(0.96) !important; }
+.fancy-btn:hover { transform: translateY(-3px) scale(1.03); }
+.join-btn { background: linear-gradient(135deg, #0088cc, #006699); color: white; box-shadow: 0 5px 18px rgba(0,136,204,0.45); }
+.join-btn:hover { box-shadow: 0 8px 24px rgba(0,136,204,0.65); color: white; }
+.submit-fancy-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); color: white; box-shadow: 0 5px 18px rgba(45,138,78,0.45); flex: 1; max-width: 280px; }
+.submit-fancy-btn:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.65); }
+.pdf-download-btn {
+    background: linear-gradient(135deg, #f97316, #ea580c); color: white !important;
+    font-weight: 700; border-radius: 30px; transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4); padding: 13px 28px; font-size: 16px;
+    flex: 1; max-width: 280px; display: inline-flex; align-items: center; justify-content: center;
+}
+.pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(249,115,22,0.6); color: white !important; }
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
+    text-decoration: none; color: white; letter-spacing: 0.3px;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease, filter 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.footer-btn:hover { transform: translateY(-3px) scale(1.06); filter: brightness(1.1); color: white; }
+.footer-btn:active { transform: scale(0.95); }
+.more-btn { background: linear-gradient(135deg, #2d8a4e, #1a5c34); box-shadow: 0 4px 14px rgba(45,138,78,0.4); }
+.more-btn:hover { box-shadow: 0 7px 20px rgba(45,138,78,0.65); }
+.back-btn { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
+.back-btn:hover { box-shadow: 0 7px 20px rgba(34,197,94,0.65); }
+.report-btn { background: linear-gradient(135deg, #f97316, #dc2626); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+.report-btn:hover { box-shadow: 0 7px 20px rgba(239,68,68,0.65); }
+
+/* ── LAYOUT ── */
+.main-content { flex: 1; margin-left: 0; margin-right: 300px; padding: 20px; }
+.test-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb;
+}
+.test-header h2 { font-family: 'Playfair Display', serif; color: var(--primary-dark); font-size: 20px; }
+body.dark-mode .test-header h2 { color: var(--dark-primary) !important; }
+.timer {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white; padding: 10px 20px; border-radius: 40px;
+    font-weight: 800; font-size: 18px; min-width: 140px; text-align: center;
+    font-family: 'DM Sans', monospace; letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+.progress-container { margin-bottom: 20px; }
+.progress-bar { height: 10px; background-color: #d4eddb; border-radius: 5px; overflow: hidden; }
+.progress { height: 100%; background: linear-gradient(90deg, #2d8a4e, #7ec8a4); width: 0%; transition: width 0.3s; border-radius: 5px; }
+.progress-text { display: flex; justify-content: space-between; margin-top: 5px; font-size: 14px; color: var(--light-text); }
+.question-container {
+    background-color: var(--white); border-radius: 12px; padding: 24px;
+    margin-bottom: 20px; box-shadow: 0 4px 16px rgba(45,138,78,0.1);
+    border: 1px solid #d4eddb;
+}
+.question-number { color: var(--primary-color); font-weight: 800; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.question-text { margin-bottom: 20px; font-size: 17px; line-height: 1.6; color: var(--dark-text); }
+.options { margin-left: 0; }
+.navigation-btns { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+.submit-section {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; max-width: 620px; margin: 24px auto; gap: 14px; flex-wrap: wrap;
+}
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,30,10,0.6); z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: white; border-radius: 14px; width: 80%; max-width: 600px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #d4eddb; }
+.modal-header h2 { color: var(--primary-color); font-family: 'Playfair Display', serif; }
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--light-text); }
+.result-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat-card { background-color: var(--light-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #d4eddb; }
+.stat-card h3 { color: #000; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { font-size: 28px; font-weight: 800; }
+.correct-stat { color: var(--correct-color); }
+.incorrect-stat { color: var(--incorrect-color); }
+.score-stat { color: var(--primary-color); }
+.review-btn { margin-top: 20px; width: 100%; }
+.button2 {
+    background-color: #2d8a4e; color: white; border: none;
+    padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 30px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(45,138,78,0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.button2:hover { background-color: #1a5c34; box-shadow: 0 6px 12px rgba(45,138,78,0.5); color: #fff; }
+
+/* ── DARK MODE TOGGLE ── */
+#dark-mode-toggle-bottom {
+    position: absolute; top: 18px; right: 18px; font-size: 22px; padding: 8px 18px;
+    border-radius: 40px; border: none; cursor: pointer;
+    background: linear-gradient(45deg, #1a5c34, #2d8a4e); color: white;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 15px rgba(45,138,78,0.5);
+    transition: background 0.4s, box-shadow 0.4s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+}
+#dark-mode-toggle-bottom:hover { box-shadow: 0 6px 20px rgba(45,138,78,0.8); }
+body.dark-mode #dark-mode-toggle-bottom {
+    background: linear-gradient(45deg, #f7971e, #ffd200) !important;
+    box-shadow: 0 4px 15px rgba(255,210,0,0.6) !important;
+}
+body.dark-mode #dark-mode-toggle-bottom .icon { color: #333 !important; }
+body.dark-mode #dark-mode-toggle-bottom span:not(.icon) { color: #333 !important; }
+
+#test-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-bg); z-index: 9998; display: none; overflow: auto; }
+#user-name-display {
+    background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+    color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 14px;
+}
+.mobile-top-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #d4eddb;
+        margin-bottom: 8px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-timer-clone {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white; padding: 6px 14px; border-radius: 30px;
+        font-weight: 800; font-size: 15px; min-width: 100px; text-align: center;
+    }
+    #mobile-name-display {
+        background: linear-gradient(135deg, #1a5c34, #2d8a4e);
+        color: white; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;
+    }
+    #user-name-display { display: none !important; }
+    .sidebar .timer { display: none !important; }
+    .sidebar .sidebar-header { display: none !important; }
+    body { display: flex; flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; right: 0; left: 0; box-shadow: none; margin-bottom: 10px; }
+    .question-palette { max-height: 200px; overflow-y: auto; }
+    .main-content { margin: 0 !important; width: 100%; padding: 10px; }
+    .navigation-btns { flex-direction: row !important; gap: 8px; align-items: center; }
+    #prev-btn { padding: 8px 14px !important; font-size: 13px !important; border-radius: 6px !important; flex-shrink: 0; }
+    #next-btn { padding: 14px 28px !important; font-size: 17px !important; border-radius: 8px !important; flex: 1; }
+    .navigation-btns > div { display: flex; flex: 1; gap: 8px; align-items: center; }
+    #mark-btn { font-size: 11px !important; padding: 6px 8px !important; flex-shrink: 0; }
+}
+@media (max-width: 576px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } .result-stats { grid-template-columns: 1fr; } }
+#pdf-print-area { display: none; }
+@media print {
+    body > * { display: none !important; }
+    #pdf-print-area { display: block !important; font-family: Arial, sans-serif; color: #111; padding: 20px; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="start-screen" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:white;z-index:9999;display:flex;
+    flex-direction:column;justify-content:flex-start;align-items:center;
+    text-align:center;padding:40px 20px 40px;overflow-y:auto;
+    font-family:'DM Sans',sans-serif;">
+
+<button id="dark-mode-toggle-bottom" aria-label="Toggle dark mode">
+  <span class="icon" style="display:inline-block;transition:transform 0.6s ease;">🌙</span>
+  <span style="font-size:13px;font-weight:700;letter-spacing:0.5px;">Dark</span>
+</button>
+
+<!-- Logo / Brand -->
+<div style="margin-bottom:6px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a5c34,#4caf6f);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+    box-shadow:0 8px 24px rgba(45,138,78,0.35);font-size:34px;">🗳️</div>
+</div>
+
+<h1 style="color:#1a5c34;font-size:32px;font-family:'Playfair Display',serif;margin-bottom:4px;">
+  Geography
+</h1>
+  <p style="font-size:16px;margin:6px 0;">Full mock <strong style="color:#1a5c34;">1</strong></p>
+<p style="font-size:16px;margin:6px 0;">Provided by <strong style="color:#1a5c34;">Thunderstudy</strong></p>
+
+<a href="https://t.me/thunderstudy_official" target="_blank"
+  style="display:inline-flex;align-items:center;gap:8px;margin:8px 0 14px;
+  background:linear-gradient(135deg,#0088cc,#006699);color:white;text-decoration:none;
+  padding:10px 24px;border-radius:30px;font-size:15px;font-weight:700;
+  box-shadow:0 5px 16px rgba(0,136,204,0.45);
+  transition:transform 0.18s,box-shadow 0.18s;"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 8px 22px rgba(0,136,204,0.65)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 5px 16px rgba(0,136,204,0.45)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.04 9.607c-.148.666-.543.828-1.098.516l-3.04-2.24-1.467 1.413c-.162.162-.298.298-.611.298l.217-3.083 5.613-5.067c.244-.217-.054-.337-.378-.12L7.08 14.807 4.09 13.89c-.657-.205-.67-.657.137-.973l10.88-4.196c.548-.198 1.027.133.855.973z"/>
+  </svg>
+  @thunderstudy_official
+</a>
+
+<div style="max-width:560px;text-align:left;margin:10px auto 18px;
+  background:linear-gradient(135deg,#edf7f1,#d4eddb);
+  border-radius:12px;padding:18px 22px;border-left:4px solid #2d8a4e;">
+  <h2 style="margin-bottom:12px;color:#1a5c34;font-size:18px;font-family:'Playfair Display',serif;">📋 Quick Overview</h2>
+  <ul style="text-align:left;line-height:2;font-size:15px;padding-left:18px;">
+    <li><strong>50 Questions</strong></li>
+    <li><strong>60 Minutes</strong> total time</li>
+    <li><strong>+5 marks</strong> for correct &nbsp;|&nbsp; <strong>−1 mark</strong> for wrong</li>
+    <li>No penalty for <strong>unanswered</strong> questions</li>
+    <li>Test <strong>auto-submits</strong> when time ends</li>
+    <li>Do <strong>not switch tabs</strong> or exit fullscreen during test</li>
+  </ul>
+</div>
+
+<div style="margin:10px 0;">
+  <input type="text" id="username-input" placeholder="Enter your name"
+    style="padding:10px;width:260px;border-radius:10px;border:2px solid #2d8a4e;
+    font-size:16px;text-align:center;outline:none;font-family:'DM Sans',sans-serif;">
+</div>
+<div id="sid-display-area" style="font-size:13px;font-weight:700;color:#1a5c34;background:rgba(45,138,78,0.1);padding:5px 15px;border-radius:20px;display:none;margin-top:4px;">
+    🪪 ID: <span id="sid-value">---</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:6px;">
+
+  <button onclick="startMock()" style="
+      width:260px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(45,138,78,0.45);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 28px rgba(45,138,78,0.65)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(45,138,78,0.45)'"
+    onmousedown="this.style.transform='scale(0.97)'"
+    onmouseup="this.style.transform='translateY(-3px) scale(1.04)'">
+    🚀 Start Mock
+  </button>
+
+  <button onclick="window.location.href='https://commercesehoga.github.io/commerce/bst/result.html'" style="
+      width:260px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(34,197,94,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📊 Previous Result
+  </button>
+
+  <button onclick="window.open('https://commercesehoga.blogspot.com/','_blank')" style="
+      width:260px;background:linear-gradient(135deg,#2d8a4e,#7ec8a4);color:white;padding:13px 36px;
+      font-size:18px;font-weight:700;border:none;border-radius:30px;cursor:pointer;
+      box-shadow:0 6px 20px rgba(126,200,164,0.4);transition:transform 0.18s,box-shadow 0.18s;
+      font-family:'DM Sans',sans-serif;"
+    onmouseover="this.style.transform='translateY(-3px) scale(1.04)'"
+    onmouseout="this.style.transform=''">
+    📚 More Mock Tests
+  </button>
+
+</div>
+</div>
+
+<!-- INSTRUCTION SCREEN -->
+<div id="instruction-screen" style="
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:white;z-index:9999;display:none;overflow:auto;padding:30px;">
+<h2 style="text-align:center;margin-bottom:20px;font-family:'Playfair Display',serif;color:#1a5c34;">Please read the instructions carefully</h2>
+<div class="instruction-box">
+<h3 class="instruction-title">General Instructions</h3>
+<ol class="instruction-list">
+<li>Total duration of test is <strong>60 minutes</strong>. Timer shown in sidebar.</li>
+<li>Test <strong>auto-submits</strong> when the timer reaches zero.</li>
+<li>The test runs in <strong>fullscreen mode</strong>. Exiting fullscreen starts a <strong>5-second countdown</strong> to auto-submit.</li>
+<li><strong>Do not switch tabs</strong>. Switching tabs starts a <strong>2-second countdown</strong> to auto-submit.</li>
+<li>Return to fullscreen or the tab before the countdown ends to continue safely.</li>
+<li>Question palette on the right shows answered, marked, and current status.</li>
+<li>Each correct answer: <strong>+5 marks</strong>. Each wrong answer: <strong>−1 mark</strong>. Unanswered: <strong>0 marks</strong>.</li>
+</ol>
+<div style="margin-top:20px;">
+  <strong>Question Status Legend:</strong>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;border:2px solid #2d8a4e;background:white;"></div><span>Current</span></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:12px;"><div style="width:15px;height:15px;border-radius:50%;background:#FF474D;border:1px solid #ddd;"></div><span>Unanswered</span></div>
+  </div>
+</div>
+<label class="instruction-checkbox">
+    <input type="checkbox" id="agree-checkbox">
+    <span class="custom-check"></span>
+    I have read and understood all instructions
+</label>
+<br><br>
+<button id="start-test-btn" disabled style="
+background:#2d8a4e;color:white;padding:12px 24px;border:none;
+border-radius:8px;font-size:18px;cursor:not-allowed;opacity:0.6;
+font-family:'DM Sans',sans-serif;font-weight:700;">
+Start Test
+</button>
+</div>
+</div>
+
+<!-- TEST SCREEN -->
+<div id="test-screen">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Geography</h2>
+        <div id="focus-laptop" style="font-size:12px;font-weight:bold;color:green;margin-top:5px;">● Focus On</div>
+    </div>
+        <div class="timer">01:00:00</div>
+        
+    <div class="test-info">
+        <p><strong>Subject:</strong> <span id="subject-label">Geography</span></p>
+        <p><strong>Questions:</strong> 50</p>
+        <p><strong>Duration:</strong> 60 min</p>
+        <p><strong>Marking:</strong> +5 / -1</p>
+        <p><strong>All Chapter</strong> <span id="current-section">-</span></p>
+    </div>
+    <p><strong>Student ID:</strong> <span id="display-user-sid">---</span></p>
+    <div class="question-palette">
+        <div class="palette-title">
+            <span>Questions</span>
+            <span id="answered-count">0/50</span>
+        </div>
+        <div class="palette-grid" id="question-palette-grid"></div>
+        <div id="palette-legend" style="margin-top:12px;font-size:12px;"></div>
+    </div>
+</div>
+
+<div class="main-content">
+<div class="mobile-top-bar">
+    <div class="mobile-timer-clone">01:00:00</div>
+    <div id="focus-mobile" style="font-size:10px;font-weight:bold;color:green;">● Focus On</div>
+    <div id="mobile-name-display">👤 Thunder</div>
+</div>
+
+<div class="test-header">
+  <div id="user-name-display">👤 Thunder</div>
+  <h2>Question <span id="current-q-number">1</span>/50</h2>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress" id="test-progress"></div></div>
+    <div class="progress-text"><span>Progress</span><span id="progress-percent">0%</span></div>
+  </div>
+</div>
+
+<div class="question-container">
+<div class="question-number">Question <span id="q-number">1</span></div>
+<div class="question-text" id="question-text"></div>
+<div class="options" id="options-container"></div>
+<div class="navigation-btns">
+<button class="btn btn-outline" id="prev-btn">&#8592; Previous</button>
+<div>
+<button class="mark-btn" id="mark-btn">Mark for Review</button>
+<button class="btn btn-primary" id="next-btn">Next &#8594;</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+    <a href="https://t.me/thunderstudy_official" target="_blank" class="fancy-btn join-btn">⚡ Join Thunder</a>
+    <button class="fancy-btn submit-fancy-btn" id="submit-test-btn">✅ Submit Test</button>
+</div>
+
+<footer style="background:linear-gradient(135deg,#0a1f0e,#152419);color:#d4edd9;text-align:center;padding:22px 16px;margin-top:10px;border-top:2px solid #2d8a4e;">
+   <p style="font-size:13px;color:#7ec8a4;margin-bottom:14px;">© 2025 Thunder. All Rights Reserved.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn more-btn">📚 More Mock</a>
+    <a href="https://commercesehoga.blogspot.com/" target="_blank" class="footer-btn back-btn">🌐 Back To Website</a>
+    <a href="https://t.me/mindmaster_robot" target="_blank" class="footer-btn report-btn">🚨 Report Error</a>
+</div>
+</footer>
+
+<!-- Results Modal -->
+<div class="modal" id="results-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🗳️ Test Results</h2>
+<button class="close-btn" id="close-modal">×</button>
+</div>
+<div class="result-stats">
+<div class="stat-card"><h3>Correct</h3><p class="correct-stat" id="correct-answers">0</p></div>
+<div class="stat-card"><h3>Incorrect</h3><p class="incorrect-stat" id="incorrect-answers">0</p></div>
+<div class="stat-card"><h3>Unanswered</h3><p style="color:#6b7280;" id="unanswered">50</p></div>
+<div class="stat-card"><h3>Total Score</h3><p class="score-stat" id="total-score">0</p></div>
+</div>
+<div style="margin-top:8px;padding:12px;background:#edf7f1;border-radius:8px;border:1px solid #d4eddb;">
+<p style="margin:3px 0;">Percentage: <strong><span id="percentage">0</span>%</strong></p>
+<p style="margin:3px 0;">Accuracy: <strong><span id="accuracy">0</span>%</strong></p>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+<button class="btn btn-primary review-btn" id="review-btn" style="flex:1;margin-top:0;border-radius:8px;">Review Answers</button>
+<button class="btn pdf-download-btn" id="download-pdf-btn" style="flex:1;">📄 Download PDF</button>
+</div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /test-screen -->
+
+<script>
+/* ============================================================
+   Geography MOCK TEST DATA
+   ============================================================ */
+const mockTest = {
+    title: "Geography Mock",
+    questions:[
+  {
+    id: 1,
+    section: "Case Study",
+    text: `READ THE FOLLOWING CASE STUDY CAREFULLY AND ANSWER QUESTIONS 1 TO 5:\n\nIn 2021, Dr. Anamika Das, a fluvial geomorphologist working with the Brahmaputra Board, documented alarming morphological changes on Majuli Island (Assam). Once the largest river island in the world, Majuli has been shrinking due to persistent bank erosion by the Brahmaputra River. Using satellite data from 1915 to 2020, she calculated that 68% of the island's original area (nearly 358 km² out of 1,250 km²) had been lost, with an average erosion rate of 3.2 km² per year. The Brahmaputra’s braided channel pattern, high sediment load (over 600 million tonnes/year), and frequent avulsion events exacerbate the erosion. In response, the Government of India launched the 'Majuli Protection and Morphological Stabilisation Mission' under the Brahmaputra Board’s 12th Plan. The mission involved constructing 32 km of geo-bag revetments, permeable spurs, and afforestation on sandbars. By 2023, erosion reduced by 45% in treated reaches, but increased sedimentation downstream near the Kaziranga National Park, causing concerns about riverbed rise and flood hazards. Geomorphologists debate whether structural interventions alone can manage dynamic alluvial systems without addressing upstream catchment processes.\n\nQ1. The morphological process primarily responsible for the reduction in Majuli's area, as observed in the case study, is best described as:`,
+    options: { a: "Vertical downcutting by the Brahmaputra", b: "Lateral erosion and bank scouring leading to channel avulsion", c: "Headward erosion and gullying from tributaries", d: "Karst dissolution of underlying limestone" },
+    correctAnswer: "b",
+    explanation: "Lateral erosion (bank erosion) combined with channel avulsion is the primary cause of Majuli’s shrinking. Vertical downcutting (a) deepens the channel but does not reduce island area laterally; headward erosion (c) retrogresses upstream, not relevant to island retreat; Karst (d) occurs in limestone terrains, not alluvial river islands.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 2,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ2. Based on the estimated average erosion rate of 3.2 km² per year, if this rate remained constant from 2020 to 2025, what would be the approximate remaining area of Majuli Island in 2025? (Assume 2020 area = 358 km² after historical loss and no new deposition offsets).`,
+    options: { a: "342 km²", b: "325 km²", c: "304 km²", d: "290 km²" },
+    correctAnswer: "a",
+    explanation: "Erosion from 2020-2025 = 3.2 km²/year × 5 years = 16 km². 358 − 16 = 342 km². Option b (325 km²) incorrectly uses 33 km² loss; c (304 km²) uses 54 km² loss; d (290 km²) uses 68 km² loss, all misapplying the erosion rate.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 3,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ3. The 'braided channel pattern' of the Brahmaputra, mentioned in the study, is most commonly associated with which of the following combinations of river characteristics?`,
+    options: { a: "Low gradient, cohesive banks, low sediment load", b: "High sediment load, variable discharge, erodible banks", c: "Single thread, high sinuosity, stable bed", d: "Bedrock controlled, steep gradient, narrow valley" },
+    correctAnswer: "b",
+    explanation: "Braided rivers form with abundant sediment supply, frequent discharge changes, and easily eroded banks – all true for the Brahmaputra. Option a (cohesive banks & low load) creates meandering; c describes meandering rivers; d describes bedrock channels, not braided.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 4,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ4. The downstream increase in sedimentation near Kaziranga after constructing revetments and spurs on Majuli is an example of which geomorphic concept?`,
+    options: { a: "Base level change", b: "Sediment connectivity disruption and morphological cascade", c: "Isostatic rebound", d: "Urban heat island effect" },
+    correctAnswer: "b",
+    explanation: "Interrupting erosion upstream transfers sediment deficit, causing downstream aggradation — a classic sediment cascade disruption. Base level change (a) involves sea/lake level; isostatic rebound (c) is post-glacial uplift; urban heat island (d) is climatic, not geomorphic.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 5,
+    section: "Case Study",
+    text: `(Refer to the case study in Q1)\n\nQ5. Which of the following landforms is NOT a fluvial depositional feature that could be found in the Brahmaputra’s alluvial plain?`,
+    options: { a: "Oxbow lake", b: "Point bar", c: "Hanging valley", d: "Natural levee" },
+    correctAnswer: "c",
+    explanation: "Hanging valleys are formed by glacial erosion (tributary glacier meeting main glacier), not fluvial deposition. Oxbow lakes, point bars, and natural levees are common in alluvial plains of braided rivers.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 6,
+    section: "Match the Following",
+    text: `Match List-I with List-II regarding the morphological divisions of India:\n\nList-I:\n(A) Shiwalik Range\n(B) Malwa Plateau\n(C) Eastern Ghats\n(D) Andaman Trench\n\nList-II:\n(I) Volcanic origin, stepped lava flows\n(II) Deep seafloor feature, subduction zone\n(III) 600–1500 m elevation, composed of soft conglomerates\n(IV) Highly dissected, discontinuous hills with northeast-southwest trend\n\nChoose the correct answer from the options given below:`,
+    options: { a: "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)", b: "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)", c: "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)", d: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)" },
+    correctAnswer: "a",
+    explanation: "Shiwalik are foothills of soft conglomerates (III); Malwa Plateau is basaltic lava flow origin (I); Eastern Ghats are discontinuous NE-SW trending hills (IV); Andaman Trench is a subduction-related deep-sea feature (II). Other options mis-assign features.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 7,
+    section: "Match the Following",
+    text: `Match the Himalayan morphological subdivision with its characteristic feature:\n\nList-I:\n(A) Himadri (Greater Himalayas)\n(B) Himachal (Lesser Himalayas)\n(C) Shivalik (Outer Himalayas)\n(D) Trans-Himalaya\n\nList-II:\n(I) Duns and intramontane valleys\n(II) Perennially snow-capped peaks > 8000 m\n(III) Karakoram range, cold desert\n(IV) Middle Miocene thrust sheets, Mussoorie syncline\n\nChoose the correct answer:`,
+    options: { a: "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)", b: "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)", c: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)", d: "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)" },
+    correctAnswer: "a",
+    explanation: "Greater Himalayas (A) have highest peaks (II). Lesser Himalayas (B) contain Miocene thrust sheets and synclines (IV). Shivalik (C) are known for duns (I). Trans-Himalaya (D) includes Karakoram and cold desert (III). Other pairings contradict NCERT.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 8,
+    section: "Match the Following",
+    text: `Match the following Peninsular plateaus with their dominant rock type and geomorphic character:\n\nList-I:\n(A) Deccan Plateau\n(B) Chotanagpur Plateau\n(C) Meghalaya Plateau\n(D) Karnataka Plateau\n\nList-II:\n(I) Archaean gneisses, tors and inselbergs\n(II) Basalt with step-like topography (Deccan traps)\n(III) Precambrian schists, rich in minerals like mica\n(IV) Shillong series, separated by Brahmaputra rift\n\nOptions:`,
+    options: { a: "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)", b: "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)", c: "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)", d: "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)" },
+    correctAnswer: "a",
+    explanation: "Deccan traps basalt (A-II); Chotanagpur has Precambrian schists/minerals (B-III); Meghalaya plateau is Shillong series separated by rift (C-IV); Karnataka plateau has ancient gneisses (D-I). NCERT Class 11 India Physical Environment, Ch 2.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 9,
+    section: "Match the Following",
+    text: `Match the coastal morphological features with their location in India:\n\nList-I:\n(A) Kayals (backwaters)\n(B) Coromandel Coast\n(C) Gulf of Khambhat\n(D) Sundarbans\n\nList-II:\n(I) Deltaic mangrove swamp, tidal creeks\n(II) Emergent coast with strand plains\n(III) Estuarine coast, Narmada-Tapi mouths\n(IV) Submergent coast, lagoons\n\nOptions:`,
+    options: { a: "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)", b: "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)", c: "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)", d: "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)" },
+    correctAnswer: "a",
+    explanation: "Kayals (A) are lagoons of Kerala — submergent (IV). Coromandel (B) is emergent with strand plains (II). Gulf of Khambhat (C) is estuarine with Narmada-Tapi (III). Sundarbans (D) are deltaic mangroves (I). NCERT Coastal Plains chapter.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 10,
+    section: "Match the Following",
+    text: `Match the following drainage patterns with their typical geomorphic setting:\n\nList-I:\n(A) Dendritic pattern\n(B) Trellis pattern\n(C) Rectangular pattern\n(D) Radial pattern\n\nList-II:\n(I) Volcanic cone / isolated hill\n(II) Uniform lithology, gentle slope\n(III) Alternating hard and soft rocks, folded mountains\n(IV) Fault-controlled joints, orthogonal fractures\n\nOptions:`,
+    options: { a: "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)", b: "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)", c: "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)", d: "(A)-(I), (B)-(IV), (C)-(III), (D)-(II)" },
+    correctAnswer: "a",
+    explanation: "Dendritic develops on uniform rock (II); Trellis on folded alternating strata (III); Rectangular along joints/faults (IV); Radial from a central high point (I) like a volcano. NCERT drainage patterns.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 11,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Western Ghats are a continuous escarpment running parallel to the west coast.\nReason (R): The escarpment was formed by rift faulting and subsequent erosion of the western margin of the Deccan Plateau.\n\nChoose the correct answer:`,
+    options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+    correctAnswer: "a",
+    explanation: "Both true: Western Ghats are a nearly continuous escarpment, and geomorphic studies confirm that rift faulting along the west coast (early Cretaceous) followed by differential erosion created the steep slope. R correctly explains A.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 12,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Northern Plains of India are geomorphologically an aggradational plain formed by the Ganga, Indus and Brahmaputra systems.\nReason (R): The plain is a foredeep basin filled with Quaternary alluvium derived from Himalayan erosion.\n\nChoose the correct answer:`,
+    options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+    correctAnswer: "a",
+    explanation: "Both true: The Indo-Gangetic plain is a classic foreland basin (foredeep) where subsidence allowed thick alluvial deposition; the sediments come from rising Himalayas. R correctly explains the aggradational nature of A.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 13,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Thar Desert exhibits stabilized sand dunes and playa lakes (e.g., Sambhar Lake).\nReason (R): The Aravalli Range acts as a moisture barrier, causing arid climate and internal drainage.\n\nChoose the correct answer:`,
+    options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+    correctAnswer: "a",
+    explanation: "Both true. Aravalli lies parallel to SW monsoonal winds, causing rain shadow; aridity leads to aeolian features (stabilized dunes) and ephemeral playas. R directly explains the geomorphic features in A.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 14,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Peninsular rivers (Narmada, Tapi) flow through rift valleys and form estuaries, not deltas.\nReason (R): These rivers flow over hard crystalline rocks with steep gradients and lack of significant sediment load.\n\nChoose the correct answer:`,
+    options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+    correctAnswer: "a",
+    explanation: "Both true: Narmada-Tapi traverse through linear rifts; hard rock, steep slopes prevent alluvial fan development, and low sediment load relative to subsidence yields estuarine mouths, not deltas. R explains the estuarine/delta-free outcome.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 15,
+    section: "Assertion-Reason",
+    text: `Assertion (A): The Andaman and Nicobar Islands have a rugged relief with active volcanoes (Barren Island).\nReason (R): They are part of an island arc formed by subduction of the Indian plate beneath the Burmese plate.\n\nChoose the correct answer:`,
+    options: { a: "Both A and R are true and R is the correct explanation of A", b: "Both A and R are true but R is NOT the correct explanation of A", c: "A is true but R is false", d: "A is false but R is true" },
+    correctAnswer: "a",
+    explanation: "Both true: Island arc subduction induces volcanism and rugged topography. R provides the plate tectonic process that explains the morphology (A).",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 16,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following geomorphic features of the Himalayas in the correct order from north to south:\n(A) Pir Panjal Range\n(B) Tibetan Tethys Zone\n(C) Main Frontal Thrust (MFT)\n(D) Main Central Thrust (MCT) zone\n\nChoose the correct sequence:`,
+    options: { a: "(B), (A), (D), (C)", b: "(A), (B), (C), (D)", c: "(C), (D), (A), (B)", d: "(D), (C), (B), (A)" },
+    correctAnswer: "a",
+    explanation: "From north (Tibetan Tethys) southward: Tethys Himalaya -> Pir Panjal (Lesser Himalayan range) -> MCT zone -> then MFT (Shivalik front). Option b incorrectly orders; c reverses; d also wrong. NCERT Himalayan tectonostratigraphy.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 17,
+    section: "Arrange / Choose Correct",
+    text: `Which of the following statements about the morphological character of the Indian Peninsula are correct?\n\n(A) The Western Ghats have higher elevation and more continuous crest compared to the Eastern Ghats.\n(B) The Eastern Ghats are dissected by major east-flowing rivers like Mahanadi, Godavari, Krishna and Kaveri.\n(C) The Deccan Traps form a step-like topography due to layered lava flows.\n(D) The Chotanagpur plateau is composed exclusively of recent alluvial deposits.\n\nChoose the correct combination:`,
+    options: { a: "(A), (B) and (C) only", b: "(A), (B) and (D) only", c: "(B), (C) and (D) only", d: "(A), (B), (C) and (D)" },
+    correctAnswer: "a",
+    explanation: "A, B, C are correct: Western Ghats are higher; Eastern Ghats are dissected by rivers; Deccan traps have step topography. D incorrect: Chotanagpur plateau is composed of Precambrian rocks, not alluvium.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 18,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following steps in the development of a peneplain in the Indian context according to Davisian cycle of erosion:\n(A) Peneplanation and low relief\n(B) Initial uplift of the Aravalli range\n(C) Mature stage with deep weathering and valley widening\n(D) Youthful stage with deep V-shaped valleys\n\nChoose the correct order:`,
+    options: { a: "(B), (D), (C), (A)", b: "(D), (B), (A), (C)", c: "(C), (A), (B), (D)", d: "(A), (C), (D), (B)" },
+    correctAnswer: "a",
+    explanation: "Start with uplift (B) -> youth (deep V valleys, D) -> mature (C) -> old age peneplain (A). Other sequences ignore standard Davisian cycle order.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 19,
+    section: "Arrange / Choose Correct",
+    text: `Consider the following drainage basins in India:\n(A) Ganga basin\n(B) Godavari basin\n(C) Brahmaputra basin\n(D) Cauvery basin\n\nWhich of these basins flow through both rift valley and deltaic coastal plains? Identify the correct combination:`,
+    options: { a: "(A) and (B) only", b: "(B) and (D) only", c: "(C) and (A) only", d: "(A), (B), (C) and (D)" },
+    correctAnswer: "b",
+    explanation: "Godavari (B) and Cauvery (D) both have initial rift segments? Actually, Godavari traverses a graben; Cauvery also a rift. Ganga and Brahmaputra are not rift valleys; they are foreland basins. So correct combination is Godavari and Cauvery only -> option b (B and D).",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 20,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following Himalayan peaks in decreasing order of elevation (highest to lowest):\n(A) Nanda Devi\n(B) Kanchenjunga\n(C) Mount Everest\n(D) Kamet\n\nSelect the correct sequence:`,
+    options: { a: "(C), (B), (A), (D)", b: "(B), (C), (D), (A)", c: "(A), (D), (C), (B)", d: "(C), (A), (B), (D)" },
+    correctAnswer: "a",
+    explanation: "Everest (8848 m) > Kanchenjunga (8586) > Nanda Devi (7816) > Kamet (7756). Option a correct; b and d misorder. Based on known altitudes, NCERT Geography India physical.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 21,
+    section: "Passage Based",
+    text: `READ THE FOLLOWING PASSAGE CAREFULLY AND ANSWER QUESTIONS 21 TO 25:\n\nThe Peninsular Plateau of India is a stable shield area composed primarily of Archaean gneisses and schists, with patches of Proterozoic sedimentary rocks and Deccan Volcanic Province (basalt). Its morphology is characterized by broad, shallow valleys, residual hills (tors, inselbergs), and extensive laterite cappings in the western and eastern flanks. The plateau is broadly divided into the Central Highlands (Malwa, Bundelkhand) and the Deccan Plateau (Maharashtra, Karnataka, Telangana). Rivers like the Narmada and Tapi flow through linear rifts, creating narrow, steep valleys, whereas the Mahanadi, Godavari, Krishna and Kaveri have broader, graded profiles as they approach the coast. The plateau’s edge is marked by the Western Ghats (escapment) and Eastern Ghats (discontinuous hills). Laterite plateaus occur in the coastal hinterlands due to intense chemical weathering alternating with dry periods.\n\nQ21. Based on the passage, which geomorphic process is primarily responsible for the formation of laterite cappings on the Peninsular Plateau?`,
+    options: { a: "Glacial abrasion", b: "Intense chemical leaching under tropical monsoon climate", c: "Eolian deposition of sand", d: "Tectonic uplift of marine deposits" },
+    correctAnswer: "b",
+    explanation: "Laterite forms by intense wet-dry tropical weathering where silica is leached, leaving iron/aluminium oxides. Glacial (a) not relevant in peninsula; eolian (c) forms loess, not laterite; tectonic uplift (d) may expose but not form laterite.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 22,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q21)\n\nQ22. The difference in valley morphology between the Narmada-Tapi rivers and the Godavari-Krishna rivers, as described, is best explained by:`,
+    options: { a: "Climate gradient only", b: "Structural control (rifts vs. non-rift) and lithology", c: "Human intervention in the form of dams", d: "Distance from the coast" },
+    correctAnswer: "b",
+    explanation: "Narmada-Tapi follow tectonic rifts, hence steep valleys; others flow across shield with gentler slopes. Climate (a) not primary; human dams (c) are recent; distance (d) is not the cause.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 23,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q21)\n\nQ23. Inselbergs and tors found in the Peninsular region are indicative of:`,
+    options: { a: "Recent glaciation", b: "Deep chemical weathering followed by stripping of regolith", c: "Volcanic plug emplacement", d: "Coastal wave erosion" },
+    correctAnswer: "b",
+    explanation: "Inselbergs form when thick weathered mantle (saprolite) is eroded, exposing resistant corestones. Glacial (a) absent; volcanic plugs (c) rare; coastal (d) unrelated to interior plateaus.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 24,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q21)\n\nQ24. Which of the following statements is NOT consistent with the passage?`,
+    options: { a: "The Western Ghats are described as a continuous escarpment", b: "Laterite cappings occur due to chemical weathering", c: "The Eastern Ghats are continuous and higher than Western Ghats", d: "The Deccan plateau includes parts of Karnataka" },
+    correctAnswer: "c",
+    explanation: "Passage says Eastern Ghats are discontinuous hills, and Western Ghats are higher/continuous. Option c contradicts. Other options are directly from the passage.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 25,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q21)\n\nQ25. The broad, shallow valleys of the Mahanadi and Godavari in the Peninsular region indicate that these rivers are in which stage of the fluvial cycle?`,
+    options: { a: "Youth stage (V-shaped valleys)", b: "Mature stage (broad valleys with meanders)", c: "Old stage (peneplain with low relief)", d: "Rejuvenated stage with terraces" },
+    correctAnswer: "b",
+    explanation: "Broad and graded profiles indicate mature stage. Youth (a) has V-shape; old stage peneplains have extremely low gradient; rejuvenation (d) causes incised meanders, not mentioned.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 26,
+    section: "Passage Based",
+    text: `READ THE FOLLOWING PASSAGE CAREFULLY AND ANSWER QUESTIONS 26 TO 30:\n\nThe Himalayan mountain system represents the world's youngest and highest fold mountain belt, formed by the collision of the Indian and Eurasian plates around 50 million years ago. Morphologically, the Himalayas consist of four longitudinal belts from south to north: the Shivaliks (foothills), the Lesser Himalayas (Middle Miocene thrust sheets), the Greater Himalayas (Higher Himalayas) with peaks >8000m, and the Tethys Himalayas (Tibetan Tethys zone). The rivers (Indus, Sutlej, Ganga, Brahmaputra) are antecedent, cutting deep gorges across rising ranges. Glacial landforms such as U-shaped valleys, cirques, and moraines are widespread in the Greater Himalayas, while the Shivaliks exhibit duns (intermontane valleys filled with Quaternary sediments). Neotectonic activity is evidenced by raised terraces, fault scarps, and seismicity (e.g., 2015 Gorkha earthquake). The region is also prone to mass wasting, debris flows, and glacial lake outburst floods (GLOFs).\n\nQ26. According to the passage, the term 'antecedent' when applied to Himalayan rivers indicates that:`,
+    options: { a: "Rivers originated before the mountain uplift and incised as the range rose", b: "Rivers are subsequent tributaries that erode weaker rocks", c: "Rivers flow parallel to the mountain strike", d: "Rivers are fed exclusively by monsoonal rainfall" },
+    correctAnswer: "a",
+    explanation: "Antecedent rivers predate uplift and maintain course by downcutting. Option b is subsequent drainage; c is longitudinal; d is climatic not morphological. NCERT defines antecedent.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 27,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q26)\n\nQ27. The presence of raised river terraces and fault scarps in the Himalayas is direct evidence of:`,
+    options: { a: "Eustatic sea level fall", b: "Neotectonic uplift and active tectonics", c: "Glacial overdeepening", d: "Eolian erosion" },
+    correctAnswer: "b",
+    explanation: "Raised terraces indicate tectonic uplift (neotectonics). Eustatic sea level (a) impacts coasts; glacial overdeepening (c) creates U-shaped valleys; eolian (d) not relevant.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 28,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q26)\n\nQ28. Which of the following landforms is NOT explicitly mentioned in the passage as occurring in the Himalayan region?`,
+    options: { a: "U-shaped valleys", b: "Cirques", c: "Sand dunes", d: "Moraines" },
+    correctAnswer: "c",
+    explanation: "Passage mentions U-shaped valleys, cirques, moraines, but sand dunes are arid/desert features not typical of Himalayan glacial environment.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 29,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q26)\n\nQ29. The intermontane valleys of Shivaliks filled with Quaternary sediments are locally known as:`,
+    options: { a: "Doabs", b: "Karewas", c: "Duns", d: "Bhabar" },
+    correctAnswer: "c",
+    explanation: "Duns are longitudinal valleys between Shivalik and Lesser Himalayas filled with alluvium – accurate per NCERT. Doabs are interfluves; Karewas are lacustrine deposits in Kashmir; Bhabar is a gravelly piedmont zone.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 30,
+    section: "Passage Based",
+    text: `(Refer to the passage in Q26)\n\nQ30. The 'GLOFs' mentioned in the passage are specifically hazardous because they:`,
+    options: { a: "Cause rapid coastal flooding", b: "Involve sudden release of water from glacial lakes due to moraine dam failure", c: "Are triggered by eolian erosion", d: "Occur only in Antarctica" },
+    correctAnswer: "b",
+    explanation: "GLOFs result from moraine-dammed lake failure, common in Himalayas. Coastal (a) wrong; eolian (c) unrelated; Antarctica (d) false.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 31,
+    section: "Application MCQ",
+    text: `The Kosi River in Bihar is known for its frequent avulsions, earning the name 'Sorrow of Bihar'. Which combination of morphological factors most directly explains this behavior?`,
+    options: { a: "High sediment load, concave longitudinal profile, bedrock control", b: "High sediment load, convex fan slope, rapid deposition leading to channel shifting", c: "Low sediment load, straight channel, cohesive banks", d: "Karstic underground drainage and collapse" },
+    correctAnswer: "b",
+    explanation: "Kosi is an alluvial fan river; high sediment load, gradient loss causes aggradation and avulsion. Option a bedrock control reduces avulsion; c low sediment load no avulsion; d karst irrelevant.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 32,
+    section: "Application MCQ",
+    text: `Geologists found fossilized marine shells at the top of Mount Everest. This finding supports which geomorphic theory regarding Himalayan morphology?`,
+    options: { a: "Isostatic rebound after deglaciation", b: "Uplift of Tethyan seafloor sediments due to continental collision", c: "Eolian transport of shells from ocean", d: "Volcanic extrusion of oceanic crust" },
+    correctAnswer: "b",
+    explanation: "Marine fossils in Tethys Himalaya indicate seafloor sediments uplifted during India-Eurasia collision. Isostatic rebound (a) is post-glacial; eolian (c) improbable; volcanic extrusion (d) not sourced from Tethys.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 33,
+    section: "Application MCQ",
+    text: `In the Pravara River basin (Maharashtra, Deccan Traps), you observe step-like flat topped hills with steep sides, capped by basalt. This landform is known as:`,
+    options: { a: "Hogback", b: "Cuesta", c: "Tableland (Mesa)", d: "Pediplain" },
+    correctAnswer: "c",
+    explanation: "Mesa/tableland formed by horizontal lava flows with caprock. Hogback and cuesta are tilted strata; pediplain is erosion surface. Deccan Traps produce classic mesas.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 34,
+    section: "Application MCQ",
+    text: `The 'Mahanadi Delta' is classified as a wave-dominated delta with strand plains. If sea level rises by 1 metre due to climate change, which morphological change is most likely in the lower delta plain?`,
+    options: { a: "Progradation and formation of new distributaries", b: "Submergence, increased backwater flooding, and mangrove migration inland", c: "Entrenchment of river channels", d: "Formation of extensive eolian dunes" },
+    correctAnswer: "b",
+    explanation: "Relative sea-level rise causes delta plain submergence, inundation, coastal squeeze; progradation (a) requires sediment surplus; entrenchment (c) occurs with base level fall; dunes (d) not related.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 35,
+    section: "Application MCQ",
+    text: `A geographer measures the sinuosity index (channel length / valley length) of a reach of the Ganga in Uttar Pradesh as 2.4. This indicates the river is:`,
+    options: { a: "Straight channel", b: "Meandering channel with high sinuosity", c: "Braided channel", d: "Anastomosing channel" },
+    correctAnswer: "b",
+    explanation: "Sinuosity >1.5 is meandering; >2.0 is high sinuosity meandering. Straight <1.05; braided has low sinuosity but multiple threads; anastomosing is stable multiple channels.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 36,
+    section: "Application MCQ",
+    text: `The Pachmarhi region in Madhya Pradesh exhibits a plateau surface with laterite capping and deep gorges formed by the Denwa river. This landscape is best described as a:`,
+    options: { a: "Volcanic crater", b: "Fluvial incised plateau (Cuesta topography)", c: "Coastal dune complex", d: "Glacial trough" },
+    correctAnswer: "b",
+    explanation: "Pachmarhi is a part of Satpura range with laterite-capped plateau incised by rivers – an incised plateau. Crater (a) not; glacial (d) absent; coastal (c) wrong.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 37,
+    section: "Application MCQ",
+    text: `In the Andaman Islands, a geologist finds a sequence of uplifted coral terraces 5m, 12m, and 25m above current sea level. This most likely indicates:`,
+    options: { a: "Eustatic sea level fall in steps", b: "Tectonic uplift due to subduction-related earthquakes", c: "Isostatic subsidence from sediment loading", d: "Eolian erosion of limestone" },
+    correctAnswer: "b",
+    explanation: "Coral terraces above sea level indicate episodic uplift, common in active subduction zones. Eustatic fall (a) would be global, not only in Andaman; subsidence (c) would lower; eolian (d) doesn't create terraces.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 38,
+    section: "Application MCQ",
+    text: `The 'Beas' river in Himachal Pradesh shows a series of five well-preserved fluvial terraces. Which sequence of processes best explains their formation?`,
+    options: { a: "Glacial erosion followed by moraine deposition", b: "Intermittent uplift and downcutting by the river alternating with stable periods", c: "Mass wasting and landslide damming", d: "Sea level changes affecting base level" },
+    correctAnswer: "b",
+    explanation: "Fluvial terraces (especially strath terraces) result from episodic uplift causing incision and abandonment of floodplains. Glacial (a) gives different landforms; mass wasting (c) not systematic; sea level (d) irrelevant inland.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 39,
+    section: "Application MCQ",
+    text: `You observe a region in the Rann of Kutch where the ground surface is cracked into polygonal patterns with salt efflorescence. This is a typical:`,
+    options: { a: "Badland topography", b: "Playa surface with desiccation cracks", c: "Palsa peatland", d: "Laterite duricrust" },
+    correctAnswer: "b",
+    explanation: "Rann is a seasonal playa lake; desiccation cracks and salt crusts form during dry phase. Badland (a) is intense gully erosion; palsa (c) periglacial; laterite (d) iron-rich.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 40,
+    section: "Application MCQ",
+    text: `The 'Zanskar range' shows spectacular recumbent folds in Paleozoic sediments with an axial plane dipping gently northward. This indicates:`,
+    options: { a: "Intense vertical uplift only", b: "Large scale ductile deformation and thrusting during Himalayan orogeny", c: "Recent volcanic intrusion", d: "Eolian cross-bedding" },
+    correctAnswer: "b",
+    explanation: "Recumbent folding with thrusting is diagnostic of intense compressional deformation in orogenic belts. Vertical uplift (a) does not create recumbent folds; volcanism (c) produces igneous; eolian (d) sedimentary structures.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 41,
+    section: "Application MCQ",
+    text: `In the coastal tract of Odisha, the Chilika Lake is a brackish water lagoon separated from the Bay of Bengal by a sandbar. What is the likely origin of this lagoon?`,
+    options: { a: "Glacial overdeepening", b: "Tectonic subsidence of the Mahanadi delta front", c: "Longshore drift and formation of a barrier bar across a bay", d: "Volcanic caldera flooded by sea" },
+    correctAnswer: "c",
+    explanation: "Chilika is a coastal lagoon formed by longshore sediment transport building a barrier bar. Glacial (a) not; tectonic (b) might be part, but primary origin is barrier; volcanic (d) absent.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 42,
+    section: "Application MCQ",
+    text: `The Damodar river valley (Chotanagpur plateau) is known as the 'Ruhr of India' due to coal fields. The pronounced valley-in-valley morphology (deep incision within a broader valley) is evidence of:`,
+    options: { a: "Rejuvenation due to neotectonic uplift or sea level fall", b: "Glacial overdeepening", c: "Karst collapse", d: "Eolian deflation" },
+    correctAnswer: "a",
+    explanation: "Valley-in-valley (incised meanders) indicates rejuvenation, often from uplift or base-level drop. Glacial (b) not; karst (c) forms sinkholes; eolian (d) not in humid region.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 43,
+    section: "Application MCQ",
+    text: `During fieldwork in the Sikkim Himalayas, you find a polished bedrock surface with glacial striations and a terminal moraine blocking a small stream forming a lake. This assemblage is characteristic of:`,
+    options: { a: "Periglacial gelifluction", b: "Alpine glacial geomorphology", c: "Floodplain deposition", d: "Eolian abrasion" },
+    correctAnswer: "b",
+    explanation: "Striations and terminal moraine are glacial features; Sikkim alpine glaciers produce such landforms. Periglacial (a) involves freeze-thaw not abrasion; floodplain (c) fluvial; eolian (d) wind.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 44,
+    section: "Application MCQ",
+    text: `The 'Pamban Island' (Rameswaram) is connected to the mainland by a sand spit and a bridge. This island is geologically part of a:`,
+    options: { a: "Continental fragment", b: "Barrier island and tombolo complex", c: "Volcanic seamount", d: "Orogenic suture zone" },
+    correctAnswer: "b",
+    explanation: "Rameswaram is linked by a tombolo (sand spit) – barrier island complex. Continental fragment (a) no; volcanic (c) no; suture (d) irrelevant.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 45,
+    section: "Application MCQ",
+    text: `In the upper Indus valley (Ladakh), you observe 'alluvial fans' coalescing into a continuous piedmont slope. This landform is called a:`,
+    options: { a: "Bajada", b: "Pediment", c: "Playa", d: "Wadi" },
+    correctAnswer: "a",
+    explanation: "Coalescing alluvial fans form a bajada. Pediment is bedrock erosion surface; playa is lake bed; wadi is ephemeral stream channel. NCERT desert geomorphology.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 46,
+    section: "Application MCQ",
+    text: `The 'Bhabar' belt in the northern plains is characterized by disappearance of streams into coarse gravels, re-emerging as springs in the 'Terai'. This morphology results from:`,
+    options: { a: "Permafrost acting as aquiclude", b: "Rapid decrease in gradient and high porosity of coarse alluvium", c: "Lava tube infiltration", d: "Sinkhole development in limestone" },
+    correctAnswer: "b",
+    explanation: "Bhabar is coarse fans where water infiltrates; gradient drop and porosity cause stream disappearance. Permafrost (a) not in subtropical; lava (c) not; sinkhole (d) karst.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 47,
+    section: "Application MCQ",
+    text: `A new dam is proposed on a Himalayan river with a high sediment yield (2000 t/km²/year). Which morphological consequence is MOST likely in the downstream reaches?`,
+    options: { a: "Increased river meandering due to higher discharge", b: "Channel bed degradation and coarsening due to sediment trapping", c: "Formation of new alluvial fans", d: "Immediate development of deltaic wetlands" },
+    correctAnswer: "b",
+    explanation: "Dams trap sediment, causing downstream bed degradation (scour) and bed coarsening. Meandering (a) not guaranteed; new fans (c) require excess sediment; delta (d) needs sediment supply.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 48,
+    section: "Application MCQ",
+    text: `The 'Palk Strait' between India and Sri Lanka has a shallow submarine feature known as 'Adam's Bridge' (Rama Setu). This feature is interpreted as:`,
+    options: { a: "A mid-ocean ridge", b: "A former land connection of sand and limestone shoals", c: "An oceanic trench", d: "A coral atoll" },
+    correctAnswer: "b",
+    explanation: "Adam's Bridge is a chain of sandbanks and limestone shoals, likely a former land/spit connection. Not a ridge (a) nor trench (c) nor atoll (d).",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 49,
+    section: "Application MCQ",
+    text: `You measure the width-to-depth ratio of a river channel in the Brahmaputra as 150:1. This high ratio indicates:`,
+    options: { a: "A very narrow and deep channel", b: "A wide, shallow channel typical of braided rivers", c: "A gorge section", d: "A meandering channel with deep pools" },
+    correctAnswer: "b",
+    explanation: "High width/depth ratio >50 implies wide shallow channel, typical of braided systems like Brahmaputra. Low ratio indicates narrow/deep (gorges/meandering pools).",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 50,
+    section: "Application MCQ",
+    text: `The 'Lakshadweep Islands' are coral atolls. Their characteristic ring-shaped reef enclosing a lagoon is a direct result of:`,
+    options: { a: "Volcanic subsidence of a former island (Darwin point theory)", b: "Glacial eustatic sea level rise drowning river valleys", c: "Tectonic folding of coral beds", d: "Artificial construction" },
+    correctAnswer: "a",
+    explanation: "Darwin's subsidence theory: fringing reef -> barrier reef -> atoll as volcanic island subsides. Glacial drowning (b) forms drowned valleys (ria), not atoll; folding (c) not; artificial (d) false.",
+    marked: false,
+    userAnswer: ""
+  }
+],
+
+    duration: 60 * 60,
+    markingScheme: { correct: 5, incorrect: -1 }
+};
+
+/* ============================================================
+   CORE TEST ENGINE
+   ============================================================ */
+const timerElement = document.querySelector('.timer');
+const questionTextElement = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const questionNumberElement = document.getElementById('q-number');
+const currentQNumberElement = document.getElementById('current-q-number');
+const progressBar = document.getElementById('test-progress');
+const progressPercent = document.getElementById('progress-percent');
+const questionPaletteGrid = document.getElementById('question-palette-grid');
+const answeredCountElement = document.getElementById('answered-count');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markBtn = document.getElementById('mark-btn');
+const submitTestBtn = document.getElementById('submit-test-btn');
+const resultsModal = document.getElementById('results-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const correctAnswersElement = document.getElementById('correct-answers');
+const incorrectAnswersElement = document.getElementById('incorrect-answers');
+const unansweredElement = document.getElementById('unanswered');
+const totalScoreElement = document.getElementById('total-score');
+const percentageElement = document.getElementById('percentage');
+const accuracyElement = document.getElementById('accuracy');
+const reviewBtn = document.getElementById('review-btn');
+
+let currentQuestionIndex = 0;
+let timeLeft = mockTest.duration;
+let timer;
+let testSubmitted = false;
+let testStarted = false;
+
+function initTest() {
+    renderQuestionPalette(); renderQuestion(); startTimer(); updateProgress(); renderLegend(false);
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    markBtn.addEventListener('click', toggleMarkForReview);
+    submitTestBtn.addEventListener('click', confirmSubmit);
+    closeModalBtn.addEventListener('click', closeResultsModal);
+    reviewBtn.addEventListener('click', reviewAnswers);
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
+}
+
+function renderLegend(reviewMode) {
+    const leg = document.getElementById('palette-legend');
+    if (!leg) return;
+    if (reviewMode) {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#22c55e;"></div><span>Correct</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#ef4444;"></div><span>Wrong</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;"></div><span>Not Answered</span></div></div>`;
+    } else {
+        leg.innerHTML = `<div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#4caf6f;"></div><span>Answered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#90D5FF;"></div><span>Marked</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#FF474D;"></div><span>Unanswered</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #2d8a4e;"></div><span>Current</span></div></div>`;
+    }
+}
+
+function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) { clearInterval(timer); submitTest(); }
+        if (timeLeft === 300) { alert('Only 5 minutes remaining!'); }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    const str = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    timerElement.textContent = str;
+    const mt = document.querySelector('.mobile-timer-clone');
+    if (mt) mt.textContent = str;
+}
+
+function renderQuestion() {
+    const q = mockTest.questions[currentQuestionIndex];
+    document.getElementById('current-section').textContent = q.section;
+    let formattedText = q.text;
+    if (formattedText.includes('Assertion') && formattedText.includes('Reason')) {
+        formattedText = formattedText.replace(
+            /(Assertion\s*\(A\):\s*)(.*?)(\nReason\s*\(R\):\s*)(.*)/s,
+            (match, aLabel, aText, rLabel, rText) => {
+                return `<table style="width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;">
+                    <thead><tr>
+                        <th style="background:#1a6fc4;color:white;padding:10px 14px;text-align:left;border:1px solid #bfdbfe;width:15%;">Type</th>
+                        <th style="background:#1a6fc4;color:white;padding:10px 14px;text-align:left;border:1px solid #bfdbfe;width:85%;">Statement</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr style="background:#f0f6ff;">
+                            <td style="padding:9px 14px;border:1px solid #bfdbfe;font-weight:700;color:#1a6fc4;white-space:nowrap;">Assertion (A)</td>
+                            <td style="padding:9px 14px;border:1px solid #bfdbfe;">${aText.trim()}</td>
+                        </tr>
+                        <tr style="background:#ffffff;">
+                            <td style="padding:9px 14px;border:1px solid #bfdbfe;font-weight:700;color:#059669;white-space:nowrap;">Reason (R)</td>
+                            <td style="padding:9px 14px;border:1px solid #bfdbfe;">${rText.trim()}</td>
+                        </tr>
+                    </tbody></table>`;
+            }
+        );
+    }
+    if (formattedText.includes('List-I') && formattedText.includes('List-II')) {
+        formattedText = formattedText.replace(
+            /List-I:([\s\S]*?)List-II:([\s\S]*?)(?=\n\n|$)/,
+            (match, list1, list2) => {
+                const parseItems = str => str.trim().split('\n')
+                    .filter(l => l.trim().match(/^\([A-Z]\)/)).map(l => l.trim());
+                const parseRomanItems = str => str.trim().split('\n')
+                    .filter(l => l.trim().match(/^\([IVX]+\)/)).map(l => l.trim());
+                const l1 = parseItems(list1);
+                const l2 = parseRomanItems(list2);
+                const rows = Math.max(l1.length, l2.length);
+                let tableHTML = `<table style="width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;">
+                    <thead><tr>
+                        <th style="background:#1a6fc4;color:white;padding:10px 14px;text-align:left;border:1px solid #bfdbfe;width:50%;">List-I</th>
+                        <th style="background:#1a6fc4;color:white;padding:10px 14px;text-align:left;border:1px solid #bfdbfe;width:50%;">List-II</th>
+                    </tr></thead><tbody>`;
+                for (let i = 0; i < rows; i++) {
+                    const bg = i % 2 === 0 ? '#f0f6ff' : '#ffffff';
+                    tableHTML += `<tr style="background:${bg};">
+                        <td style="padding:9px 14px;border:1px solid #bfdbfe;">${l1[i] || ''}</td>
+                        <td style="padding:9px 14px;border:1px solid #bfdbfe;">${l2[i] || ''}</td>
+                    </tr>`;
+                }
+                tableHTML += `</tbody></table>`;
+                return tableHTML;
+            }
+        );
+    }
+    questionTextElement.innerHTML = `
+        <div style="display:inline-block;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:0.5px;">
+            🗳️ ${q.section || "General"}
+        </div>
+        ${q.image ? `<div style="margin:10px 0;"><img src="${q.image}" style="max-width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>` : ""}
+        <div style="margin-top:8px;font-size:17px;line-height:1.6;">${formattedText}</div>`;
+    questionNumberElement.textContent = q.id;
+    currentQNumberElement.textContent = q.id;
+    optionsContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(q.options)) {
+        const od = document.createElement('div');
+        od.className = 'option';
+        if (testSubmitted) {
+            if (key === q.correctAnswer) od.classList.add('correct');
+            else if (key === q.userAnswer && key !== q.correctAnswer) od.classList.add('incorrect');
+        } else {
+            if (key === q.userAnswer) od.classList.add('selected');
+        }
+        if (!testSubmitted) {
+            od.addEventListener('click', () => {
+                optionsContainer.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                od.classList.add('selected');
+                selectAnswer(key);
+            });
+        }
+        const inp = document.createElement('input');
+        inp.type='radio'; inp.name='question-option'; inp.value=key;
+        inp.checked = q.userAnswer === key; inp.disabled = testSubmitted;
+        const ld = document.createElement('div');
+        ld.className='opt-letter'; ld.textContent=key.toUpperCase();
+        const ts = document.createElement('span');
+        ts.className='opt-text'; ts.textContent=value;
+        if (testSubmitted) {
+            if (key === q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='correct-indicator'; ind.textContent=' ✓ Correct Answer'; ts.appendChild(ind);
+            } else if (key === q.userAnswer && key !== q.correctAnswer) {
+                const ind = document.createElement('span'); ind.className='incorrect-indicator'; ind.textContent=' ✗ Your Answer'; ts.appendChild(ind);
+            }
+        }
+        od.appendChild(inp); od.appendChild(ld); od.appendChild(ts);
+        optionsContainer.appendChild(od);
+    }
+    if (testSubmitted) {
+        const ed = document.createElement('div');
+        ed.style.cssText = "margin-top:15px;padding:12px;border-radius:8px;background:linear-gradient(135deg,#edf7f1,#d4eddb);border-left:4px solid #2d8a4e;font-size:15px;";
+        ed.innerHTML = `<strong>💡 Explanation:</strong><br>${q.explanation || "No explanation available."}`;
+        optionsContainer.appendChild(ed);
+    }
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    prevBtn.style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = currentQuestionIndex === mockTest.questions.length - 1 ? 'hidden' : 'visible';
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.disabled = currentQuestionIndex === mockTest.questions.length - 1;
+    updateQuestionPalette();
+}
+
+function selectAnswer(answer) {
+    mockTest.questions[currentQuestionIndex].userAnswer = answer;
+    updateQuestionPalette(); updateProgress();
+}
+
+function toggleMarkForReview() {
+    const q = mockTest.questions[currentQuestionIndex];
+    q.marked = !q.marked;
+    markBtn.classList.toggle('marked', q.marked);
+    markBtn.textContent = q.marked ? 'Unmark' : 'Mark for Review';
+    updateQuestionPalette();
+}
+
+function goToPreviousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+function goToNextQuestion() { if (currentQuestionIndex < mockTest.questions.length - 1) { currentQuestionIndex++; renderQuestion(); } }
+
+function renderQuestionPalette() {
+    questionPaletteGrid.innerHTML = '';
+    mockTest.questions.forEach((q, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'palette-btn'; btn.textContent = q.id;
+        btn.addEventListener('click', () => navigateToQuestion(i));
+        questionPaletteGrid.appendChild(btn);
+    });
+    updateQuestionPalette();
+}
+
+function updateQuestionPalette() {
+    const btns = questionPaletteGrid.querySelectorAll('.palette-btn');
+    btns.forEach(b => { b.className = 'palette-btn'; });
+    mockTest.questions.forEach((q, i) => {
+        const btn = btns[i];
+        if (testSubmitted) {
+            if (!q.userAnswer) btn.classList.add('review-unanswered');
+            else if (q.userAnswer === q.correctAnswer) btn.classList.add('review-correct');
+            else btn.classList.add('review-wrong');
+        } else {
+            if (q.userAnswer) btn.classList.add('answered');
+            if (q.marked) btn.classList.add('marked');
+        }
+        if (i === currentQuestionIndex) btn.classList.add('current');
+    });
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    answeredCountElement.textContent = `${ac}/${mockTest.questions.length}`;
+}
+
+function navigateToQuestion(index) { currentQuestionIndex = index; renderQuestion(); }
+
+function updateProgress() {
+    const ac = mockTest.questions.filter(q => q.userAnswer).length;
+    const p = (ac / mockTest.questions.length) * 100;
+    progressBar.style.width = `${p}%`;
+    progressPercent.textContent = `${Math.round(p)}%`;
+}
+
+function confirmSubmit() { if (confirm('Are you sure you want to submit the test?')) { submitTest(); } }
+
+function submitTest() {
+    if (testSubmitted) return;
+    testSubmitted = true; clearInterval(timer);
+    let correct = 0, incorrect = 0, unanswered = 0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++;
+        else if (q.userAnswer === q.correctAnswer) correct++;
+        else incorrect++;
+    });
+    const totalQ = mockTest.questions.length;
+    const maxScore = totalQ * mockTest.markingScheme.correct;
+    const totalScore = (correct * mockTest.markingScheme.correct) + (incorrect * mockTest.markingScheme.incorrect);
+    const percentage = ((totalScore / maxScore) * 100).toFixed(2);
+    const accuracy = correct + incorrect > 0 ? (correct / (correct + incorrect) * 100).toFixed(2) : '0';
+
+    const questionResults = mockTest.questions.map(q => ({
+        id: q.id, correct: q.userAnswer === q.correctAnswer,
+        answered: !!q.userAnswer, userAnswer: q.userAnswer, correctAnswer: q.correctAnswer
+    }));
+const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: localStorage.getItem('cbtUserName') || 'Unknown',
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    date: new Date().toISOString(),
+    score: totalScore,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: incorrect,
+    incorrect: incorrect,    // ← ADD THIS
+    skipped: unanswered,
+    unanswered: unanswered,  // ← ADD THIS
+    totalQ: mockTest.questions.length,
+    percentage: parseFloat(percentage),
+    accuracy: parseFloat(accuracy),
+    timeTaken: mockTest.duration - timeLeft,
+    wrongQs: mockTest.questions
+        .map((q, i) => q.userAnswer && q.userAnswer !== q.correctAnswer ? i + 1 : null)
+        .filter(Boolean)     // ← ADD THIS so bookmark system works
+};
+    const storageKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+    localStorage.setItem(storageKey, JSON.stringify(resultData));
+    const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+})// In CBT HTML — replace the .then() block:
+.then(() => {
+    // DON'T remove — just mark as synced
+    localStorage.setItem(`thunderstudy_synced_${SUBJECT_ID}_${CHAPTER_ID}`, "true");
+}).catch(err => console.error("Sync failed", err));
+    const indexKey = `thunderstudy_index_${SUBJECT_ID}`;
+    let index = [];
+    try { index = JSON.parse(localStorage.getItem(indexKey) || '[]'); } catch(e) {}
+    if (!index.includes(CHAPTER_ID)) index.push(CHAPTER_ID);
+    localStorage.setItem(indexKey, JSON.stringify(index));
+
+    correctAnswersElement.textContent = correct;
+    incorrectAnswersElement.textContent = incorrect;
+    unansweredElement.textContent = unanswered;
+    totalScoreElement.textContent = totalScore;
+    percentageElement.textContent = percentage;
+    accuracyElement.textContent = accuracy;
+    resultsModal.style.display = 'flex';
+    renderQuestion();
+
+    const sb = document.getElementById('submit-test-btn');
+    sb.textContent = '📄 Download PDF';
+    sb.classList.remove('submit-fancy-btn');
+    sb.classList.add('pdf-download-btn');
+    sb.onclick = generatePDF;
+    renderLegend(true);
+}
+
+function closeResultsModal() { resultsModal.style.display = 'none'; }
+function reviewAnswers() { resultsModal.style.display = 'none'; currentQuestionIndex = 0; renderQuestion(); }
+
+document.addEventListener("visibilitychange", function() {
+    if (!testStarted || testSubmitted) return;
+    if (document.hidden) startCountdown('tab'); else cancelCountdown();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('test-screen').style.display === 'none') return;
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if (currentQuestionIndex < mockTest.questions.length-1) { currentQuestionIndex++; renderQuestion(); } }
+    else if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if (currentQuestionIndex > 0) { currentQuestionIndex--; renderQuestion(); } }
+});
+</script>
+
+<script>
+  function updateFocusMode() {
+    const color = (document.hidden || !isInFullscreen()) ? "#FF474D" : "#90EE90";
+    const text = (document.hidden || !isInFullscreen()) ? "● Disturbed" : "● Focus On";
+    const els = [document.getElementById('focus-laptop'), document.getElementById('focus-mobile')];
+    els.forEach(el => { if(el) { el.style.color = color; el.innerText = text; }});
+}
+function startMock() {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    const inputName = document.getElementById('username-input').value.trim();
+
+    if (!savedName && !inputName) {
+        alert("⚠️ Please enter your name to continue!");
+        document.getElementById('username-input').focus();
+        return;
+    }
+    if (!savedName && inputName) {
+        localStorage.setItem("cbtUserName", inputName);
+    }
+    if (!savedSID) {
+        const goToDash = confirm("⚠️ Student ID not found!\n\nYou must have a Student ID to start the mock.\n\nClick OK to open Dashboard to generate one, or Cancel to stay here.");
+        if (goToDash) window.open('https://commercesehoga.github.io/dashboard/', '_blank');
+        return;
+    }
+    enterFullscreen();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('instruction-screen').style.display = 'block';
+}
+
+const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom');
+darkModeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggles.forEach(btn => {
+            const iconSpan = btn.querySelector('.icon');
+            if (iconSpan) iconSpan.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    });
+});
+
+const checkbox = document.getElementById('agree-checkbox');
+const startBtn = document.getElementById('start-test-btn');
+checkbox.addEventListener('change', () => {
+    startBtn.disabled = !checkbox.checked;
+    startBtn.style.opacity = checkbox.checked ? "1" : "0.6";
+    startBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+});
+startBtn.addEventListener('click', () => {
+    if (!checkbox.checked) { alert("Please accept instructions first!"); return; }
+    document.getElementById('instruction-screen').style.display = 'none';
+    document.getElementById('test-screen').style.display = 'block';
+    const name = localStorage.getItem("cbtUserName") || "Thunder";
+    document.getElementById('user-name-display').innerText = "👤 " + name;
+    const mn = document.getElementById('mobile-name-display');
+    if (mn) mn.innerText = "👤 " + name;
+    const sid = localStorage.getItem("ts_student_id") || "N/A";
+if(document.getElementById('display-user-sid')) document.getElementById('display-user-sid').innerText = sid;
+    testStarted = true; enterFullscreen(); initTest();
+});
+
+function enterFullscreen() {
+    const el = document.documentElement;
+    try {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } catch(e) {}
+}
+
+document.addEventListener('fullscreenchange', onFSChange);
+document.addEventListener('webkitfullscreenchange', onFSChange);
+document.addEventListener('mozfullscreenchange', onFSChange);
+document.addEventListener('MSFullscreenChange', onFSChange);
+
+function isInFullscreen() {
+    return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);
+}
+function onFSChange() {
+    if (!testStarted||testSubmitted) return;
+    if (document.getElementById('test-screen').style.display==='none') return;
+    if (!isInFullscreen()) startCountdown('fullscreen'); else cancelCountdown();
+}
+
+let countdownTimer = null, countdownSeconds = 0;
+function startCountdown(reason) {
+    if (!testStarted||testSubmitted) return;
+    if (countdownTimer) return;
+    countdownSeconds = (reason==='tab') ? 2 : 5;
+    const msg = (reason==='tab') ? '⚠️ You switched tabs!' : '⚠️ You exited fullscreen!';
+    const hint = (reason==='tab') ? 'Switch back to this tab to cancel.' : 'Click the button below to return to fullscreen.';
+    showOverlay(msg, hint, countdownSeconds, reason==='fullscreen');
+    countdownTimer = setInterval(() => {
+        countdownSeconds--;
+        updateOverlayCount(countdownSeconds);
+        if (countdownSeconds <= 0) { cancelCountdown(); submitTest(); }
+    }, 1000);
+}
+function cancelCountdown() { if (countdownTimer) { clearInterval(countdownTimer); countdownTimer=null; } hideOverlay(); }
+function showOverlay(msg, hint, secs, showBtn) {
+    let ov = document.getElementById('security-overlay');
+    if (!ov) {
+        ov = document.createElement('div'); ov.id = 'security-overlay';
+        ov.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,5,0.92);z-index:999999;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'DM Sans',sans-serif;color:#fff;text-align:center;padding:24px;`;
+        document.body.appendChild(ov);
+    }
+    ov.innerHTML = `<div style="font-size:60px;margin-bottom:14px;">🚨</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:8px;">${msg}</div>
+        <div style="font-size:15px;color:#7ec8a4;margin-bottom:20px;">${hint}</div>
+        <div style="font-size:16px;color:#d4edd9;margin-bottom:6px;">Auto-submitting in</div>
+        <div id="overlay-count" style="font-size:72px;font-weight:900;color:#f87171;line-height:1;">${secs}</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:4px;">seconds</div>
+        ${showBtn ? `<button onclick="enterFullscreen()" style="margin-top:24px;padding:13px 34px;border-radius:30px;border:none;background:linear-gradient(135deg,#2d8a4e,#1a5c34);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(45,138,78,0.5);">🔲 Return to Fullscreen</button>` : ''}`;
+    ov.style.display = 'flex';
+}
+function updateOverlayCount(n) { const el=document.getElementById('overlay-count'); if(el) el.textContent=n; }
+function hideOverlay() { const ov=document.getElementById('security-overlay'); if(ov) ov.style.display='none'; }
+</script>
+
+<div id="pdf-print-area"></div>
+<script>
+function generatePDF() {
+    const name = localStorage.getItem('cbtUserName') || 'Thunder';
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    let correct=0,incorrect=0,unanswered=0;
+    mockTest.questions.forEach(q => {
+        if (!q.userAnswer) unanswered++; else if (q.userAnswer===q.correctAnswer) correct++; else incorrect++;
+    });
+    const totalScore = (correct*mockTest.markingScheme.correct)+(incorrect*mockTest.markingScheme.incorrect);
+    const maxScore = mockTest.questions.length*mockTest.markingScheme.correct;
+    const pct = ((totalScore/maxScore)*100).toFixed(1);
+    const optionLabel = {a:'A',b:'B',c:'C',d:'D'};
+    let questionsHTML = '';
+    mockTest.questions.forEach((q,i) => {
+        const isCorrect = q.userAnswer===q.correctAnswer;
+        const isWrong = q.userAnswer&&!isCorrect;
+        const isSkipped = !q.userAnswer;
+        const statusColor = isCorrect?'#16a34a':isWrong?'#dc2626':'#9ca3af';
+        const statusLabel = isCorrect?'✓ Correct':isWrong?'✗ Wrong':'— Skipped';
+        const rowBg = isCorrect?'#f0fdf4':isWrong?'#fef2f2':'#fafafa';
+        let optionsHTML = '';
+        for (const [key,val] of Object.entries(q.options)) {
+            const isRight=key===q.correctAnswer, isUser=key===q.userAnswer;
+            let bg='transparent',fw='normal',prefix='';
+            if(isRight){bg='#dcfce7';fw='bold';prefix='✓ ';}
+            if(isUser&&!isRight){bg='#fee2e2';fw='bold';prefix='✗ ';}
+            optionsHTML+=`<div style="display:flex;gap:8px;padding:4px 8px;margin:2px 0;border-radius:4px;background:${bg};font-weight:${fw};font-size:12px;"><span style="min-width:18px;font-weight:700;">${optionLabel[key]}.</span><span>${prefix}${val}</span></div>`;
+        }
+        let yourAnswer = isSkipped
+            ? '<span style="color:#9ca3af;">Not Attempted</span>'
+            : `<span style="color:${isCorrect?'#16a34a':'#dc2626'};font-weight:bold;">${optionLabel[q.userAnswer]}. ${q.options[q.userAnswer]}</span>`;
+        questionsHTML+=`<div style="margin-bottom:18px;padding:14px 16px;border-radius:8px;background:${rowBg};border:1px solid #e5e7eb;page-break-inside:avoid;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div style="font-weight:700;font-size:13px;color:#374151;">Q${i+1}. ${q.text}</div>
+                <div style="font-weight:700;font-size:12px;color:${statusColor};white-space:nowrap;margin-left:12px;">${statusLabel}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:8px;">${optionsHTML}</div>
+            <div style="font-size:12px;border-top:1px solid #e5e7eb;padding-top:6px;margin-top:4px;">
+                <span style="color:#6b7280;">Your answer: </span>${yourAnswer}&nbsp;&nbsp;
+                <span style="color:#6b7280;">Correct: </span><span style="color:#16a34a;font-weight:bold;">${optionLabel[q.correctAnswer]}. ${q.options[q.correctAnswer]}</span>
+            </div></div>`;
+    });
+    const scoreColor = pct>=60?'#16a34a':pct>=35?'#d97706':'#dc2626';
+    const html = `<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;color:#111;">
+        <div style="background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;padding:20px 24px;border-radius:10px 10px 0 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                <div><div style="font-size:22px;font-weight:800;">⚡ Thunderstudy CBT — Geography</div><div style="font-size:13px;opacity:0.85;margin-top:3px;">Result Report — ${CHAPTER_ID.toUpperCase()}</div></div>
+                <div style="text-align:right;font-size:12px;opacity:0.85;"><div>📅 ${dateStr} 🕐 ${timeStr}</div><div>👤 ${name}</div></div>
+            </div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #d4eddb;border-top:none;padding:16px 24px;border-radius:0 0 10px 10px;margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SCORE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${totalScore}<span style="font-size:14px;color:#6b7280;">/${maxScore}</span></div></div>
+                <div style="background:white;border:1px solid #d4eddb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">PERCENTAGE</div><div style="font-size:24px;font-weight:800;color:${scoreColor};">${pct}%</div></div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#16a34a;">CORRECT</div><div style="font-size:24px;font-weight:800;color:#16a34a;">${correct}</div></div>
+                <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#dc2626;">WRONG</div><div style="font-size:24px;font-weight:800;color:#dc2626;">${incorrect}</div></div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 18px;text-align:center;"><div style="font-size:11px;color:#6b7280;">SKIPPED</div><div style="font-size:24px;font-weight:800;color:#6b7280;">${unanswered}</div></div>
+            </div>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:#374151;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #2d8a4e;">📋 Question-wise Answer Key</div>
+        ${questionsHTML}
+        <div style="text-align:center;margin-top:24px;padding:14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#6b7280;">Generated by <b>Thunderstudy CBT</b> | t.me/thunderstudy_official | ${dateStr}</div>
+    </div>`;
+    const printWin = window.open('','_blank','width=950,height=700,scrollbars=yes');
+    if (!printWin) { alert('Popup blocked! Please allow popups and try again.'); return; }
+    printWin.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Thunderstudy_Geography_${name}_${dateStr.replace(/ /g,'-')}</title>
+    <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#fff;padding:20px;}@media print{body{padding:0;}.no-print{display:none !important;}}.print-btn{display:block;margin:0 auto 20px;padding:12px 36px;background:linear-gradient(135deg,#1a5c34,#2d8a4e);color:white;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;}</style>
+    </head><body><button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>${html}</body></html>`);
+    printWin.document.close(); printWin.focus();
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('cbtUserName') || '';
+    const savedSID = localStorage.getItem('ts_student_id') || '';
+    if (savedName) {
+        const inp = document.getElementById('username-input');
+        if (inp) {
+            inp.value = savedName;
+            inp.style.background = 'rgba(26,92,52,0.07)';
+            inp.style.borderColor = '#2d8a4e';
+            inp.style.color = '#1a5c34';
+            inp.style.fontWeight = 'bold';
+            inp.setAttribute('readonly', true);
+            inp.insertAdjacentHTML('afterend',
+                `<div style="font-size:11px;color:#2d8a4e;font-weight:700;margin-top:5px;">✅ Verified Dashboard Profile</div>`
+            );
+        }
+    }
+    if (savedSID) {
+        const sidArea = document.getElementById('sid-display-area');
+        const sidVal = document.getElementById('sid-value');
+        if (sidArea && sidVal) { sidArea.style.display = 'block'; sidVal.textContent = savedSID; }
+    }
+});
+</script>
+
+</body>
+</html>
