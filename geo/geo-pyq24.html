@@ -728,7 +728,7 @@
           <li><span class="num">4</span>Use the <strong>Question Palette</strong> on the right side to navigate to any question directly.</li>
           <li><span class="num">5</span>You can mark questions <strong>"Mark for Review"</strong> to revisit them later before submission.</li>
           <li><span class="num">6</span>The timer is displayed at the top. The test will <strong>auto-submit</strong> when time runs out.</li>
-          <li><span class="num">7</span>The exam runs in <strong>fullscreen mode</strong>. Exiting fullscreen will trigger a 3-sgeond auto-submit warning.</li>
+          <li><span class="num">7</span>The exam runs in <strong>fullscreen mode</strong>. Exiting fullscreen will trigger a 3-second auto-submit warning.</li>
           <li><span class="num">8</span>Switching browser tabs will cause <strong>immediate auto-submission</strong> of your test.</li>
           <li><span class="num">9</span>Click <strong>"Save &amp; Next"</strong> to save your answer and move to the next question.</li>
           <li><span class="num">10</span>Once you click <strong>"Submit Test"</strong>, a confirmation popup will appear before final submission.</li>
@@ -1815,7 +1815,7 @@ function doLogin() {
         <a href="https://commercesehoga.github.io/dashboard/" target="_blank"
           style="display:block;width:100%;padding:14px;background:linear-gradient(135deg,#1976d2,#0d47a1);
           color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;
-          cursor:pointer;text-dgeoration:none;letter-spacing:1px;margin-bottom:12px;
+          cursor:pointer;text-decoration:none;letter-spacing:1px;margin-bottom:12px;
           box-sizing:border-box;">
           🌐 Open Thunderstudy Dashboard
         </a>
@@ -1969,7 +1969,7 @@ function onFullscreenChange() {
   if (fsExitedBySystem) return;
   if (!isFullscreen()) {
     if (testActive) {
-      showFsWarning('You exited fullscreen. Return to fullscreen or the test will auto-submit in 3 sgeonds.');
+      showFsWarning('You exited fullscreen. Return to fullscreen or the test will auto-submit in 3 seconds.');
     } else {
       // On instructions screen — warn and silently re-enter
       showToast('⚠️ Please stay in fullscreen during the exam!', 'warning');
@@ -2028,7 +2028,7 @@ function saveToHistory(setNum, correct, wrong, unattempted, score, maxScore, pct
     score, maxScore, pct,
     date: dateStr, time: timeStr
   });
-  // Keep only last 50 rgeords
+  // Keep only last 50 records
   if (hist.length > 50) hist = hist.slice(0, 50);
   try { localStorage.setItem(LS_HIST, JSON.stringify(hist)); } catch(e) {}
 }
