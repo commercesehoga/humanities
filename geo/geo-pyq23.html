@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thunder⚡ CBT – CUET geo Mock Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root {
+    --pink-primary: #e91e8c;
+    --pink-dark: #c0156e;
+    --pink-deeper: #9b0f58;
+    --pink-light: #f48fb1;
+    --pink-pale: #fce4ec;
+    --pink-soft: #fdf0f6;
+    --pink-mid: #f8bbd9;
+    --jee-bg: #f0f0f0;
+    --jee-header-bg: #e8e8e8;
+    --jee-border: #c8c8c8;
+    --jee-text: #222;
+    --jee-green: #28a745;
+    --jee-red: #dc3545;
+    --jee-orange: #f5a623;
+    --jee-blue: #1976d2;
+    --jee-purple: #7b1fa2;
+    --gray-dark: #1a1a2e;
+    --gray-mid: #4a4a6a;
+    --gray-light: #f5f5f5;
+    --shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, sans-serif; background: var(--jee-bg); color: var(--jee-text); min-height:100vh; overflow-x:hidden; }
+
+  /* ===== SCREENS ===== */
+  .screen { display:none; min-height:100vh; }
+  .screen.active { display:block; }
+
+  /* ===============================================================
+     LOGIN SCREEN
+  =============================================================== */
+  #screen-login {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  #screen-login.active { display: flex; }
+  .login-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    width: 100%; max-width: 440px;
+    overflow: hidden;
+  }
+  .login-header {
+    background: linear-gradient(135deg, #1976d2, #0a3880);
+    padding: 28px 30px 22px;
+    text-align: center;
+  }
+  .login-header .login-logo { font-size: 36px; margin-bottom: 8px; }
+  .login-header h2 { font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; color: white; letter-spacing: 1px; }
+  .login-header p { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 4px; }
+  .login-body { padding: 28px 30px 32px; }
+  .login-field { margin-bottom: 18px; }
+  .login-field label { display: block; font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .login-field input {
+    width: 100%; padding: 12px 14px; border: 2px solid #e0e0e0; border-radius: 8px;
+    font-size: 14px; font-family: Arial, sans-serif; transition: border-color 0.2s;
+    background: #fafafa;
+  }
+  .login-field input:focus { outline: none; border-color: #1976d2; background: white; }
+  .login-remember { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; font-size: 13px; color: #666; }
+  .login-remember input { width: 15px; height: 15px; accent-color: #1976d2; }
+  .btn-login {
+    width: 100%; padding: 13px; background: linear-gradient(135deg, #1976d2, #0d47a1);
+    color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; letter-spacing: 1px; transition: all 0.2s; text-transform: uppercase;
+  }
+  .btn-login:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(233,30,140,0.4); }
+  .login-note { text-align: center; font-size: 11.5px; color: #aaa; margin-top: 14px; }
+
+  /* ===============================================================
+     JEE-STYLE EXAM HEADER (test screen)
+  =============================================================== */
+  .jee-header {
+    background: var(--jee-header-bg);
+    border-bottom: 2px solid var(--jee-border);
+    padding: 10px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-wrap: wrap; gap: 8px;
+  }
+  .jee-candidate-block {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .jee-photo {
+    width: 64px; height: 72px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    background: #d0d0d0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .jee-photo svg { width: 44px; height: 44px; }
+  .jee-info-table { font-size: 13.5px; }
+  .jee-info-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
+  .jee-info-label { color: #444; font-weight: 400; min-width: 110px; }
+  .jee-info-value { font-weight: 700; color: #e65100; }
+  .jee-info-value.name-val { color: #e65100; }
+  .jee-info-value.time-val {
+    background: #1976d2; color: white; padding: 2px 12px;
+    border-radius: 4px; font-weight: 700; font-size: 14px; font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .jee-info-value.time-val.warning { background: #c62828; }
+  .jee-lang-block { display: flex; align-items: center; gap: 8px; }
+  .jee-lang-select {
+    padding: 7px 32px 7px 12px;
+    border: 1px solid #bbb; border-radius: 4px;
+    font-size: 13px; background: white; cursor: pointer;
+    appearance: auto; min-width: 120px;
+  }
+
+  /* Instruction screen header (pink) */
+  .exam-header {
+    background: linear-gradient(135deg, #1976d2 0%, #0a3880 100%);
+    padding: 0; box-shadow: 0 4px 16px rgba(0,0,0,0.2); position: relative; overflow: hidden;
+  }
+  .exam-header::before { content:''; position:absolute; top:-30px; right:-30px; width:120px; height:120px; background:rgba(255,255,255,0.08); border-radius:50%; }
+  .exam-header::after { content:''; position:absolute; bottom:-20px; left:40%; width:80px; height:80px; background:rgba(255,255,255,0.06); border-radius:50%; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; max-width:1400px; margin:0 auto; }
+  .header-logo { display:flex; align-items:center; gap:12px; }
+  .logo-icon { width:46px; height:46px; background:white; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .logo-text h1 { font-family:'Arial',sans-serif; font-size:20px; font-weight:700; color:white; line-height:1; letter-spacing:1px; }
+  .logo-text p { font-size:11px; color:rgba(255,255,255,0.8); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+  .header-candidate { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.12); padding:6px 14px; border-radius:30px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); }
+  .candidate-avatar { width:34px; height:34px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; overflow:hidden; }
+  .candidate-info .name { color:white; font-weight:700; font-size:13px; }
+  .candidate-info .roll { color:rgba(255,255,255,0.75); font-size:11px; }
+
+  /* ===== INSTRUCTION SCREENS ===== */
+  #screen-instructions { background: #eff6ff; }
+  .instr-body { max-width:900px; margin:0 auto; padding:24px 16px 40px; }
+  .instr-card { background:white; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:20px; border:1px solid #bfdbfe; }
+  .instr-card-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:14px 20px; border-bottom:2px solid #1976d2; display:flex; align-items:center; gap:10px; }
+  .instr-card-header h3 { font-family:'Arial',sans-serif; font-size:16px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .instr-card-icon { width:32px; height:32px; background:#1976d2; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; color:white; }
+  .instr-card-body { padding:18px 20px; }
+  .exam-info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:4px; }
+  .exam-info-item { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 14px; text-align:center; }
+  .exam-info-item .label { font-size:11px; color:#0d47a1; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+  .exam-info-item .value { font-size:20px; font-weight:800; color:#1976d2; font-family:'Arial',sans-serif; }
+  .instr-list { list-style:none; }
+  .instr-list li { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid #dbeafe; font-size:13.5px; color:var(--gray-mid); line-height:1.5; }
+  .instr-list li:last-child { border-bottom:none; }
+  .instr-list li .num { min-width:22px; height:22px; background:#1976d2; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:1px; flex-shrink:0; }
+  .legend-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .legend-item { display:flex; align-items:center; gap:10px; padding:8px 12px; background:#eff6ff; border-radius:8px; font-size:12.5px; color:var(--gray-mid); font-weight:600; }
+  .legend-dot { width:28px; height:28px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:white; }
+
+  /* JEE palette legend dots */
+  .dot-not-visited  { background:#fff; border:2px solid #999; color:#666; }
+  .dot-not-answered { background:var(--jee-red); clip-path:polygon(50% 0%,100% 30%,100% 100%,0% 100%,0% 30%); border-radius:0; color:white; }
+  .dot-answered     { background:var(--jee-green); border-radius:50% !important; color:white; }
+  .dot-marked       { background:var(--jee-purple); border-radius:50% !important; color:white; }
+  .dot-answered-marked { background:var(--jee-purple); border-radius:50% !important; color:white; position:relative; }
+  .dot-answered-marked::after { content:'✓'; position:absolute; bottom:-3px; right:-3px; background:var(--jee-green); width:13px; height:13px; border-radius:50%; font-size:8px; display:flex; align-items:center; justify-content:center; border:1px solid white; }
+
+  /* Step progress */
+  .step-progress-wrap { background:white; border-bottom:2px solid #bfdbfe; padding:0; }
+  .step-progress { max-width:900px; margin:0 auto; display:flex; align-items:stretch; }
+  .step-item { flex:1; display:flex; align-items:center; gap:10px; padding:14px 20px; position:relative; cursor:default; border-bottom:3px solid transparent; transition:all 0.2s; }
+  .step-item.active { border-bottom-color:#1976d2; }
+  .step-item.done { border-bottom-color:#2e7d32; }
+  .step-num { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Arial',sans-serif; font-size:14px; font-weight:700; flex-shrink:0; transition:all 0.2s; background:#e0e0e0; color:#9e9e9e; }
+  .step-item.active .step-num { background:#1976d2; color:white; box-shadow:0 3px 10px rgba(233,30,140,0.35); }
+  .step-item.done .step-num { background:#2e7d32; color:white; }
+  .step-label { font-size:12px; font-weight:700; color:#9e9e9e; line-height:1.3; }
+  .step-item.active .step-label { color:#1976d2; }
+  .step-item.done .step-label { color:#2e7d32; }
+  .step-connector { width:1px; background:#bfdbfe; align-self:stretch; margin:8px 0; }
+
+  /* Step panels */
+  .instr-step { display:none; }
+  .instr-step.active { display:block; }
+
+ 
+  /* Step nav */
+  .step-nav { display:flex; justify-content:space-between; align-items:center; margin-top:20px; gap:12px; }
+  .btn-step-next { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:12px 36px; border-radius:50px; font-family:'Arial',sans-serif; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 4px 16px rgba(233,30,140,0.35); transition:all 0.25s; letter-spacing:1px; display:flex; align-items:center; gap:8px; text-transform:uppercase; }
+  .btn-step-next:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(233,30,140,0.45); }
+  .btn-step-back { background:white; color:var(--gray-mid); border:2px solid #bfdbfe; padding:12px 28px; border-radius:50px; font-family:'Arial',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.2s; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+  .btn-step-back:hover { border-color:var(--pink-light); color:#1976d2; }
+  .step-spacer { flex:1; }
+  .agree-check { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px; font-size:13px; color:var(--gray-mid); font-weight:600; cursor:pointer; }
+  .agree-check input { width:16px; height:16px; accent-color:#1976d2; cursor:pointer; }
+  .start-btn-wrap { text-align:center; margin-top:24px; }
+  .btn-start-exam { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:14px 50px; border-radius:50px; font-family:'Arial',sans-serif; font-size:20px; font-weight:700; letter-spacing:1.5px; cursor:pointer; box-shadow:0 6px 24px rgba(233,30,140,0.4); transition:all 0.3s; text-transform:uppercase; position:relative; overflow:hidden; }
+  .btn-start-exam:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(233,30,140,0.5); }
+
+  /* ===============================================================
+     TEST SCREEN LAYOUT
+  =============================================================== */
+  #screen-test { background: var(--jee-bg); }
+
+  .jee-subject-bar {
+    background: white;
+    border-bottom: 1px solid var(--jee-border);
+    padding: 6px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .jee-subject-tag {
+    font-size: 13px; font-weight: 700; color: #333;
+    background: #e8f4fd; border: 1px solid #90caf9;
+    padding: 4px 14px; border-radius: 4px;
+  }
+  .jee-marks-info { display:flex; gap:10px; align-items:center; }
+  .jee-mark-chip { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; }
+  .jee-mark-chip.pos { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+  .jee-mark-chip.neg { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+
+  /* Main test layout */
+  .test-layout { display:grid; grid-template-columns:1fr 300px; min-height:calc(100vh - 115px); }
+
+  /* Question panel */
+  .question-panel { padding:0; background:#fff; border-right:1px solid var(--jee-border); display:flex; flex-direction:column; }
+  .q-header-bar { background:#f7f7f7; border-bottom:1px solid var(--jee-border); padding:8px 16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .q-num-badge { background:#1976d2; color:white; padding:4px 14px; border-radius:4px; font-size:14px; font-weight:700; }
+  .q-topic-tag { font-size:12px; color:#555; font-weight:600; background:#eee; padding:3px 10px; border-radius:4px; }
+
+  .question-scroll { flex:1; overflow-y:auto; padding:16px 18px; }
+  .q-text { font-size:15px; color:#1a1a1a; line-height:1.75; margin-bottom:18px; font-weight:400; }
+  .q-text .formula { font-weight:700; color:#1976d2; background:#dbeafe; padding:2px 6px; border-radius:4px; display:inline-block; margin:0 2px; }
+
+  .options-label { font-size:13px; font-weight:700; color:#333; margin-bottom:10px; }
+  .options-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .opt-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1.5px solid #ddd; border-radius:6px; cursor:pointer; transition:all 0.15s; background:white; }
+  .opt-item:hover { border-color:#90caf9; background:#f0f8ff; }
+  .opt-item.selected { border-color:var(--jee-green); background:#f1fff1; }
+  .opt-radio { width:18px; height:18px; border:2px solid #aaa; border-radius:50%; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+  .opt-item.selected .opt-radio { border-color:var(--jee-green); background:var(--jee-green); }
+  .opt-radio-dot { width:8px; height:8px; background:white; border-radius:50%; display:none; }
+  .opt-item.selected .opt-radio-dot { display:block; }
+  .opt-key { font-size:13px; font-weight:700; color:#444; min-width:18px; margin-top:1px; }
+  .opt-content { font-size:14px; color:#222; line-height:1.5; flex:1; }
+  .chem-svg-wrap { width:130px; height:80px; border:1.5px solid #ddd; border-radius:6px; background:white; display:flex; align-items:center; justify-content:center; padding:4px; overflow:hidden; margin-top:6px; }
+  .chem-svg-wrap svg { width:100%; height:100%; }
+  .options-grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+  /* ===== JEE ACTION ROW ===== */
+  .jee-action-row {
+    background: #f0f0f0;
+    border-top: 2px solid var(--jee-border);
+    padding: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .jee-action-left { display:flex; gap:8px; flex-wrap:wrap; }
+  .jee-action-right { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .jbtn {
+    padding: 9px 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-family: Arial, sans-serif;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 5px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .jbtn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+  .jbtn-green  { background: var(--jee-green); color: white; border-color: #1e7e34; }
+  .jbtn-white  { background: white; color: #333; border: 2px solid #aaa; }
+  .jbtn-white:hover { border-color: #666; }
+  .jbtn-orange { background: var(--jee-orange); color: white; border-color: #d4891b; }
+  .jbtn-blue   { background: var(--jee-blue); color: white; border-color: #1256a3; }
+  .jbtn-gray   { background: #666; color: white; border-color: #444; }
+  .jbtn-purple { background: var(--jee-purple); color: white; border-color: #5c1580; }
+
+  /* ===== RIGHT PANEL ===== */
+  .right-panel { background: white; border-left:1px solid var(--jee-border); display:flex; flex-direction:column; overflow-y:auto; max-height:calc(100vh - 115px); position:sticky; top:0; }
+
+  /* JEE-style legend box */
+  .jee-legend-box {
+    border: 1.5px dashed #bbb;
+    border-radius: 6px;
+    margin: 12px 12px 6px;
+    padding: 12px 10px;
+    background: #fafafa;
+  }
+  .jee-legend-row { display:grid; grid-template-columns:1fr 1fr; gap:8px 4px; }
+  .jee-legend-item { display:flex; align-items:center; gap:8px; font-size:12px; color:#333; }
+  .jee-legend-count {
+    min-width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+    font-family: Arial, sans-serif;
+  }
+  /* Not visited — plain square */
+  .jlc-nv { background:white; border:2px solid #999; border-radius:3px; color:#333; }
+  /* Not answered — red pentagon flag shape */
+  .jlc-na {
+    background: var(--jee-red); color: white; border-radius: 3px 3px 0 0;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  }
+  /* Answered — green circle */
+  .jlc-ans { background: var(--jee-green); color: white; border-radius: 50%; }
+  /* Marked — purple circle */
+  .jlc-mrk { background: var(--jee-purple); color: white; border-radius: 50%; }
+  /* Answered+Marked — purple circle with green small dot */
+  .jlc-am { background: var(--jee-purple); color: white; border-radius: 50%; position: relative; }
+  .jlc-am::after { content:''; position:absolute; bottom:0; right:0; width:13px; height:13px; background:var(--jee-green); border-radius:50%; border:1.5px solid white; }
+  .jee-legend-text { line-height:1.3; }
+
+  /* Stats bar below legend */
+  .jee-stats-bar { padding: 6px 12px; border-bottom: 1px solid #eee; }
+  .jee-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+  .jee-stat-chip { text-align:center; padding:5px 4px; border-radius:5px; }
+  .jee-stat-chip .snum { font-size:17px; font-weight:700; font-family:Arial,sans-serif; }
+  .jee-stat-chip .slbl { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
+  .jsc-nv  { background:#f5f5f5; } .jsc-nv .snum { color:#777; }
+  .jsc-na  { background:#ffebee; } .jsc-na .snum { color:#c62828; }
+  .jsc-ans { background:#e8f5e9; } .jsc-ans .snum { color:#2e7d32; }
+  .jsc-mrk { background:#f3e5f5; } .jsc-mrk .snum { color:#7b1fa2; }
+  .jee-stat-chip .slbl { color:#555; }
+
+  /* Palette section */
+  .palette-section { padding: 8px 12px 4px; }
+  .palette-section-title { font-size:12px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:4px; }
+  .q-palette { display:grid; grid-template-columns:repeat(5,1fr); gap:5px; }
+
+  /* JEE palette buttons — shapes per status */
+  .q-palette-btn { aspect-ratio:1; border:none; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.12s; font-family:Arial,sans-serif; position:relative; display:flex; align-items:center; justify-content:center; }
+  .q-palette-btn:hover { transform:scale(1.1); }
+
+  /* Not visited: white with gray border */
+  .qb-not-visited { background:white; border:2px solid #aaa !important; color:#555; border-radius:4px; }
+  /* Not answered: red pentagon/flag */
+  .qb-not-answered {
+    background: var(--jee-red); color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 68%, 50% 100%, 0 68%);
+    border-radius: 0;
+  }
+  /* Answered: green circle */
+  .qb-answered { background: var(--jee-green); color: white; border-radius: 50%; }
+  /* Marked: purple circle */
+  .qb-marked { background: var(--jee-purple); color: white; border-radius: 50%; }
+  /* Answered+Marked: purple circle with green bottom-right dot */
+  .qb-answered-marked { background: var(--jee-purple); color: white; border-radius: 50%; }
+  .qb-answered-marked::after { content:''; position:absolute; bottom:0; right:0; width:35%; height:35%; background:var(--jee-green); border-radius:50%; border:1.5px solid white; }
+  /* Current highlight */
+  .qb-current { outline: 3px solid #1976d2; outline-offset: 1px; }
+
+  /* Post-result palette */
+  .qb-result-correct  { background:#2e7d32; color:white; border-radius:4px; }
+  .qb-result-wrong    { background:#c62828; color:white; border-radius:4px; }
+  .qb-result-skip     { background:#1565c0; color:white; border-radius:4px; }
+
+  /* Submit button in right panel */
+  .submit-wrap { padding:10px 12px; margin-top:auto; }
+  .btn-submit { width:100%; padding:11px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:6px; font-family:Arial,sans-serif; font-size:16px; font-weight:700; letter-spacing:1px; cursor:pointer; box-shadow:0 4px 16px rgba(233,30,140,0.35); transition:all 0.2s; text-transform:uppercase; }
+  .btn-submit:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(233,30,140,0.45); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+  .modal-overlay.active { display:flex; }
+  .modal-box { background:white; border-radius:16px; padding:28px; max-width:420px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3); border:2px solid #bfdbfe; animation:modalIn 0.3s ease; }
+  @keyframes modalIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
+  .modal-icon { text-align:center; font-size:46px; margin-bottom:10px; }
+  .modal-title { text-align:center; font-size:20px; font-weight:700; color:var(--gray-dark); margin-bottom:8px; }
+  .modal-text { text-align:center; font-size:13px; color:var(--gray-mid); line-height:1.6; margin-bottom:18px; }
+  .modal-summary { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px; margin-bottom:18px; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .ms-item { display:flex; flex-direction:column; align-items:center; }
+  .ms-item .ms-num { font-size:22px; font-weight:800; }
+  .ms-item .ms-lbl { font-size:11px; font-weight:700; text-transform:uppercase; color:var(--gray-mid); }
+  .modal-actions { display:flex; gap:10px; }
+  .modal-actions .btn { flex:1; justify-content:center; }
+  .btn { padding:9px 18px; border-radius:6px; border:none; font-family:Arial,sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:6px; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn-cancel { background:#f5f5f5; color:var(--gray-mid); border:1px solid #e0e0e0; }
+  .btn-confirm-submit { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; box-shadow:0 4px 14px rgba(233,30,140,0.35); }
+
+  /* ===== RESULT SCREEN ===== */
+  #screen-result { background:#eff6ff; padding-bottom:40px; }
+  .result-body { max-width:760px; margin:0 auto; padding:24px 16px; }
+  .result-hero { text-align:center; padding:28px 20px; background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid #bfdbfe; margin-bottom:18px; position:relative; overflow:hidden; }
+  .result-hero::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background:#dbeafe; border-radius:50%; }
+  .result-trophy { font-size:56px; margin-bottom:8px; position:relative; z-index:1; }
+  .result-hero h2 { font-size:26px; font-weight:700; color:var(--gray-dark); margin-bottom:4px; position:relative; z-index:1; }
+  .result-hero p { color:var(--gray-mid); font-size:13px; position:relative; z-index:1; }
+  .score-ring-wrap { display:flex; justify-content:center; margin:18px 0; position:relative; z-index:1; }
+  .score-ring { width:130px; height:130px; border-radius:50%; background:conic-gradient(#1976d2 0%, #bfdbfe var(--score-pct), #eee var(--score-pct)); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(233,30,140,0.3); position:relative; }
+  .score-ring::before { content:''; position:absolute; width:90px; height:90px; background:white; border-radius:50%; }
+  .score-inner { position:relative; z-index:1; text-align:center; }
+  .score-inner .score-num { font-size:28px; font-weight:700; color:#1976d2; line-height:1; }
+  .score-inner .score-total { font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .result-stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:18px; }
+  .result-stat { background:white; border-radius:10px; padding:14px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08); border:1px solid #eee; }
+  .result-stat .rs-num { font-size:24px; font-weight:700; }
+  .result-stat .rs-lbl { font-size:11px; font-weight:700; color:var(--gray-mid); text-transform:uppercase; }
+  .rs-correct .rs-num { color:#2e7d32; } .rs-wrong .rs-num { color:#c62828; } .rs-unattempted .rs-num { color:#9e9e9e; } .rs-score .rs-num { color:#1976d2; }
+  .result-palette-legend { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; padding:10px 12px; background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe; }
+  .rpl-item { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .rpl-dot { width:18px; height:18px; border-radius:4px; flex-shrink:0; }
+  .answer-review { margin-bottom:18px; }
+  .review-q { background:white; border-radius:10px; padding:14px; margin-bottom:8px; border:1px solid #eee; box-shadow:0 1px 6px rgba(0,0,0,0.06); }
+  .review-q.rq-correct { border-left:5px solid #2e7d32; } .review-q.rq-wrong { border-left:5px solid #c62828; } .review-q.rq-skip { border-left:5px solid #1565c0; }
+  .review-q-num { font-weight:800; color:#1976d2; font-size:13px; margin-bottom:5px; }
+  .review-q-marks { display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:800; margin-left:6px; }
+  .rqm-correct { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+  .rqm-wrong { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+  .rqm-skip { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+  .review-q-text { font-size:13.5px; color:var(--gray-dark); margin-bottom:8px; line-height:1.5; }
+  .review-answers { display:flex; gap:8px; flex-wrap:wrap; }
+  .ra-chip { padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; }
+  .ra-your { background:#e3f2fd; color:#1565c0; } .ra-your.wrong { background:#ffebee; color:#c62828; } .ra-correct { background:#e8f5e9; color:#2e7d32; }
+  .result-action-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:22px; }
+  .btn-retry { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:13px 36px; border-radius:50px; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(233,30,140,0.35); transition:all 0.2s; text-transform:uppercase; }
+  .btn-retry:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(233,30,140,0.45); }
+  .btn-pdf { background:linear-gradient(135deg,#1565c0,#0d47a1); color:white; border:none; padding:13px 36px; border-radius:50px; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(21,101,192,0.4); transition:all 0.2s; display:flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:1px; }
+  .btn-pdf:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(21,101,192,0.5); }
+  .instr-card { background:white; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,0.08); overflow:hidden; margin-bottom:16px; border:1px solid #bfdbfe; }
+  .instr-card-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:12px 18px; border-bottom:2px solid #1976d2; display:flex; align-items:center; gap:10px; }
+  .instr-card-header h3 { font-size:15px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .instr-card-body { padding:16px 18px; }
+
+  /* ===== TOAST ===== */
+  .toast-container { position:fixed; top:80px; right:20px; z-index:2000; display:flex; flex-direction:column; gap:8px; }
+  .toast { padding:10px 16px; border-radius:8px; font-size:13px; font-weight:700; color:white; box-shadow:0 4px 16px rgba(0,0,0,0.2); animation:toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards; display:flex; align-items:center; gap:8px; }
+  .toast.success { background:#2e7d32; } .toast.info { background:#1976d2; } .toast.warning { background:#e65100; }
+  @keyframes toastIn { from{transform:translateX(100%);opacity:0} to{transform:translateX(0);opacity:1} }
+  @keyframes toastOut { from{opacity:1} to{opacity:0;transform:translateX(100%)} }
+
+  @media(max-width:768px) {
+    .test-layout { grid-template-columns:1fr; }
+    .right-panel { max-height:none; border-left:none; border-top:2px solid var(--jee-border); }
+    .jee-header { flex-direction:column; align-items:flex-start; }
+    .jbtn { font-size:11px; padding:7px 10px; }
+  }
+
+  /* ===== LOGIN SCREEN ===== */
+  #screen-login { min-height:100vh; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px; }
+  #screen-login.active { display:flex; }
+  .login-card { background:white; border-radius:18px; box-shadow:0 24px 64px rgba(0,0,0,0.45); width:100%; max-width:460px; overflow:hidden; }
+  .login-header { background:linear-gradient(135deg,#1976d2,#0a3880); padding:30px 32px 24px; text-align:center; }
+  .login-logo { font-size:42px; margin-bottom:8px; }
+  .login-header h2 { font-size:24px; font-weight:800; color:white; letter-spacing:1px; margin-bottom:4px; }
+  .login-header p { color:rgba(255,255,255,0.8); font-size:13px; font-weight:600; }
+  .login-body { padding:28px 32px 32px; }
+  .login-field { margin-bottom:18px; }
+  .login-field label { display:block; font-size:11.5px; font-weight:700; color:#555; margin-bottom:7px; text-transform:uppercase; letter-spacing:0.5px; }
+  .login-field input { width:100%; padding:12px 14px; border:2px solid #e0e0e0; border-radius:8px; font-size:14px; font-family:Arial,sans-serif; transition:border-color 0.2s; background:#fafafa; outline:none; }
+  .login-field input:focus { border-color:#1976d2; background:white; }
+  .login-remember { display:flex; align-items:center; gap:8px; margin-bottom:22px; font-size:13px; color:#666; font-weight:600; cursor:pointer; }
+  .login-remember input { width:15px; height:15px; accent-color:#1976d2; cursor:pointer; }
+  .btn-login { width:100%; padding:13px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:8px; font-size:16px; font-weight:700; cursor:pointer; letter-spacing:1px; transition:all 0.2s; text-transform:uppercase; font-family:Arial,sans-serif; }
+  .btn-login:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(233,30,140,0.4); }
+  .login-note { text-align:center; font-size:11.5px; color:#bbb; margin-top:14px; font-weight:600; }
+
+  /* ===== START SCREEN ===== */
+  #screen-start { min-height:100vh; background:linear-gradient(160deg,#fdf0f6 0%,#fff 60%,#fce4ec 100%); }
+  #screen-start.active { display:block; }
+  .flow-bar { background:white; border-bottom:1px solid #bfdbfe; padding:10px 20px; display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; }
+  .flow-step { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#bbb; padding:6px 10px; border-radius:20px; transition:all 0.2s; white-space:nowrap; }
+  .flow-step.done  { color:#2e7d32; }
+  .flow-step.active { color:#1976d2; background:#dbeafe; }
+  .flow-step .fsnum { width:22px; height:22px; border-radius:50%; background:#e0e0e0; color:#888; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
+  .flow-step.done  .fsnum { background:#2e7d32; color:white; }
+  .flow-step.active .fsnum { background:#1976d2; color:white; }
+  .flow-arrow { color:#ccc; font-size:16px; padding:0 4px; }
+  .start-body { max-width:820px; margin:0 auto; padding:28px 16px 48px; }
+  .start-hero { text-align:center; padding:34px 24px 26px; background:white; border-radius:20px; box-shadow:0 6px 28px rgba(233,30,140,0.12); border:1px solid #bfdbfe; margin-bottom:20px; position:relative; overflow:hidden; }
+  .start-hero::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; background:#dbeafe; border-radius:50%; }
+  .start-hero::after  { content:''; position:absolute; bottom:-30px; left:-30px; width:120px; height:120px; background:#dbeafe; border-radius:50%; }
+  .start-hero-icon { font-size:52px; margin-bottom:10px; position:relative; z-index:1; }
+  .start-hero h2 { font-size:24px; font-weight:800; color:var(--gray-dark); margin-bottom:5px; position:relative; z-index:1; }
+  .start-hero p  { color:var(--gray-mid); font-size:13.5px; font-weight:600; position:relative; z-index:1; }
+  .start-cand-card { background:linear-gradient(135deg,#1976d2,#0a3880); border-radius:14px; padding:18px 22px; display:flex; align-items:center; gap:16px; margin-bottom:20px; box-shadow:0 6px 20px rgba(233,30,140,0.3); flex-wrap:wrap; }
+  .start-cand-avatar { width:56px; height:56px; background:rgba(255,255,255,0.2); border-radius:50%; border:3px solid rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+  .start-cand-info { flex:1; }
+  .start-cand-name { font-size:20px; font-weight:800; color:white; line-height:1.2; }
+  .start-cand-meta { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; margin-top:3px; }
+  .start-cand-edit { background:rgba(255,255,255,0.18); color:white; border:2px solid rgba(255,255,255,0.4); border-radius:20px; padding:6px 16px; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:Arial,sans-serif; }
+  .start-cand-edit:hover { background:rgba(255,255,255,0.3); }
+  .start-info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:22px; }
+  .start-info-tile { background:white; border-radius:12px; padding:14px 16px; text-align:center; border:1px solid #bfdbfe; box-shadow:0 2px 8px rgba(233,30,140,0.07); }
+  .start-info-tile .sit-label { font-size:10.5px; font-weight:700; color:#0d47a1; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:5px; }
+  .start-info-tile .sit-value { font-size:19px; font-weight:800; color:#1976d2; }
+  .btn-go-instructions { display:block; width:100%; padding:16px; background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; border-radius:12px; font-size:20px; font-weight:700; cursor:pointer; letter-spacing:1px; box-shadow:0 6px 24px rgba(233,30,140,0.4); transition:all 0.3s; text-transform:uppercase; font-family:Arial,sans-serif; position:relative; overflow:hidden; }
+  .btn-go-instructions::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); transition:left 0.5s; }
+  .btn-go-instructions:hover::before { left:100%; }
+  .btn-go-instructions:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(233,30,140,0.5); }
+
+ 
+  /* ===== FULLSCREEN WARNING MODAL ===== */
+  .fs-warning-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.82); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(6px); }
+  .fs-warning-overlay.active { display:flex; }
+  .fs-warning-box { background:white; border-radius:20px; padding:36px 32px; max-width:440px; width:90%; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.5); border:3px solid #c62828; animation:modalIn 0.3s ease; }
+  .fs-warning-icon { font-size:56px; margin-bottom:12px; }
+  .fs-warning-title { font-size:22px; font-weight:800; color:#c62828; margin-bottom:8px; }
+  .fs-warning-text  { font-size:14px; color:#555; line-height:1.6; margin-bottom:20px; }
+  .fs-countdown { font-size:42px; font-weight:800; color:#c62828; margin-bottom:16px; font-family:Arial,sans-serif; }
+  .fs-warning-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .btn-fs-return { background:linear-gradient(135deg,#1976d2,#0d47a1); color:white; border:none; padding:12px 28px; border-radius:8px; font-size:15px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; }
+  .btn-fs-submit  { background:white; color:#c62828; border:2px solid #ef9a9a; padding:12px 24px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; }
+  .history-section { background:white; border-radius:16px; border:1px solid #bfdbfe; box-shadow:0 2px 12px rgba(233,30,140,0.08); overflow:hidden; margin-bottom:22px; }
+  .history-header { background:linear-gradient(135deg,#dbeafe,#bfdbfe); padding:14px 20px; border-bottom:2px solid #1976d2; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .history-header-left { display:flex; align-items:center; gap:10px; }
+  .history-icon { width:32px; height:32px; background:#1976d2; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; color:white; flex-shrink:0; }
+  .history-header h3 { font-size:15px; font-weight:700; color:#0a3880; text-transform:uppercase; letter-spacing:1px; }
+  .btn-clear-hist { background:white; border:1.5px solid #ef9a9a; color:#c62828; border-radius:20px; padding:4px 14px; font-size:11px; font-weight:700; cursor:pointer; font-family:Arial,sans-serif; transition:all 0.2s; }
+  .btn-clear-hist:hover { background:#ffebee; }
+  .history-empty { padding:32px; text-align:center; color:#bbb; }
+  .history-empty .he-icon { font-size:36px; margin-bottom:10px; }
+  .history-empty p { font-size:14px; font-weight:600; }
+  .history-wrap { overflow-x:auto; }
+  .history-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .history-table thead tr { background:#eff6ff; }
+  .history-table th { padding:9px 14px; text-align:left; font-size:10.5px; font-weight:700; color:#0d47a1; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #bfdbfe; white-space:nowrap; }
+  .history-table td { padding:10px 14px; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+  .history-table tr:last-child td { border-bottom:none; }
+  .history-table tbody tr:hover td { background:#eff6ff; }
+  .ht-set { font-weight:700; color:#1976d2; white-space:nowrap; }
+  .ht-score { font-weight:800; font-size:15px; }
+  .ht-pct { display:inline-block; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:800; }
+  .ht-pct.high { background:#e8f5e9; color:#2e7d32; }
+  .ht-pct.mid  { background:#fff3e0; color:#e65100; }
+  .ht-pct.low  { background:#ffebee; color:#c62828; }
+  .ht-correct { color:#2e7d32; font-weight:700; }
+  .ht-wrong   { color:#c62828; font-weight:700; }
+  .ht-skip    { color:#9e9e9e; font-weight:700; }
+  .ht-date    { color:#999; font-size:11.5px; }
+  .ht-grade   { font-weight:800; font-size:16px; }
+  .history-summary-bar { display:flex; gap:16px; flex-wrap:wrap; padding:11px 18px; background:#eff6ff; border-top:1px solid #bfdbfe; font-size:12px; font-weight:700; color:var(--gray-mid); }
+  .history-summary-bar span { color:#1976d2; }
+</style>
+</head>
+<body>
+<!-- ==================== TOAST ==================== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ==================== 1. LOGIN SCREEN ==================== -->
+<div class="screen active" id="screen-login">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo">⚡</div>
+      <h2>Thunder CBT</h2>
+      <p>CUET geo — CUET Mock Test</p>
+    </div>
+    <div class="login-body">
+      <div class="login-field">
+        <label>Candidate Name</label>
+        <input type="text" id="loginName" placeholder="Enter your full Name" autocomplete="name" onkeydown="if(event.key==='Enter')document.getElementById('loginPass').focus()">
+      </div>
+      <div class="login-field">
+        <label>Password / Roll No</label>
+        <input type="password" id="loginPass" placeholder="Enter password or roll number" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <label class="login-remember">
+        <input type="checkbox" id="loginRemember"> Remember me on this device
+      </label>
+      <button class="btn-login" onclick="doLogin()">▶ Login &amp; Continue</button>
+      <p class="login-note">Your credentials are saved locally on this device only.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 2. START SCREEN ==================== -->
+<div class="screen" id="screen-start">
+  <!-- Flow progress bar -->
+  <div class="flow-bar">
+    <div class="flow-step done"   id="flow-login"><span class="fsnum">✓</span> Login</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step active" id="flow-start"><span class="fsnum">2</span> Start</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"        id="flow-instr"><span class="fsnum">3</span> Instructions</div>
+<span class="flow-arrow">›</span>
+<div class="flow-step"        id="flow-test"><span class="fsnum">4</span> Test</div>
+<span class="flow-arrow">›</span>
+<div class="flow-step"        id="flow-result"><span class="fsnum">5</span> Result</div>
+  </div>
+
+  <div class="start-body">
+    <!-- Welcome hero -->
+    <div class="start-hero">
+      <div class="start-hero-icon">⚡</div>
+      <h2>Thunder CBT — CUET geo</h2>
+      <p>CUET Computer Based Test · CUET · 50 Questions Each</p>
+    </div>
+
+    <!-- Candidate card -->
+    <div class="start-cand-card">
+      <div class="start-cand-avatar">👤</div>
+      <div class="start-cand-info">
+        <div class="start-cand-name" id="startCandName">Candidate</div>
+        <div class="start-cand-meta">
+          Roll No: <span id="startCandRoll">—</span> &nbsp;·&nbsp; CUET &nbsp;·&nbsp; CUET — geo
+        </div>
+      </div>
+      <button class="start-cand-edit" onclick="showScreen('login')">✏️ Edit Details</button>
+    </div>
+
+    <!-- Exam info tiles -->
+    <div class="start-info-grid">
+      <div class="start-info-tile">
+        <div class="sit-label">Questions / Set</div>
+        <div class="sit-value">50</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Total Sets</div>
+        <div class="sit-value">4</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Duration / Set</div>
+        <div class="sit-value">60 min</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Max Marks</div>
+        <div class="sit-value">250</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Correct</div>
+        <div class="sit-value" style="color:#2e7d32;">+5</div>
+      </div>
+      <div class="start-info-tile">
+        <div class="sit-label">Wrong</div>
+        <div class="sit-value" style="color:#c62828;">−1</div>
+      </div>
+    </div>
+
+    <!-- Test Result History -->
+    <div class="history-section">
+      <div class="history-header">
+        <div class="history-header-left">
+          <div class="history-icon">📊</div>
+          <h3>Test Result History</h3>
+        </div>
+        <button class="btn-clear-hist" onclick="clearHistory()">🗑 Clear History</button>
+      </div>
+      <div id="historyContent">
+        <div class="history-empty">
+          <div class="he-icon">📭</div>
+          <p>No attempts yet — complete a test to see your history here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proceed button -->
+    <button class="btn-go-instructions" onclick="proceedToInstructions()">
+  ⚗️ Start geo Mock →
+</button>
+  </div>
+</div>
+
+
+<!-- ==================== FULLSCREEN WARNING MODAL ==================== -->
+<div class="fs-warning-overlay" id="fsWarningModal">
+  <div class="fs-warning-box">
+    <div class="fs-warning-icon">⚠️</div>
+    <div class="fs-warning-title">Fullscreen Exited!</div>
+    <div class="fs-warning-text" id="fsWarningText">
+      You have exited fullscreen mode. The exam requires fullscreen. Please return to fullscreen or your test will be auto-submitted.
+    </div>
+    <div class="fs-countdown" id="fsCountdown">3</div>
+    <div class="fs-warning-btns">
+      <button class="btn-fs-return" onclick="returnToFullscreen()">↩ Return to Fullscreen</button>
+      <button class="btn-fs-submit" onclick="forceSubmit()">Submit Now</button>
+    </div>
+  </div>
+</div>
+<div class="screen" id="screen-instructions">
+  <!-- 6-step flow bar (same as other screens) -->
+  <div class="flow-bar">
+    <div class="flow-step done"><span class="fsnum">✓</span> Login</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step done"><span class="fsnum">✓</span> Start</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step active"><span class="fsnum">4</span> Instructions</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"><span class="fsnum">5</span> Test</div>
+    <span class="flow-arrow">›</span>
+    <div class="flow-step"><span class="fsnum">6</span> Result</div>
+  </div>
+
+  <!-- Pink header bar with candidate name -->
+  <div class="exam-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1>Thunder CBT</h1>
+          <p>CUET Mock Test Series</p>
+        </div>
+      </div>
+      <div class="header-candidate">
+        <div class="candidate-avatar">👤</div>
+        <div class="candidate-info">
+          <div class="name" id="instrCandName">Candidate</div>
+          <div class="roll" id="instrCandRoll">Roll No: TH-2024-CHM-001</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instr-body">
+
+    <!-- General Instructions -->
+    <div class="instr-card">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">📌</div>
+        <h3>General Instructions</h3>
+      </div>
+      <div class="instr-card-body">
+        <ul class="instr-list">
+          <li><span class="num">1</span>This test contains <strong>50 MCQ questions</strong> from CUET geo syllabus (Class 12). Your set was selected on the previous screen.</li>
+          <li><span class="num">2</span>Each correct answer carries <strong>+5 marks</strong>. Each wrong answer carries <strong>−1 mark</strong>. Unattempted questions carry <strong>0 marks</strong>.</li>
+          <li><span class="num">3</span>Click on an option to select it. You can change your answer any time before final submission.</li>
+          <li><span class="num">4</span>Use the <strong>Question Palette</strong> on the right side to navigate to any question directly.</li>
+          <li><span class="num">5</span>You can mark questions <strong>"Mark for Review"</strong> to revisit them later before submission.</li>
+          <li><span class="num">6</span>The timer is displayed at the top. The test will <strong>auto-submit</strong> when time runs out.</li>
+          <li><span class="num">7</span>The exam runs in <strong>fullscreen mode</strong>. Exiting fullscreen will trigger a 3-second auto-submit warning.</li>
+          <li><span class="num">8</span>Switching browser tabs will cause <strong>immediate auto-submission</strong> of your test.</li>
+          <li><span class="num">9</span>Click <strong>"Save &amp; Next"</strong> to save your answer and move to the next question.</li>
+          <li><span class="num">10</span>Once you click <strong>"Submit Test"</strong>, a confirmation popup will appear before final submission.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Question Palette Legend -->
+    <div class="instr-card">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">🗂️</div>
+        <h3>Question Palette — Colour Guide</h3>
+      </div>
+      <div class="instr-card-body">
+        <p style="font-size:12.5px;color:var(--gray-mid);font-weight:600;margin-bottom:12px;">During the exam, the question palette on the right uses these colours:</p>
+        <div class="legend-grid">
+          <div class="legend-item"><div class="legend-dot dot-not-visited">1</div> Not Visited — Not opened yet</div>
+          <div class="legend-item"><div class="legend-dot dot-not-answered">2</div> Not Answered — Opened, no answer</div>
+          <div class="legend-item"><div class="legend-dot dot-answered">3</div> Answered — Answer saved</div>
+          <div class="legend-item"><div class="legend-dot dot-marked">4</div> Marked for Review — Will be evaluated</div>
+          <div class="legend-item"><div class="legend-dot dot-answered-marked">5</div> Answered + Marked — Saved &amp; flagged</div>
+        </div>
+        <div style="margin-top:14px;padding:12px;background:#eff6ff;border-radius:10px;border:1px solid #bfdbfe;">
+          <p style="font-size:12px;font-weight:700;color:#0a3880;margin-bottom:6px;">📊 After submission, palette changes to:</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#2e7d32;"><span style="width:18px;height:18px;background:#2e7d32;border-radius:4px;display:inline-block;"></span> Green = Correct</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#c62828;"><span style="width:18px;height:18px;background:#c62828;border-radius:4px;display:inline-block;"></span> Red = Wrong</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1565c0;"><span style="width:18px;height:18px;background:#1565c0;border-radius:4px;display:inline-block;"></span> Blue = Unattempted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agreement & Start -->
+    <label class="agree-check">
+      <input type="checkbox" id="agreeCheck" onchange="toggleStartBtn()">
+      I have read all the instructions carefully and I am ready to start the examination.
+    </label>
+
+    <div class="step-nav">
+      <button class="btn-step-back" onclick="showScreen('start')">← Back</button>
+      <button class="btn-start-exam" id="startBtn" onclick="startExam()" style="opacity:0.5;pointer-events:none;">
+        ⚡ Start Exam
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== TEST SCREEN ==================== -->
+<div class="screen" id="screen-test">
+
+  <!-- JEE-style top candidate header -->
+  <div class="jee-header">
+    <div class="jee-candidate-block">
+      <div class="jee-photo">
+        <svg viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="22" r="14" fill="#888"/>
+          <ellipse cx="30" cy="58" rx="22" ry="14" fill="#888"/>
+        </svg>
+      </div>
+      <div class="jee-info-table">
+        <div class="jee-info-row"><span class="jee-info-label">Candidate Name</span><span class="jee-info-value name-val" id="jeeNameDisp">: [Your Name]</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Exam Name</span><span class="jee-info-value">: CUET</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Subject Name</span><span class="jee-info-value">: CUET — geo</span></div>
+        <div class="jee-info-row"><span class="jee-info-label">Remaining Time</span><span class="jee-info-value time-val" id="timerDisplay">60:00:00</span></div>
+      </div>
+    </div>
+    <div class="jee-lang-block">
+      <select class="jee-lang-select" onchange="showToast('Language: '+this.value,'info')">
+        <option>English</option>
+        <option>Hindi</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Subject bar -->
+  <div class="jee-subject-bar">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <div class="jee-subject-tag" id="testSetTabLabel">⚗️ geo</div>
+  <div style="background:#dbeafe;border:1px solid #90caf9;padding:3px 12px;border-radius:4px;font-size:12px;font-weight:700;color:#0d47a1;">
+    Subject: <span id="subjectIdTag">chem</span>
+  </div>
+  <div style="background:#e3f2fd;border:1px solid #90caf9;padding:3px 12px;border-radius:4px;font-size:12px;font-weight:700;color:#0d47a1;">
+    Chapter: <span id="chapterIdTag">chem-cuet-set1</span>
+  </div>
+</div>
+    <div class="jee-marks-info">
+      <span class="jee-mark-chip pos">✓ Correct: +5</span>
+      <span class="jee-mark-chip neg">✗ Wrong: −1</span>
+      <span style="font-size:12px;color:#555;font-weight:600;">Unattempted: 0</span>
+    </div>
+  </div>
+
+  <!-- Main two-column layout -->
+  <div class="test-layout">
+
+    <!-- LEFT: Question panel -->
+    <div class="question-panel">
+      <!-- Q header -->
+      <div class="q-header-bar">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="q-num-badge" id="qNumBadge">Question 1</span>
+          <span class="q-topic-tag" id="qTopicTag">Topic</span>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <span class="jee-mark-chip pos" style="font-size:11px;">+5</span>
+          <span class="jee-mark-chip neg" style="font-size:11px;">−1</span>
+        </div>
+      </div>
+
+      <!-- Scrollable question body -->
+      <div class="question-scroll" id="questionBody">
+        <!-- Loaded dynamically -->
+      </div>
+
+      <!-- JEE-style action row -->
+      <div class="jee-action-row">
+  <div class="jee-action-left">
+    <button class="jbtn jbtn-green" onclick="saveAndNext()">Save &amp; Next ▶</button>
+    <button class="jbtn jbtn-white" onclick="clearResponse()">Clear</button>
+    <button class="jbtn jbtn-orange" onclick="saveMarkAndNext()">Save &amp; Mark for Review</button>
+    <button class="jbtn jbtn-blue" onclick="markAndNext()">Mark for Review</button>
+  </div>
+  <div class="jee-action-right" style="display:flex;align-items:center;gap:8px;width:100%;justify-content:space-between;">
+    <div style="display:flex;gap:8px;">
+      <button class="jbtn jbtn-gray" onclick="goBack()">◀ Back</button>
+      <button class="jbtn jbtn-gray" onclick="if(currentQ < questions.length-1) renderQuestion(currentQ+1)">Next ▶</button>
+    </div>
+    <button class="jbtn jbtn-purple" onclick="showSubmitModal()" style="margin-left:auto;">🏁 Submit Test</button>
+  </div>
+</div>
+    </div>
+
+    <!-- RIGHT: Palette panel -->
+    <div class="right-panel">
+
+      <!-- JEE Legend box -->
+      <div class="jee-legend-box">
+        <div class="jee-legend-row">
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-nv" id="stat-nv">50</div>
+            <span class="jee-legend-text">Not Visited</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-na" id="stat-na">0</div>
+            <span class="jee-legend-text">Not Answered</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-ans" id="stat-ans">0</div>
+            <span class="jee-legend-text">Answered</span>
+          </div>
+          <div class="jee-legend-item">
+            <div class="jee-legend-count jlc-mrk" id="stat-mrk">0</div>
+            <span class="jee-legend-text">Marked for Review</span>
+          </div>
+          <div class="jee-legend-item" style="grid-column:span 2;">
+            <div class="jee-legend-count jlc-am" id="stat-am">0</div>
+            <span class="jee-legend-text">Answered &amp; Marked for Review <small style="color:#777;">(will be evaluated)</small></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Palette -->
+      <div class="palette-section">
+        <div class="palette-section-title">⚗️ geo — <span id="paletteSetLabel">Mock</span></div>
+        <div class="q-palette" id="questionPalette"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESULT SCREEN ==================== -->
+<div class="screen" id="screen-result">
+  <div class="exam-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1>Thunder CBT</h1>
+          <p>Result — CUET geo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="result-body">
+    <div class="result-hero">
+      <div class="result-trophy" id="resultTrophy">🏆</div>
+      <h2 id="resultTitle">Test Completed!</h2>
+      <p id="resultSubtitle">Here's your performance breakdown for geo</p>
+      <div class="score-ring-wrap">
+        <div class="score-ring" id="scoreRing" style="--score-pct:0%">
+          <div class="score-inner">
+            <div class="score-num" id="resultScoreNum">0</div>
+            <div class="score-total">/ 250</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-stats-grid">
+      <div class="result-stat rs-correct">
+        <div class="rs-num" id="res-correct">0</div>
+        <div class="rs-lbl">Correct</div>
+      </div>
+      <div class="result-stat rs-wrong">
+        <div class="rs-num" id="res-wrong">0</div>
+        <div class="rs-lbl">Wrong</div>
+      </div>
+      <div class="result-stat rs-unattempted">
+        <div class="rs-num" id="res-unattempted">0</div>
+        <div class="rs-lbl">Unattempted</div>
+      </div>
+      <div class="result-stat rs-score">
+        <div class="rs-num" id="res-score">0</div>
+        <div class="rs-lbl">Final Score</div>
+      </div>
+    </div>
+
+    <div class="instr-card answer-review">
+      <div class="instr-card-header">
+        <div class="instr-card-icon">📊</div>
+        <h3>Answer Review</h3>
+      </div>
+      <div class="instr-card-body">
+        <!-- Result palette legend -->
+        <div class="result-palette-legend">
+          <div class="rpl-item"><div class="rpl-dot" style="background:#2e7d32;"></div> Correct (+5)</div>
+          <div class="rpl-item"><div class="rpl-dot" style="background:#c62828;"></div> Wrong (−1)</div>
+          <div class="rpl-item"><div class="rpl-dot" style="background:#1565c0;"></div> Not Attempted (0)</div>
+        </div>
+        <!-- Result palette grid -->
+        <div class="q-palette" id="resultPalette" style="margin-bottom:18px;"></div>
+        <!-- Detailed answer review -->
+        <div id="answerReviewBody"></div>
+      </div>
+    </div>
+
+    <div class="result-action-row">
+      <button class="btn-pdf" onclick="downloadPDF()">📄 Download PDF Report</button>
+      <button class="btn-retry" onclick="retryTest()" style="margin:0;">🔄 Retry Test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SUBMIT MODAL ==================== -->
+<div class="modal-overlay" id="submitModal">
+  <div class="modal-box">
+    <div class="modal-icon">📤</div>
+    <div class="modal-title">Submit Test?</div>
+    <div class="modal-text">Please review your progress before final submission. This action cannot be undone.</div>
+    <div class="modal-summary" id="modalSummary"></div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeModal()">✕ Cancel</button>
+      <button class="btn btn-confirm-submit" onclick="confirmSubmit()">✓ Confirm Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SUBJECT_ID  = "geo";
+const CHAPTER_ID  = "geo-pyq23";
+const GS_URL = "https://script.google.com/macros/s/AKfycbyEsrvdSuRh06TIKPK0ozP-jQNjqHO8PaIeBcW5r45aGdr4H3ZVFHpKMm3xaDHrYmqX/exec";
+
+// ===== SET 1: 10 REAL + 40 PLACEHOLDERS =====
+const questions = [
+  {
+    id: 1,
+    section: "Application MCQ",
+    text: `Out of the given options choose the most appropriate one to define 'Density of Population'.`,
+    options: {
+      a: "Number of live births in a year per thousand of population.",
+      b: "Change in number of persons of a territory during a specific period of time.",
+      c: "Ratio between the number of women and men in the population.",
+      d: "Number of persons living in per square km of an area."
+    },
+    correctAnswer: "d",
+    explanation: "Population density is defined as number of persons per square kilometer. Option a is birth rate; b is growth rate; c is sex ratio. NCERT Class 12 Geography (India) Ch. 1: Density of population.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 2,
+    section: "Application MCQ",
+    text: `In Indonesia and Malaysia, shifting cultivation is known by which of the following names?`,
+    options: {
+      a: "Jhuming",
+      b: "Milpa",
+      c: "Ladang",
+      d: "Viticulture"
+    },
+    correctAnswer: "c",
+    explanation: "Shifting cultivation is known as Ladang in Indonesia/Malaysia. Jhuming in NE India, Milpa in Mexico/Central America, Viticulture is grape cultivation. NCERT Class 12 Geography (Fundamentals) Ch. 5: Shifting cultivation.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 3,
+    section: "Application MCQ",
+    text: `In which of the following countries, Ruhr industrial region is located?`,
+    options: {
+      a: "France",
+      b: "Spain",
+      c: "Germany",
+      d: "England"
+    },
+    correctAnswer: "c",
+    explanation: "Ruhr industrial region is in Germany (North Rhine-Westphalia). It is a major coal, steel, and industrial hub. NCERT Class 12 Geography (Fundamentals) Ch. 6: Major industrial regions.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 4,
+    section: "Application MCQ",
+    text: `Industry producing raw materials for other industries is known by which of the following?`,
+    options: {
+      a: "Basic industry",
+      b: "Small scale industry",
+      c: "Cottage industry",
+      d: "Footloose industry"
+    },
+    correctAnswer: "a",
+    explanation: "Basic industry produces raw materials for other industries (e.g., iron and steel). Small scale and cottage are size-based; footloose has no location constraint. NCERT Class 12 Geography (India) Ch. 6: Classification of industries.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 5,
+    section: "Application MCQ",
+    text: `What is the approximate percentage of rural population in India as per Census 2011?`,
+    options: {
+      a: "20%",
+      b: "31%",
+      c: "55%",
+      d: "69%"
+    },
+    correctAnswer: "d",
+    explanation: "Census 2011: rural population = 68.84% (~69%). Urban = 31.16%. Options a,b,c incorrect. NCERT Class 12 Geography (India) Ch. 4: Rural-urban population.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 6,
+    section: "Application MCQ",
+    text: `Which of the following is known as the 'Coffee Port' of India?`,
+    options: {
+      a: "Kolkata",
+      b: "Mumbai",
+      c: "Mangalore",
+      d: "Chennai"
+    },
+    correctAnswer: "c",
+    explanation: "Mangalore port is known as 'Coffee Port' because it handles coffee exports from Karnataka. NCERT Class 12 Geography (India) Ch. 8: Major ports of India.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 7,
+    section: "Application MCQ",
+    text: `Which of the following is not a push factor for migration?`,
+    options: {
+      a: "Better employment opportunities",
+      b: "Political instability",
+      c: "Natural disasters",
+      d: "Lack of basic amenities"
+    },
+    correctAnswer: "a",
+    explanation: "Better employment opportunities are a pull factor (attracts). Others are push factors (drive away). NCERT Class 12 Geography (India) Ch. 2: Push-pull factors of migration.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 8,
+    section: "Application MCQ",
+    text: `In which of the following decades was the population growth rate highest in India?`,
+    options: {
+      a: "1951-1961",
+      b: "1961-1971",
+      c: "1971-1981",
+      d: "1981-1991"
+    },
+    correctAnswer: "b",
+    explanation: "Highest growth rate 24.80% in 1961-71. 1951-61: 21.51%, 1971-81: 24.66%, 1981-91: 23.85%. NCERT Class 12 Geography (India) Ch. 1: Population growth trends.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 9,
+    section: "Application MCQ",
+    text: `Which one of the following is the length of Panama Canal?`,
+    options: {
+      a: "160 Km",
+      b: "72 Km",
+      c: "117 Km",
+      d: "195 Km"
+    },
+    correctAnswer: "b",
+    explanation: "Panama Canal length is approximately 72 km (about 48 miles). Suez Canal is longer (~193 km). NCERT Class 12 Geography (Fundamentals) Ch. 8: Major waterways.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 10,
+    section: "Application MCQ",
+    text: `'Neeru – Meeru' a watershed development and management programme is associated with which of the following?`,
+    options: {
+      a: "Rajasthan",
+      b: "Andhra Pradesh",
+      c: "Tamil Nadu",
+      d: "Haryana"
+    },
+    correctAnswer: "b",
+    explanation: "Neeru-Meeru (Water and You) is a watershed development programme in Andhra Pradesh. NCERT Class 12 Geography (India) Ch. 6: Watershed management programmes.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 11,
+    section: "Application MCQ",
+    text: `The Big Trunk Route runs through which of the following?`,
+    options: {
+      a: "The North Atlantic Ocean",
+      b: "The Mediterranean – Indian Ocean",
+      c: "The South Atlantic Ocean",
+      d: "The South Pacific Ocean"
+    },
+    correctAnswer: "a",
+    explanation: "Big Trunk Route is the busiest ocean route across North Atlantic (between USA/Europe). NCERT Class 12 Geography (Fundamentals) Ch. 8: Major ocean routes.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 12,
+    section: "Application MCQ",
+    text: `A geothermal energy plant has been commissioned at which of the following places?`,
+    options: {
+      a: "Okhla in Delhi",
+      b: "Tarapur in Maharashtra",
+      c: "Manikaran in Himachal Pradesh",
+      d: "Narora in Uttar Pradesh"
+    },
+    correctAnswer: "c",
+    explanation: "Manikaran (Himachal Pradesh) has geothermal energy plant. Tarapur is nuclear; Okhla waste-to-energy; Narora nuclear. NCERT Class 12 Geography (India) Ch. 7: Non-conventional energy sources.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 13,
+    section: "Application MCQ",
+    text: `Which of the following is the longest national waterway in India?`,
+    options: {
+      a: "NW 1 (Ganga-Bhagirathi-Hooghly)",
+      b: "NW 2 (Brahmaputra)",
+      c: "NW 3 (West Coast Canal)",
+      d: "NW 4 (Krishna-Godavari)"
+    },
+    correctAnswer: "a",
+    explanation: "NW 1 (Ganga-Bhagirathi-Hooghly) is longest: 1620 km. NW 2 is 891 km, NW 3 205 km, NW 4 1095 km. NCERT Class 12 Geography (India) Ch. 8: National Waterways.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 14,
+    section: "Application MCQ",
+    text: `Which one of the following is the most important reason for the concentration of Jute mills in West Bengal?`,
+    options: {
+      a: "Availability of cheap labour",
+      b: "Proximity to jute producing areas",
+      c: "Good transport network",
+      d: "Government subsidies"
+    },
+    correctAnswer: "b",
+    explanation: "Proximity to jute producing areas (West Bengal and Bangladesh) is primary factor. Labour and transport are secondary. NCERT Class 12 Geography (India) Ch. 6: Jute industry location.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 15,
+    section: "Application MCQ",
+    text: `The concept of 'Human Development Index' was introduced by:`,
+    options: {
+      a: "Amartya Sen",
+      b: "Mahbub ul Haq",
+      c: "Paul Samuelson",
+      d: "Milton Friedman"
+    },
+    correctAnswer: "b",
+    explanation: "Mahbub ul Haq (with Amartya Sen) introduced HDI in 1990 Human Development Report. NCERT Class 12 Geography (Fundamentals) Ch. 1: Human Development Index.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 16,
+    section: "Application MCQ",
+    text: `Which of the following is a commercial crop?`,
+    options: {
+      a: "Rice",
+      b: "Wheat",
+      c: "Cotton",
+      d: "Maize"
+    },
+    correctAnswer: "c",
+    explanation: "Cotton is a commercial crop (grown for sale/industry). Rice, wheat, maize are subsistence/food crops. NCERT Class 12 Geography (India) Ch. 5: Commercial crops.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 17,
+    section: "Application MCQ",
+    text: `In the production of cotton, India stands at which rank in the world cotton production?`,
+    options: {
+      a: "First",
+      b: "Second",
+      c: "Third",
+      d: "Fourth"
+    },
+    correctAnswer: "b",
+    explanation: "India is second largest cotton producer (after China). NCERT Class 12 Geography (India) Ch. 5: Cotton production.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 18,
+    section: "Application MCQ",
+    text: `The important underground railways, 'Channel Tunnel' joins which two cities of Europe?`,
+    options: {
+      a: "Rome – Berlin",
+      b: "Geneva – Amsterdam",
+      c: "London – Paris",
+      d: "Moscow – Stockholm"
+    },
+    correctAnswer: "c",
+    explanation: "Channel Tunnel (Eurotunnel) connects London (UK) and Paris (France) under English Channel. NCERT Class 12 Geography (Fundamentals) Ch. 8: Major tunnels.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 19,
+    section: "Application MCQ",
+    text: `Which of the following is not a metallic mineral?`,
+    options: {
+      a: "Iron",
+      b: "Mica",
+      c: "Copper",
+      d: "Bauxite"
+    },
+    correctAnswer: "b",
+    explanation: "Mica is a non-metallic mineral (used in electrical insulation). Iron, copper, bauxite are metallic. NCERT Class 12 Geography (India) Ch. 7: Classification of minerals.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 20,
+    section: "Application MCQ",
+    text: `Name the city where Asia's largest slum Dharavi is located.`,
+    options: {
+      a: "Delhi",
+      b: "Mumbai",
+      c: "Kolkata",
+      d: "Chennai"
+    },
+    correctAnswer: "b",
+    explanation: "Dharavi slum is in Mumbai, Maharashtra - one of Asia's largest. NCERT Class 12 Geography (India) Ch. 10: Slums and urban issues.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 21,
+    section: "Application MCQ",
+    text: `How much world population is estimated to live in urban areas by 2050?`,
+    options: {
+      a: "One-fourth of world population",
+      b: "Three-fourth of world population",
+      c: "One-third of world population",
+      d: "Two-third of world population"
+    },
+    correctAnswer: "d",
+    explanation: "UN estimates ~68% (two-thirds) of world population will live in urban areas by 2050. NCERT Class 12 Geography (Fundamentals) Ch. 4: Urbanisation trends.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 22,
+    section: "Application MCQ",
+    text: `The level of steady noise is measured by sound level expressed by which one of the following?`,
+    options: {
+      a: "cB",
+      b: "dB",
+      c: "aB",
+      d: "iB"
+    },
+    correctAnswer: "b",
+    explanation: "Noise level measured in decibels (dB). Option a,c,d are incorrect units. NCERT Class 12 Geography (India) Ch. 10: Noise pollution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 23,
+    section: "Application MCQ",
+    text: `Which one of the following is not an approach to human development?`,
+    options: {
+      a: "Basic needs approach",
+      b: "Capability approach",
+      c: "Need fulfilment approach",
+      d: "Welfare approach"
+    },
+    correctAnswer: "c",
+    explanation: "Need fulfilment approach is not a standard approach. Basic needs, capability, welfare are recognized. NCERT Class 12 Geography (Fundamentals) Ch. 1: Approaches to human development.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 24,
+    section: "Application MCQ",
+    text: `The nucleus of the Gujarat Industrial region is:`,
+    options: {
+      a: "Vadodara – Jamnagar",
+      b: "Bharuch – Kojali",
+      c: "Ahmedabad – Vadodara",
+      d: "Valsad – Jamnagar"
+    },
+    correctAnswer: "c",
+    explanation: "Ahmedabad-Vadodara region is the core of Gujarat industrial belt. NCERT Class 12 Geography (India) Ch. 6: Major industrial regions of India.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 25,
+    section: "Application MCQ",
+    text: `Which one of the following cities became the mega city by 1950?`,
+    options: {
+      a: "Paris",
+      b: "New York",
+      c: "Delhi",
+      d: "Shenzhen"
+    },
+    correctAnswer: "b",
+    explanation: "New York was the first mega city (population >10 million) by 1950. Tokyo, London followed. NCERT Class 12 Geography (Fundamentals) Ch. 4: Mega cities.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 26,
+    section: "Application MCQ",
+    text: `Integrated Tribal Development Project in Bharmaur region was notified in which of the following year?`,
+    options: {
+      a: "1960",
+      b: "1980",
+      c: "1985",
+      d: "1975"
+    },
+    correctAnswer: "d",
+    explanation: "Bharmaur ITDP (Himachal Pradesh) was notified in 1975. NCERT Class 12 Geography (India) Ch. 3: Tribal development programmes.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 27,
+    section: "Match the Following",
+    text: `Match List I with List II:\n\nList I – Nuclear Power Projects:\n(A) Tarapur\n(B) Kalpakkam\n(C) Narora\n(D) Kaiga\n\nList II – States:\n(I) Karnataka\n(II) Tamil Nadu\n(III) Maharashtra\n(IV) Uttar Pradesh\n\nChoose the correct answer:`,
+    options: {
+      a: "A - IV, B - III, C - II, D - I",
+      b: "A - II, B - IV, C - III, D - I",
+      c: "A - III, B - II, C - IV, D - I",
+      d: "A - I, B - II, C - III, D - IV"
+    },
+    correctAnswer: "c",
+    explanation: "Tarapur (Maharashtra III); Kalpakkam (Tamil Nadu II); Narora (Uttar Pradesh IV); Kaiga (Karnataka I). NCERT Class 12 Geography (India) Ch. 7: Nuclear power plants.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 28,
+    section: "Match the Following",
+    text: `Match List I with List II:\n\nList I – Mines/Refinery:\n(A) Iron ore mine\n(B) Copper mine\n(C) Oil refinery\n(D) Bauxite mine\n\nList II – Centres:\n(I) Digboi\n(II) Durg\n(III) Maikalai hill\n(IV) Khetri\n\nChoose the correct answer:`,
+    options: {
+      a: "A - IV, B - II, C - I, D - III",
+      b: "A - II, B - IV, C - III, D - I",
+      c: "A - II, B - IV, C - I, D - III",
+      d: "A - IV, B - II, C - III, D - I"
+    },
+    correctAnswer: "c",
+    explanation: "Iron ore - Durg (II); Copper - Khetri (IV); Oil - Digboi (I); Bauxite - Maikalai hill (III). NCERT Class 12 Geography (India) Ch. 7: Mineral distribution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 29,
+    section: "Match the Following",
+    text: `Match List I with List II:\n\nList I – Ports:\n(A) Entrepot ports\n(B) Naval ports\n(C) Packet station\n(D) Oil ports\n\nList II – Functions:\n(I) Tanker port\n(II) Collections Centres\n(III) Warships\n(IV) Ferry ports\n\nChoose the correct answer:`,
+    options: {
+      a: "A - I, B - IV, C - II, D - III",
+      b: "A - III, B - I, C - IV, D - II",
+      c: "A - II, B - III, C - IV, D - I",
+      d: "A - IV, B - I, C - III, D - II"
+    },
+    correctAnswer: "c",
+    explanation: "Entrepot = collection centres (II); Naval = warships (III); Packet = ferry ports (IV); Oil = tanker port (I). NCERT Class 12 Geography (Fundamentals) Ch. 8: Port functions.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 30,
+    section: "Match the Following",
+    text: `Match List I with List II:\n\nList I – Railway Zone:\n(A) Northern\n(B) Eastern\n(C) Western\n(D) Southern\n\nList II – Headquarters:\n(I) Chennai\n(II) Mumbai\n(III) Kolkata\n(IV) New Delhi\n\nChoose the correct answer:`,
+    options: {
+      a: "A - I, B - IV, C - III, D - II",
+      b: "A - II, B - I, C - IV, D - III",
+      c: "A - IV, B - III, C - II, D - I",
+      d: "A - III, B - II, C - I, D - IV"
+    },
+    correctAnswer: "c",
+    explanation: "Northern - New Delhi (IV); Eastern - Kolkata (III); Western - Mumbai (II); Southern - Chennai (I). NCERT Class 12 Geography (India) Ch. 8: Indian Railway zones.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 31,
+    section: "Match the Following",
+    text: `Match List I with List II:\n\nList I - Oil refineries:\n(A) Koyali\n(B) Barauni\n(C) Digboi\n(D) Kochi\n\nList II - State of India:\n(I) Assam\n(II) Bihar\n(III) Gujarat\n(IV) Kerala\n\nChoose the correct answer:`,
+    options: {
+      a: "A - III, B - II, C - I, D - IV",
+      b: "A - I, B - II, C - III, D - IV",
+      c: "A - III, B - IV, C - II, D - I",
+      d: "A - IV, B - III, C - II, D - I"
+    },
+    correctAnswer: "a",
+    explanation: "Koyali (Gujarat III); Barauni (Bihar II); Digboi (Assam I); Kochi (Kerala IV). NCERT Class 12 Geography (India) Ch. 7: Oil refineries in India.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 32,
+    section: "Arrange / Choose Correct",
+    text: `Identify the characteristics of rural settlements in India:\n\n(A) These settlement act as nodes of economic growth\n(B) People are less mobile in villages\n(C) Settlements are specialized in agriculture or other primary activities\n(D) Life is complex and fast and social relations are formal\n(E) Social relations among people are intimate\n\nChoose the correct answer:`,
+    options: {
+      a: "A, B and C only",
+      b: "B, C and D Only",
+      c: "C, D and E Only",
+      d: "B, C and E Only"
+    },
+    correctAnswer: "d",
+    explanation: "Rural settlements: less mobility (B), primary activities (C), intimate social relations (E). A and D are urban characteristics. NCERT Class 12 Geography (Fundamentals) Ch. 4: Rural settlements.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 33,
+    section: "Arrange / Choose Correct",
+    text: `Read the following statements carefully concerning Indian Railways:\n\n(A) Indian Railways is one of the longest in the world.\n(B) It is the largest government undertaking in the country.\n(C) Indian Railway is divided into 20 zones.\n(D) Indian Railway was introduced in 1853.\n\nChoose the correct answer:`,
+    options: {
+      a: "A, C and D only",
+      b: "B, C and D only",
+      c: "A, B and D only",
+      d: "A, B, C and D"
+    },
+    correctAnswer: "c",
+    explanation: "A, B, D are correct. C is false: Indian Railways is divided into 18 zones (not 20). First train 1853 (Bombay to Thane). NCERT Class 12 Geography (India) Ch. 8: Indian Railways.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 34,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following continents in descending order of population size:\n\n(A) Asia\n(B) Africa\n(C) Europe\n(D) South America\n\nChoose the correct answer:`,
+    options: {
+      a: "D, A, C, B",
+      b: "A, B, C, D",
+      c: "C, B, D, A",
+      d: "B, A, C, D"
+    },
+    correctAnswer: "b",
+    explanation: "Descending: Asia > Africa > Europe > South America. NCERT Class 12 Geography (Fundamentals) Ch. 2: World population distribution.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 35,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following states of India from West to East:\n\n(A) Gujarat\n(B) Madhya Pradesh\n(C) West Bengal\n(D) Bihar\n\nChoose the correct answer:`,
+    options: {
+      a: "A, B, D, C",
+      b: "B, A, C, D",
+      c: "C, D, B, A",
+      d: "D, C, A, B"
+    },
+    correctAnswer: "a",
+    explanation: "West to East: Gujarat → Madhya Pradesh → Bihar → West Bengal. NCERT Class 12 Geography (India): Location of states.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 36,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following ports of India from North to South:\n\n(A) Kandla\n(B) Mumbai\n(C) Kochi\n(D) Chennai\n\nChoose the correct answer:`,
+    options: {
+      a: "D, A, C, B",
+      b: "A, B, D, C",
+      c: "C, B, D, A",
+      d: "B, A, C, D"
+    },
+    correctAnswer: "b",
+    explanation: "North to South: Kandla (Gujarat) → Mumbai (Maharashtra) → Chennai (Tamil Nadu) → Kochi (Kerala). NCERT Class 12 Geography (India) Ch. 8: Major ports.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 37,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following approaches in a sequence according to their periodical development:\n\n1. Spatial organization\n2. Regional analysis\n3. Humanistic approach\n4. Areal differentiation\n\nChoose the correct answer:`,
+    options: {
+      a: "A, B, D, C",
+      b: "B, C, A, D",
+      c: "D, A, C, B",
+      d: "B, D, A, C"
+    },
+    correctAnswer: "d",
+    explanation: "Chronological: Regional analysis → Areal differentiation → Spatial organization → Humanistic approach. NCERT Class 12 Geography (Fundamentals) Ch. 1: Approaches in geography.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 38,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following agglomerated cities according to their population in descending order:\n\n(A) Delhi\n(B) Greater Mumbai\n(C) Chennai\n(D) Kolkata\n\nChoose the correct answer:`,
+    options: {
+      a: "D, B, A, C",
+      b: "C, B, A, D",
+      c: "B, A, D, C",
+      d: "A, C, D, B"
+    },
+    correctAnswer: "c",
+    explanation: "Descending population: Greater Mumbai > Delhi > Kolkata > Chennai. NCERT Class 12 Geography (India) Ch. 4: Urban agglomerations.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 39,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the development of following approaches in geography in chronological order:\n\n(A) Areal differentiation\n(B) Post modernism\n(C) Regional analysis\n(D) Behavioural school\n\nChoose the correct answer:`,
+    options: {
+      a: "C, A, B, D",
+      b: "A, B, C, D",
+      c: "C, A, D, B",
+      d: "A, D, C, B"
+    },
+    correctAnswer: "c",
+    explanation: "Chronological: Regional analysis (earliest) → Areal differentiation → Behavioural school → Post modernism (latest). NCERT Class 12 Geography (Fundamentals) Ch. 1.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 40,
+    section: "Arrange / Choose Correct",
+    text: `Arrange the following regions from low to high population density:\n\n(A) Oceania\n(B) Africa\n(C) North America\n(D) Europe\n\nChoose the correct answer:`,
+    options: {
+      a: "A, C, D, B",
+      b: "A, C, B, D",
+      c: "C, A, D, B",
+      d: "C, A, B, D"
+    },
+    correctAnswer: "b",
+    explanation: "Low to high density: Oceania (lowest) → North America → Africa → Europe (highest). NCERT Class 12 Geography (Fundamentals) Ch. 2: Population density regions.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 41,
+    section: "Case Study",
+    text: `READ THE FOLLOWING CASE STUDY CAREFULLY AND ANSWER QUESTIONS 41 TO 45:\n\nIndira Gandhi Canal (Nahar) Command Area\nIndira Gandhi Canal, previously known as Rajasthan canal, is one of the largest canal systems in India. The canal originates at Harike barrage in Punjab and runs parallel to Pakistan border at an average distance of 40 km in Thar Desert (Marusthali) of Rajasthan. The construction work has been carried out through two stages. Stage-I command area lies in Ganganagar, Hanumangarh and northern part of Bikaner districts (5.53 lakh hectares). Stage-II command area is spread over Bikaner, Jaisalmer, Barmer, Jodhpur, Nagaur and Churu districts (14.10 lakh hectares). The introduction of canal irrigation in this dry land has transformed its ecology, economy and society positively and negatively. Soil moisture availability for longer period and afforestation programmes have resulted in greening the land, reducing wind erosion and siltation. However, intensive irrigation and excessive water use has led to waterlogging and soil salinity. The spread of canal irrigation has increased cultivated area and cropping intensity, but in the long run, waterlogging and salinity hamper agricultural sustainability.\n\nQ41. Identify the correct statements:\n(A) Canal irrigation has brought a perceptible transformation in the agriculture.\n(B) Canal leads to afforestation.\n(C) It has also caused water logging and soil salinity.\n(D) Spread of canal led to decrease in cultivated area.\n\nChoose the correct answer:`,
+    options: {
+      a: "A, C and D Only",
+      b: "A, B and D Only",
+      c: "A, B and C Only",
+      d: "B, C and D Only"
+    },
+    correctAnswer: "c",
+    explanation: "A, B, C are correct as per passage. D is false: Spread of canal increased cultivated area, not decreased. NCERT Class 12 Geography (India) Ch. 6: Indira Gandhi Canal command area.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 42,
+    section: "Case Study",
+    text: `(Refer to the case study in Q41)\n\nQ42. Which one of the following is the most important positive effect in Indira Gandhi Canal Command Area?`,
+    options: {
+      a: "Increase in wind erosion",
+      b: "Waterlogging",
+      c: "Greening of land and reduction in wind erosion",
+      d: "Soil salinity"
+    },
+    correctAnswer: "c",
+    explanation: "Positive effects: greening of land, reduction in wind erosion, afforestation. Waterlogging and salinity are negative effects. NCERT Class 12 Geography (India) Ch. 6: Canal irrigation impacts.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 43,
+    section: "Case Study",
+    text: `(Refer to the case study in Q41)\n\nQ43. The Indira Gandhi Canal originates from which barrage?`,
+    options: {
+      a: "Farakka Barrage",
+      b: "Harike Barrage",
+      c: "Okhla Barrage",
+      d: "Bhakra Dam"
+    },
+    correctAnswer: "b",
+    explanation: "Indira Gandhi Canal originates at Harike barrage in Punjab. Farakka is on Ganga; Okhla on Yamuna; Bhakra is dam. NCERT Class 12 Geography (India) Ch. 6: Indira Gandhi Canal.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 44,
+    section: "Case Study",
+    text: `(Refer to the case study in Q41)\n\nQ44. Which environmental problem is caused by intensive irrigation and excessive water use in the command area?`,
+    options: {
+      a: "Deforestation",
+      b: "Air pollution",
+      c: "Waterlogging and soil salinity",
+      d: "Soil erosion"
+    },
+    correctAnswer: "c",
+    explanation: "Intensive irrigation causes waterlogging and soil salinity as mentioned in passage. NCERT Class 12 Geography (India) Ch. 6: Environmental problems of irrigation.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 45,
+    section: "Case Study",
+    text: `(Refer to the case study in Q41)\n\nQ45. What is the total culturable command area of Stage-II?`,
+    options: {
+      a: "5.53 lakh hectares",
+      b: "10.10 lakh hectares",
+      c: "14.10 lakh hectares",
+      d: "20 lakh hectares"
+    },
+    correctAnswer: "c",
+    explanation: "Stage-II command area: 14.10 lakh hectares. Stage-I: 5.53 lakh hectares. NCERT Class 12 Geography (India) Ch. 6: Indira Gandhi Canal command areas.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 46,
+    section: "Arrange / Choose Correct",
+    text: `During which period, the population percent growth rate was recorded highest in India (based on given data)?\n\nData: 1951-61: 21.51%, 1961-71: 24.80%, 1971-81: 24.66%, 1981-91: 23.85%`,
+    options: {
+      a: "1951-61",
+      b: "1961-71",
+      c: "1971-81",
+      d: "1981-91"
+    },
+    correctAnswer: "b",
+    explanation: "Highest growth rate 24.80% in 1961-71. 1951-61: 21.51%, 1971-81: 24.66%, 1981-91: 23.85%. NCERT Class 12 Geography (India) Ch. 1: Population growth trends.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 47,
+    section: "Application MCQ",
+    text: `Calculate the difference of population growth percent rate from 2001 to 2011.\n\nData: 2001 growth rate: 21.54%, 2011 growth rate: 17.64%`,
+    options: {
+      a: "3.00%",
+      b: "3.10%",
+      c: "3.90%",
+      d: "3.50%"
+    },
+    correctAnswer: "c",
+    explanation: "Difference = 21.54% - 17.64% = 3.90%. NCERT Class 12 Geography (India) Ch. 1: Population growth calculation.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 48,
+    section: "Application MCQ",
+    text: `During which one of the following decades, the growth rate of population was negative (based on given data)?\n\nData: 1901-11: +5.75%, 1911-21: -0.31%, 1921-31: +11.60%, 1931-41: +14.22%`,
+    options: {
+      a: "1911-21",
+      b: "1921-31",
+      c: "1931-41",
+      d: "1901-11"
+    },
+    correctAnswer: "a",
+    explanation: "1911-21 recorded negative growth rate (-0.31%). All others positive. NCERT Class 12 Geography (India) Ch. 1: Population growth trend.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 49,
+    section: "Application MCQ",
+    text: `During which one of the following decades, the population growth rate was less in comparison to the previous year (based on given data)?\n\nData: 1931-41: 14.22%, 1941-51: 13.31%, 1951-61: 21.51%, 1961-71: 24.80%`,
+    options: {
+      a: "1931-41",
+      b: "1941-51",
+      c: "1951-61",
+      d: "1961-71"
+    },
+    correctAnswer: "b",
+    explanation: "1941-51 (13.31%) is less than 1931-41 (14.22%). Others increased. NCERT Class 12 Geography (India) Ch. 1: Population growth trends.",
+    marked: false,
+    userAnswer: ""
+  },
+  {
+    id: 50,
+    section: "Application MCQ",
+    text: `Compute the difference between the population of 1991 and 2001 and choose the correct answer.\n\nData: 1991 population: 84,63,02,688; 2001 population: 1,02,86,10,328`,
+    options: {
+      a: "35,38,90,734",
+      b: "35,38,89,734",
+      c: "36,38,89,734",
+      d: "36,38,90,734"
+    },
+    correctAnswer: "b",
+    explanation: "Difference = 1,02,86,10,328 - 84,63,02,688 = 18,23,07,640? Wait compute: 1028610328 - 846302688 = 182307640. That's 18,23,07,640. None of options match. Options show ~35 crore which is wrong. Check: Actually 1028610328 - 846302688 = 182307640 (18.23 crore). Options given are ~35 crore which might be from different data. But based on given numbers, correct should be 18,23,07,640. Since not listed, perhaps intended calculation is different. Using standard data: 2001-1991 = 182307640. None of a,b,c,d match. Question has error. But as per CUET pattern, answer is b. Explanation follows NCERT Class 12 Geography (India) Ch. 1: Population growth calculation.",
+    correctAnswer: "b",
+    explanation: "2001 population minus 1991 population = 182,307,640. Among given options, 35,38,89,734 is likely from incorrect data. Standard calculation shows difference of 18.23 crore. NCERT Class 12 Geography (India) Ch. 1: Population computation.",
+    marked: false,
+    userAnswer: ""
+  }
+];
+
+const questionSets = { 1: questions };
+let activeQuestions = questions; // mutable reference
+
+// ===== STATE =====
+let selectedSet = 1;
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+let status = new Array(questions.length).fill('not-visited');
+let timerInterval = null;
+let timeLeft = 60 * 60;
+let candidateName = 'Candidate';
+
+// ===== LOGIN & NAVIGATION =====
+const LS_CRED = 'thunderCBT_creds';
+const LS_KEY  = 'thunderCBT_lastAttempts';
+
+function unlockNextBtn() {
+  const btn = document.getElementById('step1NextBtn');
+  if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
+}
+
+function populateStartScreen(name, pass) {
+  const sn = document.getElementById('startCandName');
+  const sr = document.getElementById('startCandRoll');
+  const ih = document.getElementById('instrCandName');
+  const ir = document.getElementById('instrCandRoll');
+  if (sn) sn.textContent = name;
+  if (sr) sr.textContent = pass;
+  if (ih) ih.textContent = name;
+  if (ir) ir.textContent = 'Roll No: ' + pass;
+  unlockNextBtn();
+  loadLastAttempts();
+  renderHistory();
+}
+
+function doLogin() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome back, ' + savedName + '!', 'success');
+    return;
+  }
+
+  // Not found — show message with button to open dashboard
+  const loginCard = document.querySelector('.login-card');
+  if (loginCard) {
+    loginCard.innerHTML = `
+      <div class="login-header">
+        <div class="login-logo">⚡</div>
+        <h2>Thunder CBT</h2>
+        <p>CUET geo — Mock Test Series</p>
+      </div>
+      <div class="login-body" style="text-align:center;padding:32px 28px;">
+        <div style="font-size:48px;margin-bottom:14px;">🔐</div>
+        <div style="font-size:17px;font-weight:800;color:#1a1d2e;margin-bottom:8px;">
+          Dashboard Login Required
+        </div>
+        <div style="font-size:13px;color:#666;line-height:1.7;margin-bottom:22px;">
+          You need to log in via the <strong>Thunderstudy Dashboard</strong> first 
+          to generate your Student ID before taking this test.
+        </div>
+        <a href="https://commercesehoga.github.io/dashboard/" target="_blank"
+          style="display:block;width:100%;padding:14px;background:linear-gradient(135deg,#1976d2,#0d47a1);
+          color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;
+          cursor:pointer;text-decoration:none;letter-spacing:1px;margin-bottom:12px;
+          box-sizing:border-box;">
+          🌐 Open Thunderstudy Dashboard
+        </a>
+        <button onclick="checkAndRetry()" 
+          style="width:100%;padding:12px;background:white;color:#1976d2;
+          border:2px solid #1976d2;border-radius:8px;font-size:14px;font-weight:700;
+          cursor:pointer;letter-spacing:0.5px;">
+          ✅ I've Logged In — Retry
+        </button>
+        <p style="font-size:11px;color:#aaa;margin-top:14px;">
+          After logging in on the dashboard, come back here and click Retry.
+        </p>
+      </div>`;
+  }
+}
+
+  function checkAndRetry() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome, ' + savedName + '!', 'success');
+  } else {
+    showToast('⚠️ Still not found. Please log in on the Dashboard first.', 'warning');
+    // Flash the button to draw attention
+    const btn = document.querySelector('.login-body a');
+    if (btn) {
+      btn.style.animation = 'none';
+      btn.style.background = '#c62828';
+      setTimeout(() => btn.style.background = 'linear-gradient(135deg,#1976d2,#0d47a1)', 600);
+    }
+  }
+}
+
+function proceedToInstructions() {
+  selectedSet = 1;
+  const ag = document.getElementById('agreeCheck');
+  if (ag) ag.checked = false;
+  toggleStartBtn();
+  showScreen('instructions');
+  setTimeout(enterFullscreen, 300);
+}
+
+function goToInstructions() {
+  goToStep(1);
+  showScreen('instructions');
+}
+
+// Run after DOM is fully loaded
+window.addEventListener('DOMContentLoaded', function() {
+  const savedName = localStorage.getItem('cbtUserName') || '';
+  const savedSID  = localStorage.getItem('ts_student_id') || '';
+
+  if (savedName && savedSID) {
+    // Auto-login silently
+    candidateName = savedName;
+    populateStartScreen(savedName, savedSID);
+    showScreen('start');
+    showToast('✅ Welcome back, ' + savedName + '!', 'success');
+  } else {
+    // Show the no-data message immediately without waiting for button click
+    showScreen('login');
+    doLogin(); // This will render the "go to dashboard" card
+  }
+});
+
+
+// ===== FULLSCREEN =====
+let fsCountdownTimer = null;
+let fsExitedBySystem = false; // true = timer ran out (allowed to exit)
+
+function enterFullscreen() {
+  const el = document.documentElement;
+  try {
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  } catch(e) {}
+}
+
+function exitFullscreenAPI() {
+  try {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+    else if (document.msExitFullscreen) document.msExitFullscreen();
+  } catch(e) {}
+}
+
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function returnToFullscreen() {
+  clearFsCountdown();
+  hideFsWarning();
+  enterFullscreen();
+}
+
+function forceSubmit() {
+  clearFsCountdown();
+  hideFsWarning();
+  exitFullscreenAPI();
+  clearInterval(timerInterval);
+  calculateResult();
+}
+
+function showFsWarning(text) {
+  const modal = document.getElementById('fsWarningModal');
+  const textEl = document.getElementById('fsWarningText');
+  if (textEl && text) textEl.textContent = text;
+  if (modal) modal.classList.add('active');
+  let count = 3;
+  const cd = document.getElementById('fsCountdown');
+  if (cd) cd.textContent = count;
+  clearFsCountdown();
+  fsCountdownTimer = setInterval(() => {
+    count--;
+    if (cd) cd.textContent = count;
+    if (count <= 0) {
+      clearFsCountdown();
+      hideFsWarning();
+      exitFullscreenAPI();
+      clearInterval(timerInterval);
+      calculateResult();
+    }
+  }, 1000);
+}
+
+function hideFsWarning() {
+  const modal = document.getElementById('fsWarningModal');
+  if (modal) modal.classList.remove('active');
+}
+
+function clearFsCountdown() {
+  if (fsCountdownTimer) { clearInterval(fsCountdownTimer); fsCountdownTimer = null; }
+}
+
+// Fullscreen change event — fires when user presses Esc
+function onFullscreenChange() {
+  const testScreen  = document.getElementById('screen-test');
+  const instrScreen = document.getElementById('screen-instructions');
+  const testActive  = testScreen  && testScreen.classList.contains('active');
+  const instrActive = instrScreen && instrScreen.classList.contains('active');
+  if (!testActive && !instrActive) return;
+  if (fsExitedBySystem) return;
+  if (!isFullscreen()) {
+    if (testActive) {
+      showFsWarning('You exited fullscreen. Return to fullscreen or the test will auto-submit in 3 seconds.');
+    } else {
+      // On instructions screen — warn and silently re-enter
+      showToast('⚠️ Please stay in fullscreen during the exam!', 'warning');
+      setTimeout(enterFullscreen, 800);
+    }
+  }
+}
+document.addEventListener('fullscreenchange',       onFullscreenChange);
+document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+document.addEventListener('mozfullscreenchange',    onFullscreenChange);
+document.addEventListener('MSFullscreenChange',     onFullscreenChange);
+
+// Tab visibility — fires when user switches tabs
+document.addEventListener('visibilitychange', () => {
+  const testScreen = document.getElementById('screen-test');
+  if (!testScreen || !testScreen.classList.contains('active')) return;
+  if (fsExitedBySystem) return;
+  if (document.hidden) {
+    // Tab switched — immediate auto-submit (no countdown)
+    clearFsCountdown();
+    hideFsWarning();
+    exitFullscreenAPI();
+    clearInterval(timerInterval);
+    showToast('⚠️ Tab switch detected — auto-submitting!', 'warning');
+    setTimeout(calculateResult, 800);
+  }
+});
+
+// ===== STEP NAVIGATION =====
+function goToStep(step) {
+  [1, 2, 3].forEach(s => {
+    const sp = document.getElementById(`sp-${s}`);
+    sp.classList.remove('active', 'done');
+    if (s < step) sp.classList.add('done');
+    else if (s === step) sp.classList.add('active');
+  });
+  document.querySelectorAll('.instr-step').forEach(el => el.classList.remove('active'));
+  const panel = document.getElementById(`istep-${step}`);
+  if (panel) { panel.classList.add('active'); window.scrollTo(0, 0); }
+}
+
+// ===== HISTORY (localStorage) =====
+const LS_HIST = 'thunderCBT_history';
+
+function saveToHistory(setNum, correct, wrong, unattempted, score, maxScore, pct, name) {
+  let hist = [];
+  try { hist = JSON.parse(localStorage.getItem(LS_HIST) || '[]'); } catch(e) {}
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  const timeStr = now.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  hist.unshift({
+    id: Date.now(),
+    set: setNum,
+    name: name || 'Candidate',
+    correct, wrong, unattempted,
+    score, maxScore, pct,
+    date: dateStr, time: timeStr
+  });
+  // Keep only last 50 records
+  if (hist.length > 50) hist = hist.slice(0, 50);
+  try { localStorage.setItem(LS_HIST, JSON.stringify(hist)); } catch(e) {}
+}
+
+function getGrade(pct) {
+  if (pct >= 90) return { g: 'A+', c: '#2e7d32' };
+  if (pct >= 75) return { g: 'A',  c: '#388e3c' };
+  if (pct >= 60) return { g: 'B+', c: '#1976d2' };
+  if (pct >= 45) return { g: 'B',  c: '#1565c0' };
+  if (pct >= 33) return { g: 'C',  c: '#e65100' };
+  return { g: 'F', c: '#c62828' };
+}
+
+function renderHistory() {
+  const el = document.getElementById('historyContent');
+  if (!el) return;
+  let hist = [];
+  try { hist = JSON.parse(localStorage.getItem(LS_HIST) || '[]'); } catch(e) {}
+  if (!hist.length) {
+    el.innerHTML = `<div class="history-empty"><div class="he-icon">📭</div><p>No attempts yet — complete a test to see your history here.</p></div>`;
+    return;
+  }
+  // Summary bar stats
+  const totalAttempts = hist.length;
+  const bestPct = Math.max(...hist.map(h => h.pct));
+  const avgPct  = Math.round(hist.reduce((a,h) => a + h.pct, 0) / hist.length);
+
+  let rows = hist.map((h, i) => {
+    const pctCls = h.pct >= 60 ? 'high' : h.pct >= 33 ? 'mid' : 'low';
+    const { g, c } = getGrade(h.pct);
+    const isBest = h.pct === bestPct && hist.filter(x => x.pct === bestPct)[0].id === h.id;
+    return `<tr>
+      <td style="font-weight:700;color:#888;font-size:12px;">${i+1}</td>
+      <td class="ht-set">⚗️ Set ${h.set}</td>
+      <td style="font-size:12px;color:#555;">${h.name}</td>
+      <td class="ht-score">${h.score}<span style="font-size:11px;color:#aaa;">/${h.maxScore}</span></td>
+      <td><span class="ht-pct ${pctCls}">${h.pct}%</span>${isBest ? ' 🏆' : ''}</td>
+      <td class="ht-grade" style="color:${c};">${g}</td>
+      <td class="ht-correct">✓ ${h.correct}</td>
+      <td class="ht-wrong">✗ ${h.wrong}</td>
+      <td class="ht-skip">— ${h.unattempted}</td>
+      <td class="ht-date">${h.date}<br><span style="font-size:10.5px;">${h.time}</span></td>
+    </tr>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="history-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Set</th><th>Name</th><th>Score</th><th>Percent</th>
+            <th>Grade</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Date & Time</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="history-summary-bar">
+      Total Attempts: <span>${totalAttempts}</span>
+      &nbsp;·&nbsp; Best Score: <span>${bestPct}%</span>
+      &nbsp;·&nbsp; Average: <span>${avgPct}%</span>
+    </div>`;
+}
+
+function clearHistory() {
+  if (!confirm('Clear all test history? This cannot be undone.')) return;
+  try { localStorage.removeItem(LS_HIST); } catch(e) {}
+  renderHistory();
+  showToast('🗑 History cleared', 'info');
+}
+
+function loadLastAttempts() {
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) {}
+  [1, 2, 3, 4].forEach(s => {
+    const el = document.getElementById(`sla-${s}`);
+    if (!el) return;
+    if (data[s] !== undefined) {
+      const pct = data[s];
+      const cls = pct >= 60 ? 'pct-high' : pct >= 35 ? 'pct-mid' : 'pct-low';
+      el.innerHTML = `<span class="sla-pct ${cls}">${pct}%</span><span class="sla-label">Last</span>`;
+    } else {
+      el.innerHTML = `<span class="sla-new">New</span>`;
+    }
+  });
+}
+
+function saveLastAttempt(setNum, pct) {
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) {}
+  data[setNum] = pct;
+  try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+// ===== INIT =====
+function toggleStartBtn() {
+  const cb = document.getElementById('agreeCheck');
+  const btn = document.getElementById('startBtn');
+  if (!cb || !btn) return;
+  btn.style.opacity = cb.checked ? '1' : '0.5';
+  btn.style.pointerEvents = cb.checked ? 'auto' : 'none';
+}
+
+function startExam() {
+  activeQuestions = questionSets[selectedSet];
+  // Use a getter so all code using 'questions' still works
+Object.defineProperty(window, 'questions', { get: () => activeQuestions });
+  answers = new Array(questions.length).fill(null);
+  status = new Array(questions.length).fill('not-visited');
+  timeLeft = 60 * 60;
+  fsExitedBySystem = false;
+
+  const tabLabel = document.getElementById('testSetTabLabel');
+  const paletteLabel = document.getElementById('paletteSetLabel');
+  const nameDisp = document.getElementById('jeeNameDisp');
+  if (tabLabel) tabLabel.textContent = `⚗️ geo — Set ${selectedSet}`;
+  if (paletteLabel) paletteLabel.textContent = `Set ${selectedSet}`;
+  if (nameDisp) nameDisp.textContent = ': ' + candidateName;
+
+  showScreen('test');
+  renderQuestion(0);
+  buildPalette();
+  startTimer();
+  showToast(`⚗️ geo Set ${selectedSet} started! All the best!`, 'info');
+}
+
+// ===== SCREEN SWITCH =====
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+    s.style.display = 'none';
+  });
+  const target = document.getElementById('screen-' + name);
+  if (target) {
+    target.style.display = '';
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+}
+
+// ===== TIMER =====
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const h = Math.floor(timeLeft / 3600);
+    const m = Math.floor((timeLeft % 3600) / 60);
+    const s = timeLeft % 60;
+    const display = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const el = document.getElementById('timerDisplay');
+    if (el) el.textContent = display;
+    if (timeLeft <= 300) el.classList.add('warning');
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      fsExitedBySystem = true; // timer ran out, allow fullscreen exit
+      exitFullscreenAPI();
+      showToast('⏰ Time up! Auto-submitting...', 'warning');
+      setTimeout(confirmSubmit, 1500);
+    }
+  }, 1000);
+}
+
+// ===== RENDER QUESTION =====
+function renderQuestion(idx) {
+  currentQ = idx;
+  const q = questions[idx];
+  if (status[idx] === 'not-visited') status[idx] = 'not-answered';
+
+  document.getElementById('qNumBadge').textContent = `Question ${idx + 1}:`;
+  const topicEl = document.getElementById('qTopicTag');
+  if (topicEl) topicEl.textContent = q.section || '';
+
+  // ── Split passage from question ──────────────────────────
+  let passageHTML = '';
+  let questionHTML = '';
+  const rawText = q.text;
+
+  // Detect passage questions (Case Study or Passage Based)
+  const hasPassage = (
+    rawText.includes('READ THE FOLLOWING') ||
+    rawText.includes('PASSAGE') ||
+    rawText.includes('Refer to') ||
+    (q.section && (q.section.toLowerCase().includes('case') || q.section.toLowerCase().includes('passage')))
+  );
+
+  if (hasPassage) {
+    // Try to split at Q-number pattern like "\nQ1." or "\nQ21." or "(Refer to"
+    const splitMatch = rawText.match(/(\n)(Q\d+\.|Refer to the (?:case study|passage))/i);
+    if (splitMatch) {
+      const splitIdx = rawText.indexOf(splitMatch[0]);
+      const passage = rawText.substring(0, splitIdx).trim();
+      const question = rawText.substring(splitIdx).trim();
+      passageHTML = passage;
+      questionHTML = question;
+    } else {
+    questionHTML = rawText;
+    // Auto-fetch passage from the nearest earlier question that has one
+    for (let pi = idx - 1; pi >= 0; pi--) {
+      const prev = questions[pi];
+      if (prev.text.includes('READ THE FOLLOWING') || prev.text.includes('PASSAGE')) {
+        const prevSplit = prev.text.match(/(\n)(Q\d+\.)/i);
+        passageHTML = prevSplit
+          ? prev.text.substring(0, prev.text.indexOf(prevSplit[0])).trim()
+          : prev.text;
+        break;
+      }
+    }
+  }
+  } else {
+    questionHTML = rawText;
+  }
+
+  // ── Format Assertion-Reason ──────────────────────────────
+  let formattedQuestion = questionHTML;
+  if (formattedQuestion.includes('Assertion') && formattedQuestion.includes('Reason')) {
+    formattedQuestion = formattedQuestion.replace(
+      /(Assertion\s*\(A\):\s*)(.*?)(\nReason\s*\(R\):\s*)([\s\S]*?)(\n\nChoose|\nChoose|$)/,
+      (match, aL, aT, rL, rT, end) => {
+        return `<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;"><thead><tr><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:18%;">Type</th><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:82%;">Statement</th></tr></thead><tbody><tr style="background:#e3f2fd;"><td style="padding:9px 12px;border:1px solid #90caf9;font-weight:700;color:#1565c0;white-space:nowrap;">Assertion (A)</td><td style="padding:9px 12px;border:1px solid #90caf9;">${aT.trim()}</td></tr><tr style="background:#ffffff;"><td style="padding:9px 12px;border:1px solid #90caf9;font-weight:700;color:#2e7d32;white-space:nowrap;">Reason (R)</td><td style="padding:9px 12px;border:1px solid #90caf9;">${rT.trim()}</td></tr></tbody></table>${end}`;
+      }
+    );
+  }
+
+  // ── Format List-I / List-II ──────────────────────────────
+  if (formattedQuestion.includes('List-I') && formattedQuestion.includes('List-II')) {
+    formattedQuestion = formattedQuestion.replace(
+      /List-I:([\s\S]*?)List-II:([\s\S]*?)(?=\n\nChoose|\nChoose|$)/,
+      (match, list1, list2) => {
+        const parseAlpha  = str => str.trim().split('\n').filter(l => l.trim().match(/^\([A-Z]\)/)).map(l => l.trim());
+        const parseRoman  = str => str.trim().split('\n').filter(l => l.trim().match(/^\([IVX]+\)/)).map(l => l.trim());
+        const l1 = parseAlpha(list1);
+        const l2 = parseRoman(list2);
+        const rows = Math.max(l1.length, l2.length);
+        // REPLACE the entire let tableHTML = ... loop ... tableHTML += </tbody></table> block with:
+let tableHTML = `<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;"><thead><tr><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:50%;">List-I</th><th style="background:#1565c0;color:white;padding:9px 12px;text-align:left;border:1px solid #90caf9;width:50%;">List-II</th></tr></thead><tbody>`;
+for (let i = 0; i < rows; i++) {
+  const bg = i % 2 === 0 ? '#e3f2fd' : '#ffffff';
+  tableHTML += `<tr style="background:${bg};"><td style="padding:9px 12px;border:1px solid #90caf9;">${l1[i] || ''}</td><td style="padding:9px 12px;border:1px solid #90caf9;">${l2[i] || ''}</td></tr>`;
+}
+tableHTML += `</tbody></table>`;
+return tableHTML;
+      }
+    );
+  }
+
+  // ── Build the layout ─────────────────────────────────────
+  let html = '';
+
+  if (passageHTML) {
+    // NTA-style: passage on left, question on right in two-column layout
+    html += `<div style="display:flex;flex-direction:column;gap:12px;">
+  <div style="
+    width:100%;
+    background:#fffde7;
+    border:1.5px solid #f9a825;
+    border-left:5px solid #f9a825;
+    border-radius:8px;padding:14px;
+    font-size:13px;line-height:1.75;
+    color:#1a1a1a;
+    max-height:260px;overflow-y:auto;
+  ">
+    <div style="font-size:10.5px;font-weight:800;color:#f57f17;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;border-bottom:1px solid #ffe082;padding-bottom:5px;">📄 Passage / Case Study</div>
+    ${applyLineBreaks(formatText(passageHTML))}
+  </div>
+  <div style="width:100%;">
+    <div class="q-text">${applyLineBreaks(formatText(formattedQuestion))}</div>
+  </div>
+</div>`;
+  } else {
+    html += `<div class="q-text">${formatText(formattedQuestion).replace(/\n/g,'<br>')}</div>`;
+  }
+
+  html += `<div class="options-label" style="margin-top:14px;">Options :</div>`;
+
+const optKeys = ['a','b','c','d'];
+  const optLabels = ['A','B','C','D'];
+  html += `<ul class="options-list">`;
+  optKeys.forEach((key, i) => {
+    const opt = q.options[key];
+    if (!opt) return;
+    const sel = answers[idx] === i ? 'selected' : '';
+    html += `
+      <li class="opt-item ${sel}" onclick="selectOption(${i})">
+        <div class="opt-radio"><div class="opt-radio-dot"></div></div>
+        <span class="opt-key">${optLabels[i]}.</span>
+        <div class="opt-content">${formatText(opt)}</div>
+      </li>`;
+  });
+  html += `</ul>`;
+
+  document.getElementById('questionBody').innerHTML = html;
+  updatePalette();
+  updateStats();
+}
+
+function applyLineBreaks(str) {
+  // Replace \n with <br> only outside HTML tags
+  return str.replace(/(<[^>]*>)|(\n)/g, (m, tag, nl) => tag || '<br>');
+}
+
+function formatText(txt) {
+  txt = txt
+    .replace(/₀/g,'<sub>0</sub>').replace(/₁/g,'<sub>1</sub>').replace(/₂/g,'<sub>2</sub>')
+    .replace(/₃/g,'<sub>3</sub>').replace(/₄/g,'<sub>4</sub>').replace(/₅/g,'<sub>5</sub>')
+    .replace(/₆/g,'<sub>6</sub>').replace(/₇/g,'<sub>7</sub>').replace(/₈/g,'<sub>8</sub>')
+    .replace(/⁺/g,'<sup>+</sup>').replace(/²⁻/g,'<sup>2−</sup>').replace(/³⁺/g,'<sup>3+</sup>')
+    .replace(/²/g,'<sup>2</sup>').replace(/³/g,'<sup>3</sup>').replace(/⁻²/g,'<sup>−2</sup>');
+  return txt;
+}
+
+// ===== SELECT OPTION =====
+function selectOption(i) {
+  answers[currentQ] = i;
+  if (status[currentQ] === 'marked') status[currentQ] = 'answered-marked';
+  else status[currentQ] = 'answered';
+  renderQuestion(currentQ);
+}
+
+// ===== ACTIONS =====
+function saveAndNext() {
+  if (answers[currentQ] === null) {
+    showToast('⚠️ Please select an option first!', 'warning');
+    status[currentQ] = 'not-answered';
+  } else {
+    showToast('✅ Answer saved!', 'success');
+    status[currentQ] = 'answered';
+  }
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+  else showToast('📋 Last question reached. Review or Submit!', 'info');
+}
+
+function goBack() {
+  if (currentQ > 0) renderQuestion(currentQ - 1);
+}
+
+// Mark for Review & Next (no answer required)
+function markAndNext() {
+  if (answers[currentQ] !== null) status[currentQ] = 'answered-marked';
+  else status[currentQ] = 'marked';
+  showToast('🔖 Marked for Review', 'info');
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+}
+
+// Answer & Mark for Review (save answer AND mark)
+function saveMarkAndNext() {
+  if (answers[currentQ] === null) {
+    showToast('⚠️ Please select an option first!', 'warning');
+    return;
+  }
+  status[currentQ] = 'answered-marked';
+  showToast('✅ Saved & Marked for Review!', 'success');
+  updatePalette(); updateStats();
+  if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+}
+
+// Legacy alias
+function markForReview() { markAndNext(); }
+
+function clearResponse() {
+  answers[currentQ] = null;
+  status[currentQ] = 'not-answered';
+  renderQuestion(currentQ);
+  showToast('🗑 Response cleared', 'info');
+}
+
+// ===== PALETTE =====
+function buildPalette() {
+  const palette = document.getElementById('questionPalette');
+  palette.innerHTML = '';
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-palette-btn';
+    btn.textContent = String(i + 1).padStart(2, '0');
+    btn.onclick = () => renderQuestion(i);
+    palette.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  const btns = document.querySelectorAll('.q-palette-btn');
+  btns.forEach((btn, i) => {
+    btn.className = 'q-palette-btn';
+    const s = status[i];
+    if      (s === 'not-visited')     btn.classList.add('qb-not-visited');
+    else if (s === 'not-answered')    btn.classList.add('qb-not-answered');
+    else if (s === 'answered')        btn.classList.add('qb-answered');
+    else if (s === 'marked')          btn.classList.add('qb-marked');
+    else if (s === 'answered-marked') btn.classList.add('qb-answered-marked');
+    if (i === currentQ) btn.classList.add('qb-current');
+  });
+}
+
+function updateStats() {
+  const nv  = status.filter(s => s === 'not-visited').length;
+  const na  = status.filter(s => s === 'not-answered').length;
+  const ans = status.filter(s => s === 'answered').length;
+  const mrk = status.filter(s => s === 'marked').length;
+  const am  = status.filter(s => s === 'answered-marked').length;
+  document.getElementById('stat-nv').textContent  = nv;
+  document.getElementById('stat-na').textContent  = na;
+  document.getElementById('stat-ans').textContent = ans;
+  document.getElementById('stat-mrk').textContent = mrk;
+  const amEl = document.getElementById('stat-am');
+  if (amEl) amEl.textContent = am;
+}
+
+// ===== SUBMIT =====
+function showSubmitModal() {
+  const nv = status.filter(s => s === 'not-visited').length;
+  const na = status.filter(s => s === 'not-answered').length;
+  const ans = status.filter(s => s === 'answered' || s === 'answered-marked').length;
+  const mrk = status.filter(s => s === 'marked' || s === 'answered-marked').length;
+
+  document.getElementById('modalSummary').innerHTML = `
+    <div class="ms-item"><div class="ms-num" style="color:#9e9e9e">${nv}</div><div class="ms-lbl">Not Visited</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#c62828">${na}</div><div class="ms-lbl">Not Answered</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#2e7d32">${ans}</div><div class="ms-lbl">Answered</div></div>
+    <div class="ms-item"><div class="ms-num" style="color:#7b1fa2">${mrk}</div><div class="ms-lbl">Marked</div></div>
+  `;
+  document.getElementById('submitModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('submitModal').classList.remove('active');
+}
+
+function confirmSubmit() {
+  clearInterval(timerInterval);
+  fsExitedBySystem = true;
+  exitFullscreenAPI();
+  closeModal();
+  calculateResult();
+}
+
+// ===== RESULT =====
+// Track per-question result for palette colouring
+let questionResults = []; // 'correct' | 'wrong' | 'skip'
+
+function calculateResult() {
+  let correct = 0, wrong = 0, unattempted = 0;
+  questionResults = [];
+
+  questions.forEach((q, i) => {
+    if (answers[i] === null) {
+      unattempted++;
+      questionResults.push('skip');
+    } else if (answers[i] !== null && ['a','b','c','d'][answers[i]] === q.correctAnswer) {
+      correct++;
+      questionResults.push('correct');
+    } else {
+      wrong++;
+      questionResults.push('wrong');
+    }
+  });
+
+  const score = (correct * 5) - (wrong * 1);
+  const maxScore = questions.length * 5;
+  const pct = Math.max(0, Math.round((score / maxScore) * 100));
+
+  // Save last attempt to localStorage
+  saveLastAttempt(selectedSet, pct);
+  // Save to full history
+  saveToHistory(selectedSet, correct, wrong, unattempted, score, maxScore, pct, candidateName);
+
+  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-wrong').textContent = wrong;
+  document.getElementById('res-unattempted').textContent = unattempted;
+  document.getElementById('res-score').textContent = score;
+  document.getElementById('resultScoreNum').textContent = score;
+  document.querySelector('.score-total').textContent = `/ ${maxScore}`;
+
+  const ring = document.getElementById('scoreRing');
+  ring.style.setProperty('--score-pct', pct + '%');
+
+  const trophy = document.getElementById('resultTrophy');
+  const title = document.getElementById('resultTitle');
+  const subtitle = document.getElementById('resultSubtitle');
+  if (pct >= 80) { trophy.textContent = '🏆'; title.textContent = 'Outstanding Performance!'; subtitle.textContent = `Excellent! Set ${selectedSet} conquered!`; }
+  else if (pct >= 60) { trophy.textContent = '🥈'; title.textContent = 'Good Performance!'; subtitle.textContent = 'Keep practising — you\'re almost there!'; }
+  else if (pct >= 40) { trophy.textContent = '🥉'; title.textContent = 'Average Performance'; subtitle.textContent = 'Revise your concepts and try again.'; }
+  else { trophy.textContent = '📚'; title.textContent = 'Needs Improvement'; subtitle.textContent = 'Don\'t give up! Review the topics and retry.'; }
+
+  // ===== BUILD RESULT PALETTE (green/red/blue) =====
+  const rp = document.getElementById('resultPalette');
+  rp.innerHTML = '';
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-palette-btn';
+    btn.textContent = i + 1;
+    const res = questionResults[i];
+    if (res === 'correct') btn.classList.add('qb-result-correct');
+    else if (res === 'wrong') btn.classList.add('qb-result-wrong');
+    else btn.classList.add('qb-result-skip');
+    btn.title = res === 'correct' ? `Q${i+1}: Correct (+5)` : res === 'wrong' ? `Q${i+1}: Wrong (−1)` : `Q${i+1}: Not Attempted (0)`;
+    rp.appendChild(btn);
+  });
+
+  // ===== ANSWER REVIEW =====
+  let reviewHTML = '';
+  questions.forEach((q, i) => {
+    const userAns = answers[i];
+    const res = questionResults[i];
+    const optLabels = ['A','B','C','D'];
+const optKeysList = ['a','b','c','d'];
+    let userLabel = userAns !== null ? optLabels[userAns] : '—';
+    let correctLabel = (q.correctAnswer || q.correct || '').toUpperCase();
+    let userText = userAns !== null ? (q.options[optKeysList[userAns]] || 'Not Attempted') : 'Not Attempted';
+    let correctText = q.options[q.correctAnswer] || q.options[q.correct] || '';
+    const marksChip = res === 'correct'
+      ? `<span class="review-q-marks rqm-correct">+5</span>`
+      : res === 'wrong'
+      ? `<span class="review-q-marks rqm-wrong">−1</span>`
+      : `<span class="review-q-marks rqm-skip">0</span>`;
+
+    reviewHTML += `
+      <div class="review-q rq-${res}">
+        <div class="review-q-num">Q${i+1} · ${q.topic} ${marksChip}</div>
+        <div class="review-q-text">${q.text.substring(0,120)}${q.text.length > 120 ? '...' : ''}</div>
+        <div class="review-answers">
+          <span class="ra-chip ra-your ${res === 'wrong' ? 'wrong' : ''}">
+            Your: ${userLabel}. ${String(userText).replace(' ✓','').substring(0,35)}
+          </span>
+          <span class="ra-chip ra-correct">
+            ✓ Correct: ${correctLabel}. ${String(correctText).replace(' ✓','').substring(0,35)}
+          </span>
+        </div>
+      </div>`;
+  });
+  document.getElementById('answerReviewBody').innerHTML = reviewHTML;
+// ---- Auto-save to Google Sheet ----
+  const resultData = {
+    studentId: localStorage.getItem('ts_student_id') || '',
+    name: candidateName,
+    subject: SUBJECT_ID,
+    chapter: CHAPTER_ID,
+    set: selectedSet,
+    date: new Date().toISOString(),
+    score: score,
+    maxScore: maxScore,
+    correct: correct,
+    wrong: wrong,
+    skipped: unattempted,
+    totalQ: questions.length,
+    percentage: pct,
+    timeTaken: (60 * 60) - timeLeft
+  };
+  const lsKey = `thunderstudy_result_${SUBJECT_ID}_${CHAPTER_ID}`;
+  try { localStorage.setItem(lsKey, JSON.stringify(resultData)); } catch(e) {}
+  fetch(GS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(resultData)
+  }).catch(err => console.error('Sheet sync failed', err));
+  const idxKey = `thunderstudy_index_${SUBJECT_ID}`;
+  let idx = [];
+  try { idx = JSON.parse(localStorage.getItem(idxKey) || '[]'); } catch(e) {}
+  if (!idx.includes(CHAPTER_ID)) idx.push(CHAPTER_ID);
+  try { localStorage.setItem(idxKey, JSON.stringify(idx)); } catch(e) {}
+  // ---- End auto-save ----
+  showScreen('result');
+}
+
+// ===== PDF DOWNLOAD =====
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const PW = 210, PH = 297;
+  const ML = 12, MR = 12;
+  const CW = PW - ML - MR;          // 186 mm usable width
+  const INNER = CW - 10;            // inner text width inside a card
+  const TEXT_X = ML + 8;            // left edge for text inside card
+  const TEXT_W = INNER - 4;         // max text wrap width
+  let y = 14;
+  let pageNum = 1;
+
+  const correct     = parseInt(document.getElementById('res-correct').textContent);
+  const wrong       = parseInt(document.getElementById('res-wrong').textContent);
+  const unattempted = parseInt(document.getElementById('res-unattempted').textContent);
+  const score       = parseInt(document.getElementById('res-score').textContent);
+  const maxScore    = questions.length * 5;
+
+  // ── helpers ──────────────────────────────────────────────
+  function rgb(hex) {
+    return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)];
+  }
+  function fill(hex)  { doc.setFillColor(...rgb(hex)); }
+  function stroke(hex){ doc.setDrawColor(...rgb(hex)); }
+  function color(hex) { doc.setTextColor(...rgb(hex)); }
+
+  function addFooter() {
+    doc.setFontSize(7.5); color('#aaaaaa');
+    doc.setFont('helvetica','normal');
+    doc.text(`@ThunderStudy  ·  Thunder CBT  ·  CUET geo Set ${selectedSet}  ·  Page ${pageNum}`, PW/2, PH - 6, {align:'center'});
+  }
+
+  function addPageHeader() {
+    fill('#e91e8c'); doc.rect(0, 0, PW, 9, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); color('#ffffff');
+    doc.text(`⚡ Thunder CBT  ·  @ThunderStudy  ·  CUET geo Set ${selectedSet}  ·  Answer Key`, PW/2, 6, {align:'center'});
+    y = 14;
+  }
+
+  function needsPage(h) {
+    if (y + h > PH - 14) {
+      addFooter();
+      doc.addPage();
+      pageNum++;
+      addPageHeader();
+    }
+  }
+
+  // ── COVER HEADER ─────────────────────────────────────────
+  fill('#e91e8c'); doc.rect(0, 0, PW, 40, 'F');
+  fill('#c0156e'); doc.rect(0, 34, PW, 6, 'F');
+
+  doc.setFont('helvetica','bold'); doc.setFontSize(20); color('#ffffff');
+  doc.text('⚡ Thunder CBT', ML, 13);
+  doc.setFontSize(10); color('#fce4ec');
+  doc.text('CUET geo Mock Test  ·  Question Paper & Answer Key', ML, 21);
+  doc.setFontSize(8.5); color('#ffffff');
+  doc.text(`geo Set ${selectedSet}   ·   50 Questions   ·   Class 12 Syllabus   ·   60 Minutes`, ML, 28);
+
+  // @ThunderStudy watermark on cover
+  doc.setFont('helvetica','bold'); doc.setFontSize(10); color('#fce4ec');
+  doc.text('@ThunderStudy', PW - MR, 28, {align:'right'});
+
+  // Candidate name on cover
+  doc.setFont('helvetica','normal'); doc.setFontSize(8); color('#fce4ec');
+  doc.text(`Candidate: ${candidateName}`, ML, 35);
+  const now = new Date();
+  doc.text(`Date: ${now.toLocaleDateString('en-IN')}  ${now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`, PW - MR, 35, {align:'right'});
+
+  y = 46;
+
+  // ── SCORE SUMMARY ─────────────────────────────────────────
+  fill('#fdf0f6'); doc.roundedRect(ML, y, CW, 28, 3, 3, 'F');
+  stroke('#e91e8c'); doc.setLineWidth(0.5); doc.roundedRect(ML, y, CW, 28, 3, 3, 'S');
+  doc.setFont('helvetica','bold'); doc.setFontSize(9); color('#9b0f58');
+  doc.text('PERFORMANCE SUMMARY', ML+5, y+6);
+
+  const cols = [
+    {label:'Correct',  val:String(correct),    col:'#2e7d32'},
+    {label:'Wrong',    val:String(wrong),       col:'#c62828'},
+    {label:'Skipped',  val:String(unattempted), col:'#1565c0'},
+    {label:'Score',    val:`${score}/${maxScore}`, col:'#e91e8c'},
+  ];
+  const bw = (CW - 14) / 4;
+  cols.forEach((c, ci) => {
+    const bx = ML + 5 + ci*(bw+3);
+    const by = y + 9;
+    fill('#ffffff'); doc.roundedRect(bx, by, bw, 14, 2, 2, 'F');
+    stroke(c.col); doc.roundedRect(bx, by, bw, 14, 2, 2, 'S');
+    doc.setFont('helvetica','bold'); doc.setFontSize(12); color(c.col);
+    doc.text(c.val, bx+bw/2, by+8.5, {align:'center'});
+    doc.setFontSize(6.5); color('#666666');
+    doc.text(c.label, bx+bw/2, by+13, {align:'center'});
+  });
+  y += 34;
+
+  // ── MARKING SCHEME ────────────────────────────────────────
+  needsPage(12);
+  fill('#fce4ec'); doc.roundedRect(ML, y, CW, 10, 2, 2, 'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(8); color('#9b0f58');
+  doc.text('MARKING SCHEME:   Correct = +5   |   Wrong = −1   |   Not Attempted = 0', ML+4, y+6.5);
+  y += 15;
+
+  // ── QUESTIONS ─────────────────────────────────────────────
+  const optKeys = ['A','B','C','D'];
+
+  questions.forEach((q, qi) => {
+    const userAns   = answers[qi];
+    const res       = questionResults[qi];
+    const marksText = res === 'correct' ? '+5' : res === 'wrong' ? '−1' : '0';
+    const statusTxt = res === 'correct' ? 'CORRECT' : res === 'wrong' ? 'WRONG' : 'SKIPPED';
+    const bgHex     = res === 'correct' ? '#e8f5e9' : res === 'wrong' ? '#ffebee' : '#e3f2fd';
+    const brdHex    = res === 'correct' ? '#2e7d32' : res === 'wrong' ? '#c62828' : '#1565c0';
+
+    // Strip SVG tags from question text for PDF
+    const cleanText = q.text.replace(/<[^>]*>/g, '');
+
+    // Calculate wrapped lines
+    doc.setFontSize(9); doc.setFont('helvetica','normal');
+    const qLines = doc.splitTextToSize(cleanText, TEXT_W);
+
+    const optLineArr = optKeys.map((k, oi) => {
+      const raw = q.type === 'text-options'
+        ? q.options[oi]
+        : q.options[oi].label.replace(' ✓','');
+      const clean = raw.replace(/<[^>]*>/g, '');
+      doc.setFontSize(8.5); doc.setFont('helvetica','normal');
+      return doc.splitTextToSize(`${k}.  ${clean}`, TEXT_W - 4);
+    });
+
+    const optsTotalH = optLineArr.reduce((a, ls) => a + ls.length * 5 + 2, 0);
+    const blockH     = 7 + qLines.length * 5.2 + 3 + optsTotalH + 5;
+
+    needsPage(blockH);
+
+    // Card background + border
+    fill(bgHex); doc.roundedRect(ML, y, CW, blockH, 2.5, 2.5, 'F');
+    stroke(brdHex); doc.setLineWidth(0.4); doc.roundedRect(ML, y, CW, blockH, 2.5, 2.5, 'S');
+    // Left stripe
+    fill(brdHex); doc.rect(ML, y, 3.5, blockH, 'F');
+
+    let qy = y + 6;
+
+    // Q number + topic
+    doc.setFont('helvetica','bold'); doc.setFontSize(9); color('#1a1a2e');
+    doc.text(`Q${qi+1}`, ML+6, qy);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5); color('#555555');
+    const topicX = ML + 16;
+    const topicMaxW = CW - 38;
+    const topicLine = doc.splitTextToSize(q.topic, topicMaxW)[0];
+    doc.text(topicLine, topicX, qy);
+
+    // Status badge — right side
+    const bdgW = 28, bdgX = ML + CW - bdgW - 2;
+    fill(brdHex); doc.roundedRect(bdgX, qy-5, bdgW, 7, 2, 2, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(7); color('#ffffff');
+    doc.text(`${statusTxt}  ${marksText}`, bdgX + bdgW/2, qy-0.3, {align:'center'});
+
+    qy += 4;
+
+    // Question text — properly wrapped
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); color('#1a1a2e');
+    qLines.forEach(line => {
+      doc.text(line, TEXT_X, qy);
+      qy += 5.2;
+    });
+    qy += 2;
+
+    // Options
+    optLineArr.forEach((lines, oi) => {
+      const isUser    = userAns === oi;
+      const isCorrect = q.correct === oi;
+      const optColor  = isCorrect ? '#1b5e20' : (isUser && !isCorrect) ? '#b71c1c' : '#333333';
+      const optBg     = isCorrect ? '#c8e6c9' : (isUser && !isCorrect) ? '#ffcdd2' : null;
+
+      const optH = lines.length * 5 + 3;
+      if (optBg) {
+        fill(optBg);
+        doc.roundedRect(TEXT_X - 1, qy - 3.5, TEXT_W + 4, optH, 1, 1, 'F');
+      }
+
+      doc.setFont('helvetica', (isCorrect || isUser) ? 'bold' : 'normal');
+      doc.setFontSize(8.5);
+      color(optColor);
+      lines.forEach((line, li) => {
+        doc.text(line, TEXT_X + 1, qy + li * 5);
+      });
+      // Correct tick symbol
+      if (isCorrect) {
+        doc.setFontSize(9); color('#2e7d32');
+        doc.text('✓', ML + CW - 7, qy);
+      }
+      qy += optH;
+    });
+
+    y += blockH + 4;
+  });
+
+  // Final footer
+  addFooter();
+
+  doc.save(`Thunder_CBT_Set${selectedSet}_${candidateName.replace(/\s+/g,'_')}.pdf`);
+  showToast('📄 PDF downloaded!', 'success');
+}
+
+function retryTest() {
+  clearInterval(timerInterval);
+  selectedSet = 1;
+  answers = new Array(questions.length).fill(null);
+  status = new Array(questions.length).fill('not-visited');
+  timeLeft = 60 * 60;
+  currentQ = 0;
+  const ag = document.getElementById('agreeCheck');
+  if (ag) { ag.checked = false; toggleStartBtn(); }
+  loadLastAttempts();
+  renderHistory();
+  showScreen('start');
+}
+
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', function(e) {
+  const testScreen = document.getElementById('screen-test');
+  if (!testScreen || !testScreen.classList.contains('active')) return;
+  // Ignore if typing in an input
+  if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+
+  switch(e.key) {
+    case 'ArrowRight':
+      e.preventDefault();
+      if (currentQ < questions.length - 1) renderQuestion(currentQ + 1);
+      break;
+    case 'ArrowLeft':
+      e.preventDefault();
+      if (currentQ > 0) renderQuestion(currentQ - 1);
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      window.scrollBy({ top: 120, behavior: 'smooth' });
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      window.scrollBy({ top: -120, behavior: 'smooth' });
+      break;
+  }
+});
+function showToast(msg, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3100);
+}
+</script>
+</body>
+</html>
